@@ -15,7 +15,7 @@ namespace GenericPdv
         
         
         DataSetGnPdvTableAdapters.CaixaTableAdapter caixa = new DataSetGnPdvTableAdapters.CaixaTableAdapter();
-
+        double valorAbertura;
         public AberturaDeCaixaForm()
         {
             InitializeComponent();
@@ -25,16 +25,19 @@ namespace GenericPdv
         private void AberturaDeCaixaForm_Load(object sender, EventArgs e)
         {
             // carrega o ultimo valor de caixa do sistema
+            // verificar se o caixa foi fechado no dia antenterior(se caixaFundo == null and caixaFechamento == null)
+            // abrir tela de sangria e posteriormente a tela de fechamento 
+            // depois voltar a tela de abertura
+
             var last = caixa.GetDataByLast();
             if((Convert.ToDouble(last[0]["caixaFundo"]) == 0.0) || (last[0]["caixaFundo"] == null)){
                 lbMensagem.Text += "Você não tem fundo adicionado Anteriormente\nAdicione um Fundo de Caixa.";
-                txtValorDeApertura.Text = "0,0";
+                txtValorDeApertura.Text = "";
             }
             else
-            {
-                txtValorDeApertura.Text = last[0]["caixaFundo"].ToString();
+            { 
+                txtValorDeApertura.Text = String.Format("R{0,-10:C}", Convert.ToDouble(last[0]["caixaFundo"]));
             }
-            // buscar e adcionar na txtValorDeApertura
         }
 
         private void btClouse_Click(object sender, EventArgs e)
@@ -53,12 +56,24 @@ namespace GenericPdv
             try
             {
                 if (string.IsNullOrEmpty(txtValorDeApertura.Text)) { return; }
-                if (AberturaDeCaixa.aberturaCaixa(Convert.ToDouble(txtValorDeApertura.Text)))
+                else
                 {
-                    FrenteDeCaixa frente = new FrenteDeCaixa();
-                    frente.Show();
-                    this.Dispose();
+                    string valorAbertura = "";
+                    for (int i = 0; i <= txtValorDeApertura.Text.Length - 1; i++)
+                    {
+                        if ((txtValorDeApertura.Text[i] >= '0' &&
+                            txtValorDeApertura.Text[i] <= '9') ||
+                            txtValorDeApertura.Text[i] == ',')
+                        {
+                            valorAbertura += txtValorDeApertura.Text[i];
+                        }
+                    }
+                    MessageBox.Show(valorAbertura);
+                    caixa.InsertQueryAbertura(DateTime.Now, Convert.ToDouble(valorAbertura), 0, 0);
                 }
+                FrenteDeCaixa frente = new FrenteDeCaixa();
+                frente.Show();
+                this.Dispose();
             }
             catch (Exception ex)
             {

@@ -31,7 +31,7 @@ namespace GenericPdv
             try
             {
                 sangria.InsertQuery(id , DateTime.Now, Convert.ToDouble(txtNovoValor.Text));
-                AberturaDeCaixa.valorDeCaixa = Convert.ToDouble(txtNovoValor.Text);
+                //AberturaDeCaixa.valorDeCaixa = Convert.ToDouble(txtNovoValor.Text);
                 MessageBox.Show("Valor Atualizado");
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
@@ -53,7 +53,7 @@ namespace GenericPdv
             try
             {
                 var san = sangria.GetData();
-                txtCaixa.Text = AberturaDeCaixa.valorDeCaixa.ToString();
+                //txtCaixa.Text = AberturaDeCaixa.valorDeCaixa.ToString();
                 lbUsuario.Text = usuario;
                 lbData.Text = DateTime.Now.ToString();
 

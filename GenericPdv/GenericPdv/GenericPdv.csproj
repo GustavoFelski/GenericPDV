@@ -48,7 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AberturaDeCaixa.cs" />
     <Compile Include="AberturaDeCaixaForm.cs">
       <SubType>Form</SubType>
     </Compile>

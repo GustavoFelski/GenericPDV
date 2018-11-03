@@ -13,11 +13,12 @@ namespace GenericPdv
 {
     public partial class Pagamento : Form
     {
+        DataSetGnPdvTableAdapters.CaixaTableAdapter caixa = new DataSetGnPdvTableAdapters.CaixaTableAdapter();
         DataSetGnPdvTableAdapters.PagamentoTableAdapter pagamento = new DataSetGnPdvTableAdapters.PagamentoTableAdapter();
         DataSetGnPdvTableAdapters.VendaTableAdapter venda = new DataSetGnPdvTableAdapters.VendaTableAdapter();
         DataSetGnPdvTableAdapters.ItensDaVendaTableAdapter itensVenda = new DataSetGnPdvTableAdapters.ItensDaVendaTableAdapter();
         private double valorTotal;
-        double valorPagar, valorEmDinheiro/*, valorEmCredito, valorEmDebito*/;
+        double valorPagar, valorEmDinheiro, valorEmCredito, valorEmDebito;
         int tipo;
         bool tipoDeDesconto;
         string[,] itensDePagamento;
@@ -38,10 +39,11 @@ namespace GenericPdv
         {
             try
             {
-                
+
                 //insere na tabela de Vendas
-                venda.InsertQueryVenda(valorTotal, DateTime.Now, cpf , AberturaDeCaixa.idCaixa, AutenticacaoDeFuncionario.idFuncionario);
+                venda.InsertQueryVenda(valorTotal, DateTime.Now, cpf, Convert.ToInt32(caixa.GetDataByLast()[0]["idCaixa"]), AutenticacaoDeFuncionario.idFuncionario);
                 var LastId = venda.GetDataByLastId();
+                MessageBox.Show(LastId.ToString());
 
                 //inserir as opções de pagamento para o id de venda
                 itensDePagamento = new string[this.listPagamento.Items.Count, 5];
@@ -51,6 +53,13 @@ namespace GenericPdv
                     try
                     {
                         pagamento.InsertQueryPagamento(Convert.ToInt32(listPagamento.Items[i].SubItems[4].Text), Convert.ToInt32(LastId), Convert.ToDouble(listPagamento.Items[i].SubItems[2].Text));
+                        switch (Convert.ToInt32(listPagamento.Items[i].SubItems[4].Text))
+                        {
+                            case 1: { valorEmDinheiro += Convert.ToDouble(listPagamento.Items[i].SubItems[2].Text); } break;
+                            case 2: { valorEmCredito += Convert.ToDouble(listPagamento.Items[i].SubItems[2].Text); } break;
+                            case 3: { valorEmDebito +=  Convert.ToDouble(listPagamento.Items[i].SubItems[2].Text); } break;
+                        }
+
                     }
                     catch (Exception ex)
                     {
@@ -75,9 +84,7 @@ namespace GenericPdv
                         }
                     }
                 }
-                // fazer updade na tabela de caixa dos valores 
-
-                MessageBox.Show("venda ok");
+                // fazer updade na tabela de caixa dos valores   
             }
             catch (Exception ex)
             {
@@ -94,8 +101,10 @@ namespace GenericPdv
                 MessageBox.Show(ex.Message);
             }
             //adicionar valor em caixa 
-
-            AberturaDeCaixa.adcionarValor(valorEmDinheiro);
+            var aux = caixa.GetDataByLast();
+            caixa.UpdateValores((Convert.ToDouble(aux[0]["caixaValorCartaoCredito"]) + valorEmCredito), (Convert.ToDouble(aux[0]["caixaValorDinheiro"]) + valorEmDinheiro), (Convert.ToDouble(aux[0]["caixaValorCartaoDebito"]) + valorEmDebito), Convert.ToInt32(aux[0]["idCaixa"]));
+            //AberturaDeCaixa.adcionarValor(valorEmDinheiro);
+            MessageBox.Show("venda ok");
             this.Close();
         }
 
