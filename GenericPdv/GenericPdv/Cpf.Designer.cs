@@ -28,32 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btClouse = new System.Windows.Forms.Button();
             this.mkbCpf = new System.Windows.Forms.MaskedTextBox();
             this.btValidar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lbCPF = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // btClouse
-            // 
-            this.btClouse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btClouse.FlatAppearance.BorderSize = 0;
-            this.btClouse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btClouse.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btClouse.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btClouse.Location = new System.Drawing.Point(236, 4);
-            this.btClouse.Name = "btClouse";
-            this.btClouse.Size = new System.Drawing.Size(36, 31);
-            this.btClouse.TabIndex = 5;
-            this.btClouse.Text = "X";
-            this.btClouse.UseVisualStyleBackColor = true;
-            this.btClouse.Click += new System.EventHandler(this.btClouse_Click);
-            // 
             // mkbCpf
             // 
             this.mkbCpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.mkbCpf.Location = new System.Drawing.Point(12, 43);
+            this.mkbCpf.Location = new System.Drawing.Point(12, 33);
             this.mkbCpf.Mask = "999,999,999-99";
             this.mkbCpf.Name = "mkbCpf";
             this.mkbCpf.Size = new System.Drawing.Size(179, 30);
@@ -66,7 +50,7 @@
             this.btValidar.FlatAppearance.BorderSize = 0;
             this.btValidar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btValidar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btValidar.Location = new System.Drawing.Point(197, 41);
+            this.btValidar.Location = new System.Drawing.Point(197, 33);
             this.btValidar.Name = "btValidar";
             this.btValidar.Size = new System.Drawing.Size(75, 32);
             this.btValidar.TabIndex = 7;
@@ -88,7 +72,7 @@
             // 
             this.lbCPF.AutoSize = true;
             this.lbCPF.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbCPF.Location = new System.Drawing.Point(12, 83);
+            this.lbCPF.Location = new System.Drawing.Point(74, 9);
             this.lbCPF.Name = "lbCPF";
             this.lbCPF.Size = new System.Drawing.Size(51, 20);
             this.lbCPF.TabIndex = 9;
@@ -100,27 +84,25 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(281, 111);
+            this.ClientSize = new System.Drawing.Size(281, 75);
             this.Controls.Add(this.lbCPF);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btValidar);
             this.Controls.Add(this.mkbCpf);
-            this.Controls.Add(this.btClouse);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Cpf";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CPF";
-            this.Load += new System.EventHandler(this.Cpf_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btClouse;
         private System.Windows.Forms.MaskedTextBox mkbCpf;
         private System.Windows.Forms.Button btValidar;
         private System.Windows.Forms.Label label1;

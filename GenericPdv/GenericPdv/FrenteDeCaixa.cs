@@ -176,7 +176,7 @@ namespace GenericPdv
         {
             // verificar se ha alguma operação em aberto
             // fazer autenticação de admistrador?
-            AutenticacaoValidacao autenticacao = new AutenticacaoValidacao();
+            AutenticacaoValidacao autenticacao = new AutenticacaoValidacao(2);
             autenticacao.ShowDialog();
             lbStatus.Text = "Caixa em Sangria.";
 

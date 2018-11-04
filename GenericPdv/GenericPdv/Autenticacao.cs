@@ -53,8 +53,7 @@ namespace GenericPdv
                     if (textNome.Text.ToUpper() == temp[0]["funcAliase"].ToString().ToUpper())
                     {
                         nome = true;
-                        //MessageBox.Show((temp[0]["funcSenha"].ToString() + " " + Convert.ToBoolean(temp[0]["resetSenha"].ToString())));
-                        if ((temp[0]["funcSenha"].ToString() == "") /*|| (Convert.ToBoolean(temp[0]["resetSenha"]) == true)*/)
+                        if ((temp[0]["funcSenha"].ToString() == ""))
                         {
                             Alerta alerta = new Alerta("Você ainda não tem uma senha cadastrada.\nPor favor entre uma nova senha.");
                             alerta.ShowDialog();
@@ -94,6 +93,7 @@ namespace GenericPdv
                 }
             }
         }
+
         private void btAcessar_Click(object sender, EventArgs e)
         {
             bool liberar = true;
@@ -118,7 +118,7 @@ namespace GenericPdv
                                 {
                                     Alerta alerta = new Alerta("Existe um fechamento ainda aberto.");
                                     alerta.ShowDialog();
-                                    Sangria sangria = new Sangria(temp[0]["funcAlise"].ToString(), Convert.ToInt32(temp[0]["idFuncionario"]));
+                                    Sangria sangria = new Sangria(Convert.ToInt32(temp[0]["idFuncionario"]));
                                     //abrir fechamento
                                 }
                                 AberturaDeCaixaForm aberturaDeCaixa = new AberturaDeCaixaForm();

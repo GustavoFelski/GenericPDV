@@ -150,7 +150,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(122)))), ((int)(((byte)(143)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtQtd);
@@ -212,7 +212,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(122)))), ((int)(((byte)(143)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panel2.Controls.Add(this.lbNomeProduto);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
@@ -271,7 +271,7 @@
             // 
             // tableLayoutPanel5
             // 
-            this.tableLayoutPanel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(122)))), ((int)(((byte)(143)))));
+            this.tableLayoutPanel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.tableLayoutPanel5.ColumnCount = 1;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.Controls.Add(this.btFinalizar, 0, 5);
@@ -360,7 +360,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(218, 20);
             this.label3.TabIndex = 1;
-            this.label3.Text = "Valor Unitario";
+            this.label3.Text = "Valor Unitário";
             // 
             // panel10
             // 
@@ -566,7 +566,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(218, 20);
             this.label6.TabIndex = 3;
-            this.label6.Text = "Codigo ";
+            this.label6.Text = "Código ";
             // 
             // panel5
             // 
@@ -632,7 +632,7 @@
             // 
             // tableLayoutPanel12
             // 
-            this.tableLayoutPanel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(122)))), ((int)(((byte)(143)))));
+            this.tableLayoutPanel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.tableLayoutPanel12.ColumnCount = 2;
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -650,6 +650,7 @@
             // lbNomeUsuario
             // 
             this.lbNomeUsuario.AutoSize = true;
+            this.lbNomeUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lbNomeUsuario.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lbNomeUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbNomeUsuario.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -658,11 +659,12 @@
             this.lbNomeUsuario.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
             this.lbNomeUsuario.Size = new System.Drawing.Size(340, 26);
             this.lbNomeUsuario.TabIndex = 2;
-            this.lbNomeUsuario.Text = "Caixa - Aberto";
+            this.lbNomeUsuario.Text = "Vendedor";
             // 
             // lbStatus
             // 
             this.lbStatus.AutoSize = true;
+            this.lbStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lbStatus.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lbStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbStatus.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -766,7 +768,7 @@
             // 
             // tableLayoutPanel6
             // 
-            this.tableLayoutPanel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(122)))), ((int)(((byte)(143)))));
+            this.tableLayoutPanel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.tableLayoutPanel6.ColumnCount = 1;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.Controls.Add(this.btFechamento, 0, 4);
@@ -796,6 +798,7 @@
             this.btFechamento.FlatAppearance.BorderSize = 0;
             this.btFechamento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btFechamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btFechamento.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btFechamento.Location = new System.Drawing.Point(10, 402);
             this.btFechamento.Margin = new System.Windows.Forms.Padding(10);
             this.btFechamento.Name = "btFechamento";
@@ -813,6 +816,7 @@
             this.btConsultar.FlatAppearance.BorderSize = 0;
             this.btConsultar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btConsultar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btConsultar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btConsultar.Location = new System.Drawing.Point(10, 304);
             this.btConsultar.Margin = new System.Windows.Forms.Padding(10);
             this.btConsultar.Name = "btConsultar";
@@ -830,6 +834,7 @@
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button3.Location = new System.Drawing.Point(10, 206);
             this.button3.Margin = new System.Windows.Forms.Padding(10);
             this.button3.Name = "button3";
@@ -846,6 +851,7 @@
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button2.Location = new System.Drawing.Point(10, 108);
             this.button2.Margin = new System.Windows.Forms.Padding(10);
             this.button2.Name = "button2";
@@ -863,6 +869,7 @@
             this.btSangria.FlatAppearance.BorderSize = 0;
             this.btSangria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btSangria.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btSangria.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btSangria.Location = new System.Drawing.Point(10, 10);
             this.btSangria.Margin = new System.Windows.Forms.Padding(10);
             this.btSangria.Name = "btSangria";

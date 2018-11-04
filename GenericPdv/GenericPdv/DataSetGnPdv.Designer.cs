@@ -6661,13 +6661,13 @@ SELECT idSangria, idFuncionario, sangDataTime, sangriaValor, idCaixa FROM Sangri
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "INSERT INTO [Sangria] ( [idFuncionario], [sangDataTime], [sangriaValor]) VALUES (" +
-                " @idFuncionario, @sangDataTime, @sangriaValor);\r\nSELECT idSangria, idFuncionario" +
-                ", sangDataTime, sangriaValor FROM Sangria WHERE (idSangria = SCOPE_IDENTITY())";
+            this._commandCollection[1].CommandText = @"INSERT INTO [Sangria] ( [idFuncionario], [sangDataTime], [sangriaValor], [idCaixa]) VALUES ( @idFuncionario, @sangDataTime, @sangriaValor, @idCaixa);
+SELECT idSangria, idFuncionario, sangDataTime, sangriaValor FROM Sangria WHERE (idSangria = SCOPE_IDENTITY())";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idFuncionario", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idFuncionario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@sangDataTime", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "sangDataTime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@sangriaValor", global::System.Data.SqlDbType.Float, 8, global::System.Data.ParameterDirection.Input, 0, 0, "sangriaValor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idCaixa", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idCaixa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6913,7 +6913,7 @@ SELECT idSangria, idFuncionario, sangDataTime, sangriaValor, idCaixa FROM Sangri
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
-        public virtual int InsertQuery(global::System.Nullable<int> idFuncionario, global::System.Nullable<global::System.DateTime> sangDataTime, global::System.Nullable<double> sangriaValor) {
+        public virtual int InsertQuery(global::System.Nullable<int> idFuncionario, global::System.Nullable<global::System.DateTime> sangDataTime, global::System.Nullable<double> sangriaValor, global::System.Nullable<int> idCaixa) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
             if ((idFuncionario.HasValue == true)) {
                 command.Parameters[0].Value = ((int)(idFuncionario.Value));
@@ -6932,6 +6932,12 @@ SELECT idSangria, idFuncionario, sangDataTime, sangriaValor, idCaixa FROM Sangri
             }
             else {
                 command.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((idCaixa.HasValue == true)) {
+                command.Parameters[3].Value = ((int)(idCaixa.Value));
+            }
+            else {
+                command.Parameters[3].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -9151,7 +9157,7 @@ SELECT idCaixa, caixaAbertura, caixaValorCartaoCredito, caixaFechamento, caixaVa
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[5];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[6];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT idCaixa, caixaAbertura, caixaValorCartaoCredito, caixaFechamento, caixaVal" +
@@ -9184,14 +9190,21 @@ SELECT idCaixa, caixaAbertura, caixaValorCartaoCredito, caixaFechamento, caixaVa
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idCaixa", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idCaixa", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "UPDATE [Caixa] SET [caixaValorCartaoCredito] = @caixaValorCartaoCredito, [caixaVa" +
+            this._commandCollection[4].CommandText = "UPDATE [Caixa] SET  [caixaValorDinheiro] = @caixaValorDinheiro WHERE idCaixa = @l" +
+                "astId";
+            this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@caixaValorDinheiro", global::System.Data.SqlDbType.Float, 8, global::System.Data.ParameterDirection.Input, 0, 0, "caixaValorDinheiro", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@lastId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idCaixa", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[5].Connection = this.Connection;
+            this._commandCollection[5].CommandText = "UPDATE [Caixa] SET [caixaValorCartaoCredito] = @caixaValorCartaoCredito, [caixaVa" +
                 "lorDinheiro] = @caixaValorDinheiro, [caixaValorCartaoDebito] = @caixaValorCartao" +
                 "Debito  WHERE idCaixa = @lastId";
-            this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@caixaValorCartaoCredito", global::System.Data.SqlDbType.Float, 8, global::System.Data.ParameterDirection.Input, 0, 0, "caixaValorCartaoCredito", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@caixaValorDinheiro", global::System.Data.SqlDbType.Float, 8, global::System.Data.ParameterDirection.Input, 0, 0, "caixaValorDinheiro", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@caixaValorCartaoDebito", global::System.Data.SqlDbType.Float, 8, global::System.Data.ParameterDirection.Input, 0, 0, "caixaValorCartaoDebito", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@lastId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idCaixa", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@caixaValorCartaoCredito", global::System.Data.SqlDbType.Float, 8, global::System.Data.ParameterDirection.Input, 0, 0, "caixaValorCartaoCredito", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@caixaValorDinheiro", global::System.Data.SqlDbType.Float, 8, global::System.Data.ParameterDirection.Input, 0, 0, "caixaValorDinheiro", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@caixaValorCartaoDebito", global::System.Data.SqlDbType.Float, 8, global::System.Data.ParameterDirection.Input, 0, 0, "caixaValorCartaoDebito", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@lastId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idCaixa", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9709,8 +9722,38 @@ SELECT idCaixa, caixaAbertura, caixaValorCartaoCredito, caixaFechamento, caixaVa
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
-        public virtual int UpdateValores(global::System.Nullable<double> caixaValorCartaoCredito, global::System.Nullable<double> caixaValorDinheiro, global::System.Nullable<double> caixaValorCartaoDebito, int lastId) {
+        public virtual int UpdateValorDinheiro(global::System.Nullable<double> caixaValorDinheiro, int lastId) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
+            if ((caixaValorDinheiro.HasValue == true)) {
+                command.Parameters[0].Value = ((double)(caixaValorDinheiro.Value));
+            }
+            else {
+                command.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            command.Parameters[1].Value = ((int)(lastId));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
+        public virtual int UpdateValores(global::System.Nullable<double> caixaValorCartaoCredito, global::System.Nullable<double> caixaValorDinheiro, global::System.Nullable<double> caixaValorCartaoDebito, int lastId) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[5];
             if ((caixaValorCartaoCredito.HasValue == true)) {
                 command.Parameters[0].Value = ((double)(caixaValorCartaoCredito.Value));
             }

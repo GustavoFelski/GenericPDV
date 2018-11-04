@@ -13,8 +13,10 @@ namespace GenericPdv
 {
     public partial class AutenticacaoValidacao : Form
     {
-        public AutenticacaoValidacao()
+        int contexto;
+        public AutenticacaoValidacao(int contexto)
         {
+            this.contexto = contexto;
             InitializeComponent();
         }
         private bool nome = false;
@@ -52,81 +54,139 @@ namespace GenericPdv
 
         private void textNome_Leave(object sender, EventArgs e)
         {
-            var temp = func.GetDataByAliase(textNome.Text);
-            try
+            if (string.IsNullOrEmpty(textNome.Text)) { label1.Text += "*"; }
+            else
             {
-                if (textNome.Text.ToUpper() == temp[0]["funcAliase"].ToString().ToUpper())
+                var temp = func.GetDataByAliase(textNome.Text);
+                try
                 {
-                    nome = true;
-                    if (temp[0]["funcSenha"].ToString() == "")
+                    if (textNome.Text.ToUpper() == temp[0]["funcAliase"].ToString().ToUpper())
                     {
-                        MessageBox.Show("para este usuario ainda não cadastrado");
-                        novaSenha nova = new novaSenha(temp[0]["funcAliase"].ToString());
-                        nova.Show();
+                        nome = true;
+                        if ((temp[0]["funcSenha"].ToString() == ""))
+                        {
+                            Alerta alerta = new Alerta("Você ainda não tem uma senha cadastrada.\nPor favor entre uma nova senha.");
+                            alerta.ShowDialog();
+                            novaSenha nova = new novaSenha(temp[0]["funcAliase"].ToString());
+                            nova.ShowDialog();
+                        }
                     }
                 }
-                else
+                catch (Exception ex)
                 {
-                    label1.Text += " (erro usuario)";
+                    Alerta alerta = new Alerta("Usuário não encontrado.");
+                    alerta.ShowDialog();
+                    textNome.Focus();
                     textNome.Text = "";
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
             }
         }
 
         private void textSenha_Leave(object sender, EventArgs e)
         {
 
-            var temp = func.GetDataByAliase(textNome.Text);
-            //textSenha Converter para md5
-            if (temp[0]["funcSenha"].ToString() == GerarHashMd5(textSenha.Text))
-            {
-                Senha = true;
-            }
+            if (string.IsNullOrEmpty(textSenha.Text)) { label2.Text += "*"; }
             else
             {
-                label2.Text += " (erro senha)";
+                var temp = func.GetDataByAliase(textNome.Text);
+                //textSenha Converter para md5
+                if (temp[0]["funcSenha"].ToString() == GerarHashMd5(textSenha.Text))
+                {
+                    Senha = true;
+                }
+                else
+                {
+                    Alerta alerta = new Alerta("Erro na senha");
+                    alerta.ShowDialog();
+                    textSenha.Text = "";
+                    textSenha.Focus();
+                }
             }
         }
 
         private void btAcessar_Click(object sender, EventArgs e)
         {
-            var temp = func.GetDataByAliase(textNome.Text);
-
-            if (Senha == true && nome == true)
+            bool liberar = true;
+            if (string.IsNullOrEmpty(textNome.Text)) { liberar = false; textNome.Focus(); }
+            if (string.IsNullOrEmpty(textNome.Text)) { liberar = false; textSenha.Focus(); }
+            if (liberar)
             {
-                this.Hide();
-                switch (temp[0]["idCargo"].ToString())
+                var temp = func.GetDataByAliase(textNome.Text);
+
+                if (Senha == true && nome == true)
                 {
-                    case "0":
-                        {
-                            Sangria sangria= new Sangria(textNome.Text,Convert.ToInt32(temp[0]["idFuncionario"]));
-                            sangria.ShowDialog();
-                        }
-                        break;
+                    switch (temp[0]["idCargo"].ToString())
+                    {
+                        case "0":
+                            {
+                                switch (contexto)
+                                {
+                                    //Trocar de usuário
+                                    case 1:
+                                        //AutenticacaoDeFuncionario.funcLogado = textNome.Text;
+                                        //AutenticacaoDeFuncionario.Date = DateTime.Now;
+                                        //AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idCargo"]);
+                                        break;
+                                    //Sandria
+                                    case 2:
+                                        Sangria sangria = new Sangria( Convert.ToInt32(temp[0]["idFuncionario"]));
+                                        sangria.ShowDialog();
+                                        break;
+                                    //Fechamento
+                                    case 3:
+                                        // chamar tela de confirmação
+                                            // se sim 
+                                            FechamentoDeCaixaForm fechamento = new FechamentoDeCaixaForm();
+                                            fechamento.ShowDialog();
+                                            // fechar a frente de caixa ao fechar essa tela
+                                        // se não voltar a frente de Caixa
+                                        break;
+                                }
+                            }
+                            break;
+                        case "1":
+                            {
+                                switch (contexto)
+                                {
+                                    //Trocar de usuário
+                                    case 1: break;
+                                    //Sandria
+                                    case 2:
+                                        Sangria sangria = new Sangria(Convert.ToInt32(temp[0]["idFuncionario"]));
+                                        sangria.ShowDialog();
+                                        break;
+                                    //Fechamento
+                                    case 3:
+                                        // chamar tela de confirmação
+                                            // se sim 
+                                            FechamentoDeCaixaForm fechamento = new FechamentoDeCaixaForm();
+                                            fechamento.ShowDialog();
+                                            // fechar a frente de caixa ao fechar essa tela
+                                        // se não voltar a frente de caixa
+                                        break;
+                                }
+                            }
+                            break;
 
-                    case "1":
-                        {
-                            Sangria sangria = new Sangria(textNome.Text, Convert.ToInt32(temp[0]["idFuncionario"]));
-                            sangria.ShowDialog();
-                        }
-                        break;
-
-                    case "2":
-                        {
-                            MessageBox.Show("você não tem permissão para acessar esta função.");
-                        }
-                        break;
-                    default:
-                        {
-                            MessageBox.Show("erro de cargo"); this.Show();
-                        }
-                        break;
+                        case "2":
+                            {
+                                switch (contexto)
+                                {
+                                    //Trocar de usuário
+                                    case 1: break;
+                                }
+                            }
+                            break;
+                    }
                 }
             }
+            else
+            {
+                Alerta alerta = new Alerta("Você preencher todos os campos.");
+                alerta.ShowDialog();
+                textNome.Focus();
+            }
+
         }
     }
 }

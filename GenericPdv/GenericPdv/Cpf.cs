@@ -70,15 +70,5 @@ namespace GenericPdv
                 mkbCpf.Focus();
             }
         }
-
-        private void btClouse_Click(object sender, EventArgs e)
-        {
-            this.Dispose();
-        }
-
-        private void Cpf_Load(object sender, EventArgs e)
-        {
-        
-        }
     }
 }
