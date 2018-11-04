@@ -20,7 +20,7 @@ namespace GenericPdv
 
         private void novaSenha_Load(object sender, EventArgs e)
         {
-
+            textBox1.Focus();
         }
         DataSetGnPdvTableAdapters.FuncionarioTableAdapter func = new DataSetGnPdvTableAdapters.FuncionarioTableAdapter();
         public string usuario { get; set; }
@@ -56,20 +56,28 @@ namespace GenericPdv
 
         private void btConfirmar_Click(object sender, EventArgs e)
         {
-            string aux1, aux2;
-            aux1 = GerarHashMd5(textBox1.Text);
-            aux2 = GerarHashMd5(textBox2.Text);
-            if (aux1 == aux2)
-            {
-                func.UpdateQuerySenha(aux1, false , usuario);
-                MessageBox.Show("cadastro de senha realizado com sucesso");
-                this.Close();
-            }
+            if (string.IsNullOrEmpty(textBox1.Text) || string.IsNullOrEmpty(textBox2.Text))
+            { textBox1.Focus(); }
             else
             {
-                MessageBox.Show("Senhas não conferem.");
-                textBox1.Text = "";
-                textBox2.Text = "";
+                string aux1, aux2;
+                aux1 = GerarHashMd5(textBox1.Text);
+                aux2 = GerarHashMd5(textBox2.Text);
+                if (aux1 == aux2)
+                {
+                    func.UpdateQuerySenha(aux1, false, usuario);
+                    Alerta alerta = new Alerta("Senha Cadastrada.");
+                    alerta.ShowDialog();
+                    this.Close();
+                }
+                else
+                {
+                    Alerta alerta = new Alerta("Senhas não Conferem.");
+                    alerta.ShowDialog();
+                    textBox1.Focus();
+                    textBox1.Text = "";
+                    textBox2.Text = "";
+                }
             }
         }
     }

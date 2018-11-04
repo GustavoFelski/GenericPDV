@@ -15,7 +15,7 @@ namespace GenericPdv
         
         
         DataSetGnPdvTableAdapters.CaixaTableAdapter caixa = new DataSetGnPdvTableAdapters.CaixaTableAdapter();
-        double valorAbertura;
+        bool zerado = true;
         public AberturaDeCaixaForm()
         {
             InitializeComponent();
@@ -30,34 +30,42 @@ namespace GenericPdv
             // depois voltar a tela de abertura
 
             var last = caixa.GetDataByLast();
-            if((Convert.ToDouble(last[0]["caixaFundo"]) == 0.0) || (last[0]["caixaFundo"] == null)){
-                lbMensagem.Text += "Você não tem fundo adicionado Anteriormente\nAdicione um Fundo de Caixa.";
-                txtValorDeApertura.Text = "";
+            if(last[0]["caixaFundo"].ToString() == ""){
+                lbMensagem.Text = "Você não tem fundo adicionado Anteriormente. Adicione um Fundo de Caixa.";
+                txtValorDeApertura.Text = "R$ 0,00";
+                txtValorDeApertura.SelectAll();
+                zerado = true;
             }
             else
             { 
                 txtValorDeApertura.Text = String.Format("R{0,-10:C}", Convert.ToDouble(last[0]["caixaFundo"]));
+                zerado = false;
             }
-        }
-
-        private void btClouse_Click(object sender, EventArgs e)
-        {
-            this.Dispose();
-        }
-
-        private void btVoltar_Click(object sender, EventArgs e)
-        {
-            // voltar a autenticação
-            // apresentar novamnte autenticação
         }
 
         private void btAbrirCaixa_Click(object sender, EventArgs e)
         {
             try
             {
-                if (string.IsNullOrEmpty(txtValorDeApertura.Text)) { return; }
+                if (zerado)
+                {
+                    if (string.IsNullOrEmpty(txtValorDeApertura.Text))
+                    {
+                        Alerta alerta1 = new Alerta("vc não pode deixar este campo vazio para proceguir.");
+                        alerta1.ShowDialog();
+                        txtValorDeApertura.Focus();
+                    }
+                    else
+                    {
+                        Alerta alerta = new Alerta("Adione um valor de abertura.");
+                        alerta.ShowDialog();
+                        txtValorDeApertura.Focus();
+                    }
+                }
                 else
                 {
+                    
+                    #region Retira R$
                     string valorAbertura = "";
                     for (int i = 0; i <= txtValorDeApertura.Text.Length - 1; i++)
                     {
@@ -68,17 +76,32 @@ namespace GenericPdv
                             valorAbertura += txtValorDeApertura.Text[i];
                         }
                     }
-                    MessageBox.Show(valorAbertura);
-                    caixa.InsertQueryAbertura(DateTime.Now, Convert.ToDouble(valorAbertura), 0, 0);
+                    #endregion
+                    if (Convert.ToDouble(valorAbertura) >= 0)
+                    {
+                        caixa.InsertQueryAbertura(DateTime.Now, Convert.ToDouble(valorAbertura), 0, 0);
+                        FrenteDeCaixa frente = new FrenteDeCaixa();
+                        frente.Show();
+                        this.Dispose();
+                    }
+                    else
+                    {
+                        Alerta alerta = new Alerta("Não é permitido abrir o caixa com este valor.\nRecomenda-se abrir o caixa valores acima de R$50,00");
+                        alerta.ShowDialog();
+                        txtValorDeApertura.Focus();
+                    }
                 }
-                FrenteDeCaixa frente = new FrenteDeCaixa();
-                frente.Show();
-                this.Dispose();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void txtValorDeApertura_Leave(object sender, EventArgs e)
+        {
+            zerado = false;
+        }
+
     }
 }

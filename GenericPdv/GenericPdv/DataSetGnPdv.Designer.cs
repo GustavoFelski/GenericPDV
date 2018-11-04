@@ -9160,7 +9160,8 @@ SELECT idCaixa, caixaAbertura, caixaValorCartaoCredito, caixaFechamento, caixaVa
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = "SELECT        TOP (1) idCaixa, caixaValorCartaoCredito, caixaValorDinheiro, caixa" +
-                "ValorCartaoDebito\r\nFROM            Caixa\r\nORDER BY idCaixa DESC ";
+                "ValorCartaoDebito, caixaFechamento\r\nFROM            Caixa\r\nORDER BY idCaixa DESC" +
+                " ";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;

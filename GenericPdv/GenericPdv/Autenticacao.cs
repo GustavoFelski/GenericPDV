@@ -21,7 +21,9 @@ namespace GenericPdv
         private bool nome = false;
         private bool Senha = false;
         DataSetGnPdvTableAdapters.FuncionarioTableAdapter func = new DataSetGnPdvTableAdapters.FuncionarioTableAdapter();
-        AberturaDeCaixaForm aberturaDeCaixa = new AberturaDeCaixaForm();
+        DataSetGnPdvTableAdapters.CaixaTableAdapter caixa = new DataSetGnPdvTableAdapters.CaixaTableAdapter();
+        
+        // encriptar senha
         public static string GerarHashMd5(string input)
         {
             MD5 md5Hash = MD5.Create();
@@ -40,101 +42,148 @@ namespace GenericPdv
             return sBuilder.ToString();
         }
 
-        private void Autenticacao_Load(object sender, EventArgs e)
-        {
-            aberturaDeCaixa.Close();
-        }
-
-        private void btClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void textNome_Leave(object sender, EventArgs e)
         {
-            var temp = func.GetDataByAliase(textNome.Text);
-            try
+            if (string.IsNullOrEmpty(textNome.Text)) { label1.Text += "*"; }
+            else
             {
-                if (textNome.Text.ToUpper() == temp[0]["funcAliase"].ToString().ToUpper())
+                var temp = func.GetDataByAliase(textNome.Text);
+                try
                 {
-                    nome = true;
-                    if (temp[0]["funcSenha"].ToString() == "")
+                    if (textNome.Text.ToUpper() == temp[0]["funcAliase"].ToString().ToUpper())
                     {
-                        MessageBox.Show("para este usuario ainda não cadastrado");
-                        novaSenha nova = new novaSenha(temp[0]["funcAliase"].ToString());
-                        nova.Show();
+                        nome = true;
+                        //MessageBox.Show((temp[0]["funcSenha"].ToString() + " " + Convert.ToBoolean(temp[0]["resetSenha"].ToString())));
+                        if ((temp[0]["funcSenha"].ToString() == "") /*|| (Convert.ToBoolean(temp[0]["resetSenha"]) == true)*/)
+                        {
+                            Alerta alerta = new Alerta("Você ainda não tem uma senha cadastrada.\nPor favor entre uma nova senha.");
+                            alerta.ShowDialog();
+                            novaSenha nova = new novaSenha(temp[0]["funcAliase"].ToString());
+                            nova.ShowDialog();
+                        }
                     }
                 }
-                else
+                catch (Exception ex)
                 {
-                    label1.Text += " (erro usuario)";
+                    Alerta alerta = new Alerta("Usuário não encontrado.");
+                    alerta.ShowDialog();
+                    textNome.Focus();
                     textNome.Text = "";
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
             }
         }
 
         private void textSenha_Leave(object sender, EventArgs e)
         {
-            
-            var temp = func.GetDataByAliase(textNome.Text);
-            //textSenha Converter para md5
-            if (temp[0]["funcSenha"].ToString() == GerarHashMd5(textSenha.Text))
+
+            if (string.IsNullOrEmpty(textSenha.Text)) { label2.Text += "*"; }
+            else
             {
-                Senha = true;
+                var temp = func.GetDataByAliase(textNome.Text);
+                //textSenha Converter para md5
+                if (temp[0]["funcSenha"].ToString() == GerarHashMd5(textSenha.Text))
+                {
+                    Senha = true;
+                }
+                else
+                {
+                    Alerta alerta = new Alerta("Erro na senha");
+                    alerta.ShowDialog();
+                    textSenha.Text = "";
+                    textSenha.Focus();
+                }
+            }
+        }
+        private void btAcessar_Click(object sender, EventArgs e)
+        {
+            bool liberar = true;
+            if (string.IsNullOrEmpty(textNome.Text)) { liberar = false; textNome.Focus(); }
+            if (string.IsNullOrEmpty(textNome.Text)) { liberar = false; textSenha.Focus();  }
+            if (liberar)
+            {
+                var temp = func.GetDataByAliase(textNome.Text);
+
+                if (Senha == true && nome == true)
+                {
+                    this.Hide();
+                    AutenticacaoDeFuncionario.funcLogado = textNome.Text;
+                    AutenticacaoDeFuncionario.Date = DateTime.Now;
+                    AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idCargo"]);
+                    switch (temp[0]["idCargo"].ToString())
+                    {
+                        case "0":
+                            {
+                                //Verificar se o caixa ja foi fechado anteriormente
+                                if (Convert.ToDateTime(caixa.GetDataByLast()[0]["caixaFechamento"]) == null)
+                                {
+                                    Alerta alerta = new Alerta("Existe um fechamento ainda aberto.");
+                                    alerta.ShowDialog();
+                                    Sangria sangria = new Sangria(temp[0]["funcAlise"].ToString(), Convert.ToInt32(temp[0]["idFuncionario"]));
+                                    //abrir fechamento
+                                }
+                                AberturaDeCaixaForm aberturaDeCaixa = new AberturaDeCaixaForm();
+                                aberturaDeCaixa.Show();
+                                Admin admin = new Admin(true);
+                                admin.Show();
+                            }
+                            break;
+                        case "1":
+                            {
+                                //Verificar se o caixa ja foi fechado anteriormente
+                                //MessageBox.Show(caixa.GetDataByLast()[0]["caixaFechamento"].ToString());
+                                if (caixa.GetDataByLast()[0]["caixaFechamento"].ToString() == "")
+                                {
+                                    //abrir sangria
+                                    //abrir fechamento
+                                }
+                                AberturaDeCaixaForm aberturaDeCaixa = new AberturaDeCaixaForm();
+                                aberturaDeCaixa.Show();
+
+                            }
+                            break;
+
+                        case "2":
+                            {
+                                // Abrir tela de admin com restrições
+                                Admin admin = new Admin(false);
+                                admin.Show();
+                            }
+                            break;
+                    }
+                }
             }
             else
             {
-                label2.Text += " (erro senha)";
+                Alerta alerta = new Alerta("Você preencher todos os campos.");
+                alerta.ShowDialog();
+                textNome.Focus();
             }
+
         }
 
-        private void btAcessar_Click(object sender, EventArgs e)
+        private void btRecuperar_Click(object sender, EventArgs e)
         {
-            var temp = func.GetDataByAliase(textNome.Text);
-
-            if (Senha == true && nome == true)
+            if (string.IsNullOrEmpty(textNome.Text))
             {
-                this.Hide();
-                switch (temp[0]["idCargo"].ToString())
+                Alerta alerta = new Alerta("Entre o nome de acesso para proceguir.");
+                alerta.ShowDialog();
+                textNome.Focus();
+
+            }else
+            {
+                var temp = func.GetDataByAliase(textNome.Text);
+                if (Convert.ToInt32(temp[0]["idCargo"]) == 1 || Convert.ToInt32(temp[0]["idCargo"]) == 2)
                 {
-                case "0":
-                    {
-                        AutenticacaoDeFuncionario.funcLogado = textNome.Text;
-                        AutenticacaoDeFuncionario.Date = DateTime.Now;
-                        AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idCargo"]);
-                        Admin admin = new Admin();
-                        admin.Show();
-                    }
-                    break;
+                    // terminar tela de confirmação
+                    // fazer confirmação
+                    // se sim resetar a senha
+                    // só limpar os campos
+                }
+                else {
 
-                case "1":
-                    {
-                        AutenticacaoDeFuncionario.funcLogado = textNome.Text;
-                        AutenticacaoDeFuncionario.Date = DateTime.Now;
-                        AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idCargo"]);
-                        aberturaDeCaixa.Show();
-                    }
-                    break;
-
-                case "2":
-                    {
-                        AutenticacaoDeFuncionario.funcLogado = textNome.Text;
-                        AutenticacaoDeFuncionario.Date = DateTime.Now;
-                        AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idCargo"]);
-                        // Abrir tela de admin com restrições
-                        Admin admin = new Admin();
-                        admin.Show();
-                    }
-                    break;
-                default:
-                    {
-                        MessageBox.Show("erro de cargo");this.Show();
-                    }
-                    break;
+                    // fazer depois uma logica para recuperar a senha do admin
+                    Alerta alerta = new Alerta("Criar depois.");
+                    alerta.ShowDialog();
                 }
             }
         }

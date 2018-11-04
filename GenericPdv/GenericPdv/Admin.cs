@@ -12,7 +12,7 @@ namespace GenericPdv
 {
     public partial class Admin : Form
     {
-        public Admin()
+        public Admin(bool admin)
         {
             InitializeComponent();
         }

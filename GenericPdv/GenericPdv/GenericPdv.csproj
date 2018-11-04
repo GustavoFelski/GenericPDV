@@ -60,6 +60,12 @@
     <Compile Include="Admin.Designer.cs">
       <DependentUpon>Admin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Alerta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Alerta.Designer.cs">
+      <DependentUpon>Alerta.cs</DependentUpon>
+    </Compile>
     <Compile Include="AutenticacaoDeFuncionario.cs" />
     <Compile Include="AutenticacaoValidacao.cs">
       <SubType>Form</SubType>
@@ -78,6 +84,12 @@
     </Compile>
     <Compile Include="CadastroDeProduto.Designer.cs">
       <DependentUpon>CadastroDeProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Confirmacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Confirmacao.Designer.cs">
+      <DependentUpon>Confirmacao.cs</DependentUpon>
     </Compile>
     <Compile Include="consulta.cs">
       <SubType>Form</SubType>
@@ -151,6 +163,9 @@
     <EmbeddedResource Include="Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Alerta.resx">
+      <DependentUpon>Alerta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Autenticacao.resx">
       <DependentUpon>Autenticacao.cs</DependentUpon>
     </EmbeddedResource>
@@ -159,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CadastroDeProduto.resx">
       <DependentUpon>CadastroDeProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Confirmacao.resx">
+      <DependentUpon>Confirmacao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="consulta.resx">
       <DependentUpon>consulta.cs</DependentUpon>

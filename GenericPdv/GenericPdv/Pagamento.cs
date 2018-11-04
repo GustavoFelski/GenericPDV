@@ -17,6 +17,7 @@ namespace GenericPdv
         DataSetGnPdvTableAdapters.PagamentoTableAdapter pagamento = new DataSetGnPdvTableAdapters.PagamentoTableAdapter();
         DataSetGnPdvTableAdapters.VendaTableAdapter venda = new DataSetGnPdvTableAdapters.VendaTableAdapter();
         DataSetGnPdvTableAdapters.ItensDaVendaTableAdapter itensVenda = new DataSetGnPdvTableAdapters.ItensDaVendaTableAdapter();
+
         private double valorTotal;
         double valorPagar, valorEmDinheiro, valorEmCredito, valorEmDebito;
         int tipo;
@@ -39,7 +40,6 @@ namespace GenericPdv
         {
             try
             {
-
                 //insere na tabela de Vendas
                 venda.InsertQueryVenda(valorTotal, DateTime.Now, cpf, Convert.ToInt32(caixa.GetDataByLast()[0]["idCaixa"]), AutenticacaoDeFuncionario.idFuncionario);
                 var LastId = venda.GetDataByLastId();
@@ -118,7 +118,7 @@ namespace GenericPdv
             txtValorPagar.Focus();
             tipo = 1;
             //bloqueia desconto total e intens
-        }
+        }   
 
         private void btCredito_Click(object sender, System.EventArgs e)
         {
@@ -146,12 +146,13 @@ namespace GenericPdv
 
         private void Pagamento_Load(object sender, EventArgs e)
         {
-            txtValorCompra.Text = valorTotal.ToString();
+            txtValorCompra.Text = string.Format("{0,-10:C}", valorTotal);
             txtValorPagar.Enabled = false;
             btFecharCompra.Enabled = false;
             ckbTipoDesconto.Text = "R$";
             tipoDeDesconto = false;
-            btDescontoTotal.Enabled = false;
+            btDescontoTotal.Enabled = true;
+            btLimpar.Enabled = false;
         }
 
         private void txtValorPagar_KeyPress(object sender, KeyPressEventArgs e)
@@ -162,203 +163,235 @@ namespace GenericPdv
             {
                 ListViewItem item = new ListViewItem();
                 string[] itens = new string[5];
-
+                double valorPago, troco;
+                try {
+                    valorPago = Convert.ToDouble(txtValorPagar.Text);
                 switch (tipo)
                 {
+                    #region pagamento em dinheiro
                     case 1:
-                        //verificar se o valor pago é superior ao valor da compra
-                        if (Convert.ToDouble(txtValorPagar.Text) >= valorPagar)
+                    //verificar se o valor pago é superior ao valor da compra
+                    if (Convert.ToDouble(txtValorPagar.Text) >= valorPagar)
+                    {
+                        // fechar compra se o valor for abatido
+                        if (Convert.ToDouble(txtValorPagar.Text) == valorPagar)
                         {
-                            //calcular troco e atualizar valor da compra
-                            if (Convert.ToDouble(txtValorPagar.Text) == valorPagar)
-                            {
-                                valorEmDinheiro = valorTotal;
-                                txtTroco.Text = "0";
-                                valorPagar -= Convert.ToDouble(txtValorPagar.Text);
-                                btFecharCompra.Enabled = true;
-                                txtValorPagar.Enabled = false;
-                            }
-                            if (Convert.ToDouble(txtValorPagar.Text) > valorPagar)
-                            {
-                                txtTroco.Text = Convert.ToString(Convert.ToDouble(txtValorPagar.Text) - valorPagar);
-                                valorPagar -= Convert.ToDouble(txtValorPagar.Text);
-                            }
-                        }
-                        // se não só atualizar o valor a pagar e adicionar 0,0 ao troco
-                        else
-                        {
-                            if (string.IsNullOrEmpty(txtTroco.Text))
-                            {
-                                txtTroco.Text = "0";
-                            }
+                            txtTroco.Text = "R$ 0,00";
                             valorPagar -= Convert.ToDouble(txtValorPagar.Text);
                         }
-                        // adicionar a lista de pagamento
-                        //itens[0] = tipo.ToString();
-                        itens[0] = "Dinheiro";
-                        itens[1] = txtValorPagar.Text;
-                        itens[2] = txtTroco.Text;
-                        itens[3] = tipo.ToString();
-
-                        for (int i = 0; i <= 4; i++)
+                        // Calcular troco e fechar compra 
+                        if (Convert.ToDouble(txtValorPagar.Text) > valorPagar)
                         {
-                            item.SubItems.Add(itens[i]);
+                            troco = valorPago - valorPagar;
+                            txtTroco.Text = string.Format("{0,-10:C}", troco);
                         }
-                        listPagamento.Items.Add(item);
-                        // libera o pagamento se o valor for abatido
-                        // inverter essa condição para verificar se o troco tem troco ou ele esta com o campo vazio
-                        // quando adicionar a mascara de R$, lembrar de remover o R$ antes de fazer essa verificação
-                        if (string.IsNullOrEmpty(txtTroco.Text)) { txtTroco.Text = "0"; }
-                        if ((Convert.ToDouble(txtTroco.Text) >= 0) && (valorPagar <= 0))
+                        btFecharCompra.Enabled = true;
+                        txtValorPagar.Enabled = false;
+                        btDinheiro.Enabled = false;
+                        btCredito.Enabled = false;
+                        btDebito.Enabled = false;
+                    }
+                    // se o valor for inferior apenas decrementar o valor restante 
+                    else
+                    {
+                        valorPagar -= valorPago;
+                        txtValorCompra.Text = string.Format("{0,-10:C}", valorPagar);
+                        if (string.IsNullOrEmpty(txtTroco.Text)) { txtTroco.Text = "R$ 0,00"; }
+                        btFecharCompra.Enabled = false;
+                        txtValorPagar.Enabled = false;
+                        txtValorPagar.Text = "";
+                        btDinheiro.Enabled = true;
+                        btCredito.Enabled = true;
+                        btDebito.Enabled = true;
+                    }
+                    #region adcionar a lista de pagamento
+                    //adicionar a lista de pagamento
+                    itens[0] = "Dinheiro";
+                    itens[1] = valorPago.ToString();
+                    itens[2] = txtTroco.Text;
+                    itens[3] = tipo.ToString();
+
+                    for (int i = 0; i <= 4; i++)
+                    {
+                        item.SubItems.Add(itens[i]);
+                    }
+                    listPagamento.Items.Add(item);
+                    #endregion
+                        
+                    break;
+                    #endregion
+
+                    #region pagamento em debito
+                    case 3:
+                    // verificar se valor digitado excede o valor da compra
+                    if (valorPago > valorPagar)
+                    {
+                        Alerta alerta = new Alerta("o valor digitado excede o valor da compra para esta opção. Por favor, entre um novo valor igual ou menor ao valor da compra");
+                        alerta.ShowDialog();
+                    }
+                    else
+                    {
+                        if (string.IsNullOrEmpty(txtTroco.Text)) { txtTroco.Text = "R$ 0,00"; }
+                        if ( valorPagar == valorPago)
                         {
                             btFecharCompra.Enabled = true;
                             txtValorPagar.Enabled = false;
-                            //valorEmDinheiro = valorPagar;
-                        }
-                        else
-                        // libera opções para novos pagamentos e apresenta o valor restante a pagar
-                        {
+                            btCredito.Enabled = false;
+                            btDinheiro.Enabled = false;
+                            btDebito.Enabled = false;
 
-                            txtValorCompra.Text = valorPagar.ToString();
-                            //valorPagar = Convert.ToDouble(txtValorCompra.Text);
+                        }else
+                        {
+                            valorPagar -= valorPago;
+                            txtValorCompra.Text = string.Format("{0,-10:C}", valorPagar);
                             btCredito.Enabled = true;
                             btDebito.Enabled = true;
                             btDinheiro.Enabled = true;
                             txtValorPagar.Enabled = false;
                             txtValorPagar.Text = "";
                         }
-                        break;
-                    case 3:
-                        // verificar se valor digitado excede o valor da compra
-                        if (Convert.ToDouble(txtValorCompra.Text) < Convert.ToDouble(txtValorPagar.Text))
-                        {
-                            MessageBox.Show("o valor digitado excede o valor da compra para esta opção.\nPor favor, entre um novo valor igual ou menor ao valor da compra");
-                        }
-                        else
-                        {
-                            if (string.IsNullOrEmpty(txtTroco.Text))
-                            {
-                                txtTroco.Text = "0";
-                            }
-                            valorPagar -= Convert.ToDouble(txtValorPagar.Text);
-                            // adicionar a lista de pagamento
-                            itens[3] = tipo.ToString();
-                            itens[0] = "Debito";
-                            itens[1] = txtValorPagar.Text;
-                            itens[2] = txtTroco.Text;
 
-                            for (int i = 0; i <= 3; i++)
-                            {
-                                item.SubItems.Add(itens[i]);
-                            }
-                            listPagamento.Items.Add(item);
-                            if (Convert.ToDouble(txtValorCompra.Text) == Convert.ToDouble(txtValorPagar.Text))
-                            {
-                                btFecharCompra.Enabled = true;
-                                txtValorPagar.Enabled = false;
-                                //valorEmDebito = valorPagar;
-                            }
-                            else
-                            {
-                                txtValorCompra.Text = valorPagar.ToString();
-                                btCredito.Enabled = true;
-                                btDebito.Enabled = true;
-                                btDinheiro.Enabled = true;
-                                txtValorPagar.Enabled = false;
-                                txtValorPagar.Text = "";
-                            }
+                        // adicionar a lista de pagamento
+                        itens[3] = tipo.ToString();
+                        itens[0] = "Debito";
+                        itens[1] = valorPagar.ToString();
+                        itens[2] = txtTroco.Text;
+
+                        for (int i = 0; i <= 3; i++)
+                        {
+                            item.SubItems.Add(itens[i]);
                         }
-                        break;
+                        listPagamento.Items.Add(item);
+                    }
+                    break;
+                    #endregion
+
+                    #region Pagamento em Crédito
                     case 2:
-                        // verificar se valor digitado excede o valor da compra
-                        if (Convert.ToDouble(txtValorCompra.Text) < Convert.ToDouble(txtValorPagar.Text))
-                        {
-                            MessageBox.Show("o valor digitado excede o valor da compra para esta opção.\nPor favor, entre um novo valor igual ou menor ao valor da compra");
-                        }
-                        else
-                        {
-                            if (string.IsNullOrEmpty(txtTroco.Text))
-                            {
-                                txtTroco.Text = "0";
-                            }
-                            valorPagar -= Convert.ToDouble(txtValorPagar.Text);
-                            // adicionar a lista de pagamento
-                            itens[3] = tipo.ToString();
-                            itens[0] = "Crédito";
-                            itens[1] = txtValorPagar.Text;
-                            itens[2] = txtTroco.Text;
-
-                            for (int i = 0; i <= 3; i++)
-                            {
-                                item.SubItems.Add(itens[i]);
-                            }
-                            listPagamento.Items.Add(item);
-                            if (Convert.ToDouble(txtValorCompra.Text) == Convert.ToDouble(txtValorPagar.Text))
+                    // verificar se valor digitado excede o valor da compra
+                    if (valorPago > valorPagar)
+                    {
+                        Alerta alerta = new Alerta("o valor digitado excede o valor da compra para esta opção. Por favor, entre um novo valor igual ou menor ao valor da compra");
+                        alerta.ShowDialog();
+                    }
+                    else
+                    {
+                        if (string.IsNullOrEmpty(txtTroco.Text)) { txtTroco.Text = "R$ 0,00"; }
+                            if (valorPagar == valorPago)
                             {
                                 btFecharCompra.Enabled = true;
                                 txtValorPagar.Enabled = false;
-                                //valorEmCredito = valorPagar;
+                                btCredito.Enabled = false;
+                                btDinheiro.Enabled = false;
+                                btDebito.Enabled = false;
                             }
                             else
                             {
-                                txtValorCompra.Text = valorPagar.ToString();
+                                valorPagar -= valorPago;
+                                txtValorCompra.Text = string.Format("{0,-10:C}", valorPagar);
                                 btCredito.Enabled = true;
                                 btDebito.Enabled = true;
                                 btDinheiro.Enabled = true;
                                 txtValorPagar.Enabled = false;
                                 txtValorPagar.Text = "";
                             }
-                        }
-                        break;
-                        
-                }
 
+
+                        // adicionar a lista de pagamento
+                        itens[3] = tipo.ToString();
+                        itens[0] = "Crédito";
+                        itens[1] = valorPagar.ToString();
+                        itens[2] = txtTroco.Text;
+                        for (int i = 0; i <= 3; i++)
+                        {
+                            item.SubItems.Add(itens[i]);
+                        }
+                        listPagamento.Items.Add(item);
+                    }
+                    break;
+                    #endregion
+                }
+                txtDesconto.Enabled = false;
+                btDescontoTotal.Enabled = false;
+                ckbTipoDesconto.Enabled = false;
+                btLimpar.Enabled = true;
+                }
+                catch (Exception ex)
+                {
+                    Alerta alerta = new Alerta("Valor não compreendido por favor usar entre novamente");
+                    alerta.ShowDialog();
+                    txtValorPagar.Text = "";
+                    txtValorPagar.Focus();
+                }
             }
         }
 
         private void Voltar_Click(object sender, EventArgs e)
         {
-            //tratativa provisoria 
-            txtValorCompra.Text = valorTotal.ToString();
             valorPagar = valorTotal;
+            txtValorCompra.Text = string.Format("{0,-10:C}", valorPagar);
             txtTroco.Text = "";
             txtValorPagar.Text = "";
             listPagamento.Items.Clear();
             btCredito.Enabled = true;
             btDebito.Enabled = true;
             btDinheiro.Enabled = true;
+            btDescontoTotal.Enabled = true;
+            txtDesconto.Enabled = true;
+            ckbTipoDesconto.Enabled = true;
         }
 
         private void btDescontoTotal_Click(object sender, EventArgs e)
         {
-            if (tipoDeDesconto)
-            {
-                if (string.IsNullOrEmpty(txtDesconto.Text)) { }
-                if ((Convert.ToDouble(txtDesconto.Text) > 0) && ((Convert.ToDouble(txtDesconto.Text) <= 100)))
+            try {
+                if (string.IsNullOrEmpty(txtDesconto.Text))
                 {
-                    valorPagar -= ((valorPagar * (Convert.ToDouble(txtDesconto.Text)) / 100));
-                    txtValorCompra.Text = valorPagar.ToString();
+                    Alerta alerta = new Alerta("Insira um valor de desconto.");
+                    alerta.ShowDialog();
                 }
                 else
                 {
-                    MessageBox.Show("Valor incorreto, por favor entrar valor entre 1% á 100%");
-                    txtDesconto.Text = "";
-                    txtDesconto.Focus();
+                    if (tipoDeDesconto)
+                    {
+                        if ((Convert.ToDouble(txtDesconto.Text) > 0) && ((Convert.ToDouble(txtDesconto.Text) <= 100)))
+                        {
+                            valorPagar -= ((valorPagar * (Convert.ToDouble(txtDesconto.Text)) / 100));
+                            txtValorCompra.Text = string.Format("{0,-10:C}", valorPagar);
+                            txtDesconto.Text = "";
+                            btLimpar.Enabled = true;
+                        }
+                        else
+                        {
+                            Alerta alerta = new Alerta("Valor incorreto, por favor entrar valor entre 1% á 100%.");
+                            alerta.ShowDialog();
+                            txtDesconto.Text = "";
+                            txtDesconto.Focus();
+                        }
+                    }
+                    else
+                    {
+                        if ((Convert.ToDouble(txtDesconto.Text) > 0) && ((Convert.ToDouble(txtDesconto.Text) <= valorPagar)))
+                        {
+                            valorPagar -= Convert.ToDouble(txtDesconto.Text);
+                            txtValorCompra.Text = string.Format("{0,-10:C}", valorPagar);
+                            txtDesconto.Text = "";
+                            btLimpar.Enabled = true;
+
+                        }
+                        else
+                        {
+                            Alerta alerta = new Alerta("Valor incorreto, por favor entrar valores maiores que R$0,00 e menores que o valor da compra.");
+                            alerta.ShowDialog();
+                            txtDesconto.Text = "";
+                            txtDesconto.Focus();
+                        }
+                    }
                 }
             }
-            else
+            catch (Exception ex)
             {
-                if (string.IsNullOrEmpty(txtDesconto.Text)) { }
-                if ((Convert.ToDouble(txtDesconto.Text) > 0) && ((Convert.ToDouble(txtDesconto.Text) <= valorPagar)))
-                {
-                    valorPagar -= Convert.ToDouble(txtDesconto.Text);
-                }
-                else
-                {
-                    MessageBox.Show("Valor incorreto, por favor entrar valores maiores que R$0,00 e menores que o valor da compra.");
-                    txtDesconto.Text = "";
-                    txtDesconto.Focus();
-                }
+                Alerta alerta = new Alerta("Caracteres Incorretos.");
+                alerta.ShowDialog();
             }
         }
 

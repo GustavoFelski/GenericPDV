@@ -39,7 +39,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtValorCompra = new System.Windows.Forms.TextBox();
             this.btCancelarCompra = new System.Windows.Forms.Button();
-            this.Voltar = new System.Windows.Forms.Button();
+            this.btLimpar = new System.Windows.Forms.Button();
             this.btFecharCompra = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.listPagamento = new System.Windows.Forms.ListView();
@@ -54,11 +54,17 @@
             this.btDebito = new System.Windows.Forms.Button();
             this.btCredito = new System.Windows.Forms.Button();
             this.btDinheiro = new System.Windows.Forms.Button();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
             ColId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // ColId
@@ -85,7 +91,7 @@
             // 
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.btCancelarCompra);
-            this.panel1.Controls.Add(this.Voltar);
+            this.panel1.Controls.Add(this.btLimpar);
             this.panel1.Controls.Add(this.btFecharCompra);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(289, 3);
@@ -110,10 +116,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label3.Location = new System.Drawing.Point(136, 164);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 24);
+            this.label3.Size = new System.Drawing.Size(65, 24);
             this.label3.TabIndex = 5;
             this.label3.Text = "Troco";
             // 
@@ -129,14 +136,16 @@
             this.txtTroco.Size = new System.Drawing.Size(328, 47);
             this.txtTroco.TabIndex = 4;
             this.txtTroco.TabStop = false;
+            this.txtTroco.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label2.Location = new System.Drawing.Point(114, 84);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(103, 24);
+            this.label2.Size = new System.Drawing.Size(113, 24);
             this.label2.TabIndex = 3;
             this.label2.Text = "Valor Pago";
             // 
@@ -147,15 +156,17 @@
             this.txtValorPagar.Name = "txtValorPagar";
             this.txtValorPagar.Size = new System.Drawing.Size(328, 47);
             this.txtValorPagar.TabIndex = 2;
+            this.txtValorPagar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtValorPagar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValorPagar_KeyPress);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Location = new System.Drawing.Point(92, 6);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(152, 24);
+            this.label1.Size = new System.Drawing.Size(167, 24);
             this.label1.TabIndex = 1;
             this.label1.Text = "Valor da Compra";
             // 
@@ -168,46 +179,56 @@
             this.txtValorCompra.ReadOnly = true;
             this.txtValorCompra.Size = new System.Drawing.Size(328, 47);
             this.txtValorCompra.TabIndex = 0;
+            this.txtValorCompra.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btCancelarCompra
             // 
+            this.btCancelarCompra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btCancelarCompra.FlatAppearance.BorderSize = 0;
+            this.btCancelarCompra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btCancelarCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btCancelarCompra.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btCancelarCompra.Location = new System.Drawing.Point(116, 249);
             this.btCancelarCompra.Name = "btCancelarCompra";
             this.btCancelarCompra.Size = new System.Drawing.Size(103, 42);
             this.btCancelarCompra.TabIndex = 2;
             this.btCancelarCompra.Text = "Cancelar Compra";
-            this.btCancelarCompra.UseVisualStyleBackColor = true;
+            this.btCancelarCompra.UseVisualStyleBackColor = false;
             // 
-            // Voltar
+            // btLimpar
             // 
-            this.Voltar.Location = new System.Drawing.Point(8, 249);
-            this.Voltar.Name = "Voltar";
-            this.Voltar.Size = new System.Drawing.Size(103, 42);
-            this.Voltar.TabIndex = 1;
-            this.Voltar.Text = "Voltar ";
-            this.Voltar.UseVisualStyleBackColor = true;
-            this.Voltar.Click += new System.EventHandler(this.Voltar_Click);
+            this.btLimpar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btLimpar.FlatAppearance.BorderSize = 0;
+            this.btLimpar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btLimpar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btLimpar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btLimpar.Location = new System.Drawing.Point(8, 249);
+            this.btLimpar.Name = "btLimpar";
+            this.btLimpar.Size = new System.Drawing.Size(103, 42);
+            this.btLimpar.TabIndex = 1;
+            this.btLimpar.Text = "Limpar";
+            this.btLimpar.UseVisualStyleBackColor = false;
+            this.btLimpar.Click += new System.EventHandler(this.Voltar_Click);
             // 
             // btFecharCompra
             // 
+            this.btFecharCompra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btFecharCompra.FlatAppearance.BorderSize = 0;
+            this.btFecharCompra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btFecharCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btFecharCompra.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btFecharCompra.Location = new System.Drawing.Point(224, 249);
             this.btFecharCompra.Name = "btFecharCompra";
             this.btFecharCompra.Size = new System.Drawing.Size(103, 42);
             this.btFecharCompra.TabIndex = 0;
             this.btFecharCompra.Text = "Fechar Venda";
-            this.btFecharCompra.UseVisualStyleBackColor = true;
+            this.btFecharCompra.UseVisualStyleBackColor = false;
             this.btFecharCompra.Click += new System.EventHandler(this.btFecharCompra_Click);
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.listPagamento);
-            this.panel2.Controls.Add(this.ckbTipoDesconto);
-            this.panel2.Controls.Add(this.txtDesconto);
-            this.panel2.Controls.Add(this.btDescontoTotal);
             this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.btDebito);
-            this.panel2.Controls.Add(this.btCredito);
-            this.panel2.Controls.Add(this.btDinheiro);
+            this.panel2.Controls.Add(this.tableLayoutPanel2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
@@ -222,9 +243,10 @@
             this.col2,
             this.col3,
             this.teste});
-            this.listPagamento.Location = new System.Drawing.Point(9, 87);
+            this.listPagamento.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listPagamento.Location = new System.Drawing.Point(3, 88);
             this.listPagamento.Name = "listPagamento";
-            this.listPagamento.Size = new System.Drawing.Size(268, 97);
+            this.listPagamento.Size = new System.Drawing.Size(274, 159);
             this.listPagamento.TabIndex = 12;
             this.listPagamento.TabStop = false;
             this.listPagamento.UseCompatibleStateImageBehavior = false;
@@ -243,7 +265,7 @@
             // col3
             // 
             this.col3.Text = "Troco";
-            this.col3.Width = 71;
+            this.col3.Width = 78;
             // 
             // teste
             // 
@@ -254,79 +276,148 @@
             // 
             this.ckbTipoDesconto.Appearance = System.Windows.Forms.Appearance.Button;
             this.ckbTipoDesconto.AutoSize = true;
-            this.ckbTipoDesconto.Location = new System.Drawing.Point(222, 205);
+            this.ckbTipoDesconto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.ckbTipoDesconto.FlatAppearance.BorderSize = 0;
+            this.ckbTipoDesconto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ckbTipoDesconto.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ckbTipoDesconto.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ckbTipoDesconto.Location = new System.Drawing.Point(214, 5);
             this.ckbTipoDesconto.MinimumSize = new System.Drawing.Size(20, 20);
             this.ckbTipoDesconto.Name = "ckbTipoDesconto";
-            this.ckbTipoDesconto.Size = new System.Drawing.Size(31, 23);
+            this.ckbTipoDesconto.Size = new System.Drawing.Size(59, 41);
             this.ckbTipoDesconto.TabIndex = 11;
             this.ckbTipoDesconto.Text = "R$";
-            this.ckbTipoDesconto.UseVisualStyleBackColor = true;
+            this.ckbTipoDesconto.UseVisualStyleBackColor = false;
             this.ckbTipoDesconto.CheckedChanged += new System.EventHandler(this.ckbTipoDesconto_CheckedChanged);
             // 
             // txtDesconto
             // 
             this.txtDesconto.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDesconto.Location = new System.Drawing.Point(116, 204);
+            this.txtDesconto.Location = new System.Drawing.Point(108, 2);
             this.txtDesconto.Name = "txtDesconto";
             this.txtDesconto.Size = new System.Drawing.Size(100, 47);
             this.txtDesconto.TabIndex = 10;
             // 
             // btDescontoTotal
             // 
-            this.btDescontoTotal.Location = new System.Drawing.Point(9, 205);
+            this.btDescontoTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btDescontoTotal.FlatAppearance.BorderSize = 0;
+            this.btDescontoTotal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btDescontoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btDescontoTotal.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btDescontoTotal.Location = new System.Drawing.Point(3, 3);
             this.btDescontoTotal.Name = "btDescontoTotal";
             this.btDescontoTotal.Size = new System.Drawing.Size(101, 44);
             this.btDescontoTotal.TabIndex = 8;
             this.btDescontoTotal.Text = "Desconto Total";
-            this.btDescontoTotal.UseVisualStyleBackColor = true;
+            this.btDescontoTotal.UseVisualStyleBackColor = false;
             this.btDescontoTotal.Click += new System.EventHandler(this.btDescontoTotal_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label4.Location = new System.Drawing.Point(9, 6);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(202, 24);
+            this.label4.Size = new System.Drawing.Size(221, 24);
             this.label4.TabIndex = 6;
             this.label4.Text = "Formas de Pagamento";
             // 
             // btDebito
             // 
-            this.btDebito.Location = new System.Drawing.Point(193, 37);
+            this.btDebito.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btDebito.FlatAppearance.BorderSize = 0;
+            this.btDebito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btDebito.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btDebito.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btDebito.Location = new System.Drawing.Point(187, 34);
             this.btDebito.Name = "btDebito";
             this.btDebito.Size = new System.Drawing.Size(86, 44);
             this.btDebito.TabIndex = 2;
             this.btDebito.Text = "Cartão de\r\nDébito";
-            this.btDebito.UseVisualStyleBackColor = true;
+            this.btDebito.UseVisualStyleBackColor = false;
             this.btDebito.Click += new System.EventHandler(this.btDebito_Click);
             // 
             // btCredito
             // 
-            this.btCredito.Location = new System.Drawing.Point(101, 37);
+            this.btCredito.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btCredito.FlatAppearance.BorderSize = 0;
+            this.btCredito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btCredito.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btCredito.Location = new System.Drawing.Point(95, 34);
             this.btCredito.Name = "btCredito";
             this.btCredito.Size = new System.Drawing.Size(86, 44);
             this.btCredito.TabIndex = 1;
             this.btCredito.Text = "Cartão de\r\nCrédito";
-            this.btCredito.UseVisualStyleBackColor = true;
+            this.btCredito.UseVisualStyleBackColor = false;
             this.btCredito.Click += new System.EventHandler(this.btCredito_Click);
             // 
             // btDinheiro
             // 
-            this.btDinheiro.Location = new System.Drawing.Point(9, 37);
+            this.btDinheiro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btDinheiro.FlatAppearance.BorderSize = 0;
+            this.btDinheiro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btDinheiro.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btDinheiro.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btDinheiro.Location = new System.Drawing.Point(3, 34);
             this.btDinheiro.Name = "btDinheiro";
             this.btDinheiro.Size = new System.Drawing.Size(86, 44);
             this.btDinheiro.TabIndex = 0;
             this.btDinheiro.Text = "Dinheiro";
-            this.btDinheiro.UseVisualStyleBackColor = true;
+            this.btDinheiro.UseVisualStyleBackColor = false;
             this.btDinheiro.Click += new System.EventHandler(this.btDinheiro_Click);
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.listPagamento, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.panel4, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.panel5, 0, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 3;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 34F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 66F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(280, 300);
+            this.tableLayoutPanel2.TabIndex = 13;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.btDescontoTotal);
+            this.panel4.Controls.Add(this.ckbTipoDesconto);
+            this.panel4.Controls.Add(this.txtDesconto);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 250);
+            this.panel4.Margin = new System.Windows.Forms.Padding(0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(280, 50);
+            this.panel4.TabIndex = 0;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.btDinheiro);
+            this.panel5.Controls.Add(this.btDebito);
+            this.panel5.Controls.Add(this.btCredito);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Margin = new System.Windows.Forms.Padding(0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(280, 85);
+            this.panel5.TabIndex = 13;
             // 
             // Pagamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(626, 306);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Pagamento";
             this.Text = "Pagamento";
             this.Load += new System.EventHandler(this.Pagamento_Load);
@@ -336,6 +427,10 @@
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -352,7 +447,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtValorCompra;
         private System.Windows.Forms.Button btCancelarCompra;
-        private System.Windows.Forms.Button Voltar;
+        private System.Windows.Forms.Button btLimpar;
         private System.Windows.Forms.Button btFecharCompra;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txtDesconto;
@@ -367,5 +462,8 @@
         private System.Windows.Forms.ColumnHeader col2;
         private System.Windows.Forms.ColumnHeader col3;
         private System.Windows.Forms.ColumnHeader teste;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel5;
     }
 }

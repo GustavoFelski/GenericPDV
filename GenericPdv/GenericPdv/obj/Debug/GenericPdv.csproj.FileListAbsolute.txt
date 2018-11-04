@@ -23,3 +23,5 @@ C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\bin\Debug\itextsharp.dll
 C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\bin\Debug\itextsharp.xml
 C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\obj\Debug\GenericPdv.csproj.CopyComplete
 C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\obj\Debug\GenericPdv.AutenticacaoValidacao.resources
+C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\obj\Debug\GenericPdv.Alerta.resources
+C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\obj\Debug\GenericPdv.Confirmacao.resources

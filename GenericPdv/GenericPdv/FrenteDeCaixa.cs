@@ -25,7 +25,7 @@ namespace GenericPdv
         DataSetGnPdvTableAdapters.CaixaTableAdapter caixa = new DataSetGnPdvTableAdapters.CaixaTableAdapter();
         //Variaveis Globais
         public double valorTotal { get; set; }
-        public string[ , ] itensDaLista { get; set; }
+        public string[,] itensDaLista { get; set; }
 
         bool cpfNota = true;
         int count = 1;
@@ -48,51 +48,62 @@ namespace GenericPdv
                         cpf = cpfJanela.cpfCli;
                         cpfNota = false;
                         btFinalizar.Enabled = true;
+                        lbStatus.Text = "Caixa Ocupado.";
                     }
 
                     var aux = Convert.ToDouble(txtQtd.Text);
                     var prod = produto.GetDataById(Convert.ToInt32(txtPesquisa.Text));
-
-                    itens[0] = count.ToString();
-                    itens[1] = txtCodProd.Text = (prod[0]["idProduto"].ToString());
-                    itens[2] = prod[0]["prodNome"].ToString();
-                    itens[3] = txtQtd.Text;
-                    txtQuantidade.Text = txtQtd.Text + " UN";
-                    // verificar se o produto em um valor em oferta e atribuir ao valor unitario
-                    try
+                    // se o produto for ativo
+                    if (Convert.ToBoolean(prod[0]["prodStatus"]) == true)
                     {
+                        itens[0] = count.ToString();
+                        itens[1] = txtCodProd.Text = (prod[0]["idProduto"].ToString());
+                        itens[2] = prod[0]["prodNome"].ToString();
+                        lbNomeProduto.Text = prod[0]["prodNome"].ToString().ToUpper();
+                        itens[3] = txtQtd.Text;
+                        txtQuantidade.Text = txtQtd.Text + " UN";
+
+                        // verificar se o produto em um valor em oferta e atribuir ao valor unitario
                         DateTime data1 = DateTime.Today;
-                        if (DateTime.TryParse(prod[0]["prodDataInicio"].ToString(), out data1).Equals(true) && DateTime.TryParse(prod[0]["prodDataFim"].ToString(), out data1).Equals(true))    
+                        if (DateTime.TryParse(prod[0]["prodDataInicio"].ToString(), out data1).Equals(true) && DateTime.TryParse(prod[0]["prodDataFim"].ToString(), out data1).Equals(true))
                         {
-                            itens[4] = txtValorUni.Text = prod[0]["prodDesconto"].ToString();
+                            txtValorUni.Text = string.Format("{0,-10:C}", Convert.ToDouble(prod[0]["prodVenda"]));
+                            itens[4] = prod[0]["prodDesconto"].ToString();
                         }
                         else
                         {
-                            itens[4] = txtValorUni.Text = prod[0]["prodVenda"].ToString();
+                            txtValorUni.Text = string.Format("{0,-10:C}", Convert.ToDouble(prod[0]["prodVenda"]));
+                            itens[4] = prod[0]["prodVenda"].ToString();
                         }
-                    }catch(Exception ex)
-                    {
-                        itens[4] = txtValorUni.Text = prod[0]["prodVenda"].ToString();
-                        MessageBox.Show(ex.Message);
-                    }
-                    aux = aux * Convert.ToDouble(txtValorUni.Text);
-                    txtSubTotal.Text = aux.ToString();
-                    valorTotal += aux;
-                    itens[5] = txtSubTotal.Text;
-                    txtValorTotal.Text = valorTotal.ToString();
-                    txtPesquisa.Text = "";
-                    txtPesquisa.Focus();
 
-                    ListViewItem item = new ListViewItem(itens[0]);
-                    for (int i = 1; i <= 5; i++)
-                    {
-                        item.SubItems.Add(itens[i]);
+                        aux = aux * Convert.ToDouble(itens[4]);
+                        txtSubTotal.Text = string.Format("{0,-10:C}", aux);
+                        valorTotal += aux;
+                        itens[5] = aux.ToString();
+                        txtValorTotal.Text = string.Format("{0,-10:C}", valorTotal);
+                        txtPesquisa.Text = "";
+                        txtPesquisa.Focus();
+
+                        ListViewItem item = new ListViewItem(itens[0]);
+                        for (int i = 1; i <= 5; i++)
+                        {
+                            item.SubItems.Add(itens[i]);
+                        }
+                        listView.Items.Add(item);
+                        count++;
                     }
-                    listView.Items.Add(item);
-                    count++;
+                    else
+                    {
+                        Alerta alerta = new Alerta("Não encontrado.");
+                        alerta.ShowDialog();
+                        txtPesquisa.Focus();
+                    }
                 }
-                catch (Exception ex) {
-                    MessageBox.Show("Não encontrado.");
+                catch (Exception ex)
+                {
+                    Alerta alerta = new Alerta("Não encontrado.");
+                    alerta.ShowDialog();
+                    txtPesquisa.Focus();
                 }
             }
         }
@@ -167,13 +178,14 @@ namespace GenericPdv
             // fazer autenticação de admistrador?
             AutenticacaoValidacao autenticacao = new AutenticacaoValidacao();
             autenticacao.ShowDialog();
-            
+            lbStatus.Text = "Caixa em Sangria.";
+
         }
 
         private void frenteDeCaixa_Load(object sender, EventArgs e)
         {
-            lbNomeUsuario.Text = AutenticacaoDeFuncionario.funcLogado.ToString();
-            lbData.Text = DateTime.Today.ToString();
+            lbNomeUsuario.Text = "Vendedor: " + AutenticacaoDeFuncionario.funcLogado.ToString();
+            
             lbStatus.Text = "Caixa aberto - Livre";
             btFinalizar.Enabled = false;
         }
