@@ -25,23 +25,55 @@ namespace GenericPdv
 
         private void btConsulta_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtPesquisa.Text)) { return; }
             try
             {
-                var prod = produto.GetDataById(Convert.ToInt32(txtPesquisa.Text));
-                txtCodigo.Text = (prod[0]["idProduto"].ToString());
-                txtBarras.Text = (prod[0]["prodCodBarras"].ToString());
-                txtNome.Text = (prod[0]["prodNome"].ToString());
-                txtMarca.Text = (prod[0]["prodMarca"].ToString());
-                txtValorDe.Text = (prod[0]["prodVenda"].ToString());
-                txtValorPor.Text = (prod[0]["prodDesconto"].ToString());
-                txtDataFim.Text = (prod[0]["prodDataFim"].ToString());
-                txtPesquisa.Focus();
-                txtPesquisa.Text = "";
+                if (string.IsNullOrEmpty(txtPesquisaNome.Text) && string.IsNullOrEmpty(txtPesquisaId.Text))
+                {
+                    Alerta alerta = new Alerta("erro");
+                    alerta.ShowDialog();
+                }
+                else
+                {
+                    // pesquisa por Id 
+                    if (string.IsNullOrEmpty(txtPesquisaNome.Text) && !string.IsNullOrEmpty(txtPesquisaId.Text))
+                    {
+                        try { 
+                        dataGridView1.DataSource = produto.GetDataById(Convert.ToInt32(txtPesquisaId.Text));
+                        }
+                        catch (Exception ex)
+                        {
+                            Alerta alerta = new Alerta("Produto não encontrado");
+                            alerta.ShowDialog();
+                        }
+                    }
+                    // pesquisa por Nome
+                    else
+                    {
+                        try
+                        {
+                            dataGridView1.DataSource = produto.GetDataByName(txtPesquisaNome.Text);
+                        }
+                        catch (Exception ex){
+                            Alerta alerta = new Alerta("Produto não encontrado");
+                            alerta.ShowDialog();
+                        }
+                    }
+                }
             }
-            catch (Exception ex) {
-                MessageBox.Show(ex.Message);
+            catch (Exception ex)
+            {
+                Alerta alerta = new Alerta("erro:" + ex.Message);
+                alerta.ShowDialog();
             }
+        }
+        private void txtPesquisaId_TextChanged(object sender, EventArgs e)
+        {
+            txtPesquisaNome.Enabled = false;
+        }
+
+        private void txtPesquisaNome_TextChanged(object sender, EventArgs e)
+        {
+            txtPesquisaId.Enabled = false;
         }
     }
 }

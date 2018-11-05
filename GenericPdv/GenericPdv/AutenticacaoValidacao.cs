@@ -135,7 +135,9 @@ namespace GenericPdv
                                     //Fechamento
                                     case 3:
                                         // chamar tela de confirmação
-                                            // se sim 
+                                        // se sim 
+                                            Sangria sangria1 = new Sangria(Convert.ToInt32(temp[0]["idFuncionario"]));
+                                            sangria1.Show();
                                             FechamentoDeCaixaForm fechamento = new FechamentoDeCaixaForm();
                                             fechamento.ShowDialog();
                                             // fechar a frente de caixa ao fechar essa tela
@@ -158,9 +160,14 @@ namespace GenericPdv
                                     //Fechamento
                                     case 3:
                                         // chamar tela de confirmação
-                                            // se sim 
+                                        // se sim 
+                                        {
+                                            Sangria sangria1 = new Sangria(Convert.ToInt32(temp[0]["idFuncionario"]));
+                                            sangria1.ShowDialog();
+                                            
                                             FechamentoDeCaixaForm fechamento = new FechamentoDeCaixaForm();
                                             fechamento.ShowDialog();
+                                        }
                                             // fechar a frente de caixa ao fechar essa tela
                                         // se não voltar a frente de caixa
                                         break;
@@ -186,7 +193,7 @@ namespace GenericPdv
                 alerta.ShowDialog();
                 textNome.Focus();
             }
-
         }
     }
+
 }

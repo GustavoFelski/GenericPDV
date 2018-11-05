@@ -43,7 +43,6 @@ namespace GenericPdv
                 //insere na tabela de Vendas
                 venda.InsertQueryVenda(valorTotal, DateTime.Now, cpf, Convert.ToInt32(caixa.GetDataByLast()[0]["idCaixa"]), AutenticacaoDeFuncionario.idFuncionario);
                 var LastId = venda.GetDataByLastId();
-                MessageBox.Show(LastId.ToString());
 
                 //inserir as opções de pagamento para o id de venda
                 itensDePagamento = new string[this.listPagamento.Items.Count, 5];

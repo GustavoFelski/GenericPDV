@@ -182,6 +182,7 @@
             this.Name = "Sangria";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sangria";
+
             this.Load += new System.EventHandler(this.Sangria_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);

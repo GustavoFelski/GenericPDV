@@ -25,3 +25,4 @@ C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\obj\Debug\GenericPdv.cspro
 C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\obj\Debug\GenericPdv.AutenticacaoValidacao.resources
 C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\obj\Debug\GenericPdv.Alerta.resources
 C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\obj\Debug\GenericPdv.Confirmacao.resources
+C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\obj\Debug\GenericPdv.FechamentoDeCaixaForm.resources

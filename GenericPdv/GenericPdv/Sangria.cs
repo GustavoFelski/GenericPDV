@@ -39,7 +39,7 @@ namespace GenericPdv
                     caixa.UpdateValorDinheiro(Convert.ToDouble(caixa.GetDataByLast()[0]["caixaValorDinheiro"]) - (Convert.ToDouble(txtNovoValor.Text)), Convert.ToInt32(caixa.GetDataByLast()[0]["idCaixa"]));
                     Alerta alerta = new Alerta("valor atualizado.");
                     alerta.ShowDialog();
-                    this.Dispose();
+                    this.Close();
                 }
             }
             catch (Exception ex)

@@ -108,7 +108,7 @@ namespace GenericPdv
                     this.Hide();
                     AutenticacaoDeFuncionario.funcLogado = textNome.Text;
                     AutenticacaoDeFuncionario.Date = DateTime.Now;
-                    AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idCargo"]);
+                    AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idFuncionario"]);
                     switch (temp[0]["idCargo"].ToString())
                     {
                         case "0":

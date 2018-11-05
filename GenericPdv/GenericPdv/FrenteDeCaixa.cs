@@ -192,7 +192,8 @@ namespace GenericPdv
 
         private void btFechamento_Click(object sender, EventArgs e)
         {
-
+            AutenticacaoValidacao autenticacao = new AutenticacaoValidacao(3);
+            autenticacao.ShowDialog();
         }
     }
 }

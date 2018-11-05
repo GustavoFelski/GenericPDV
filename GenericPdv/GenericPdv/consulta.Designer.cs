@@ -28,314 +28,252 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtPesquisa = new System.Windows.Forms.TextBox();
+            this.components = new System.ComponentModel.Container();
+            this.txtPesquisaNome = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btClouse = new System.Windows.Forms.Button();
             this.btConsulta = new System.Windows.Forms.Button();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtNome = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtValorDe = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtBarras = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtMarca = new System.Windows.Forms.TextBox();
-            this.txtValorPor = new System.Windows.Forms.TextBox();
-            this.txtDataFim = new System.Windows.Forms.TextBox();
-            this.lbMensagem = new System.Windows.Forms.Label();
+            this.txtPesquisaId = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.idProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prodCodBarrasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prodNomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prodMarcaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prodVendaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prodDescontoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prodDataFimDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.produtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSetGnPdv = new GenericPdv.DataSetGnPdv();
+            this.produtoTableAdapter = new GenericPdv.DataSetGnPdvTableAdapters.ProdutoTableAdapter();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetGnPdv)).BeginInit();
             this.SuspendLayout();
             // 
-            // txtPesquisa
+            // txtPesquisaNome
             // 
-            this.txtPesquisa.Location = new System.Drawing.Point(10, 41);
-            this.txtPesquisa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtPesquisa.Name = "txtPesquisa";
-            this.txtPesquisa.Size = new System.Drawing.Size(417, 26);
-            this.txtPesquisa.TabIndex = 0;
+            this.txtPesquisaNome.Location = new System.Drawing.Point(373, 4);
+            this.txtPesquisaNome.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPesquisaNome.Name = "txtPesquisaNome";
+            this.txtPesquisaNome.Size = new System.Drawing.Size(265, 26);
+            this.txtPesquisaNome.TabIndex = 2;
+            this.txtPesquisaNome.TextChanged += new System.EventHandler(this.txtPesquisaNome_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(9, 6);
+            this.label1.Location = new System.Drawing.Point(8, 8);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 20);
+            this.label1.Size = new System.Drawing.Size(128, 20);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Pesquisa";
-            // 
-            // btClouse
-            // 
-            this.btClouse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btClouse.FlatAppearance.BorderSize = 0;
-            this.btClouse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btClouse.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btClouse.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btClouse.Location = new System.Drawing.Point(503, 1);
-            this.btClouse.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btClouse.Name = "btClouse";
-            this.btClouse.Size = new System.Drawing.Size(34, 34);
-            this.btClouse.TabIndex = 2;
-            this.btClouse.Text = "X";
-            this.btClouse.UseVisualStyleBackColor = true;
-            this.btClouse.Click += new System.EventHandler(this.btClouse_Click);
+            this.label1.Text = "Pesquisa Código";
             // 
             // btConsulta
             // 
-            this.btConsulta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btConsulta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btConsulta.Dock = System.Windows.Forms.DockStyle.Right;
             this.btConsulta.FlatAppearance.BorderSize = 0;
             this.btConsulta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btConsulta.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btConsulta.Location = new System.Drawing.Point(430, 41);
-            this.btConsulta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btConsulta.Location = new System.Drawing.Point(642, 0);
+            this.btConsulta.Margin = new System.Windows.Forms.Padding(2);
             this.btConsulta.Name = "btConsulta";
-            this.btConsulta.Size = new System.Drawing.Size(98, 26);
-            this.btConsulta.TabIndex = 1;
+            this.btConsulta.Size = new System.Drawing.Size(98, 35);
+            this.btConsulta.TabIndex = 3;
             this.btConsulta.Text = "Consultar";
             this.btConsulta.UseVisualStyleBackColor = false;
             this.btConsulta.Click += new System.EventHandler(this.btConsulta_Click);
             // 
-            // txtCodigo
+            // tableLayoutPanel1
             // 
-            this.txtCodigo.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.txtCodigo.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigo.Location = new System.Drawing.Point(9, 93);
-            this.txtCodigo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.ReadOnly = true;
-            this.txtCodigo.Size = new System.Drawing.Size(54, 27);
-            this.txtCodigo.TabIndex = 5;
-            this.txtCodigo.TabStop = false;
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.48718F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80.51282F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(740, 184);
+            this.tableLayoutPanel1.TabIndex = 2;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.txtPesquisaId);
+            this.panel1.Controls.Add(this.btConsulta);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.txtPesquisaNome);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(740, 35);
+            this.panel1.TabIndex = 0;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(9, 77);
+            this.label2.Location = new System.Drawing.Point(249, 8);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 16);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Codigo";
+            this.label2.Size = new System.Drawing.Size(120, 20);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Pesquisa Nome";
             // 
-            // label3
+            // txtPesquisaId
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(184, 77);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(118, 16);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Nome do Produto";
+            this.txtPesquisaId.Location = new System.Drawing.Point(140, 5);
+            this.txtPesquisaId.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPesquisaId.Name = "txtPesquisaId";
+            this.txtPesquisaId.Size = new System.Drawing.Size(103, 26);
+            this.txtPesquisaId.TabIndex = 1;
+            this.txtPesquisaId.TextChanged += new System.EventHandler(this.txtPesquisaId_TextChanged);
             // 
-            // txtNome
+            // dataGridView1
             // 
-            this.txtNome.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.txtNome.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNome.Location = new System.Drawing.Point(188, 93);
-            this.txtNome.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtNome.Name = "txtNome";
-            this.txtNome.ReadOnly = true;
-            this.txtNome.Size = new System.Drawing.Size(200, 27);
-            this.txtNome.TabIndex = 7;
-            this.txtNome.TabStop = false;
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idProdutoDataGridViewTextBoxColumn,
+            this.prodCodBarrasDataGridViewTextBoxColumn,
+            this.prodNomeDataGridViewTextBoxColumn,
+            this.prodMarcaDataGridViewTextBoxColumn,
+            this.prodVendaDataGridViewTextBoxColumn,
+            this.prodDescontoDataGridViewTextBoxColumn,
+            this.prodDataFimDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.produtoBindingSource;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 38);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(734, 143);
+            this.dataGridView1.TabIndex = 1;
             // 
-            // label4
+            // idProdutoDataGridViewTextBoxColumn
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label4.Location = new System.Drawing.Point(7, 120);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(42, 16);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Preço";
+            this.idProdutoDataGridViewTextBoxColumn.DataPropertyName = "idProduto";
+            this.idProdutoDataGridViewTextBoxColumn.FillWeight = 60F;
+            this.idProdutoDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.idProdutoDataGridViewTextBoxColumn.Name = "idProdutoDataGridViewTextBoxColumn";
+            this.idProdutoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idProdutoDataGridViewTextBoxColumn.Width = 60;
             // 
-            // txtValorDe
+            // prodCodBarrasDataGridViewTextBoxColumn
             // 
-            this.txtValorDe.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.txtValorDe.Font = new System.Drawing.Font("Lucida Sans Unicode", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValorDe.Location = new System.Drawing.Point(9, 139);
-            this.txtValorDe.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtValorDe.Name = "txtValorDe";
-            this.txtValorDe.ReadOnly = true;
-            this.txtValorDe.Size = new System.Drawing.Size(115, 40);
-            this.txtValorDe.TabIndex = 9;
-            this.txtValorDe.TabStop = false;
+            this.prodCodBarrasDataGridViewTextBoxColumn.DataPropertyName = "prodCodBarras";
+            this.prodCodBarrasDataGridViewTextBoxColumn.FillWeight = 110F;
+            this.prodCodBarrasDataGridViewTextBoxColumn.HeaderText = "Cód Barras";
+            this.prodCodBarrasDataGridViewTextBoxColumn.Name = "prodCodBarrasDataGridViewTextBoxColumn";
+            this.prodCodBarrasDataGridViewTextBoxColumn.ReadOnly = true;
+            this.prodCodBarrasDataGridViewTextBoxColumn.Width = 110;
             // 
-            // label5
+            // prodNomeDataGridViewTextBoxColumn
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label5.Location = new System.Drawing.Point(128, 120);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 16);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Oferta";
+            this.prodNomeDataGridViewTextBoxColumn.DataPropertyName = "prodNome";
+            this.prodNomeDataGridViewTextBoxColumn.HeaderText = "Nome";
+            this.prodNomeDataGridViewTextBoxColumn.Name = "prodNomeDataGridViewTextBoxColumn";
+            this.prodNomeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // label6
+            // prodMarcaDataGridViewTextBoxColumn
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label6.Location = new System.Drawing.Point(234, 120);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(133, 16);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Data Final da Oferta";
+            this.prodMarcaDataGridViewTextBoxColumn.DataPropertyName = "prodMarca";
+            this.prodMarcaDataGridViewTextBoxColumn.HeaderText = "Marca";
+            this.prodMarcaDataGridViewTextBoxColumn.Name = "prodMarcaDataGridViewTextBoxColumn";
+            this.prodMarcaDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // label7
+            // prodVendaDataGridViewTextBoxColumn
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label7.Location = new System.Drawing.Point(66, 77);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(107, 16);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "Codigo de Barra";
+            this.prodVendaDataGridViewTextBoxColumn.DataPropertyName = "prodVenda";
+            this.prodVendaDataGridViewTextBoxColumn.HeaderText = "Preço";
+            this.prodVendaDataGridViewTextBoxColumn.Name = "prodVendaDataGridViewTextBoxColumn";
+            this.prodVendaDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // txtBarras
+            // prodDescontoDataGridViewTextBoxColumn
             // 
-            this.txtBarras.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.txtBarras.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBarras.Location = new System.Drawing.Point(68, 93);
-            this.txtBarras.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtBarras.Name = "txtBarras";
-            this.txtBarras.ReadOnly = true;
-            this.txtBarras.Size = new System.Drawing.Size(114, 27);
-            this.txtBarras.TabIndex = 15;
-            this.txtBarras.TabStop = false;
+            this.prodDescontoDataGridViewTextBoxColumn.DataPropertyName = "prodDesconto";
+            this.prodDescontoDataGridViewTextBoxColumn.HeaderText = "Oferta";
+            this.prodDescontoDataGridViewTextBoxColumn.Name = "prodDescontoDataGridViewTextBoxColumn";
+            this.prodDescontoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // label8
+            // prodDataFimDataGridViewTextBoxColumn
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label8.Location = new System.Drawing.Point(391, 77);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(45, 16);
-            this.label8.TabIndex = 18;
-            this.label8.Text = "Marca";
+            this.prodDataFimDataGridViewTextBoxColumn.DataPropertyName = "prodDataFim";
+            this.prodDataFimDataGridViewTextBoxColumn.HeaderText = "Limite Oferta";
+            this.prodDataFimDataGridViewTextBoxColumn.Name = "prodDataFimDataGridViewTextBoxColumn";
+            this.prodDataFimDataGridViewTextBoxColumn.ReadOnly = true;
+            this.prodDataFimDataGridViewTextBoxColumn.Width = 120;
             // 
-            // txtMarca
+            // produtoBindingSource
             // 
-            this.txtMarca.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.txtMarca.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMarca.Location = new System.Drawing.Point(394, 93);
-            this.txtMarca.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtMarca.Name = "txtMarca";
-            this.txtMarca.ReadOnly = true;
-            this.txtMarca.Size = new System.Drawing.Size(133, 27);
-            this.txtMarca.TabIndex = 17;
-            this.txtMarca.TabStop = false;
+            this.produtoBindingSource.DataMember = "Produto";
+            this.produtoBindingSource.DataSource = this.dataSetGnPdv;
             // 
-            // txtValorPor
+            // dataSetGnPdv
             // 
-            this.txtValorPor.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.txtValorPor.Font = new System.Drawing.Font("Lucida Sans Unicode", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValorPor.Location = new System.Drawing.Point(130, 139);
-            this.txtValorPor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtValorPor.Name = "txtValorPor";
-            this.txtValorPor.ReadOnly = true;
-            this.txtValorPor.Size = new System.Drawing.Size(100, 40);
-            this.txtValorPor.TabIndex = 19;
-            this.txtValorPor.TabStop = false;
+            this.dataSetGnPdv.DataSetName = "DataSetGnPdv";
+            this.dataSetGnPdv.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // txtDataFim
+            // produtoTableAdapter
             // 
-            this.txtDataFim.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.txtDataFim.Font = new System.Drawing.Font("Lucida Sans Unicode", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDataFim.Location = new System.Drawing.Point(236, 139);
-            this.txtDataFim.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtDataFim.Name = "txtDataFim";
-            this.txtDataFim.ReadOnly = true;
-            this.txtDataFim.Size = new System.Drawing.Size(108, 40);
-            this.txtDataFim.TabIndex = 20;
-            this.txtDataFim.TabStop = false;
-            // 
-            // lbMensagem
-            // 
-            this.lbMensagem.AutoSize = true;
-            this.lbMensagem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbMensagem.Location = new System.Drawing.Point(348, 135);
-            this.lbMensagem.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbMensagem.Name = "lbMensagem";
-            this.lbMensagem.Size = new System.Drawing.Size(51, 20);
-            this.lbMensagem.TabIndex = 21;
-            this.lbMensagem.Text = "label9";
-            this.lbMensagem.Visible = false;
+            this.produtoTableAdapter.ClearBeforeFill = true;
             // 
             // consulta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(538, 195);
-            this.Controls.Add(this.lbMensagem);
-            this.Controls.Add(this.txtDataFim);
-            this.Controls.Add(this.txtValorPor);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.txtMarca);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.txtBarras);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtValorDe);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtNome);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtCodigo);
-            this.Controls.Add(this.btConsulta);
-            this.Controls.Add(this.btClouse);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtPesquisa);
+            this.ClientSize = new System.Drawing.Size(740, 184);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "consulta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "consulta";
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetGnPdv)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtPesquisa;
+        private System.Windows.Forms.TextBox txtPesquisaNome;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btClouse;
         private System.Windows.Forms.Button btConsulta;
-        private System.Windows.Forms.TextBox txtCodigo;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.BindingSource produtoBindingSource;
+        private DataSetGnPdv dataSetGnPdv;
+        private DataSetGnPdvTableAdapters.ProdutoTableAdapter produtoTableAdapter;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtNome;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtValorDe;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtBarras;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtMarca;
-        private System.Windows.Forms.TextBox txtValorPor;
-        private System.Windows.Forms.TextBox txtDataFim;
-        private System.Windows.Forms.Label lbMensagem;
+        private System.Windows.Forms.TextBox txtPesquisaId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idProdutoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prodCodBarrasDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prodNomeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prodMarcaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prodVendaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prodDescontoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prodDataFimDataGridViewTextBoxColumn;
     }
 }

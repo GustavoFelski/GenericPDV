@@ -111,7 +111,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetGnPdv.xsd</DependentUpon>
     </Compile>
-    <Compile Include="FechamentoDeCaixa.cs" />
     <Compile Include="Autenticacao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Cpf.resx">
       <DependentUpon>Cpf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FechamentoDeCaixaForm.resx">
+      <DependentUpon>FechamentoDeCaixaForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrenteDeCaixa.resx">
       <DependentUpon>FrenteDeCaixa.cs</DependentUpon>
