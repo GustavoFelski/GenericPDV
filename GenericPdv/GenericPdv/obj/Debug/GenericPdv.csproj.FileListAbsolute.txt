@@ -18,7 +18,6 @@ C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\obj\Debug\GenericPdv.Auten
 C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\obj\Debug\GenericPdv.novaSenha.resources
 C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\obj\Debug\GenericPdv.Admin.resources
 C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\obj\Debug\GenericPdv.CadastroDeProduto.resources
-C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\obj\Debug\GenericPdv.ListaDeProdutos.resources
 C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\bin\Debug\itextsharp.dll
 C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\bin\Debug\itextsharp.xml
 C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\obj\Debug\GenericPdv.csproj.CopyComplete
@@ -26,3 +25,6 @@ C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\obj\Debug\GenericPdv.Auten
 C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\obj\Debug\GenericPdv.Alerta.resources
 C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\obj\Debug\GenericPdv.Confirmacao.resources
 C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\obj\Debug\GenericPdv.FechamentoDeCaixaForm.resources
+C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\obj\Debug\GenericPdv.Catalogo.resources
+C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\obj\Debug\GenericPdv.ListFuncionario.resources
+C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\obj\Debug\GenericPdv.Relatorios.resources

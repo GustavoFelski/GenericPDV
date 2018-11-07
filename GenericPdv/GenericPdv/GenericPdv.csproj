@@ -85,6 +85,12 @@
     <Compile Include="CadastroDeProduto.Designer.cs">
       <DependentUpon>CadastroDeProduto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Catalogo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Catalogo.Designer.cs">
+      <DependentUpon>Catalogo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Confirmacao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,11 +136,11 @@
       <DependentUpon>FrenteDeCaixa.cs</DependentUpon>
     </Compile>
     <Compile Include="Impressao.cs" />
-    <Compile Include="ListaDeProdutos.cs">
-      <SubType>Form</SubType>
+    <Compile Include="ListFuncionario.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ListaDeProdutos.Designer.cs">
-      <DependentUpon>ListaDeProdutos.cs</DependentUpon>
+    <Compile Include="ListFuncionario.Designer.cs">
+      <DependentUpon>ListFuncionario.cs</DependentUpon>
     </Compile>
     <Compile Include="novaSenha.cs">
       <SubType>Form</SubType>
@@ -150,6 +156,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Relatorios.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Relatorios.Designer.cs">
+      <DependentUpon>Relatorios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sangria.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +192,9 @@
     <EmbeddedResource Include="CadastroDeProduto.resx">
       <DependentUpon>CadastroDeProduto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Catalogo.resx">
+      <DependentUpon>Catalogo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Confirmacao.resx">
       <DependentUpon>Confirmacao.cs</DependentUpon>
     </EmbeddedResource>
@@ -195,8 +210,8 @@
     <EmbeddedResource Include="FrenteDeCaixa.resx">
       <DependentUpon>FrenteDeCaixa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListaDeProdutos.resx">
-      <DependentUpon>ListaDeProdutos.cs</DependentUpon>
+    <EmbeddedResource Include="ListFuncionario.resx">
+      <DependentUpon>ListFuncionario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="novaSenha.resx">
       <DependentUpon>novaSenha.cs</DependentUpon>
@@ -213,6 +228,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Relatorios.resx">
+      <DependentUpon>Relatorios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Sangria.resx">
       <DependentUpon>Sangria.cs</DependentUpon>
     </EmbeddedResource>

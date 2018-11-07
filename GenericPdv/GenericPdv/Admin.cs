@@ -12,28 +12,41 @@ namespace GenericPdv
 {
     public partial class Admin : Form
     {
+        bool Administrador;
+
         public Admin(bool admin)
         {
+            this.Administrador = admin;
             InitializeComponent();
         }
 
         private void Admin_Load(object sender, EventArgs e)
         {
-            // TODO: esta linha de código carrega dados na tabela 'dataSetGnPdv.Produto'. Você pode movê-la ou removê-la conforme necessário.
-            //this.produtoTableAdapter.Fill(this.dataSetGnPdv.Produto);
-            sidePanel.Height = btCatalogo.Height;
-            sidePanel.Top = btCatalogo.Top;
-            //catalogoProdutos1.Visible = false;
-            //importacaoDeTabelas1.Visible = false;
+            panelSide.Height = btCatalogo.Height;
+            panelSide.Top = btCatalogo.Top;
 
+            if (Administrador) {
+                catalogo1.Visible = false;
+                listFuncionario1.Visible = false;
+                relatorios1.Visible = false;
+            }
+            else
+            {
+                btListarFunc.Visible = false;
+                btRelatorio.Visible = false;
+                btCadastroFunc.Visible = false;
+            }
         }
 
         private void btCatalogo_Click(object sender, EventArgs e)
         {
             //Design Button
-            sidePanel.Height = btCatalogo.Height;
-            sidePanel.Top = btCatalogo.Top;
-            //catalogoProdutos1.Visible = true;
+            panelSide.Height = btCatalogo.Height;
+            panelSide.Top = btCatalogo.Top;
+
+            catalogo1.Visible = true;
+            relatorios1.Visible = false;
+            listFuncionario1.Visible = false;
             //adcionar as listas de produtos
 
             //Logic Button
@@ -42,69 +55,52 @@ namespace GenericPdv
         private void btCadProdutos_Click(object sender, EventArgs e)
         {
             //Design Button
-            sidePanel.Height = btCadProdutos.Height;
-            sidePanel.Top = btCadProdutos.Top;
+            panelSide.Height = btCadastroProdutos.Height;
+            panelSide.Top = btCadastroProdutos.Top;
             CadastroDeProduto cadastro = new CadastroDeProduto(true , 0);
             cadastro.ShowDialog();
             //Logic Button
 
-
-        }
-
-        private void btImportacao_Click(object sender, EventArgs e)
-        {
-            //Design Button
-            sidePanel.Height = btImportacao.Height;
-            sidePanel.Top = btImportacao.Top;
-            //catalogoProdutos1.Visible = false;
-            //importacaoDeTabelas1.Visible = true;
-
-
-            //Logic Button
         }
 
         private void btCadFuncionario_Click(object sender, EventArgs e)
         {
             //Design Button
-            sidePanel.Height = btCadFuncionario.Height;
-            sidePanel.Top = btCadFuncionario.Top;
+            panelSide.Height = btCadastroFunc.Height;
+            panelSide.Top = btCadastroFunc.Top;
 
             //Logic Button
             CadastroDeFuncionario cadastro = new CadastroDeFuncionario();
-            cadastro.Show();
+            cadastro.ShowDialog();
         }
 
         private void btRelatorio_Click(object sender, EventArgs e)
         {
-            sidePanel.Height = btRelatorio.Height;
-            sidePanel.Top = btRelatorio.Top;
+            panelSide.Height = btRelatorio.Height;
+            panelSide.Top = btRelatorio.Top;
+
+
+            catalogo1.Visible = false;
+            relatorios1.Visible = true;
+            relatorios1.BringToFront();
+            listFuncionario1.Visible = false;
         }
 
         private void btHelp_Click(object sender, EventArgs e)
         {
-
+            // implementar depois quem sabe
         }
 
-        private void btSettings_Click(object sender, EventArgs e)
+        private void btListarFunc_Click(object sender, EventArgs e)
         {
-            //Configuracoes configuracoes = new Configuracoes();
-            //configuracoes.Show();
+            panelSide.Height = btListarFunc.Height;
+            panelSide.Top = btListarFunc.Top;
 
-        }
+            listFuncionario1.Visible = true;
+            listFuncionario1.BringToFront();
+            catalogo1.Visible = false;
+            relatorios1.Visible = false;
 
-        private void brLogout_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btClose_Click(object sender, EventArgs e)
-        {
-            this.Dispose();
-        }
-
-        private void btMinizar_Click(object sender, EventArgs e)
-        {
-            this.MinimizeBox = true;
         }
     }
 }

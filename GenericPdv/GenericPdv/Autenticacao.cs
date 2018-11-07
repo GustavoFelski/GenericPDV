@@ -22,7 +22,9 @@ namespace GenericPdv
         private bool Senha = false;
         DataSetGnPdvTableAdapters.FuncionarioTableAdapter func = new DataSetGnPdvTableAdapters.FuncionarioTableAdapter();
         DataSetGnPdvTableAdapters.CaixaTableAdapter caixa = new DataSetGnPdvTableAdapters.CaixaTableAdapter();
-        
+        public bool RespConfirmacao { get; set; }
+
+
         // encriptar senha
         public static string GerarHashMd5(string input)
         {
@@ -175,6 +177,8 @@ namespace GenericPdv
                 if (Convert.ToInt32(temp[0]["idCargo"]) == 1 || Convert.ToInt32(temp[0]["idCargo"]) == 2)
                 {
                     // terminar tela de confirmação
+                    Confirmacao confirmacao = new Confirmacao("Para resgatar sua senha, primeiro ela deve ser resetada e posteriormente o administrador deve configurar para você poder entrar uma nova senha.", this);
+                    confirmacao.ShowDialog();
                     // fazer confirmação
                     // se sim resetar a senha
                     // só limpar os campos
