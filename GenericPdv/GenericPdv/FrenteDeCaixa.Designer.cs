@@ -686,8 +686,8 @@
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(1);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.42115F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.57885F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.8423F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.1577F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(232, 539);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
@@ -700,7 +700,7 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(3, 3);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(226, 33);
+            this.panel7.Size = new System.Drawing.Size(226, 73);
             this.panel7.TabIndex = 0;
             // 
             // btClouse
@@ -761,9 +761,9 @@
             this.panel8.BackColor = System.Drawing.Color.OrangeRed;
             this.panel8.Controls.Add(this.tableLayoutPanel6);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(3, 42);
+            this.panel8.Location = new System.Drawing.Point(3, 82);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(226, 494);
+            this.panel8.Size = new System.Drawing.Size(226, 454);
             this.panel8.TabIndex = 1;
             // 
             // tableLayoutPanel6
@@ -780,15 +780,16 @@
             this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(1);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 5;
+            this.tableLayoutPanel6.RowCount = 6;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 207F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(226, 494);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(226, 454);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
             // btFechamento
@@ -799,10 +800,10 @@
             this.btFechamento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btFechamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.btFechamento.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btFechamento.Location = new System.Drawing.Point(10, 402);
+            this.btFechamento.Location = new System.Drawing.Point(10, 206);
             this.btFechamento.Margin = new System.Windows.Forms.Padding(10);
             this.btFechamento.Name = "btFechamento";
-            this.btFechamento.Size = new System.Drawing.Size(206, 82);
+            this.btFechamento.Size = new System.Drawing.Size(206, 29);
             this.btFechamento.TabIndex = 7;
             this.btFechamento.TabStop = false;
             this.btFechamento.Text = "Fechamento";
@@ -817,10 +818,10 @@
             this.btConsultar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btConsultar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.btConsultar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btConsultar.Location = new System.Drawing.Point(10, 304);
+            this.btConsultar.Location = new System.Drawing.Point(10, 157);
             this.btConsultar.Margin = new System.Windows.Forms.Padding(10);
             this.btConsultar.Name = "btConsultar";
-            this.btConsultar.Size = new System.Drawing.Size(206, 78);
+            this.btConsultar.Size = new System.Drawing.Size(206, 29);
             this.btConsultar.TabIndex = 4;
             this.btConsultar.TabStop = false;
             this.btConsultar.Text = "Consultar Item";
@@ -835,10 +836,10 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button3.Location = new System.Drawing.Point(10, 206);
+            this.button3.Location = new System.Drawing.Point(10, 108);
             this.button3.Margin = new System.Windows.Forms.Padding(10);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(206, 78);
+            this.button3.Size = new System.Drawing.Size(206, 29);
             this.button3.TabIndex = 3;
             this.button3.TabStop = false;
             this.button3.Text = "Cancelar Venda";
@@ -852,10 +853,10 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(10, 108);
+            this.button2.Location = new System.Drawing.Point(10, 59);
             this.button2.Margin = new System.Windows.Forms.Padding(10);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(206, 78);
+            this.button2.Size = new System.Drawing.Size(206, 29);
             this.button2.TabIndex = 2;
             this.button2.TabStop = false;
             this.button2.Text = "Remover Item";
@@ -873,7 +874,7 @@
             this.btSangria.Location = new System.Drawing.Point(10, 10);
             this.btSangria.Margin = new System.Windows.Forms.Padding(10);
             this.btSangria.Name = "btSangria";
-            this.btSangria.Size = new System.Drawing.Size(206, 78);
+            this.btSangria.Size = new System.Drawing.Size(206, 29);
             this.btSangria.TabIndex = 1;
             this.btSangria.TabStop = false;
             this.btSangria.Text = "Sangria";

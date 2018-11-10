@@ -28,3 +28,4 @@ C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\obj\Debug\GenericPdv.Fecha
 C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\obj\Debug\GenericPdv.Catalogo.resources
 C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\obj\Debug\GenericPdv.ListFuncionario.resources
 C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\obj\Debug\GenericPdv.Relatorios.resources
+C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\obj\Debug\GenericPdv.CadastroDeFuncionario.resources

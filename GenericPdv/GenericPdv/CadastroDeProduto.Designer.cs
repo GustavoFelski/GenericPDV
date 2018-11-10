@@ -58,13 +58,9 @@
             this.label10 = new System.Windows.Forms.Label();
             this.mkbPromocao = new System.Windows.Forms.MaskedTextBox();
             this.btSalvar = new System.Windows.Forms.Button();
-            this.btClouse = new System.Windows.Forms.Button();
-            this.label13 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btNovo
@@ -74,7 +70,7 @@
             this.btNovo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btNovo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btNovo.Location = new System.Drawing.Point(638, 203);
+            this.btNovo.Location = new System.Drawing.Point(617, 172);
             this.btNovo.Name = "btNovo";
             this.btNovo.Size = new System.Drawing.Size(99, 23);
             this.btNovo.TabIndex = 0;
@@ -89,7 +85,7 @@
             this.BtCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtCancelar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.BtCancelar.Location = new System.Drawing.Point(523, 231);
+            this.BtCancelar.Location = new System.Drawing.Point(502, 200);
             this.BtCancelar.Name = "BtCancelar";
             this.BtCancelar.Size = new System.Drawing.Size(99, 44);
             this.BtCancelar.TabIndex = 1;
@@ -104,7 +100,7 @@
             this.btDeletar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btDeletar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btDeletar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btDeletar.Location = new System.Drawing.Point(523, 203);
+            this.btDeletar.Location = new System.Drawing.Point(502, 172);
             this.btDeletar.Name = "btDeletar";
             this.btDeletar.Size = new System.Drawing.Size(99, 23);
             this.btDeletar.TabIndex = 3;
@@ -129,7 +125,7 @@
             this.groupBox1.Controls.Add(this.textId);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBox1.Location = new System.Drawing.Point(12, 41);
+            this.groupBox1.Location = new System.Drawing.Point(9, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(728, 120);
             this.groupBox1.TabIndex = 6;
@@ -251,7 +247,7 @@
             this.groupBox2.Controls.Add(this.mkbCusto);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBox2.Location = new System.Drawing.Point(12, 167);
+            this.groupBox2.Location = new System.Drawing.Point(9, 138);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(235, 109);
             this.groupBox2.TabIndex = 7;
@@ -300,7 +296,7 @@
             this.groupBox3.Controls.Add(this.mkbPromocao);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBox3.Location = new System.Drawing.Point(253, 167);
+            this.groupBox3.Location = new System.Drawing.Point(250, 138);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(243, 109);
             this.groupBox3.TabIndex = 8;
@@ -310,7 +306,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(115, 56);
+            this.label12.Location = new System.Drawing.Point(115, 61);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(57, 15);
             this.label12.TabIndex = 14;
@@ -318,7 +314,7 @@
             // 
             // dtpFim
             // 
-            this.dtpFim.Location = new System.Drawing.Point(115, 74);
+            this.dtpFim.Location = new System.Drawing.Point(115, 79);
             this.dtpFim.Name = "dtpFim";
             this.dtpFim.Size = new System.Drawing.Size(103, 21);
             this.dtpFim.TabIndex = 13;
@@ -326,7 +322,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 57);
+            this.label11.Location = new System.Drawing.Point(6, 62);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(65, 15);
             this.label11.TabIndex = 12;
@@ -334,7 +330,7 @@
             // 
             // dtpInicio
             // 
-            this.dtpInicio.Location = new System.Drawing.Point(6, 74);
+            this.dtpInicio.Location = new System.Drawing.Point(6, 79);
             this.dtpInicio.Name = "dtpInicio";
             this.dtpInicio.Size = new System.Drawing.Size(103, 21);
             this.dtpInicio.TabIndex = 11;
@@ -343,7 +339,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 16);
+            this.label10.Location = new System.Drawing.Point(6, 21);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(99, 15);
             this.label10.TabIndex = 9;
@@ -351,7 +347,7 @@
             // 
             // mkbPromocao
             // 
-            this.mkbPromocao.Location = new System.Drawing.Point(8, 33);
+            this.mkbPromocao.Location = new System.Drawing.Point(8, 38);
             this.mkbPromocao.Name = "mkbPromocao";
             this.mkbPromocao.Size = new System.Drawing.Size(100, 21);
             this.mkbPromocao.TabIndex = 10;
@@ -363,7 +359,7 @@
             this.btSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btSalvar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btSalvar.Location = new System.Drawing.Point(638, 231);
+            this.btSalvar.Location = new System.Drawing.Point(617, 200);
             this.btSalvar.Name = "btSalvar";
             this.btSalvar.Size = new System.Drawing.Size(99, 44);
             this.btSalvar.TabIndex = 9;
@@ -371,49 +367,12 @@
             this.btSalvar.UseVisualStyleBackColor = false;
             this.btSalvar.Click += new System.EventHandler(this.btSalvar_Click);
             // 
-            // btClouse
-            // 
-            this.btClouse.FlatAppearance.BorderSize = 0;
-            this.btClouse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btClouse.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btClouse.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btClouse.Location = new System.Drawing.Point(716, 3);
-            this.btClouse.Name = "btClouse";
-            this.btClouse.Size = new System.Drawing.Size(31, 26);
-            this.btClouse.TabIndex = 10;
-            this.btClouse.Text = "X";
-            this.btClouse.UseVisualStyleBackColor = true;
-            this.btClouse.Click += new System.EventHandler(this.btClouse_Click);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label13.Location = new System.Drawing.Point(8, 9);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(175, 20);
-            this.label13.TabIndex = 11;
-            this.label13.Text = "Cadastro de Produto";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.panel1.Controls.Add(this.btClouse);
-            this.panel1.Controls.Add(this.label13);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(749, 35);
-            this.panel1.TabIndex = 10;
-            // 
             // CadastroDeProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(749, 288);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(749, 257);
             this.Controls.Add(this.btSalvar);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -421,7 +380,7 @@
             this.Controls.Add(this.btDeletar);
             this.Controls.Add(this.BtCancelar);
             this.Controls.Add(this.btNovo);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "CadastroDeProduto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
@@ -432,8 +391,6 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -470,8 +427,5 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.MaskedTextBox mkbPromocao;
         private System.Windows.Forms.Button btSalvar;
-        private System.Windows.Forms.Button btClouse;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Panel panel1;
     }
 }

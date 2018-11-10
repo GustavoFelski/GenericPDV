@@ -189,6 +189,9 @@
     <EmbeddedResource Include="AutenticacaoValidacao.resx">
       <DependentUpon>AutenticacaoValidacao.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CadastroDeFuncionario.resx">
+      <DependentUpon>CadastroDeFuncionario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CadastroDeProduto.resx">
       <DependentUpon>CadastroDeProduto.cs</DependentUpon>
     </EmbeddedResource>

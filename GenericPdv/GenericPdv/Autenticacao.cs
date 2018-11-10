@@ -116,7 +116,8 @@ namespace GenericPdv
                         case "0":
                             {
                                 //Verificar se o caixa ja foi fechado anteriormente
-                                if (Convert.ToDateTime(caixa.GetDataByLast()[0]["caixaFechamento"]) == null)
+
+                                if (string.IsNullOrEmpty(caixa.GetDataByLast()[0]["caixaFechamento"].ToString()))
                                 {
                                     Alerta alerta = new Alerta("Existe um fechamento ainda aberto.");
                                     alerta.ShowDialog();

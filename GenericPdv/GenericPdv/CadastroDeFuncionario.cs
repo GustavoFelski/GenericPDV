@@ -7,144 +7,83 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
+using System.Text.RegularExpressions;
+using System.Security.Cryptography;
 
 namespace GenericPdv
 {
     public partial class CadastroDeFuncionario : Form
     {
-        SqlConnection sqlCon = null;
-        private string strCon = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=GNPDVBD;Data Source=DOKAHVIIN-NOTE\SQLEXPRESS";
-        private string strSql = String.Empty;
-        private string strSql1 = String.Empty;
-        SqlDataAdapter adaptadorFuncionario;
-        SqlDataAdapter adaptadorCargo;
-        DataSet Dados;
+        DataSetGnPdvTableAdapters.FuncionarioTableAdapter funcionario = new DataSetGnPdvTableAdapters.FuncionarioTableAdapter();
+        bool tipoDeAbertura;
+        int id;
 
-        public CadastroDeFuncionario()
+        public CadastroDeFuncionario(bool tipo, int idSelecionado)
         {
             InitializeComponent();
+            id = idSelecionado;
+            tipoDeAbertura = tipo;
         }
 
         private void CadastroDeFuncionario_Load(object sender, EventArgs e)
         {
-            //Design
-            btSalvar.Enabled = false;
-            btDeletar.Enabled = false;
-            BtAlterar.Enabled = false;
-            BtPesquisar.Enabled = true;
-            btNovo.Enabled = true;
-            BtCancelar.Enabled = false;
+            // TODO: esta linha de código carrega dados na tabela 'dataSetGnPdv.Cargo'. Você pode movê-la ou removê-la conforme necessário.
+            this.cargoTableAdapter.Fill(this.dataSetGnPdv.Cargo);
 
-            textBusca.Enabled = true;
-            textId.Enabled = false;
-            textNome.Enabled = false;
-            textEmail.Enabled = false;
-            mkbTelefone.Enabled = false;
-            cbbCargo.Enabled = false;
-            textAcesso.Enabled = false;
-            cbbStatus.Enabled = false;
-            ckbReset.Enabled = false;
+            if (tipoDeAbertura)
+            {
+                btSalvar.Enabled = false;
+                btDeletar.Enabled = false;
+                btDeletar.Visible = false;
+                btNovo.Enabled = true;
+                BtCancelar.Enabled = false;
 
-            // Design
-            strSql = "INSERT INTO Funcionario (idFuncionario, funcNome, funcTelefone, funcEmail, funcStatus, funcReset, idCargo, funcAliase) VALUES (@id, @Nome, @Telefone, @Email, @Status, @Reset, @Cargo, @Acesso)";
+                textId.Enabled = false;
+                textNome.Enabled = false;
+                textEmail.Enabled = false;
+                mkbTelefone.Enabled = false;
+                cbbCargo.Enabled = false;
+                textAcesso.Enabled = false;
+                cbbStatus.Enabled = false;
+                ckbReset.Enabled = false;
 
-            sqlCon = new SqlConnection(strCon);
-            adaptadorFuncionario = new SqlDataAdapter();
-            adaptadorCargo = new SqlDataAdapter();
+                textId.Text = (Convert.ToInt32(funcionario.GetDataByLast()[0]["idFuncionario"]) +1 ).ToString();
+                textNome.Text = "";
+                textEmail.Text = "";
+                mkbTelefone.Text = "";
+                cbbCargo.SelectedItem = "";
+                textAcesso.Text = "";
+                cbbStatus.SelectedItem = 1;
 
-            SqlParameter Parametro;
-            Dados = new DataSet();
+            }
+            else
+            {
+                btSalvar.Enabled = true;
+                btDeletar.Enabled = true;
+                btNovo.Visible = false;
+                btNovo.Enabled = false;
+                BtCancelar.Enabled = true;
 
-            SqlCommand CmdLoadFunc = new SqlCommand();
-            //CmdLoadFunc.CommandText = "SELECT * FROM Funcionario AS F INNER JOIN Cargo AS C ON F.idCargo = C.id";
-            CmdLoadFunc.CommandText = "SELECT * FROM Funcionario";
-            CmdLoadFunc.Connection = sqlCon;
-            adaptadorFuncionario.SelectCommand = CmdLoadFunc;
-            adaptadorFuncionario.Fill(Dados, "Funcionario");
+                var temp = funcionario.GetDataBy1(this.id);
+                textId.Text = temp[0]["idFuncionario"].ToString();
+                textNome.Text = temp[0]["idFuncionario"].ToString();
+                textEmail.Text = temp[0]["idFuncionario"].ToString();
+                mkbTelefone.Text = temp[0]["idFuncionario"].ToString();
+                cbbCargo.SelectedItem = Convert.ToInt32(temp[0]["idCargo"]);
+                textAcesso.Text = temp[0]["idFuncionario"].ToString();
+                cbbStatus.SelectedItem = Convert.ToInt32(Convert.ToBoolean(temp[0]["idStatus"]));
+            }
 
-            SqlCommand CmdLoadCargo = new SqlCommand();
-            CmdLoadCargo.CommandText = "SELECT * FROM Cargo";
-            CmdLoadCargo.Connection = sqlCon;
-            adaptadorCargo.SelectCommand = CmdLoadCargo;
-            adaptadorCargo.Fill(Dados, "Cargo");
 
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = strSql;
-            cmd.Connection = sqlCon;
-
-            Parametro = new SqlParameter("@id", SqlDbType.Int, 8, "idFuncionario");
-            cmd.Parameters.Add(Parametro);
-            Parametro = new SqlParameter("@Nome", SqlDbType.VarChar, 100, "funcNome");
-            cmd.Parameters.Add(Parametro);
-            Parametro = new SqlParameter("@Telefone", SqlDbType.VarChar, 15, "funcTelefone");
-            cmd.Parameters.Add(Parametro);
-            Parametro = new SqlParameter("@Email", SqlDbType.VarChar, 100, "funcEmail");
-            cmd.Parameters.Add(Parametro);
-            Parametro = new SqlParameter("@Status", SqlDbType.Bit, 1, "funcStatus");
-            cmd.Parameters.Add(Parametro);
-            Parametro = new SqlParameter("@Reset", SqlDbType.Bit, 1, "funcReset");
-            cmd.Parameters.Add(Parametro);
-            Parametro = new SqlParameter("@Cargo", SqlDbType.Int, 1, "idCargo");
-            cmd.Parameters.Add(Parametro);
-            Parametro = new SqlParameter("@Acesso", SqlDbType.VarChar, 20, "funcAliase");
-            cmd.Parameters.Add(Parametro);
-            adaptadorFuncionario.InsertCommand = cmd;
-
-            // Alterar 
-            SqlCommand cmdAlterarFunc = new SqlCommand();
-            cmdAlterarFunc.CommandText = "UPDATE funcionario SET idFuncionario = @id, funcNome = @Nome, funcTelefone = @Telefone, funcEmail = @Email, funcStatus = @Status, funcReset = @Reset, idCargo = @Cargo, funcAliase = @Acesso WHERE idFuncionario = @id";
-            cmdAlterarFunc.Connection = sqlCon;
-
-            Parametro = new SqlParameter("@id", SqlDbType.Int, 8, "idFuncionario");
-            Parametro.SourceVersion = DataRowVersion.Current;
-            cmdAlterarFunc.Parameters.Add(Parametro);
-            Parametro = new SqlParameter("@Nome", SqlDbType.VarChar, 100, "funcNome");
-            Parametro.SourceVersion = DataRowVersion.Current;
-            cmdAlterarFunc.Parameters.Add(Parametro);
-            Parametro = new SqlParameter("@Telefone", SqlDbType.VarChar, 15, "funcTelefone");
-            Parametro.SourceVersion = DataRowVersion.Current;
-            cmdAlterarFunc.Parameters.Add(Parametro);
-            Parametro = new SqlParameter("@Email", SqlDbType.VarChar, 100, "funcEmail");
-            Parametro.SourceVersion = DataRowVersion.Current;
-            cmdAlterarFunc.Parameters.Add(Parametro);
-            Parametro = new SqlParameter("@Status", SqlDbType.Bit, 1, "funcStatus");
-            Parametro.SourceVersion = DataRowVersion.Current;
-            cmdAlterarFunc.Parameters.Add(Parametro);
-            Parametro = new SqlParameter("@Reset", SqlDbType.Bit, 1, "funcReset");
-            Parametro.SourceVersion = DataRowVersion.Current;
-            cmdAlterarFunc.Parameters.Add(Parametro);
-            Parametro = new SqlParameter("@Cargo", SqlDbType.Int, 1, "idCargo");
-            Parametro.SourceVersion = DataRowVersion.Current;
-            cmdAlterarFunc.Parameters.Add(Parametro);
-            Parametro = new SqlParameter("@Acesso", SqlDbType.VarChar, 20, "funcAliase");
-            Parametro.SourceVersion = DataRowVersion.Current;
-            cmdAlterarFunc.Parameters.Add(Parametro);
-
-            adaptadorFuncionario.UpdateCommand = cmdAlterarFunc;
-            //Deletar
-            SqlCommand cmdDeletarFunc = new SqlCommand();
-            cmdDeletarFunc.CommandText = "DELETE FROM Funcionario WHERE idFuncionario = @id";
-            cmdDeletarFunc.Connection = sqlCon;
-
-            Parametro = new SqlParameter("@id", SqlDbType.Int, 8, "idFuncionario");
-            Parametro.SourceVersion = DataRowVersion.Original;
-            cmdDeletarFunc.Parameters.Add(Parametro);
-
-            adaptadorFuncionario.DeleteCommand = cmdDeletarFunc;
         }
 
         private void btNovo_Click(object sender, EventArgs e)
         {
             //design
             btSalvar.Enabled = true;
-            btDeletar.Enabled = false;
-            BtAlterar.Enabled = false;
-            BtPesquisar.Enabled = false;
             btNovo.Enabled = false;
             BtCancelar.Enabled = true;
 
-            textBusca.Enabled = false;
             textId.Enabled = true;
             textNome.Enabled = true;
             textEmail.Enabled = true;
@@ -154,6 +93,15 @@ namespace GenericPdv
             cbbStatus.Enabled = true;
             ckbReset.Enabled = false;
             ckbReset.Checked = true;
+
+            textId.Text = (Convert.ToInt32(funcionario.GetDataByLast()[0]["idFuncionario"]) + 1).ToString();
+            textNome.Text = "";
+            textEmail.Text = "";
+            mkbTelefone.Text = "";
+            cbbCargo.SelectedItem = "";
+            textAcesso.Text = "";
+            cbbStatus.SelectedItem = 1;
+
         }
 
         private void BtCancelar_Click(object sender, EventArgs e)
@@ -161,12 +109,9 @@ namespace GenericPdv
             //Design
             btSalvar.Enabled = false;
             btDeletar.Enabled = false;
-            BtAlterar.Enabled = false;
-            BtPesquisar.Enabled = true;
             btNovo.Enabled = true;
             BtCancelar.Enabled = false;
 
-            textBusca.Enabled = true;
             textId.Enabled = false;
             textNome.Enabled = false;
             textEmail.Enabled = false;
@@ -190,14 +135,33 @@ namespace GenericPdv
         private void btSalvar_Click(object sender, EventArgs e)
         {
             //Design
+            //Logica
+            if (tipoDeAbertura)
+            {
+                string email = textEmail.Text;
+                Regex rg = new Regex(@"^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$");
+
+                if (!rg.IsMatch(email))
+                {
+                    Alerta alerta = new Alerta("Email não valido!");
+                    textEmail.Focus();
+                    textEmail.Text = "";
+                    alerta.ShowDialog();
+                }
+                else
+                {
+                    
+                    //funcionario.UpdateFuncionario(Convert.ToInt32(textId.Text), Convert.ToInt32(cbbCargo.SelectedItem), textNome.Text, mkbTelefone.Text, null, true,  );
+
+
+                }
+            }
+
             btSalvar.Enabled = false;
             btDeletar.Enabled = false;
-            BtAlterar.Enabled = false;
-            BtPesquisar.Enabled = true;
             btNovo.Enabled = true;
             BtCancelar.Enabled = false;
 
-            textBusca.Enabled = true;
             textId.Enabled = false;
             textNome.Enabled = false;
             textEmail.Enabled = false;
@@ -207,28 +171,8 @@ namespace GenericPdv
             cbbStatus.Enabled = false;
             ckbReset.Enabled = false;
 
-            //Logica
-            try
-            {
-                DataRow rowFuncionario = Dados.Tables["Funcionario"].NewRow();
 
-                rowFuncionario["idFuncionario"] = textId.Text;
-                rowFuncionario["funcTelefone"] = mkbTelefone.Text;
-                rowFuncionario["funcNome"] = textNome.Text;
-                rowFuncionario["funcEmail"] = textEmail.Text;
-                rowFuncionario["funcStatus"] = cbbStatus.SelectedIndex;
-                rowFuncionario["funcReset"] = ckbReset.Checked;
-                rowFuncionario["idCargo"] = cbbCargo.SelectedIndex;
-                //verificar se não existe um nome de acesso siminar cadastrado
-                rowFuncionario["funcAliase"] = textAcesso.Text.ToUpper();
 
-                Dados.Tables["Funcionario"].Rows.Add(rowFuncionario);
-                adaptadorFuncionario.Update(Dados, "Funcionario");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
             //Design
 
             textId.Text = "";
@@ -245,19 +189,14 @@ namespace GenericPdv
             if (MessageBox.Show("Deseja Realmente Deletar os dados deste Usuario?\nVocê pode apenas Desabilita-lo", "Cuidado", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 //Logica
-                DataRow[] rowFuncionarios = Dados.Tables["Funcionario"].Select("idFuncionario = '" + textBusca + "'");
-                rowFuncionarios[0].Delete();
-                adaptadorFuncionario.Update(Dados, "Funcionario");
-                MessageBox.Show("Funcionario removido com sucesso.");
+                
                 //Design
                 btSalvar.Enabled = false;
                 btDeletar.Enabled = false;
-                BtAlterar.Enabled = false;
-                BtPesquisar.Enabled = true;
                 btNovo.Enabled = true;
                 BtCancelar.Enabled = false;
 
-                textBusca.Enabled = true;
+                
                 textId.Enabled = false;
                 textNome.Enabled = false;
                 textEmail.Enabled = false;
@@ -280,115 +219,22 @@ namespace GenericPdv
             }
         }
 
-        private void BtAlterar_Click(object sender, EventArgs e)
+        public static string GerarHashMd5(string input)
         {
-            //Design
-            btSalvar.Enabled = false;
-            btDeletar.Enabled = false;
-            BtAlterar.Enabled = false;
-            BtPesquisar.Enabled = true;
-            btNovo.Enabled = true;
-            BtCancelar.Enabled = false;
+            MD5 md5Hash = MD5.Create();
+            // Converter a String para array de bytes, que é como a biblioteca trabalha.
+            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
 
-            textBusca.Enabled = true;
-            textId.Enabled = false;
-            textNome.Enabled = false;
-            textEmail.Enabled = false;
-            mkbTelefone.Enabled = false;
-            cbbCargo.Enabled = false;
-            textAcesso.Enabled = false;
-            cbbStatus.Enabled = false;
-            ckbReset.Enabled = false;
+            // Cria-se um StringBuilder para recompôr a string.
+            StringBuilder sBuilder = new StringBuilder();
 
-            //logica
-            try
+            // Loop para formatar cada byte como uma String em hexadecimal
+            for (int i = 0; i < data.Length; i++)
             {
-                DataRow[] rowFuncionario = Dados.Tables["Funcionario"].Select("idFuncionario = '" + textId.Text + "'");
-
-                rowFuncionario[0]["idFuncionario"] = textId.Text;
-                rowFuncionario[0]["funcTelefone"] = mkbTelefone.Text;
-                rowFuncionario[0]["funcNome"] = textNome.Text;
-                rowFuncionario[0]["funcEmail"] = textEmail.Text;
-                rowFuncionario[0]["funcStatus"] = cbbStatus.SelectedIndex;
-                rowFuncionario[0]["funcReset"] = ckbReset.Checked;
-                rowFuncionario[0]["idCargo"] = cbbCargo.SelectedIndex;
-                rowFuncionario[0]["funcAliase"] = textAcesso.Text;
-
-                adaptadorFuncionario.Update(Dados, "Funcionario");
-
+                sBuilder.Append(data[i].ToString("x2"));
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("erro ao tentar alterar" + ex.Message);
-            }
-            MessageBox.Show("Dados do funcionario alterado com sucesso.");
-            //Design
 
-            textId.Text = "";
-            textNome.Text = "";
-            textEmail.Text = "";
-            mkbTelefone.Text = "";
-            cbbCargo.Text = "";
-            ckbReset.Checked = false;
-            cbbStatus.Text = "";
-
+            return sBuilder.ToString();
         }
-
-        private void BtPesquisar_Click(object sender, EventArgs e)
-        {
-            //design
-            btSalvar.Enabled = false;
-            btDeletar.Enabled = true;
-            BtAlterar.Enabled = true;
-            BtPesquisar.Enabled = false;
-            btNovo.Enabled = false;
-            BtCancelar.Enabled = true;
-
-            textBusca.Enabled = false;
-            textId.Enabled = true;
-            textNome.Enabled = true;
-            textEmail.Enabled = true;
-            mkbTelefone.Enabled = true;
-            cbbCargo.Enabled = true;
-            textAcesso.Enabled = true;
-            cbbStatus.Enabled = true;
-            ckbReset.Enabled = false;
-            ckbReset.Checked = true;
-
-            //Lógica
-            string aux;
-
-            try
-            {
-                //logica
-                DataRow[] rowFuncionario = Dados.Tables["Funcionario"].Select("idFuncionario ='" + textBusca.Text + "'");
-
-                textId.Text = rowFuncionario[0]["idFuncionario"].ToString();
-                mkbTelefone.Text = rowFuncionario[0]["funcTelefone"].ToString();
-                textNome.Text = rowFuncionario[0]["funcNome"].ToString();
-                textEmail.Text = rowFuncionario[0]["funcEmail"].ToString();
-                aux = rowFuncionario[0]["funcStatus"].ToString();
-                if (aux == "0") { cbbStatus.SelectedValue = cbbStatus.SelectedIndex = 0; } else { cbbStatus.SelectedValue = cbbStatus.SelectedIndex = 1; }
-                rowFuncionario[0]["funcReset"] = ckbReset.Checked;
-                rowFuncionario[0]["idCargo"] = cbbCargo.SelectedIndex;
-                aux = "";
-                aux = rowFuncionario[0]["idCargo"].ToString();
-                if (aux == "0") { cbbCargo.SelectedValue = cbbCargo.SelectedIndex = 0; }
-                if (aux == "1") { cbbCargo.SelectedValue = cbbCargo.SelectedIndex = 1; }
-                if (aux == "2") { cbbCargo.SelectedValue = cbbCargo.SelectedIndex = 2; }
-                //MessageBox.Show(cbbCargo.SelectedValue +","+cbbCargo.SelectedIndex);
-                textAcesso.Text = rowFuncionario[0]["funcAliase"].ToString();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Funcionario não encontrado.");
-            }
-        }
-
-        private void btClouse_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
     }
 }

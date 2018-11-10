@@ -45,9 +45,11 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.relatorios1 = new GenericPdv.Relatorios();
             this.listFuncionario1 = new GenericPdv.ListFuncionario();
             this.catalogo1 = new GenericPdv.Catalogo();
-            this.relatorios1 = new GenericPdv.Relatorios();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.btLogout = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel10.SuspendLayout();
@@ -57,6 +59,7 @@
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.panel9.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -67,6 +70,7 @@
             this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel5, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.panel9, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
@@ -283,6 +287,14 @@
             this.panel7.Size = new System.Drawing.Size(943, 467);
             this.panel7.TabIndex = 0;
             // 
+            // relatorios1
+            // 
+            this.relatorios1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.relatorios1.Location = new System.Drawing.Point(10, 10);
+            this.relatorios1.Name = "relatorios1";
+            this.relatorios1.Size = new System.Drawing.Size(923, 447);
+            this.relatorios1.TabIndex = 2;
+            // 
             // listFuncionario1
             // 
             this.listFuncionario1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -299,13 +311,30 @@
             this.catalogo1.Size = new System.Drawing.Size(923, 447);
             this.catalogo1.TabIndex = 0;
             // 
-            // relatorios1
+            // panel9
             // 
-            this.relatorios1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.relatorios1.Location = new System.Drawing.Point(10, 10);
-            this.relatorios1.Name = "relatorios1";
-            this.relatorios1.Size = new System.Drawing.Size(923, 447);
-            this.relatorios1.TabIndex = 2;
+            this.panel9.Controls.Add(this.btLogout);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel9.Location = new System.Drawing.Point(222, 0);
+            this.panel9.Margin = new System.Windows.Forms.Padding(0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(943, 80);
+            this.panel9.TabIndex = 4;
+            // 
+            // btLogout
+            // 
+            this.btLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btLogout.FlatAppearance.BorderSize = 0;
+            this.btLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btLogout.ForeColor = System.Drawing.Color.Snow;
+            this.btLogout.Location = new System.Drawing.Point(829, 3);
+            this.btLogout.Name = "btLogout";
+            this.btLogout.Size = new System.Drawing.Size(111, 24);
+            this.btLogout.TabIndex = 4;
+            this.btLogout.TabStop = false;
+            this.btLogout.Text = "Logout";
+            this.btLogout.UseVisualStyleBackColor = true;
             // 
             // Admin
             // 
@@ -328,6 +357,7 @@
             this.panel1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -353,5 +383,7 @@
         private Catalogo catalogo1;
         private ListFuncionario listFuncionario1;
         private Relatorios relatorios1;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Button btLogout;
     }
 }

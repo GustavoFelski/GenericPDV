@@ -16,6 +16,7 @@ namespace GenericPdv
         {
             InitializeComponent();
         }
+        DataSetGnPdvTableAdapters.ProdutoTableAdapter produto = new DataSetGnPdvTableAdapters.ProdutoTableAdapter();
 
         private void fillByIdToolStripButton_Click(object sender, EventArgs e)
         {
@@ -28,6 +29,11 @@ namespace GenericPdv
                 System.Windows.Forms.MessageBox.Show(ex.Message);
             }
 
+        }
+
+        private void Catalogo_Load(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = produto.GetData();
         }
     }
 }

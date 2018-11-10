@@ -42,17 +42,20 @@
             this.funcionarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.funcionarioTableAdapter = new GenericPdv.DataSetGnPdvTableAdapters.FuncionarioTableAdapter();
             this.funcionariosCargoTableAdapter = new GenericPdv.DataSetGnPdvTableAdapters.FuncionariosCargoTableAdapter();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btAlterar = new System.Windows.Forms.Button();
             this.fillByToolStrip = new System.Windows.Forms.ToolStrip();
             this.funcNomeToolStripLabel = new System.Windows.Forms.ToolStripLabel();
             this.funcNomeToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.fillByToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.funcionariosCargoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGnPdv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.funcionarioBindingSource)).BeginInit();
-            this.fillByToolStrip.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.fillByToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -72,10 +75,10 @@
             this.funcStatusDataGridViewCheckBoxColumn});
             this.dataGridView1.DataSource = this.funcionariosCargoBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 32);
+            this.dataGridView1.Location = new System.Drawing.Point(3, 31);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(937, 432);
+            this.dataGridView1.Size = new System.Drawing.Size(937, 433);
             this.dataGridView1.TabIndex = 0;
             // 
             // idFuncionarioDataGridViewTextBoxColumn
@@ -152,19 +155,58 @@
             // 
             this.funcionariosCargoTableAdapter.ClearBeforeFill = true;
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.20985F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 93.79015F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(943, 467);
+            this.tableLayoutPanel1.TabIndex = 2;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btAlterar);
+            this.panel1.Controls.Add(this.fillByToolStrip);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(943, 28);
+            this.panel1.TabIndex = 1;
+            // 
+            // btAlterar
+            // 
+            this.btAlterar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btAlterar.FlatAppearance.BorderSize = 0;
+            this.btAlterar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btAlterar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btAlterar.Location = new System.Drawing.Point(297, 2);
+            this.btAlterar.Name = "btAlterar";
+            this.btAlterar.Size = new System.Drawing.Size(61, 22);
+            this.btAlterar.TabIndex = 3;
+            this.btAlterar.Text = "Alterar";
+            this.btAlterar.UseVisualStyleBackColor = false;
+            this.btAlterar.Click += new System.EventHandler(this.btAlterar_Click);
+            // 
             // fillByToolStrip
             // 
-            this.fillByToolStrip.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fillByToolStrip.Dock = System.Windows.Forms.DockStyle.None;
             this.fillByToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.funcNomeToolStripLabel,
             this.funcNomeToolStripTextBox,
             this.fillByToolStripButton});
-            this.fillByToolStrip.Location = new System.Drawing.Point(0, 0);
+            this.fillByToolStrip.Location = new System.Drawing.Point(3, 1);
             this.fillByToolStrip.Name = "fillByToolStrip";
-            this.fillByToolStrip.Size = new System.Drawing.Size(943, 29);
-            this.fillByToolStrip.TabIndex = 1;
+            this.fillByToolStrip.Size = new System.Drawing.Size(291, 25);
+            this.fillByToolStrip.TabIndex = 2;
             this.fillByToolStrip.Text = "fillByToolStrip";
-            this.fillByToolStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.fillByToolStrip_ItemClicked);
             // 
             // funcNomeToolStripLabel
             // 
@@ -179,26 +221,12 @@
             // 
             // fillByToolStripButton
             // 
+            this.fillByToolStripButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.fillByToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.fillByToolStripButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.fillByToolStripButton.Name = "fillByToolStripButton";
             this.fillByToolStripButton.Size = new System.Drawing.Size(61, 22);
             this.fillByToolStripButton.Text = "Pesquisar";
-            this.fillByToolStripButton.Click += new System.EventHandler(this.fillByToolStripButton_Click);
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.fillByToolStrip, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.20985F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 93.79015F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(943, 467);
-            this.tableLayoutPanel1.TabIndex = 2;
             // 
             // ListFuncionario
             // 
@@ -207,14 +235,16 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "ListFuncionario";
             this.Size = new System.Drawing.Size(943, 467);
+            this.Load += new System.EventHandler(this.ListFuncionario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.funcionariosCargoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGnPdv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.funcionarioBindingSource)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.fillByToolStrip.ResumeLayout(false);
             this.fillByToolStrip.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -234,10 +264,12 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn funcStatusDataGridViewCheckBoxColumn;
         private System.Windows.Forms.BindingSource funcionariosCargoBindingSource;
         private DataSetGnPdvTableAdapters.FuncionariosCargoTableAdapter funcionariosCargoTableAdapter;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStrip fillByToolStrip;
         private System.Windows.Forms.ToolStripLabel funcNomeToolStripLabel;
         private System.Windows.Forms.ToolStripTextBox funcNomeToolStripTextBox;
         private System.Windows.Forms.ToolStripButton fillByToolStripButton;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button btAlterar;
     }
 }

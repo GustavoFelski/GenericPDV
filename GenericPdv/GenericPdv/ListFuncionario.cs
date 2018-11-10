@@ -17,6 +17,7 @@ namespace GenericPdv
             InitializeComponent();
         }
 
+        DataSetGnPdvTableAdapters.FuncionariosCargoTableAdapter func = new DataSetGnPdvTableAdapters.FuncionariosCargoTableAdapter();
         private void fillToolStripButton_Click(object sender, EventArgs e)
         {
             try
@@ -43,8 +44,16 @@ namespace GenericPdv
 
         }
 
-        private void fillByToolStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void ListFuncionario_Load(object sender, EventArgs e)
         {
+            dataGridView1.DataSource = func.GetData();
+        }
+
+        private void btAlterar_Click(object sender, EventArgs e)
+        {
+           
+
+            CadastroDeFuncionario cadastroDeFuncionario = new CadastroDeFuncionario(false, 1);
 
         }
     }

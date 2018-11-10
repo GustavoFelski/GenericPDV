@@ -57,6 +57,91 @@ namespace GenericPdv
         }
         #endregion
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            if (tipoDeAbertura)
+            {
+                //Design
+
+                btSalvar.Enabled = true;
+                btDeletar.Visible = true;
+                BtCancelar.Enabled = false;
+                btNovo.Enabled = false;
+
+                textId.Enabled = false;
+                textNome.Enabled = true;
+                textCodBarra.Enabled = true;
+                textCodForne.Enabled = true;
+                textMarca.Enabled = true;
+                textQuantidade.Enabled = true;
+                ckbStatus.Enabled = true;
+                mkbCusto.Enabled = true;
+                mkbVenda.Enabled = true;
+
+                mkbPromocao.Enabled = true;
+                dtpInicio.Enabled = true;
+                dtpFim.Enabled = true;
+
+                var last = produto.GetDataByLastProd();
+                textId.Text = (Convert.ToInt32(last[0]["idProduto"]) + 1).ToString();
+                textNome.Text = "";
+                textCodBarra.Text = "";
+                textCodForne.Text = "";
+                textMarca.Text = "";
+                textQuantidade.Text = "";
+                ckbStatus.Checked = true;
+                mkbCusto.Text = "";
+                mkbVenda.Text = "";
+
+                mkbPromocao.Text = "";
+                dtpInicio.Text = "";
+                dtpFim.Text = "";
+                // logica
+
+            }
+            else
+            {
+                btSalvar.Enabled = false;
+                btDeletar.Visible = true;
+                BtCancelar.Enabled = true;
+                btNovo.Visible = false;
+
+                textId.Enabled = false;
+                textNome.Enabled = true;
+                textCodBarra.Enabled = true;
+                textCodForne.Enabled = true;
+                textMarca.Enabled = true;
+                textQuantidade.Enabled = true;
+                ckbStatus.Enabled = true;
+                mkbCusto.Enabled = true;
+                mkbVenda.Enabled = true;
+
+                mkbPromocao.Enabled = true;
+                dtpInicio.Enabled = true;
+                dtpFim.Enabled = true;
+
+
+                // Terminar isso aqui 
+                var temp = produto.GetDataById(id);
+                textId.Text = Convert.ToString(temp[0]["idProduto"]);
+                textNome.Text = Convert.ToString(temp[1]["prodNome"]);
+                textCodBarra.Text = Convert.ToString(temp[0]["prodCodBarras"]);
+                textCodForne.Text = Convert.ToString(temp[0]["prodCodFornecedor"]);
+                textMarca.Text = Convert.ToString(temp[0]["prodMarca"]);
+                textQuantidade.Text = Convert.ToString(temp[0]["prodQuantidade"]);
+                ckbStatus.Enabled = Convert.ToBoolean(temp[0]["prodStatus"]);
+                mkbCusto.Text = Convert.ToString(temp[0]["prodCusto"]);
+                mkbVenda.Text = Convert.ToString(temp[0]["prodVenda"]);
+                mkbPromocao.Text = Convert.ToString(temp[0]["prodDesconto"]);
+                dtpInicio.Text = Convert.ToString(temp[0]["prodInicio"]);
+                dtpFim.Text = Convert.ToString(temp[0]["prodFim"]);
+            }
+
+            // liberar campos caso seja um novo cadastro
+            // caregar o ultimo idcadastrado
+            // ocultar os botões 
+
+        }
 
         private void btNovo_Click(object sender, EventArgs e)
         {
@@ -308,90 +393,7 @@ namespace GenericPdv
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            if (tipoDeAbertura)
-            {
-                //Design
-
-                btSalvar.Enabled = true;
-                btDeletar.Visible = true;
-                BtCancelar.Enabled = false;
-                btNovo.Enabled = false;
-
-                textId.Enabled = false;
-                textNome.Enabled = true;
-                textCodBarra.Enabled = true;
-                textCodForne.Enabled = true;
-                textMarca.Enabled = true;
-                textQuantidade.Enabled = true;
-                ckbStatus.Enabled = true;
-                mkbCusto.Enabled = true;
-                mkbVenda.Enabled = true;
-                
-                mkbPromocao.Enabled = true;
-                dtpInicio.Enabled = true;
-                dtpFim.Enabled = true;
-
-                var last = produto.GetDataByLastProd();
-                textId.Text = (Convert.ToInt32(last[0]["idProduto"]) + 1).ToString();
-                textNome.Text = "";
-                textCodBarra.Text = "";
-                textCodForne.Text = "";
-                textMarca.Text = "";
-                textQuantidade.Text = "";
-                ckbStatus.Checked = true;
-                mkbCusto.Text = "";
-                mkbVenda.Text = "";
-                
-                mkbPromocao.Text = "";
-                dtpInicio.Text = "";
-                dtpFim.Text = "";
-                // logica
-
-            }else
-            {
-                btSalvar.Enabled = false;
-                btDeletar.Visible = true;
-                BtCancelar.Enabled = true;
-                btNovo.Visible = false;
-
-                textId.Enabled = false;
-                textNome.Enabled = true;
-                textCodBarra.Enabled = true;
-                textCodForne.Enabled = true;
-                textMarca.Enabled = true;
-                textQuantidade.Enabled = true;
-                ckbStatus.Enabled = true;
-                mkbCusto.Enabled = true;
-                mkbVenda.Enabled = true;
-                
-                mkbPromocao.Enabled = true;
-                dtpInicio.Enabled = true;
-                dtpFim.Enabled = true;
-
-
-                // Terminar isso aqui 
-                var temp = produto.GetDataById(id);
-                textId.Text = Convert.ToString(temp[0]["idProduto"]);
-                textNome.Text = Convert.ToString(temp[1]["prodNome"]);
-                textCodBarra.Text = Convert.ToString(temp[0]["prodCodBarras"]);
-                textCodForne.Text = Convert.ToString(temp[0]["prodCodFornecedor"]);
-                textMarca.Text = Convert.ToString(temp[0]["prodMarca"]);
-                textQuantidade.Text = Convert.ToString(temp[0]["prodQuantidade"]);
-                ckbStatus.Enabled = Convert.ToBoolean(temp[0]["prodStatus"]);
-                mkbCusto.Text = Convert.ToString(temp[0]["prodCusto"]);
-                mkbVenda.Text = Convert.ToString(temp[0]["prodVenda"]);
-                mkbPromocao.Text = Convert.ToString(temp[0]["prodDesconto"]);
-                dtpInicio.Text = Convert.ToString(temp[0]["prodInicio"]);
-                dtpFim.Text = Convert.ToString(temp[0]["prodFim"]);
-            }
-            
-            // liberar campos caso seja um novo cadastro
-            // caregar o ultimo idcadastrado
-            // ocultar os botões 
-            
-        }
+        
 
         private void btClouse_Click(object sender, EventArgs e)
         {

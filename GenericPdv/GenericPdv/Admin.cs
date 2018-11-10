@@ -70,7 +70,7 @@ namespace GenericPdv
             panelSide.Top = btCadastroFunc.Top;
 
             //Logic Button
-            CadastroDeFuncionario cadastro = new CadastroDeFuncionario();
+            CadastroDeFuncionario cadastro = new CadastroDeFuncionario(true, 0);
             cadastro.ShowDialog();
         }
 
@@ -78,7 +78,6 @@ namespace GenericPdv
         {
             panelSide.Height = btRelatorio.Height;
             panelSide.Top = btRelatorio.Top;
-
 
             catalogo1.Visible = false;
             relatorios1.Visible = true;
@@ -102,5 +101,6 @@ namespace GenericPdv
             relatorios1.Visible = false;
 
         }
+
     }
 }
