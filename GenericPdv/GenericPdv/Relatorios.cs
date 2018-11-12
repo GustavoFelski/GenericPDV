@@ -16,5 +16,20 @@ namespace GenericPdv
         {
             InitializeComponent();
         }
+
+
+
+        private void Relatorios_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btPesquisarVendas_Click(object sender, EventArgs e)
+        {
+
+            RelatorioDeVendas relatorio = new RelatorioDeVendas(dateTimeInicio.Value, dateTimeFim.Value, 1 );
+        }
+
+
     }
 }

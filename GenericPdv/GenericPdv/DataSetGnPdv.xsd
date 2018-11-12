@@ -195,7 +195,7 @@ WHERE        (funcSenha = @funcSenha)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="GNPDVBDConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateFuncionario" Modifier="Public" Name="UpdateFuncionario" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="UpdateFuncionario">
+              <DbSource ConnectionRef="GNPDVBDConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateFuncionario" Modifier="Public" Name="UpdateFuncionario" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="UpdateFuncionario">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE [Funcionario] SET [idFuncionario] = @idFuncionario, [idCargo] = @idCargo, [funcNome] = @funcNome, [funcTelefone] = @funcTelefone, [funcSenha] = @funcSenha, [funcReset] = @funcReset, [funcStatus] = @funcStatus, [funcEmail] = @funcEmail WHERE (([idFuncionario] = @Original_idFuncionario) AND ([idCargo] = @Original_idCargo) AND ((@IsNull_funcNome = 1 AND [funcNome] IS NULL) OR ([funcNome] = @Original_funcNome)) AND ((@IsNull_funcTelefone = 1 AND [funcTelefone] IS NULL) OR ([funcTelefone] = @Original_funcTelefone)) AND ((@IsNull_funcSenha = 1 AND [funcSenha] IS NULL) OR ([funcSenha] = @Original_funcSenha)) AND ((@IsNull_funcReset = 1 AND [funcReset] IS NULL) OR ([funcReset] = @Original_funcReset)) AND ((@IsNull_funcStatus = 1 AND [funcStatus] IS NULL) OR ([funcStatus] = @Original_funcStatus)) AND ((@IsNull_funcEmail = 1 AND [funcEmail] IS NULL) OR ([funcEmail] = @Original_funcEmail)));
@@ -227,7 +227,7 @@ SELECT idFuncionario, idCargo, funcNome, funcTelefone, funcSenha, funcReset, fun
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="GNPDVBDConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQuerySenha" Modifier="Public" Name="UpdateQuerySenha" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="UpdateQuerySenha">
+              <DbSource ConnectionRef="GNPDVBDConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQuerySenha" Modifier="Public" Name="UpdateQuerySenha" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="UpdateQuerySenha">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE [Funcionario] SET funcSenha=@Senha, funcReset=@Reset WHERE ([funcAliase] = @Aliase)</CommandText>
@@ -697,7 +697,7 @@ SELECT idVenda, idFuncionario, valorCompra, vendData, vendCpf, idCaixa FROM Vend
               <DbSource ConnectionRef="GNPDVBDConnectionString (Settings)" DbObjectName="GNPDVBD.dbo.Caixa" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM [Caixa] WHERE (([idCaixa] = @Original_idCaixa) AND ((@IsNull_caixaAbertura = 1 AND [caixaAbertura] IS NULL) OR ([caixaAbertura] = @Original_caixaAbertura)) AND ((@IsNull_caixaValorCartaoCredito = 1 AND [caixaValorCartaoCredito] IS NULL) OR ([caixaValorCartaoCredito] = @Original_caixaValorCartaoCredito)) AND ((@IsNull_caixaFechamento = 1 AND [caixaFechamento] IS NULL) OR ([caixaFechamento] = @Original_caixaFechamento)) AND ((@IsNull_caixaValorDinheiro = 1 AND [caixaValorDinheiro] IS NULL) OR ([caixaValorDinheiro] = @Original_caixaValorDinheiro)) AND ((@IsNull_caixaFundo = 1 AND [caixaFundo] IS NULL) OR ([caixaFundo] = @Original_caixaFundo)) AND ((@IsNull_caixaValorCartaoDebito = 1 AND [caixaValorCartaoDebito] IS NULL) OR ([caixaValorCartaoDebito] = @Original_caixaValorCartaoDebito)) AND ((@IsNull_caixaDateAbertura = 1 AND [caixaDateAbertura] IS NULL) OR ([caixaDateAbertura] = @Original_caixaDateAbertura)) AND ((@IsNull_caixaDateFechamento = 1 AND [caixaDateFechamento] IS NULL) OR ([caixaDateFechamento] = @Original_caixaDateFechamento)))</CommandText>
+                    <CommandText>DELETE FROM [Caixa] WHERE (([idCaixa] = @Original_idCaixa) AND ((@IsNull_caixaAbertura = 1 AND [caixaAbertura] IS NULL) OR ([caixaAbertura] = @Original_caixaAbertura)) AND ((@IsNull_caixaValorCartaoCredito = 1 AND [caixaValorCartaoCredito] IS NULL) OR ([caixaValorCartaoCredito] = @Original_caixaValorCartaoCredito)) AND ((@IsNull_caixaFechamento = 1 AND [caixaFechamento] IS NULL) OR ([caixaFechamento] = @Original_caixaFechamento)) AND ((@IsNull_caixaValorDinheiro = 1 AND [caixaValorDinheiro] IS NULL) OR ([caixaValorDinheiro] = @Original_caixaValorDinheiro)) AND ((@IsNull_caixaFundo = 1 AND [caixaFundo] IS NULL) OR ([caixaFundo] = @Original_caixaFundo)) AND ((@IsNull_caixaValorCartaoDebito = 1 AND [caixaValorCartaoDebito] IS NULL) OR ([caixaValorCartaoDebito] = @Original_caixaValorCartaoDebito)) AND ((@IsNull_caixaValorAbertura = 1 AND [caixaValorAbertura] IS NULL) OR ([caixaValorAbertura] = @Original_caixaValorAbertura)))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_idCaixa" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idCaixa" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_caixaAbertura" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="caixaAbertura" SourceColumnNullMapping="true" SourceVersion="Original" />
@@ -712,17 +712,15 @@ SELECT idVenda, idFuncionario, valorCompra, vendData, vendCpf, idCaixa FROM Vend
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Original_caixaFundo" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="caixaFundo" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_caixaValorCartaoDebito" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="caixaValorCartaoDebito" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Original_caixaValorCartaoDebito" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="caixaValorCartaoDebito" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_caixaDateAbertura" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="caixaDateAbertura" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_caixaDateAbertura" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="caixaDateAbertura" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_caixaDateFechamento" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="caixaDateFechamento" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_caixaDateFechamento" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="caixaDateFechamento" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_caixaValorAbertura" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="caixaValorAbertura" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Original_caixaValorAbertura" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="caixaValorAbertura" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </DeleteCommand>
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO [Caixa] ([caixaAbertura], [caixaValorCartaoCredito], [caixaFechamento], [caixaValorDinheiro], [caixaFundo], [caixaValorCartaoDebito], [caixaDateAbertura], [caixaDateFechamento]) VALUES (@caixaAbertura, @caixaValorCartaoCredito, @caixaFechamento, @caixaValorDinheiro, @caixaFundo, @caixaValorCartaoDebito, @caixaDateAbertura, @caixaDateFechamento);
-SELECT idCaixa, caixaAbertura, caixaValorCartaoCredito, caixaFechamento, caixaValorDinheiro, caixaFundo, caixaValorCartaoDebito, caixaDateAbertura, caixaDateFechamento FROM Caixa WHERE (idCaixa = SCOPE_IDENTITY())</CommandText>
+                    <CommandText>INSERT INTO [Caixa] ([caixaAbertura], [caixaValorCartaoCredito], [caixaFechamento], [caixaValorDinheiro], [caixaFundo], [caixaValorCartaoDebito], [caixaValorAbertura]) VALUES (@caixaAbertura, @caixaValorCartaoCredito, @caixaFechamento, @caixaValorDinheiro, @caixaFundo, @caixaValorCartaoDebito, @caixaValorAbertura);
+SELECT idCaixa, caixaAbertura, caixaValorCartaoCredito, caixaFechamento, caixaValorDinheiro, caixaFundo, caixaValorCartaoDebito, caixaValorAbertura FROM Caixa WHERE (idCaixa = SCOPE_IDENTITY())</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@caixaAbertura" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="caixaAbertura" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@caixaValorCartaoCredito" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="caixaValorCartaoCredito" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -730,21 +728,21 @@ SELECT idCaixa, caixaAbertura, caixaValorCartaoCredito, caixaFechamento, caixaVa
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@caixaValorDinheiro" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="caixaValorDinheiro" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@caixaFundo" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="caixaFundo" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@caixaValorCartaoDebito" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="caixaValorCartaoDebito" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@caixaDateAbertura" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="caixaDateAbertura" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@caixaDateFechamento" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="caixaDateFechamento" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@caixaValorAbertura" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="caixaValorAbertura" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT idCaixa, caixaAbertura, caixaValorCartaoCredito, caixaFechamento, caixaValorDinheiro, caixaFundo, caixaValorCartaoDebito FROM Caixa</CommandText>
+                    <CommandText>SELECT        idCaixa, caixaAbertura, caixaValorCartaoCredito, caixaFechamento, caixaValorDinheiro, caixaFundo, caixaValorCartaoDebito, caixaValorAbertura
+FROM            Caixa</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE [Caixa] SET [caixaAbertura] = @caixaAbertura, [caixaValorCartaoCredito] = @caixaValorCartaoCredito, [caixaFechamento] = @caixaFechamento, [caixaValorDinheiro] = @caixaValorDinheiro, [caixaFundo] = @caixaFundo, [caixaValorCartaoDebito] = @caixaValorCartaoDebito, [caixaDateAbertura] = @caixaDateAbertura, [caixaDateFechamento] = @caixaDateFechamento WHERE (([idCaixa] = @Original_idCaixa) AND ((@IsNull_caixaAbertura = 1 AND [caixaAbertura] IS NULL) OR ([caixaAbertura] = @Original_caixaAbertura)) AND ((@IsNull_caixaValorCartaoCredito = 1 AND [caixaValorCartaoCredito] IS NULL) OR ([caixaValorCartaoCredito] = @Original_caixaValorCartaoCredito)) AND ((@IsNull_caixaFechamento = 1 AND [caixaFechamento] IS NULL) OR ([caixaFechamento] = @Original_caixaFechamento)) AND ((@IsNull_caixaValorDinheiro = 1 AND [caixaValorDinheiro] IS NULL) OR ([caixaValorDinheiro] = @Original_caixaValorDinheiro)) AND ((@IsNull_caixaFundo = 1 AND [caixaFundo] IS NULL) OR ([caixaFundo] = @Original_caixaFundo)) AND ((@IsNull_caixaValorCartaoDebito = 1 AND [caixaValorCartaoDebito] IS NULL) OR ([caixaValorCartaoDebito] = @Original_caixaValorCartaoDebito)) AND ((@IsNull_caixaDateAbertura = 1 AND [caixaDateAbertura] IS NULL) OR ([caixaDateAbertura] = @Original_caixaDateAbertura)) AND ((@IsNull_caixaDateFechamento = 1 AND [caixaDateFechamento] IS NULL) OR ([caixaDateFechamento] = @Original_caixaDateFechamento)));
-SELECT idCaixa, caixaAbertura, caixaValorCartaoCredito, caixaFechamento, caixaValorDinheiro, caixaFundo, caixaValorCartaoDebito, caixaDateAbertura, caixaDateFechamento FROM Caixa WHERE (idCaixa = @idCaixa)</CommandText>
+                    <CommandText>UPDATE [Caixa] SET [caixaAbertura] = @caixaAbertura, [caixaValorCartaoCredito] = @caixaValorCartaoCredito, [caixaFechamento] = @caixaFechamento, [caixaValorDinheiro] = @caixaValorDinheiro, [caixaFundo] = @caixaFundo, [caixaValorCartaoDebito] = @caixaValorCartaoDebito, [caixaValorAbertura] = @caixaValorAbertura WHERE (([idCaixa] = @Original_idCaixa) AND ((@IsNull_caixaAbertura = 1 AND [caixaAbertura] IS NULL) OR ([caixaAbertura] = @Original_caixaAbertura)) AND ((@IsNull_caixaValorCartaoCredito = 1 AND [caixaValorCartaoCredito] IS NULL) OR ([caixaValorCartaoCredito] = @Original_caixaValorCartaoCredito)) AND ((@IsNull_caixaFechamento = 1 AND [caixaFechamento] IS NULL) OR ([caixaFechamento] = @Original_caixaFechamento)) AND ((@IsNull_caixaValorDinheiro = 1 AND [caixaValorDinheiro] IS NULL) OR ([caixaValorDinheiro] = @Original_caixaValorDinheiro)) AND ((@IsNull_caixaFundo = 1 AND [caixaFundo] IS NULL) OR ([caixaFundo] = @Original_caixaFundo)) AND ((@IsNull_caixaValorCartaoDebito = 1 AND [caixaValorCartaoDebito] IS NULL) OR ([caixaValorCartaoDebito] = @Original_caixaValorCartaoDebito)) AND ((@IsNull_caixaValorAbertura = 1 AND [caixaValorAbertura] IS NULL) OR ([caixaValorAbertura] = @Original_caixaValorAbertura)));
+SELECT idCaixa, caixaAbertura, caixaValorCartaoCredito, caixaFechamento, caixaValorDinheiro, caixaFundo, caixaValorCartaoDebito, caixaValorAbertura FROM Caixa WHERE (idCaixa = @idCaixa)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@caixaAbertura" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="caixaAbertura" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@caixaValorCartaoCredito" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="caixaValorCartaoCredito" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -752,8 +750,7 @@ SELECT idCaixa, caixaAbertura, caixaValorCartaoCredito, caixaFechamento, caixaVa
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@caixaValorDinheiro" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="caixaValorDinheiro" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@caixaFundo" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="caixaFundo" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@caixaValorCartaoDebito" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="caixaValorCartaoDebito" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@caixaDateAbertura" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="caixaDateAbertura" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@caixaDateFechamento" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="caixaDateFechamento" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@caixaValorAbertura" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="caixaValorAbertura" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_idCaixa" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idCaixa" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_caixaAbertura" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="caixaAbertura" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_caixaAbertura" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="caixaAbertura" SourceColumnNullMapping="false" SourceVersion="Original" />
@@ -767,10 +764,8 @@ SELECT idCaixa, caixaAbertura, caixaValorCartaoCredito, caixaFechamento, caixaVa
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Original_caixaFundo" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="caixaFundo" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_caixaValorCartaoDebito" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="caixaValorCartaoDebito" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Original_caixaValorCartaoDebito" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="caixaValorCartaoDebito" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_caixaDateAbertura" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="caixaDateAbertura" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_caixaDateAbertura" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="caixaDateAbertura" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_caixaDateFechamento" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="caixaDateFechamento" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_caixaDateFechamento" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="caixaDateFechamento" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_caixaValorAbertura" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="caixaValorAbertura" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Original_caixaValorAbertura" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="caixaValorAbertura" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="idCaixa" ColumnName="idCaixa" DataSourceName="GNPDVBD.dbo.Caixa" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@idCaixa" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="idCaixa" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
@@ -785,14 +780,13 @@ SELECT idCaixa, caixaAbertura, caixaValorCartaoCredito, caixaFechamento, caixaVa
               <Mapping SourceColumn="caixaValorDinheiro" DataSetColumn="caixaValorDinheiro" />
               <Mapping SourceColumn="caixaFundo" DataSetColumn="caixaFundo" />
               <Mapping SourceColumn="caixaValorCartaoDebito" DataSetColumn="caixaValorCartaoDebito" />
+              <Mapping SourceColumn="caixaValorAbertura" DataSetColumn="caixaValorAbertura" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="GNPDVBDConnectionString (Settings)" DbObjectName="GNPDVBD.dbo.Caixa" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByLast" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByLast" GeneratorSourceName="FillByLast" GetMethodModifier="Public" GetMethodName="GetDataByLast" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByLast" UserSourceName="FillByLast">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        TOP (1) idCaixa, caixaValorCartaoCredito, caixaValorDinheiro, caixaValorCartaoDebito, caixaFechamento, caixaAbertura
-FROM            Caixa
-ORDER BY idCaixa DESC </CommandText>
+                    <CommandText>SELECT TOP (1) caixaAbertura, caixaFechamento, caixaFundo, caixaValorAbertura, caixaValorCartaoCredito, caixaValorCartaoDebito, caixaValorDinheiro, idCaixa, caixaValorAbertura FROM Caixa ORDER BY idCaixa DESC</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -800,13 +794,14 @@ ORDER BY idCaixa DESC </CommandText>
               <DbSource ConnectionRef="GNPDVBDConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertQueryAbertura" Modifier="Public" Name="InsertQueryAbertura" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="InsertQueryAbertura">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>INSERT INTO [Caixa] ([caixaAbertura], [caixaValorDinheiro], [caixaValorCartaoCredito],[caixaValorCartaoDebito]) VALUES (@caixaAbertura, @caixaDinheiro,@caixaCartao, @caixaDebito);
-SELECT idCaixa, caixaAbertura, caixaValorCartaoCredito, caixaFechamento, caixaValorDinheiro, caixaFundo, caixaValorCartaoDebito FROM Caixa WHERE (idCaixa = SCOPE_IDENTITY())</CommandText>
+                    <CommandText>INSERT INTO [Caixa] ([caixaAbertura], [caixaValorDinheiro], [caixaValorCartaoCredito],[caixaValorCartaoDebito], [caixaValorAbertura]) VALUES (@caixaAbertura, @caixaDinheiro,@caixaCartao, @caixaDebito, @AberturaValor);
+SELECT idCaixa, caixaAbertura, caixaValorCartaoCredito, caixaFechamento, caixaValorDinheiro, caixaFundo, caixaValorCartaoDebito, caixaValorAbertura FROM Caixa WHERE (idCaixa = SCOPE_IDENTITY())</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="true" AutogeneratedName="caixaAbertura" ColumnName="caixaAbertura" DataSourceName="GNPDVBD.dbo.Caixa" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@caixaAbertura" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="caixaAbertura" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="caixaDinheiro" ColumnName="caixaValorDinheiro" DataSourceName="GNPDVBD.dbo.Caixa" DataTypeServer="float" DbType="Double" Direction="Input" ParameterName="@caixaDinheiro" Precision="0" ProviderType="Float" Scale="0" Size="8" SourceColumn="caixaValorDinheiro" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="caixaCartao" ColumnName="caixaValorCartaoCredito" DataSourceName="GNPDVBD.dbo.Caixa" DataTypeServer="float" DbType="Double" Direction="Input" ParameterName="@caixaCartao" Precision="0" ProviderType="Float" Scale="0" Size="8" SourceColumn="caixaValorCartaoCredito" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="caixaDebito" ColumnName="caixaValorCartaoDebito" DataSourceName="GNPDVBD.dbo.Caixa" DataTypeServer="float" DbType="Double" Direction="Input" ParameterName="@caixaDebito" Precision="0" ProviderType="Float" Scale="0" Size="8" SourceColumn="caixaValorCartaoDebito" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="AberturaValor" ColumnName="caixaValorAbertura" DataSourceName="GNPDVBD.dbo.Caixa" DataTypeServer="float" DbType="Double" Direction="Input" ParameterName="@AberturaValor" Precision="0" ProviderType="Float" Scale="0" Size="8" SourceColumn="caixaValorAbertura" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
@@ -847,149 +842,6 @@ FROM Caixa WHERE (idCaixa = @idCaixa)</CommandText>
                     </Parameters>
                   </DbCommand>
                 </UpdateCommand>
-              </DbSource>
-            </Sources>
-          </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="MetodoDePagamentoTableAdapter" GeneratorDataComponentClassName="MetodoDePagamentoTableAdapter" Name="MetodoDePagamento" UserDataComponentName="MetodoDePagamentoTableAdapter">
-            <MainSource>
-              <DbSource ConnectionRef="GNPDVBDConnectionString (Settings)" DbObjectName="GNPDVBD.dbo.MetodoDePagamento" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
-                <DeleteCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM [MetodoDePagamento] WHERE (([idPagamento] = @Original_idPagamento) AND ((@IsNull_pagamentoTipo = 1 AND [pagamentoTipo] IS NULL) OR ([pagamentoTipo] = @Original_pagamentoTipo)))</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_idPagamento" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idPagamento" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_pagamentoTipo" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="pagamentoTipo" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_pagamentoTipo" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="pagamentoTipo" SourceColumnNullMapping="false" SourceVersion="Original" />
-                    </Parameters>
-                  </DbCommand>
-                </DeleteCommand>
-                <InsertCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO [MetodoDePagamento] ([idPagamento], [pagamentoTipo]) VALUES (@idPagamento, @pagamentoTipo);
-SELECT idPagamento, pagamentoTipo FROM MetodoDePagamento WHERE (idPagamento = @idPagamento)</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@idPagamento" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idPagamento" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@pagamentoTipo" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="pagamentoTipo" SourceColumnNullMapping="false" SourceVersion="Current" />
-                    </Parameters>
-                  </DbCommand>
-                </InsertCommand>
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        MetodoDePagamento.*
-FROM            MetodoDePagamento</CommandText>
-                    <Parameters />
-                  </DbCommand>
-                </SelectCommand>
-                <UpdateCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE [MetodoDePagamento] SET [idPagamento] = @idPagamento, [pagamentoTipo] = @pagamentoTipo WHERE (([idPagamento] = @Original_idPagamento) AND ((@IsNull_pagamentoTipo = 1 AND [pagamentoTipo] IS NULL) OR ([pagamentoTipo] = @Original_pagamentoTipo)));
-SELECT idPagamento, pagamentoTipo FROM MetodoDePagamento WHERE (idPagamento = @idPagamento)</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@idPagamento" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idPagamento" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@pagamentoTipo" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="pagamentoTipo" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_idPagamento" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idPagamento" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_pagamentoTipo" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="pagamentoTipo" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_pagamentoTipo" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="pagamentoTipo" SourceColumnNullMapping="false" SourceVersion="Original" />
-                    </Parameters>
-                  </DbCommand>
-                </UpdateCommand>
-              </DbSource>
-            </MainSource>
-            <Mappings>
-              <Mapping SourceColumn="idPagamento" DataSetColumn="idPagamento" />
-              <Mapping SourceColumn="pagamentoTipo" DataSetColumn="pagamentoTipo" />
-            </Mappings>
-            <Sources />
-          </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="PagamentoTableAdapter" GeneratorDataComponentClassName="PagamentoTableAdapter" Name="Pagamento" UserDataComponentName="PagamentoTableAdapter">
-            <MainSource>
-              <DbSource ConnectionRef="GNPDVBDConnectionString (Settings)" DbObjectName="GNPDVBD.dbo.Pagamento" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
-                <InsertCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO [Pagamento] ([idPagamento], [idVenda], [pagValor]) VALUES (@idPagamento, @idVenda, @pagValor)</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@idPagamento" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idPagamento" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@idVenda" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idVenda" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@pagValor" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="pagValor" SourceColumnNullMapping="false" SourceVersion="Current" />
-                    </Parameters>
-                  </DbCommand>
-                </InsertCommand>
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Pagamento.*
-FROM            Pagamento</CommandText>
-                    <Parameters />
-                  </DbCommand>
-                </SelectCommand>
-              </DbSource>
-            </MainSource>
-            <Mappings>
-              <Mapping SourceColumn="idPagamento" DataSetColumn="idPagamento" />
-              <Mapping SourceColumn="idVenda" DataSetColumn="idVenda" />
-              <Mapping SourceColumn="pagValor" DataSetColumn="pagValor" />
-            </Mappings>
-            <Sources>
-              <DbSource ConnectionRef="GNPDVBDConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertQueryPagamento" Modifier="Public" Name="InsertQueryPagamento" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="InsertQueryPagamento">
-                <InsertCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>INSERT INTO [Pagamento] ([idPagamento], [idVenda], [pagValor]) VALUES (@idPagamento, @idVenda, @pagValor)</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="idPagamento" ColumnName="idPagamento" DataSourceName="GNPDVBD.dbo.Pagamento" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@idPagamento" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="idPagamento" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="idVenda" ColumnName="idVenda" DataSourceName="GNPDVBD.dbo.Pagamento" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@idVenda" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="idVenda" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="pagValor" ColumnName="pagValor" DataSourceName="GNPDVBD.dbo.Pagamento" DataTypeServer="float" DbType="Double" Direction="Input" ParameterName="@pagValor" Precision="0" ProviderType="Float" Scale="0" Size="8" SourceColumn="pagValor" SourceColumnNullMapping="false" SourceVersion="Current" />
-                    </Parameters>
-                  </DbCommand>
-                </InsertCommand>
-              </DbSource>
-            </Sources>
-          </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="FechamentoTableAdapter" GeneratorDataComponentClassName="FechamentoTableAdapter" Name="Fechamento" UserDataComponentName="FechamentoTableAdapter">
-            <MainSource>
-              <DbSource ConnectionRef="GNPDVBDConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Funcionario.funcNome, Venda.valorCompra, Venda.vendData, MetodoDePagamento.pagamentoTipo, Caixa.caixaValorDinheiro
-FROM            Funcionario INNER JOIN
-                         Caixa INNER JOIN
-                         Pagamento INNER JOIN
-                         MetodoDePagamento ON Pagamento.idPagamento = MetodoDePagamento.idPagamento INNER JOIN
-                         Venda ON Pagamento.idVenda = Venda.idVenda ON Caixa.idCaixa = Venda.idCaixa ON Funcionario.idFuncionario = Venda.idFuncionario
-WHERE        (DAY(Caixa.caixaAbertura) = @dia) AND (MONTH(Caixa.caixaAbertura) = @mes) AND (YEAR(Caixa.caixaAbertura) = @ano)</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="dia" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="Int32" Direction="Input" ParameterName="@dia" Precision="0" Scale="0" Size="0" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="mes" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="Decimal" Direction="Input" ParameterName="@mes" Precision="0" Scale="0" Size="0" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="ano" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="Decimal" Direction="Input" ParameterName="@ano" Precision="0" Scale="0" Size="0" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
-                    </Parameters>
-                  </DbCommand>
-                </SelectCommand>
-              </DbSource>
-            </MainSource>
-            <Mappings>
-              <Mapping SourceColumn="funcNome" DataSetColumn="funcNome" />
-              <Mapping SourceColumn="valorCompra" DataSetColumn="valorCompra" />
-              <Mapping SourceColumn="vendData" DataSetColumn="vendData" />
-              <Mapping SourceColumn="pagamentoTipo" DataSetColumn="pagamentoTipo" />
-              <Mapping SourceColumn="caixaValorDinheiro" DataSetColumn="caixaValorDinheiro" />
-            </Mappings>
-            <Sources>
-              <DbSource ConnectionRef="GNPDVBDConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBySemIdVenda" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBySemIdVenda" GeneratorSourceName="FillBySemIdVenda" GetMethodModifier="Public" GetMethodName="GetDataBySemIdVenda" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBySemIdVenda" UserSourceName="FillBySemIdVenda">
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Funcionario.funcNome AS Nome, Venda.valorCompra AS [Valor Venda]]], Venda.vendData AS [Data e Hora], 
-                         MetodoDePagamento.pagamentoTipo AS [Metodo de Pagamento], Caixa.caixaValorDinheiro AS [Valor em Caixa]
-FROM            Funcionario INNER JOIN
-                         Caixa INNER JOIN
-                         Pagamento INNER JOIN
-                         MetodoDePagamento ON Pagamento.idPagamento = MetodoDePagamento.idPagamento INNER JOIN
-                         Venda ON Pagamento.idVenda = Venda.idVenda ON Caixa.idCaixa = Venda.idCaixa ON Funcionario.idFuncionario = Venda.idFuncionario
-WHERE        (DAY(Caixa.caixaAbertura) = @dia) AND (MONTH(Caixa.caixaAbertura) = @mes) AND (YEAR(Caixa.caixaAbertura) = @ano)</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="dia" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="Int32" Direction="Input" ParameterName="@dia" Precision="0" Scale="0" Size="0" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="mes" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="Decimal" Direction="Input" ParameterName="@mes" Precision="0" Scale="0" Size="0" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="ano" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="Decimal" Direction="Input" ParameterName="@ano" Precision="0" Scale="0" Size="0" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
-                    </Parameters>
-                  </DbCommand>
-                </SelectCommand>
               </DbSource>
             </Sources>
           </TableAdapter>
@@ -1061,6 +913,168 @@ where funcNome = @funcNome</CommandText>
               </DbSource>
             </Sources>
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="PagamentoTableAdapter" GeneratorDataComponentClassName="PagamentoTableAdapter" Name="Pagamento" UserDataComponentName="PagamentoTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="GNPDVBDConnectionString (Settings)" DbObjectName="GNPDVBD.dbo.Pagamento" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [Pagamento] WHERE (([IdPagamento] = @Original_IdPagamento) AND ((@IsNull_PagValor = 1 AND [PagValor] IS NULL) OR ([PagValor] = @Original_PagValor)) AND ((@IsNull_idVenda = 1 AND [idVenda] IS NULL) OR ([idVenda] = @Original_idVenda)) AND ((@IsNull_idMPagamento = 1 AND [idMPagamento] IS NULL) OR ([idMPagamento] = @Original_idMPagamento)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_IdPagamento" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IdPagamento" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_PagValor" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="PagValor" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Original_PagValor" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="PagValor" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_idVenda" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idVenda" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_idVenda" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idVenda" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_idMPagamento" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idMPagamento" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_idMPagamento" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idMPagamento" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [Pagamento] ([IdPagamento], [PagValor], [idVenda], [idMPagamento]) VALUES (@IdPagamento, @PagValor, @idVenda, @idMPagamento);
+SELECT IdPagamento, PagValor, idVenda, idMPagamento FROM Pagamento WHERE (IdPagamento = @IdPagamento)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IdPagamento" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IdPagamento" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@PagValor" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="PagValor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@idVenda" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idVenda" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@idMPagamento" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idMPagamento" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Pagamento.*
+FROM            Pagamento</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [Pagamento] SET [IdPagamento] = @IdPagamento, [PagValor] = @PagValor, [idVenda] = @idVenda, [idMPagamento] = @idMPagamento WHERE (([IdPagamento] = @Original_IdPagamento) AND ((@IsNull_PagValor = 1 AND [PagValor] IS NULL) OR ([PagValor] = @Original_PagValor)) AND ((@IsNull_idVenda = 1 AND [idVenda] IS NULL) OR ([idVenda] = @Original_idVenda)) AND ((@IsNull_idMPagamento = 1 AND [idMPagamento] IS NULL) OR ([idMPagamento] = @Original_idMPagamento)));
+SELECT IdPagamento, PagValor, idVenda, idMPagamento FROM Pagamento WHERE (IdPagamento = @IdPagamento)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IdPagamento" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IdPagamento" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@PagValor" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="PagValor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@idVenda" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idVenda" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@idMPagamento" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idMPagamento" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_IdPagamento" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IdPagamento" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_PagValor" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="PagValor" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Original_PagValor" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="PagValor" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_idVenda" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idVenda" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_idVenda" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idVenda" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_idMPagamento" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idMPagamento" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_idMPagamento" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idMPagamento" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="IdPagamento" DataSetColumn="IdPagamento" />
+              <Mapping SourceColumn="PagValor" DataSetColumn="PagValor" />
+              <Mapping SourceColumn="idVenda" DataSetColumn="idVenda" />
+              <Mapping SourceColumn="idMPagamento" DataSetColumn="idMPagamento" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="GNPDVBDConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertQuery" Modifier="Public" Name="InsertQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="InsertQuery">
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>INSERT INTO [Pagamento] ( [PagValor], [idVenda], [idMPagamento]) VALUES (@PagValor, @idVenda, @idMPagamento);
+SELECT  PagValor, idVenda, idMPagamento FROM Pagamento </CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="PagValor" ColumnName="PagValor" DataSourceName="GNPDVBD.dbo.Pagamento" DataTypeServer="float" DbType="Double" Direction="Input" ParameterName="@PagValor" Precision="0" ProviderType="Float" Scale="0" Size="8" SourceColumn="PagValor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="idVenda" ColumnName="idVenda" DataSourceName="GNPDVBD.dbo.Pagamento" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@idVenda" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="idVenda" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="idMPagamento" ColumnName="idMPagamento" DataSourceName="GNPDVBD.dbo.Pagamento" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@idMPagamento" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="idMPagamento" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="MetodoDePagamentoTableAdapter" GeneratorDataComponentClassName="MetodoDePagamentoTableAdapter" Name="MetodoDePagamento" UserDataComponentName="MetodoDePagamentoTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="GNPDVBDConnectionString (Settings)" DbObjectName="GNPDVBD.dbo.MetodoDePagamento" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [MetodoDePagamento] WHERE (((@IsNull_pagamentoTipo = 1 AND [pagamentoTipo] IS NULL) OR ([pagamentoTipo] = @Original_pagamentoTipo)) AND ([idMPagamento] = @Original_idMPagamento))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_pagamentoTipo" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="pagamentoTipo" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_pagamentoTipo" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="pagamentoTipo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_idMPagamento" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idMPagamento" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [MetodoDePagamento] ([pagamentoTipo], [idMPagamento]) VALUES (@pagamentoTipo, @idMPagamento);
+SELECT pagamentoTipo, idMPagamento FROM MetodoDePagamento WHERE (idMPagamento = @idMPagamento)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@pagamentoTipo" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="pagamentoTipo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@idMPagamento" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idMPagamento" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        MetodoDePagamento.*
+FROM            MetodoDePagamento</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [MetodoDePagamento] SET [pagamentoTipo] = @pagamentoTipo, [idMPagamento] = @idMPagamento WHERE (((@IsNull_pagamentoTipo = 1 AND [pagamentoTipo] IS NULL) OR ([pagamentoTipo] = @Original_pagamentoTipo)) AND ([idMPagamento] = @Original_idMPagamento));
+SELECT pagamentoTipo, idMPagamento FROM MetodoDePagamento WHERE (idMPagamento = @idMPagamento)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@pagamentoTipo" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="pagamentoTipo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@idMPagamento" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idMPagamento" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_pagamentoTipo" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="pagamentoTipo" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_pagamentoTipo" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="pagamentoTipo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_idMPagamento" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idMPagamento" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="pagamentoTipo" DataSetColumn="pagamentoTipo" />
+              <Mapping SourceColumn="idMPagamento" DataSetColumn="idMPagamento" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="FechamentoTableAdapter" GeneratorDataComponentClassName="FechamentoTableAdapter" Name="Fechamento" UserDataComponentName="FechamentoTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="GNPDVBDConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Pagamento.idVenda, Funcionario.funcNome, Pagamento.PagValor, MetodoDePagamento.pagamentoTipo, Venda.vendData, Venda.valorCompra
+FROM            Funcionario INNER JOIN
+                         Caixa INNER JOIN
+                         Pagamento INNER JOIN
+                         MetodoDePagamento ON Pagamento.idMPagamento = MetodoDePagamento.idMPagamento INNER JOIN
+                         Venda ON Pagamento.idVenda = Venda.idVenda ON Caixa.idCaixa = Venda.idCaixa ON Funcionario.idFuncionario = Venda.idFuncionario
+
+where DAY(caixaAbertura) = @dia AND MONTH(caixaAbertura) = @mes AND YEAR(caixaAbertura) = @ano</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="dia" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="Int32" Direction="Input" ParameterName="@dia" Precision="0" Scale="0" Size="0" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="mes" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="Decimal" Direction="Input" ParameterName="@mes" Precision="0" Scale="0" Size="0" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="ano" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="Decimal" Direction="Input" ParameterName="@ano" Precision="0" Scale="0" Size="0" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="idVenda" DataSetColumn="idVenda" />
+              <Mapping SourceColumn="funcNome" DataSetColumn="funcNome" />
+              <Mapping SourceColumn="PagValor" DataSetColumn="PagValor" />
+              <Mapping SourceColumn="pagamentoTipo" DataSetColumn="pagamentoTipo" />
+              <Mapping SourceColumn="vendData" DataSetColumn="vendData" />
+              <Mapping SourceColumn="valorCompra" DataSetColumn="valorCompra" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -1069,7 +1083,7 @@ where funcNome = @funcNome</CommandText>
   <xs:element name="DataSetGnPdv" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetGnPdv" msprop:Generator_UserDSName="DataSetGnPdv">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Cargo" msprop:Generator_TableClassName="CargoDataTable" msprop:Generator_TableVarName="tableCargo" msprop:Generator_RowChangedName="CargoRowChanged" msprop:Generator_TablePropName="Cargo" msprop:Generator_RowDeletingName="CargoRowDeleting" msprop:Generator_RowChangingName="CargoRowChanging" msprop:Generator_RowEvHandlerName="CargoRowChangeEventHandler" msprop:Generator_RowDeletedName="CargoRowDeleted" msprop:Generator_RowClassName="CargoRow" msprop:Generator_UserTableName="Cargo" msprop:Generator_RowEvArgName="CargoRowChangeEvent">
+        <xs:element name="Cargo" msprop:Generator_TableClassName="CargoDataTable" msprop:Generator_TableVarName="tableCargo" msprop:Generator_TablePropName="Cargo" msprop:Generator_RowDeletingName="CargoRowDeleting" msprop:Generator_RowChangingName="CargoRowChanging" msprop:Generator_RowEvHandlerName="CargoRowChangeEventHandler" msprop:Generator_RowDeletedName="CargoRowDeleted" msprop:Generator_UserTableName="Cargo" msprop:Generator_RowChangedName="CargoRowChanged" msprop:Generator_RowEvArgName="CargoRowChangeEvent" msprop:Generator_RowClassName="CargoRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="idCargo" msprop:Generator_ColumnVarNameInTable="columnidCargo" msprop:Generator_ColumnPropNameInRow="idCargo" msprop:Generator_ColumnPropNameInTable="idCargoColumn" msprop:Generator_UserColumnName="idCargo" type="xs:int" />
@@ -1083,7 +1097,7 @@ where funcNome = @funcNome</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Funcionario" msprop:Generator_TableClassName="FuncionarioDataTable" msprop:Generator_TableVarName="tableFuncionario" msprop:Generator_RowChangedName="FuncionarioRowChanged" msprop:Generator_TablePropName="Funcionario" msprop:Generator_RowDeletingName="FuncionarioRowDeleting" msprop:Generator_RowChangingName="FuncionarioRowChanging" msprop:Generator_RowEvHandlerName="FuncionarioRowChangeEventHandler" msprop:Generator_RowDeletedName="FuncionarioRowDeleted" msprop:Generator_RowClassName="FuncionarioRow" msprop:Generator_UserTableName="Funcionario" msprop:Generator_RowEvArgName="FuncionarioRowChangeEvent">
+        <xs:element name="Funcionario" msprop:Generator_TableClassName="FuncionarioDataTable" msprop:Generator_TableVarName="tableFuncionario" msprop:Generator_TablePropName="Funcionario" msprop:Generator_RowDeletingName="FuncionarioRowDeleting" msprop:Generator_RowChangingName="FuncionarioRowChanging" msprop:Generator_RowEvHandlerName="FuncionarioRowChangeEventHandler" msprop:Generator_RowDeletedName="FuncionarioRowDeleted" msprop:Generator_UserTableName="Funcionario" msprop:Generator_RowChangedName="FuncionarioRowChanged" msprop:Generator_RowEvArgName="FuncionarioRowChangeEvent" msprop:Generator_RowClassName="FuncionarioRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="idFuncionario" msprop:Generator_ColumnVarNameInTable="columnidFuncionario" msprop:Generator_ColumnPropNameInRow="idFuncionario" msprop:Generator_ColumnPropNameInTable="idFuncionarioColumn" msprop:Generator_UserColumnName="idFuncionario" type="xs:int" />
@@ -1122,7 +1136,7 @@ where funcNome = @funcNome</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ItensDaVenda" msprop:Generator_TableClassName="ItensDaVendaDataTable" msprop:Generator_TableVarName="tableItensDaVenda" msprop:Generator_RowChangedName="ItensDaVendaRowChanged" msprop:Generator_TablePropName="ItensDaVenda" msprop:Generator_RowDeletingName="ItensDaVendaRowDeleting" msprop:Generator_RowChangingName="ItensDaVendaRowChanging" msprop:Generator_RowEvHandlerName="ItensDaVendaRowChangeEventHandler" msprop:Generator_RowDeletedName="ItensDaVendaRowDeleted" msprop:Generator_RowClassName="ItensDaVendaRow" msprop:Generator_UserTableName="ItensDaVenda" msprop:Generator_RowEvArgName="ItensDaVendaRowChangeEvent">
+        <xs:element name="ItensDaVenda" msprop:Generator_TableClassName="ItensDaVendaDataTable" msprop:Generator_TableVarName="tableItensDaVenda" msprop:Generator_TablePropName="ItensDaVenda" msprop:Generator_RowDeletingName="ItensDaVendaRowDeleting" msprop:Generator_RowChangingName="ItensDaVendaRowChanging" msprop:Generator_RowEvHandlerName="ItensDaVendaRowChangeEventHandler" msprop:Generator_RowDeletedName="ItensDaVendaRowDeleted" msprop:Generator_UserTableName="ItensDaVenda" msprop:Generator_RowChangedName="ItensDaVendaRowChanged" msprop:Generator_RowEvArgName="ItensDaVendaRowChangeEvent" msprop:Generator_RowClassName="ItensDaVendaRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="idItens" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnidItens" msprop:Generator_ColumnPropNameInRow="idItens" msprop:Generator_ColumnPropNameInTable="idItensColumn" msprop:Generator_UserColumnName="idItens" type="xs:int" />
@@ -1134,7 +1148,7 @@ where funcNome = @funcNome</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Produto" msprop:Generator_TableClassName="ProdutoDataTable" msprop:Generator_TableVarName="tableProduto" msprop:Generator_RowChangedName="ProdutoRowChanged" msprop:Generator_TablePropName="Produto" msprop:Generator_RowDeletingName="ProdutoRowDeleting" msprop:Generator_RowChangingName="ProdutoRowChanging" msprop:Generator_RowEvHandlerName="ProdutoRowChangeEventHandler" msprop:Generator_RowDeletedName="ProdutoRowDeleted" msprop:Generator_RowClassName="ProdutoRow" msprop:Generator_UserTableName="Produto" msprop:Generator_RowEvArgName="ProdutoRowChangeEvent">
+        <xs:element name="Produto" msprop:Generator_TableClassName="ProdutoDataTable" msprop:Generator_TableVarName="tableProduto" msprop:Generator_TablePropName="Produto" msprop:Generator_RowDeletingName="ProdutoRowDeleting" msprop:Generator_RowChangingName="ProdutoRowChanging" msprop:Generator_RowEvHandlerName="ProdutoRowChangeEventHandler" msprop:Generator_RowDeletedName="ProdutoRowDeleted" msprop:Generator_UserTableName="Produto" msprop:Generator_RowChangedName="ProdutoRowChanged" msprop:Generator_RowEvArgName="ProdutoRowChangeEvent" msprop:Generator_RowClassName="ProdutoRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="idProduto" msprop:Generator_ColumnVarNameInTable="columnidProduto" msprop:Generator_ColumnPropNameInRow="idProduto" msprop:Generator_ColumnPropNameInTable="idProdutoColumn" msprop:Generator_UserColumnName="idProduto" type="xs:int" />
@@ -1183,7 +1197,7 @@ where funcNome = @funcNome</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Venda" msprop:Generator_TableClassName="VendaDataTable" msprop:Generator_TableVarName="tableVenda" msprop:Generator_RowChangedName="VendaRowChanged" msprop:Generator_TablePropName="Venda" msprop:Generator_RowDeletingName="VendaRowDeleting" msprop:Generator_RowChangingName="VendaRowChanging" msprop:Generator_RowEvHandlerName="VendaRowChangeEventHandler" msprop:Generator_RowDeletedName="VendaRowDeleted" msprop:Generator_RowClassName="VendaRow" msprop:Generator_UserTableName="Venda" msprop:Generator_RowEvArgName="VendaRowChangeEvent">
+        <xs:element name="Venda" msprop:Generator_TableClassName="VendaDataTable" msprop:Generator_TableVarName="tableVenda" msprop:Generator_TablePropName="Venda" msprop:Generator_RowDeletingName="VendaRowDeleting" msprop:Generator_RowChangingName="VendaRowChanging" msprop:Generator_RowEvHandlerName="VendaRowChangeEventHandler" msprop:Generator_RowDeletedName="VendaRowDeleted" msprop:Generator_UserTableName="Venda" msprop:Generator_RowChangedName="VendaRowChanged" msprop:Generator_RowEvArgName="VendaRowChangeEvent" msprop:Generator_RowClassName="VendaRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="idVenda" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnidVenda" msprop:Generator_ColumnPropNameInRow="idVenda" msprop:Generator_ColumnPropNameInTable="idVendaColumn" msprop:Generator_UserColumnName="idVenda" type="xs:int" />
@@ -1201,7 +1215,7 @@ where funcNome = @funcNome</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Caixa" msprop:Generator_TableClassName="CaixaDataTable" msprop:Generator_TableVarName="tableCaixa" msprop:Generator_RowChangedName="CaixaRowChanged" msprop:Generator_TablePropName="Caixa" msprop:Generator_RowDeletingName="CaixaRowDeleting" msprop:Generator_RowChangingName="CaixaRowChanging" msprop:Generator_RowEvHandlerName="CaixaRowChangeEventHandler" msprop:Generator_RowDeletedName="CaixaRowDeleted" msprop:Generator_RowClassName="CaixaRow" msprop:Generator_UserTableName="Caixa" msprop:Generator_RowEvArgName="CaixaRowChangeEvent">
+        <xs:element name="Caixa" msprop:Generator_TableClassName="CaixaDataTable" msprop:Generator_TableVarName="tableCaixa" msprop:Generator_TablePropName="Caixa" msprop:Generator_RowDeletingName="CaixaRowDeleting" msprop:Generator_RowChangingName="CaixaRowChanging" msprop:Generator_RowEvHandlerName="CaixaRowChangeEventHandler" msprop:Generator_RowDeletedName="CaixaRowDeleted" msprop:Generator_UserTableName="Caixa" msprop:Generator_RowChangedName="CaixaRowChanged" msprop:Generator_RowEvArgName="CaixaRowChangeEvent" msprop:Generator_RowClassName="CaixaRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="idCaixa" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnidCaixa" msprop:Generator_ColumnPropNameInRow="idCaixa" msprop:Generator_ColumnPropNameInTable="idCaixaColumn" msprop:Generator_UserColumnName="idCaixa" type="xs:int" />
@@ -1211,10 +1225,11 @@ where funcNome = @funcNome</CommandText>
               <xs:element name="caixaValorDinheiro" msprop:Generator_ColumnVarNameInTable="columncaixaValorDinheiro" msprop:Generator_ColumnPropNameInRow="caixaValorDinheiro" msprop:Generator_ColumnPropNameInTable="caixaValorDinheiroColumn" msprop:Generator_UserColumnName="caixaValorDinheiro" type="xs:double" minOccurs="0" />
               <xs:element name="caixaFundo" msprop:Generator_ColumnVarNameInTable="columncaixaFundo" msprop:Generator_ColumnPropNameInRow="caixaFundo" msprop:Generator_ColumnPropNameInTable="caixaFundoColumn" msprop:Generator_UserColumnName="caixaFundo" type="xs:double" minOccurs="0" />
               <xs:element name="caixaValorCartaoDebito" msprop:Generator_ColumnVarNameInTable="columncaixaValorCartaoDebito" msprop:Generator_ColumnPropNameInRow="caixaValorCartaoDebito" msprop:Generator_ColumnPropNameInTable="caixaValorCartaoDebitoColumn" msprop:Generator_UserColumnName="caixaValorCartaoDebito" type="xs:double" minOccurs="0" />
+              <xs:element name="caixaValorAbertura" msprop:Generator_ColumnVarNameInTable="columncaixaValorAbertura" msprop:Generator_ColumnPropNameInRow="caixaValorAbertura" msprop:Generator_ColumnPropNameInTable="caixaValorAberturaColumn" msprop:Generator_UserColumnName="caixaValorAbertura" type="xs:double" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Sangria" msprop:Generator_TableClassName="SangriaDataTable" msprop:Generator_TableVarName="tableSangria" msprop:Generator_RowChangedName="SangriaRowChanged" msprop:Generator_TablePropName="Sangria" msprop:Generator_RowDeletingName="SangriaRowDeleting" msprop:Generator_RowChangingName="SangriaRowChanging" msprop:Generator_RowEvHandlerName="SangriaRowChangeEventHandler" msprop:Generator_RowDeletedName="SangriaRowDeleted" msprop:Generator_RowClassName="SangriaRow" msprop:Generator_UserTableName="Sangria" msprop:Generator_RowEvArgName="SangriaRowChangeEvent">
+        <xs:element name="Sangria" msprop:Generator_TableClassName="SangriaDataTable" msprop:Generator_TableVarName="tableSangria" msprop:Generator_TablePropName="Sangria" msprop:Generator_RowDeletingName="SangriaRowDeleting" msprop:Generator_RowChangingName="SangriaRowChanging" msprop:Generator_RowEvHandlerName="SangriaRowChangeEventHandler" msprop:Generator_RowDeletedName="SangriaRowDeleted" msprop:Generator_UserTableName="Sangria" msprop:Generator_RowChangedName="SangriaRowChanged" msprop:Generator_RowEvArgName="SangriaRowChangeEvent" msprop:Generator_RowClassName="SangriaRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="idSangria" msprop:Generator_ColumnVarNameInTable="columnidSangria" msprop:Generator_ColumnPropNameInRow="idSangria" msprop:Generator_ColumnPropNameInTable="idSangriaColumn" msprop:Generator_UserColumnName="idSangria" type="xs:int" />
@@ -1225,53 +1240,7 @@ where funcNome = @funcNome</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="MetodoDePagamento" msprop:Generator_TableClassName="MetodoDePagamentoDataTable" msprop:Generator_TableVarName="tableMetodoDePagamento" msprop:Generator_TablePropName="MetodoDePagamento" msprop:Generator_RowDeletingName="MetodoDePagamentoRowDeleting" msprop:Generator_RowChangingName="MetodoDePagamentoRowChanging" msprop:Generator_RowEvHandlerName="MetodoDePagamentoRowChangeEventHandler" msprop:Generator_RowDeletedName="MetodoDePagamentoRowDeleted" msprop:Generator_UserTableName="MetodoDePagamento" msprop:Generator_RowChangedName="MetodoDePagamentoRowChanged" msprop:Generator_RowEvArgName="MetodoDePagamentoRowChangeEvent" msprop:Generator_RowClassName="MetodoDePagamentoRow">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="idPagamento" msprop:Generator_ColumnVarNameInTable="columnidPagamento" msprop:Generator_ColumnPropNameInRow="idPagamento" msprop:Generator_ColumnPropNameInTable="idPagamentoColumn" msprop:Generator_UserColumnName="idPagamento" type="xs:int" />
-              <xs:element name="pagamentoTipo" msprop:Generator_ColumnVarNameInTable="columnpagamentoTipo" msprop:Generator_ColumnPropNameInRow="pagamentoTipo" msprop:Generator_ColumnPropNameInTable="pagamentoTipoColumn" msprop:Generator_UserColumnName="pagamentoTipo" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="20" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="Pagamento" msprop:Generator_TableClassName="PagamentoDataTable" msprop:Generator_TableVarName="tablePagamento" msprop:Generator_TablePropName="Pagamento" msprop:Generator_RowDeletingName="PagamentoRowDeleting" msprop:Generator_RowChangingName="PagamentoRowChanging" msprop:Generator_RowEvHandlerName="PagamentoRowChangeEventHandler" msprop:Generator_RowDeletedName="PagamentoRowDeleted" msprop:Generator_UserTableName="Pagamento" msprop:Generator_RowChangedName="PagamentoRowChanged" msprop:Generator_RowEvArgName="PagamentoRowChangeEvent" msprop:Generator_RowClassName="PagamentoRow">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="idPagamento" msprop:Generator_ColumnVarNameInTable="columnidPagamento" msprop:Generator_ColumnPropNameInRow="idPagamento" msprop:Generator_ColumnPropNameInTable="idPagamentoColumn" msprop:Generator_UserColumnName="idPagamento" type="xs:int" />
-              <xs:element name="idVenda" msprop:Generator_ColumnVarNameInTable="columnidVenda" msprop:Generator_ColumnPropNameInRow="idVenda" msprop:Generator_ColumnPropNameInTable="idVendaColumn" msprop:Generator_UserColumnName="idVenda" type="xs:int" />
-              <xs:element name="pagValor" msprop:Generator_ColumnVarNameInTable="columnpagValor" msprop:Generator_ColumnPropNameInRow="pagValor" msprop:Generator_ColumnPropNameInTable="pagValorColumn" msprop:Generator_UserColumnName="pagValor" type="xs:double" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="Fechamento" msprop:Generator_TableClassName="FechamentoDataTable" msprop:Generator_TableVarName="tableFechamento" msprop:Generator_RowChangedName="FechamentoRowChanged" msprop:Generator_TablePropName="Fechamento" msprop:Generator_RowDeletingName="FechamentoRowDeleting" msprop:Generator_RowChangingName="FechamentoRowChanging" msprop:Generator_RowEvHandlerName="FechamentoRowChangeEventHandler" msprop:Generator_RowDeletedName="FechamentoRowDeleted" msprop:Generator_RowClassName="FechamentoRow" msprop:Generator_UserTableName="Fechamento" msprop:Generator_RowEvArgName="FechamentoRowChangeEvent">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="funcNome" msprop:Generator_ColumnVarNameInTable="columnfuncNome" msprop:Generator_ColumnPropNameInRow="funcNome" msprop:Generator_ColumnPropNameInTable="funcNomeColumn" msprop:Generator_UserColumnName="funcNome" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="valorCompra" msprop:Generator_ColumnVarNameInTable="columnvalorCompra" msprop:Generator_ColumnPropNameInRow="valorCompra" msprop:Generator_ColumnPropNameInTable="valorCompraColumn" msprop:Generator_UserColumnName="valorCompra" type="xs:double" minOccurs="0" />
-              <xs:element name="vendData" msprop:Generator_ColumnVarNameInTable="columnvendData" msprop:Generator_ColumnPropNameInRow="vendData" msprop:Generator_ColumnPropNameInTable="vendDataColumn" msprop:Generator_UserColumnName="vendData" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="pagamentoTipo" msprop:Generator_ColumnVarNameInTable="columnpagamentoTipo" msprop:Generator_ColumnPropNameInRow="pagamentoTipo" msprop:Generator_ColumnPropNameInTable="pagamentoTipoColumn" msprop:Generator_UserColumnName="pagamentoTipo" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="20" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="caixaValorDinheiro" msprop:Generator_ColumnVarNameInTable="columncaixaValorDinheiro" msprop:Generator_ColumnPropNameInRow="caixaValorDinheiro" msprop:Generator_ColumnPropNameInTable="caixaValorDinheiroColumn" msprop:Generator_UserColumnName="caixaValorDinheiro" type="xs:double" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="FechamentoSangria" msprop:Generator_TableClassName="FechamentoSangriaDataTable" msprop:Generator_TableVarName="tableFechamentoSangria" msprop:Generator_TablePropName="FechamentoSangria" msprop:Generator_RowDeletingName="FechamentoSangriaRowDeleting" msprop:Generator_RowChangingName="FechamentoSangriaRowChanging" msprop:Generator_RowEvHandlerName="FechamentoSangriaRowChangeEventHandler" msprop:Generator_RowDeletedName="FechamentoSangriaRowDeleted" msprop:Generator_UserTableName="FechamentoSangria" msprop:Generator_RowChangedName="FechamentoSangriaRowChanged" msprop:Generator_RowEvArgName="FechamentoSangriaRowChangeEvent" msprop:Generator_RowClassName="FechamentoSangriaRow">
+        <xs:element name="FechamentoSangria" msprop:Generator_TableClassName="FechamentoSangriaDataTable" msprop:Generator_TableVarName="tableFechamentoSangria" msprop:Generator_RowChangedName="FechamentoSangriaRowChanged" msprop:Generator_TablePropName="FechamentoSangria" msprop:Generator_RowDeletingName="FechamentoSangriaRowDeleting" msprop:Generator_RowChangingName="FechamentoSangriaRowChanging" msprop:Generator_RowEvHandlerName="FechamentoSangriaRowChangeEventHandler" msprop:Generator_RowDeletedName="FechamentoSangriaRowDeleted" msprop:Generator_RowClassName="FechamentoSangriaRow" msprop:Generator_UserTableName="FechamentoSangria" msprop:Generator_RowEvArgName="FechamentoSangriaRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="idFuncionario" msprop:Generator_ColumnVarNameInTable="columnidFuncionario" msprop:Generator_ColumnPropNameInRow="idFuncionario" msprop:Generator_ColumnPropNameInTable="idFuncionarioColumn" msprop:Generator_UserColumnName="idFuncionario" type="xs:int" minOccurs="0" />
@@ -1288,7 +1257,7 @@ where funcNome = @funcNome</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="FuncionariosCargo" msprop:Generator_TableClassName="FuncionariosCargoDataTable" msprop:Generator_TableVarName="tableFuncionariosCargo" msprop:Generator_RowChangedName="FuncionariosCargoRowChanged" msprop:Generator_TablePropName="FuncionariosCargo" msprop:Generator_RowDeletingName="FuncionariosCargoRowDeleting" msprop:Generator_RowChangingName="FuncionariosCargoRowChanging" msprop:Generator_RowEvHandlerName="FuncionariosCargoRowChangeEventHandler" msprop:Generator_RowDeletedName="FuncionariosCargoRowDeleted" msprop:Generator_RowClassName="FuncionariosCargoRow" msprop:Generator_UserTableName="FuncionariosCargo" msprop:Generator_RowEvArgName="FuncionariosCargoRowChangeEvent">
+        <xs:element name="FuncionariosCargo" msprop:Generator_TableClassName="FuncionariosCargoDataTable" msprop:Generator_TableVarName="tableFuncionariosCargo" msprop:Generator_TablePropName="FuncionariosCargo" msprop:Generator_RowDeletingName="FuncionariosCargoRowDeleting" msprop:Generator_RowChangingName="FuncionariosCargoRowChanging" msprop:Generator_RowEvHandlerName="FuncionariosCargoRowChangeEventHandler" msprop:Generator_RowDeletedName="FuncionariosCargoRowDeleted" msprop:Generator_UserTableName="FuncionariosCargo" msprop:Generator_RowChangedName="FuncionariosCargoRowChanged" msprop:Generator_RowEvArgName="FuncionariosCargoRowChangeEvent" msprop:Generator_RowClassName="FuncionariosCargoRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="idFuncionario" msprop:Generator_ColumnVarNameInTable="columnidFuncionario" msprop:Generator_ColumnPropNameInRow="idFuncionario" msprop:Generator_ColumnPropNameInTable="idFuncionarioColumn" msprop:Generator_UserColumnName="idFuncionario" type="xs:int" />
@@ -1331,6 +1300,54 @@ where funcNome = @funcNome</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="Pagamento" msprop:Generator_TableClassName="PagamentoDataTable" msprop:Generator_TableVarName="tablePagamento" msprop:Generator_TablePropName="Pagamento" msprop:Generator_RowDeletingName="PagamentoRowDeleting" msprop:Generator_RowChangingName="PagamentoRowChanging" msprop:Generator_RowEvHandlerName="PagamentoRowChangeEventHandler" msprop:Generator_RowDeletedName="PagamentoRowDeleted" msprop:Generator_UserTableName="Pagamento" msprop:Generator_RowChangedName="PagamentoRowChanged" msprop:Generator_RowEvArgName="PagamentoRowChangeEvent" msprop:Generator_RowClassName="PagamentoRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdPagamento" msprop:Generator_ColumnVarNameInTable="columnIdPagamento" msprop:Generator_ColumnPropNameInRow="IdPagamento" msprop:Generator_ColumnPropNameInTable="IdPagamentoColumn" msprop:Generator_UserColumnName="IdPagamento" type="xs:int" />
+              <xs:element name="PagValor" msprop:Generator_ColumnVarNameInTable="columnPagValor" msprop:Generator_ColumnPropNameInRow="PagValor" msprop:Generator_ColumnPropNameInTable="PagValorColumn" msprop:Generator_UserColumnName="PagValor" type="xs:double" minOccurs="0" />
+              <xs:element name="idVenda" msprop:Generator_ColumnVarNameInTable="columnidVenda" msprop:Generator_ColumnPropNameInRow="idVenda" msprop:Generator_ColumnPropNameInTable="idVendaColumn" msprop:Generator_UserColumnName="idVenda" type="xs:int" minOccurs="0" />
+              <xs:element name="idMPagamento" msprop:Generator_ColumnVarNameInTable="columnidMPagamento" msprop:Generator_ColumnPropNameInRow="idMPagamento" msprop:Generator_ColumnPropNameInTable="idMPagamentoColumn" msprop:Generator_UserColumnName="idMPagamento" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="MetodoDePagamento" msprop:Generator_TableClassName="MetodoDePagamentoDataTable" msprop:Generator_TableVarName="tableMetodoDePagamento" msprop:Generator_TablePropName="MetodoDePagamento" msprop:Generator_RowDeletingName="MetodoDePagamentoRowDeleting" msprop:Generator_RowChangingName="MetodoDePagamentoRowChanging" msprop:Generator_RowEvHandlerName="MetodoDePagamentoRowChangeEventHandler" msprop:Generator_RowDeletedName="MetodoDePagamentoRowDeleted" msprop:Generator_UserTableName="MetodoDePagamento" msprop:Generator_RowChangedName="MetodoDePagamentoRowChanged" msprop:Generator_RowEvArgName="MetodoDePagamentoRowChangeEvent" msprop:Generator_RowClassName="MetodoDePagamentoRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="pagamentoTipo" msprop:Generator_ColumnVarNameInTable="columnpagamentoTipo" msprop:Generator_ColumnPropNameInRow="pagamentoTipo" msprop:Generator_ColumnPropNameInTable="pagamentoTipoColumn" msprop:Generator_UserColumnName="pagamentoTipo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="idMPagamento" msprop:Generator_ColumnVarNameInTable="columnidMPagamento" msprop:Generator_ColumnPropNameInRow="idMPagamento" msprop:Generator_ColumnPropNameInTable="idMPagamentoColumn" msprop:Generator_UserColumnName="idMPagamento" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Fechamento" msprop:Generator_TableClassName="FechamentoDataTable" msprop:Generator_TableVarName="tableFechamento" msprop:Generator_TablePropName="Fechamento" msprop:Generator_RowDeletingName="FechamentoRowDeleting" msprop:Generator_RowChangingName="FechamentoRowChanging" msprop:Generator_RowEvHandlerName="FechamentoRowChangeEventHandler" msprop:Generator_RowDeletedName="FechamentoRowDeleted" msprop:Generator_UserTableName="Fechamento" msprop:Generator_RowChangedName="FechamentoRowChanged" msprop:Generator_RowEvArgName="FechamentoRowChangeEvent" msprop:Generator_RowClassName="FechamentoRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="idVenda" msprop:Generator_ColumnVarNameInTable="columnidVenda" msprop:Generator_ColumnPropNameInRow="idVenda" msprop:Generator_ColumnPropNameInTable="idVendaColumn" msprop:Generator_UserColumnName="idVenda" type="xs:int" minOccurs="0" />
+              <xs:element name="funcNome" msprop:Generator_ColumnVarNameInTable="columnfuncNome" msprop:Generator_ColumnPropNameInRow="funcNome" msprop:Generator_ColumnPropNameInTable="funcNomeColumn" msprop:Generator_UserColumnName="funcNome" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PagValor" msprop:Generator_ColumnVarNameInTable="columnPagValor" msprop:Generator_ColumnPropNameInRow="PagValor" msprop:Generator_ColumnPropNameInTable="PagValorColumn" msprop:Generator_UserColumnName="PagValor" type="xs:double" minOccurs="0" />
+              <xs:element name="pagamentoTipo" msprop:Generator_ColumnVarNameInTable="columnpagamentoTipo" msprop:Generator_ColumnPropNameInRow="pagamentoTipo" msprop:Generator_ColumnPropNameInTable="pagamentoTipoColumn" msprop:Generator_UserColumnName="pagamentoTipo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="vendData" msprop:Generator_ColumnVarNameInTable="columnvendData" msprop:Generator_ColumnPropNameInRow="vendData" msprop:Generator_ColumnPropNameInTable="vendDataColumn" msprop:Generator_UserColumnName="vendData" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="valorCompra" msprop:Generator_ColumnVarNameInTable="columnvalorCompra" msprop:Generator_ColumnPropNameInRow="valorCompra" msprop:Generator_ColumnPropNameInTable="valorCompraColumn" msprop:Generator_UserColumnName="valorCompra" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -1361,26 +1378,30 @@ where funcNome = @funcNome</CommandText>
       <xs:selector xpath=".//mstns:Sangria" />
       <xs:field xpath="mstns:idSangria" />
     </xs:unique>
-    <xs:unique name="MetodoDePagamento_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:MetodoDePagamento" />
-      <xs:field xpath="mstns:idPagamento" />
-    </xs:unique>
     <xs:unique name="FuncionariosCargo_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:FuncionariosCargo" />
       <xs:field xpath="mstns:idFuncionario" />
     </xs:unique>
+    <xs:unique name="Pagamento_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Pagamento" />
+      <xs:field xpath="mstns:IdPagamento" />
+    </xs:unique>
+    <xs:unique name="MetodoDePagamento_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:MetodoDePagamento" />
+      <xs:field xpath="mstns:idMPagamento" />
+    </xs:unique>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK__Funcionar__idCar__756D6ECB" msdata:parent="Cargo" msdata:child="Funcionario" msdata:parentkey="idCargo" msdata:childkey="idCargo" msprop:Generator_UserChildTable="Funcionario" msprop:Generator_ChildPropName="GetFuncionarioRows" msprop:Generator_UserRelationName="FK__Funcionar__idCar__756D6ECB" msprop:Generator_RelationVarName="relationFK__Funcionar__idCar__756D6ECB" msprop:Generator_UserParentTable="Cargo" msprop:Generator_ParentPropName="CargoRow" />
-      <msdata:Relationship name="FK__ItensDaVe__idPro__73852659" msdata:parent="Produto" msdata:child="ItensDaVenda" msdata:parentkey="idProduto" msdata:childkey="idProduto" msprop:Generator_UserChildTable="ItensDaVenda" msprop:Generator_ChildPropName="GetItensDaVendaRows" msprop:Generator_UserRelationName="FK__ItensDaVe__idPro__73852659" msprop:Generator_ParentPropName="ProdutoRow" msprop:Generator_RelationVarName="relationFK__ItensDaVe__idPro__73852659" msprop:Generator_UserParentTable="Produto" />
-      <msdata:Relationship name="FK__ItensDaVe__idVen__74794A92" msdata:parent="Venda" msdata:child="ItensDaVenda" msdata:parentkey="idVenda" msdata:childkey="idVenda" msprop:Generator_UserChildTable="ItensDaVenda" msprop:Generator_ChildPropName="GetItensDaVendaRows" msprop:Generator_UserRelationName="FK__ItensDaVe__idVen__74794A92" msprop:Generator_ParentPropName="VendaRow" msprop:Generator_RelationVarName="relationFK__ItensDaVe__idVen__74794A92" msprop:Generator_UserParentTable="Venda" />
-      <msdata:Relationship name="FK__Venda__idFuncion__6EC0713C" msdata:parent="Funcionario" msdata:child="Venda" msdata:parentkey="idFuncionario" msdata:childkey="idFuncionario" msprop:Generator_UserChildTable="Venda" msprop:Generator_ChildPropName="GetVendaRows" msprop:Generator_UserRelationName="FK__Venda__idFuncion__6EC0713C" msprop:Generator_RelationVarName="relationFK__Venda__idFuncion__6EC0713C" msprop:Generator_UserParentTable="Funcionario" msprop:Generator_ParentPropName="FuncionarioRow" />
-      <msdata:Relationship name="FK__Venda__idCaixa__2704CA5F" msdata:parent="Caixa" msdata:child="Venda" msdata:parentkey="idCaixa" msdata:childkey="idCaixa" msprop:Generator_UserChildTable="Venda" msprop:Generator_ChildPropName="GetVendaRows" msprop:Generator_UserRelationName="FK__Venda__idCaixa__2704CA5F" msprop:Generator_ParentPropName="CaixaRow" msprop:Generator_RelationVarName="relationFK__Venda__idCaixa__2704CA5F" msprop:Generator_UserParentTable="Caixa" />
-      <msdata:Relationship name="FK__Sangria__idFunci__69FBBC1F" msdata:parent="Funcionario" msdata:child="Sangria" msdata:parentkey="idFuncionario" msdata:childkey="idFuncionario" msprop:Generator_UserChildTable="Sangria" msprop:Generator_ChildPropName="GetSangriaRows" msprop:Generator_UserRelationName="FK__Sangria__idFunci__69FBBC1F" msprop:Generator_RelationVarName="relationFK__Sangria__idFunci__69FBBC1F" msprop:Generator_UserParentTable="Funcionario" msprop:Generator_ParentPropName="FuncionarioRow" />
-      <msdata:Relationship name="FK__Sangria__idCaixa__2334397B" msdata:parent="Caixa" msdata:child="Sangria" msdata:parentkey="idCaixa" msdata:childkey="idCaixa" msprop:Generator_UserChildTable="Sangria" msprop:Generator_ChildPropName="GetSangriaRows" msprop:Generator_UserRelationName="FK__Sangria__idCaixa__2334397B" msprop:Generator_ParentPropName="CaixaRow" msprop:Generator_RelationVarName="relationFK__Sangria__idCaixa__2334397B" msprop:Generator_UserParentTable="Caixa" />
-      <msdata:Relationship name="FK__Pagamento__idPag__2DB1C7EE" msdata:parent="MetodoDePagamento" msdata:child="Pagamento" msdata:parentkey="idPagamento" msdata:childkey="idPagamento" msprop:Generator_UserChildTable="Pagamento" msprop:Generator_ChildPropName="GetPagamentoRows" msprop:Generator_UserRelationName="FK__Pagamento__idPag__2DB1C7EE" msprop:Generator_ParentPropName="MetodoDePagamentoRow" msprop:Generator_RelationVarName="relationFK__Pagamento__idPag__2DB1C7EE" msprop:Generator_UserParentTable="MetodoDePagamento" />
-      <msdata:Relationship name="FK__Pagamento__idVen__2EA5EC27" msdata:parent="Venda" msdata:child="Pagamento" msdata:parentkey="idVenda" msdata:childkey="idVenda" msprop:Generator_UserChildTable="Pagamento" msprop:Generator_ChildPropName="GetPagamentoRows" msprop:Generator_UserRelationName="FK__Pagamento__idVen__2EA5EC27" msprop:Generator_ParentPropName="VendaRow" msprop:Generator_RelationVarName="relationFK__Pagamento__idVen__2EA5EC27" msprop:Generator_UserParentTable="Venda" />
+      <msdata:Relationship name="FK__Funcionar__idCar__756D6ECB" msdata:parent="Cargo" msdata:child="Funcionario" msdata:parentkey="idCargo" msdata:childkey="idCargo" msprop:Generator_UserChildTable="Funcionario" msprop:Generator_ChildPropName="GetFuncionarioRows" msprop:Generator_UserRelationName="FK__Funcionar__idCar__756D6ECB" msprop:Generator_ParentPropName="CargoRow" msprop:Generator_RelationVarName="relationFK__Funcionar__idCar__756D6ECB" msprop:Generator_UserParentTable="Cargo" />
+      <msdata:Relationship name="FK__ItensDaVe__idPro__73852659" msdata:parent="Produto" msdata:child="ItensDaVenda" msdata:parentkey="idProduto" msdata:childkey="idProduto" msprop:Generator_UserChildTable="ItensDaVenda" msprop:Generator_ChildPropName="GetItensDaVendaRows" msprop:Generator_UserRelationName="FK__ItensDaVe__idPro__73852659" msprop:Generator_RelationVarName="relationFK__ItensDaVe__idPro__73852659" msprop:Generator_UserParentTable="Produto" msprop:Generator_ParentPropName="ProdutoRow" />
+      <msdata:Relationship name="FK__ItensDaVe__idVen__74794A92" msdata:parent="Venda" msdata:child="ItensDaVenda" msdata:parentkey="idVenda" msdata:childkey="idVenda" msprop:Generator_UserChildTable="ItensDaVenda" msprop:Generator_ChildPropName="GetItensDaVendaRows" msprop:Generator_UserRelationName="FK__ItensDaVe__idVen__74794A92" msprop:Generator_RelationVarName="relationFK__ItensDaVe__idVen__74794A92" msprop:Generator_UserParentTable="Venda" msprop:Generator_ParentPropName="VendaRow" />
+      <msdata:Relationship name="FK__Venda__idFuncion__6EC0713C" msdata:parent="Funcionario" msdata:child="Venda" msdata:parentkey="idFuncionario" msdata:childkey="idFuncionario" msprop:Generator_UserChildTable="Venda" msprop:Generator_ChildPropName="GetVendaRows" msprop:Generator_UserRelationName="FK__Venda__idFuncion__6EC0713C" msprop:Generator_ParentPropName="FuncionarioRow" msprop:Generator_RelationVarName="relationFK__Venda__idFuncion__6EC0713C" msprop:Generator_UserParentTable="Funcionario" />
+      <msdata:Relationship name="FK__Venda__idCaixa__2704CA5F" msdata:parent="Caixa" msdata:child="Venda" msdata:parentkey="idCaixa" msdata:childkey="idCaixa" msprop:Generator_UserChildTable="Venda" msprop:Generator_ChildPropName="GetVendaRows" msprop:Generator_UserRelationName="FK__Venda__idCaixa__2704CA5F" msprop:Generator_RelationVarName="relationFK__Venda__idCaixa__2704CA5F" msprop:Generator_UserParentTable="Caixa" msprop:Generator_ParentPropName="CaixaRow" />
+      <msdata:Relationship name="FK__Sangria__idFunci__69FBBC1F" msdata:parent="Funcionario" msdata:child="Sangria" msdata:parentkey="idFuncionario" msdata:childkey="idFuncionario" msprop:Generator_UserChildTable="Sangria" msprop:Generator_ChildPropName="GetSangriaRows" msprop:Generator_UserRelationName="FK__Sangria__idFunci__69FBBC1F" msprop:Generator_ParentPropName="FuncionarioRow" msprop:Generator_RelationVarName="relationFK__Sangria__idFunci__69FBBC1F" msprop:Generator_UserParentTable="Funcionario" />
+      <msdata:Relationship name="FK__Sangria__idCaixa__2334397B" msdata:parent="Caixa" msdata:child="Sangria" msdata:parentkey="idCaixa" msdata:childkey="idCaixa" msprop:Generator_UserChildTable="Sangria" msprop:Generator_ChildPropName="GetSangriaRows" msprop:Generator_UserRelationName="FK__Sangria__idCaixa__2334397B" msprop:Generator_RelationVarName="relationFK__Sangria__idCaixa__2334397B" msprop:Generator_UserParentTable="Caixa" msprop:Generator_ParentPropName="CaixaRow" />
+      <msdata:Relationship name="FK__Pagamento__idVen__41B8C09B" msdata:parent="Venda" msdata:child="Pagamento" msdata:parentkey="idVenda" msdata:childkey="idVenda" msprop:Generator_UserChildTable="Pagamento" msprop:Generator_ChildPropName="GetPagamentoRows" msprop:Generator_UserRelationName="FK__Pagamento__idVen__41B8C09B" msprop:Generator_ParentPropName="VendaRow" msprop:Generator_RelationVarName="relationFK__Pagamento__idVen__41B8C09B" msprop:Generator_UserParentTable="Venda" />
+      <msdata:Relationship name="FK__Pagamento__idMPa__44952D46" msdata:parent="MetodoDePagamento" msdata:child="Pagamento" msdata:parentkey="idMPagamento" msdata:childkey="idMPagamento" msprop:Generator_UserChildTable="Pagamento" msprop:Generator_ChildPropName="GetPagamentoRows" msprop:Generator_UserRelationName="FK__Pagamento__idMPa__44952D46" msprop:Generator_RelationVarName="relationFK__Pagamento__idMPa__44952D46" msprop:Generator_UserParentTable="MetodoDePagamento" msprop:Generator_ParentPropName="MetodoDePagamentoRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

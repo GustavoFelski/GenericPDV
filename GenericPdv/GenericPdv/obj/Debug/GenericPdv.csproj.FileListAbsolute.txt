@@ -29,3 +29,4 @@ C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\obj\Debug\GenericPdv.Catal
 C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\obj\Debug\GenericPdv.ListFuncionario.resources
 C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\obj\Debug\GenericPdv.Relatorios.resources
 C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\obj\Debug\GenericPdv.CadastroDeFuncionario.resources
+C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\obj\Debug\GenericPdv.RelatorioDeVendas.resources

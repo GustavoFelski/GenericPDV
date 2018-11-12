@@ -41,17 +41,28 @@ namespace GenericPdv
             try
             {
                 //insere na tabela de Vendas
-                venda.InsertQueryVenda(valorTotal, DateTime.Now, cpf, Convert.ToInt32(caixa.GetDataByLast()[0]["idCaixa"]), AutenticacaoDeFuncionario.idFuncionario);
-                var LastId = venda.GetDataByLastId();
+                venda.InsertQueryVenda(
+                    valorTotal, 
+                    DateTime.Now, 
+                    cpf,
+                    Convert.ToInt32(caixa.GetDataByLast()[0]["idCaixa"]),
+                    AutenticacaoDeFuncionario.idFuncionario);
+
+                var LastId = Convert.ToInt32(venda.GetDataByLastId());
 
                 //inserir as opções de pagamento para o id de venda
                 itensDePagamento = new string[this.listPagamento.Items.Count, 5];
-                  
+                
                 for (int i = 0; i < this.listPagamento.Items.Count; i++)
                 {
                     try
                     {
-                        pagamento.InsertQueryPagamento(Convert.ToInt32(listPagamento.Items[i].SubItems[4].Text), Convert.ToInt32(LastId), Convert.ToDouble(listPagamento.Items[i].SubItems[2].Text));
+                        pagamento.InsertQuery(
+                            Convert.ToDouble(listPagamento.Items[i].SubItems[2].Text),
+                            LastId,
+                            Convert.ToInt32(listPagamento.Items[i].SubItems[4].Text));
+
+                        MessageBox.Show(listPagamento.Items[i].SubItems[4].Text +" "+ LastId.ToString() + " " + listPagamento.Items[i].SubItems[2].Text);
                         switch (Convert.ToInt32(listPagamento.Items[i].SubItems[4].Text))
                         {
                             case 1: { valorEmDinheiro += Convert.ToDouble(listPagamento.Items[i].SubItems[2].Text); } break;
@@ -178,8 +189,7 @@ namespace GenericPdv
                             txtTroco.Text = "R$ 0,00";
                             valorPagar -= Convert.ToDouble(txtValorPagar.Text);
                         }
-                        // Calcular troco e fechar compra 
-                        if (Convert.ToDouble(txtValorPagar.Text) > valorPagar)
+                        else
                         {
                             troco = valorPago - valorPagar;
                             txtTroco.Text = string.Format("{0,-10:C}", troco);
@@ -253,7 +263,7 @@ namespace GenericPdv
                         // adicionar a lista de pagamento
                         itens[3] = tipo.ToString();
                         itens[0] = "Debito";
-                        itens[1] = valorPagar.ToString();
+                        itens[1] = valorPago.ToString();
                         itens[2] = txtTroco.Text;
 
                         for (int i = 0; i <= 3; i++)
@@ -299,7 +309,7 @@ namespace GenericPdv
                         // adicionar a lista de pagamento
                         itens[3] = tipo.ToString();
                         itens[0] = "Crédito";
-                        itens[1] = valorPagar.ToString();
+                        itens[1] = valorPago.ToString();
                         itens[2] = txtTroco.Text;
                         for (int i = 0; i <= 3; i++)
                         {
@@ -323,6 +333,14 @@ namespace GenericPdv
                     txtValorPagar.Focus();
                 }
             }
+        }
+
+        private void btCancelarCompra_Click(object sender, EventArgs e)
+        {
+            // tela de Confirmação
+            // se sim 
+            Alerta alerta = new Alerta("Venda Cancelada.");
+            this.Close();
         }
 
         private void Voltar_Click(object sender, EventArgs e)

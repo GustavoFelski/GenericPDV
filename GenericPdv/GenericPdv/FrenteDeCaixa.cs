@@ -110,10 +110,23 @@ namespace GenericPdv
 
         private void btRemover_Click(object sender, EventArgs e)
         {
-            if (listView.Items.Count > 0)
+            // trocar focus para a listview
+            listView.Focus();
+            //navegar pela setas cima e baixo
+            // ao apertar enter 
+            // remover o item selecionado atualizar preço
+
+            foreach (ListViewItem eachItem in listView.SelectedItems)
             {
-                listView.Items.Remove(listView.SelectedItems[0]);
+
+                listView.Items.Remove(eachItem);
             }
+
+
+            //if (listView.Items.Count > 0)
+            //{
+            //    listView.Items.Remove(listView.SelectedItems[0]);
+            //}
         }
         
         private void btFinalizar_Click(object sender, EventArgs e)
@@ -194,6 +207,70 @@ namespace GenericPdv
         {
             AutenticacaoValidacao autenticacao = new AutenticacaoValidacao(3);
             autenticacao.ShowDialog();
+        }
+
+        private void btCancelarVenda_Click(object sender, EventArgs e)
+        {
+            //confirmação 
+            // se sim 
+            itens = new string[6];
+            listView.Items.Clear();
+            count = 0;
+            cpfNota = true;
+            cpf = null;
+            valorTotal = 0.0;
+            txtCodProd.Text = "";
+            txtPesquisa.Text = "";
+            txtQuantidade.Text = "";
+            txtSubTotal.Text = "";
+            txtValorUni.Text = "";
+            txtValorTotal.Text = "";
+            lbNomeProduto.Text = "";
+            Alerta alerta = new Alerta("Venda Cancelada.");
+            alerta.ShowDialog();
+
+        }
+
+        private void HotKey_KeyDown(object sender, KeyPressEventArgs e)
+        {
+            //fechar venda
+            if(e.KeyChar == (char)112)
+            {
+                btFechamento_Click(null, null);
+            }
+            //Consultar Item
+            if (e.KeyChar == (char)113)
+            {
+
+            }
+            //Remover item
+            if (e.KeyChar == (char)114)
+            {
+
+            }
+            //Cancelar Venda
+            if (e.KeyChar == (char)115)
+            {
+
+            }
+            //Sangria
+            if (e.KeyChar == (char)116)
+            {
+
+            }
+            //Fechamento
+            if (e.KeyChar == (char)117)
+            {
+
+            }
+            //Trocar usuario
+            if (e.KeyChar == (char)118)
+            {
+
+            }
+
+
+
         }
     }
 }

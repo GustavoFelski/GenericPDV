@@ -35,8 +35,14 @@ namespace GenericPdv
                 }
                 else
                 {
-                    sangria.InsertQuery(id, DateTime.Now, Convert.ToDouble(caixa.GetDataByLast()[0]["caixaValorDinheiro"]) - (Convert.ToDouble(txtNovoValor.Text)), Convert.ToInt32(caixa.GetDataByLast()[0]["idCaixa"]));
-                    caixa.UpdateValorDinheiro(Convert.ToDouble(caixa.GetDataByLast()[0]["caixaValorDinheiro"]) - (Convert.ToDouble(txtNovoValor.Text)), Convert.ToInt32(caixa.GetDataByLast()[0]["idCaixa"]));
+                    sangria.InsertQuery(
+                        id, 
+                        DateTime.Now,
+                        Convert.ToDouble(txtNovoValor.Text),
+                        Convert.ToInt32(caixa.GetDataByLast()[0]["idCaixa"]));
+                    caixa.UpdateValorDinheiro(
+                        Convert.ToDouble(caixa.GetDataByLast()[0]["caixaValorDinheiro"]) - (Convert.ToDouble(txtNovoValor.Text)),
+                        Convert.ToInt32(caixa.GetDataByLast()[0]["idCaixa"]));
                     Alerta alerta = new Alerta("valor atualizado.");
                     alerta.ShowDialog();
                     this.Close();

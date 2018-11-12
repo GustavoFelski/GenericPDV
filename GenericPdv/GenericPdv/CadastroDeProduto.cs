@@ -248,7 +248,18 @@ namespace GenericPdv
                 //se novo cadastro
                 try
                 {
-                    produto.InsertQueryProd(Convert.ToInt32(textId.Text), textNome.Text, Convert.ToDouble(mkbVenda.Text), Convert.ToDouble(mkbCusto.Text), Convert.ToDateTime(dtpInicio.Value), Convert.ToInt32(textQuantidade.Text), Convert.ToDouble(mkbPromocao.Text), Convert.ToDateTime(dtpFim.Value), textCodBarra.Text, textMarca.Text, textCodForne.Text, ckbStatus.Checked);
+                    produto.InsertQueryProd(
+                        Convert.ToInt32(textId.Text),
+                        textNome.Text, Convert.ToDouble(mkbVenda.Text),
+                        Convert.ToDouble(mkbCusto.Text),
+                        Convert.ToDateTime(dtpInicio.Value),
+                        Convert.ToInt32(textQuantidade.Text),
+                        Convert.ToDouble(mkbPromocao.Text),
+                        Convert.ToDateTime(dtpFim.Value),
+                        textCodBarra.Text,
+                        textMarca.Text,
+                        textCodForne.Text,
+                        ckbStatus.Checked);
                 }catch(Exception ex)
                 {
                     MessageBox.Show(ex.Message);

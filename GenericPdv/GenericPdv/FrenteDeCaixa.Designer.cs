@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrenteDeCaixa));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -82,9 +83,11 @@
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.btFechamento = new System.Windows.Forms.Button();
             this.btConsultar = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btCancelarVenda = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btSangria = new System.Windows.Forms.Button();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel14 = new System.Windows.Forms.Panel();
             this.metodoDePagamentoTableAdapter1 = new GenericPdv.DataSetGnPdvTableAdapters.MetodoDePagamentoTableAdapter();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -110,6 +113,7 @@
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -124,7 +128,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 541F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(933, 541);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -773,9 +777,10 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.Controls.Add(this.btFechamento, 0, 4);
             this.tableLayoutPanel6.Controls.Add(this.btConsultar, 0, 3);
-            this.tableLayoutPanel6.Controls.Add(this.button3, 0, 2);
+            this.tableLayoutPanel6.Controls.Add(this.btCancelarVenda, 0, 2);
             this.tableLayoutPanel6.Controls.Add(this.button2, 0, 1);
             this.tableLayoutPanel6.Controls.Add(this.btSangria, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.panel6, 0, 5);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(1);
@@ -828,22 +833,23 @@
             this.btConsultar.UseVisualStyleBackColor = false;
             this.btConsultar.Click += new System.EventHandler(this.btConsultar_Click);
             // 
-            // button3
+            // btCancelarVenda
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.button3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button3.Location = new System.Drawing.Point(10, 108);
-            this.button3.Margin = new System.Windows.Forms.Padding(10);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(206, 29);
-            this.button3.TabIndex = 3;
-            this.button3.TabStop = false;
-            this.button3.Text = "Cancelar Venda";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btCancelarVenda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btCancelarVenda.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btCancelarVenda.FlatAppearance.BorderSize = 0;
+            this.btCancelarVenda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btCancelarVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btCancelarVenda.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btCancelarVenda.Location = new System.Drawing.Point(10, 108);
+            this.btCancelarVenda.Margin = new System.Windows.Forms.Padding(10);
+            this.btCancelarVenda.Name = "btCancelarVenda";
+            this.btCancelarVenda.Size = new System.Drawing.Size(206, 29);
+            this.btCancelarVenda.TabIndex = 3;
+            this.btCancelarVenda.TabStop = false;
+            this.btCancelarVenda.Text = "Cancelar Venda";
+            this.btCancelarVenda.UseVisualStyleBackColor = false;
+            this.btCancelarVenda.Click += new System.EventHandler(this.btCancelarVenda_Click);
             // 
             // button2
             // 
@@ -881,6 +887,27 @@
             this.btSangria.UseVisualStyleBackColor = false;
             this.btSangria.Click += new System.EventHandler(this.btSangria_Click);
             // 
+            // panel6
+            // 
+            this.panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel6.Controls.Add(this.panel14);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(0, 245);
+            this.panel6.Margin = new System.Windows.Forms.Padding(0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(226, 209);
+            this.panel6.TabIndex = 8;
+            // 
+            // panel14
+            // 
+            this.panel14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel14.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel14.BackgroundImage")));
+            this.panel14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel14.Location = new System.Drawing.Point(34, 138);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(189, 67);
+            this.panel14.TabIndex = 0;
+            // 
             // metodoDePagamentoTableAdapter1
             // 
             this.metodoDePagamentoTableAdapter1.ClearBeforeFill = true;
@@ -900,6 +927,7 @@
             this.Text = " ";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frenteDeCaixa_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.HotKey_KeyDown);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -932,6 +960,7 @@
             this.panel7.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -981,7 +1010,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtCodProd;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btCancelarVenda;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btSangria;
         private System.Windows.Forms.Button btConsultar;
@@ -996,6 +1025,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
         private System.Windows.Forms.Label lbNomeUsuario;
         private System.Windows.Forms.Label lbStatus;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel14;
     }
 }
 

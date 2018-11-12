@@ -38,7 +38,7 @@ namespace GenericPdv
             }
             else
             { 
-                txtValorDeApertura.Text = String.Format("R{0,-10:C}", Convert.ToDouble(last[0]["caixaFundo"]));
+                txtValorDeApertura.Text = String.Format("{0,-10:C}", Convert.ToDouble(last[0]["caixaFundo"]));
                 zerado = false;
             }
         }
@@ -79,7 +79,7 @@ namespace GenericPdv
                     #endregion
                     if (Convert.ToDouble(valorAbertura) >= 0)
                     {
-                        caixa.InsertQueryAbertura(DateTime.Now, Convert.ToDouble(valorAbertura), 0, 0);
+                        caixa.InsertQueryAbertura(DateTime.Now, Convert.ToDouble(valorAbertura), 0, 0, Convert.ToDouble(valorAbertura));
                         FrenteDeCaixa frente = new FrenteDeCaixa();
                         frente.Show();
                         this.Dispose();
