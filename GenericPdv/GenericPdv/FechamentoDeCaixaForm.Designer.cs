@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FechamentoDeCaixaForm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btOk = new System.Windows.Forms.Button();
+            this.btExporte = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.idFuncionarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sangriaValorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,18 +40,17 @@
             this.fechamentoSangriaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSetGnPdv = new GenericPdv.DataSetGnPdv();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.idVenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.funcNomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorCompraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vendDataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pagamentoTipoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechamentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.lbPeriodo = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.fechamentoSangriaTableAdapter = new GenericPdv.DataSetGnPdvTableAdapters.FechamentoSangriaTableAdapter();
-            this.idVenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.funcNomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valorCompraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vendDataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pagamentoTipoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.listView1 = new System.Windows.Forms.ListView();
             this.Col1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Col2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -59,6 +58,7 @@
             this.Col4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Col5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Col6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.fechamentoSangriaTableAdapter = new GenericPdv.DataSetGnPdvTableAdapters.FechamentoSangriaTableAdapter();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fechamentoSangriaBindingSource)).BeginInit();
@@ -73,7 +73,7 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.btOk, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.btExporte, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.dataGridView2, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
@@ -93,21 +93,22 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 489);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // btOk
+            // btExporte
             // 
-            this.btOk.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.btOk.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btOk.FlatAppearance.BorderSize = 0;
-            this.btOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btOk.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btOk.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btOk.Location = new System.Drawing.Point(639, 446);
-            this.btOk.Margin = new System.Windows.Forms.Padding(1);
-            this.btOk.Name = "btOk";
-            this.btOk.Size = new System.Drawing.Size(160, 42);
-            this.btOk.TabIndex = 5;
-            this.btOk.Text = "Exportar para PDF";
-            this.btOk.UseVisualStyleBackColor = false;
+            this.btExporte.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.btExporte.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btExporte.FlatAppearance.BorderSize = 0;
+            this.btExporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btExporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btExporte.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btExporte.Location = new System.Drawing.Point(639, 446);
+            this.btExporte.Margin = new System.Windows.Forms.Padding(1);
+            this.btExporte.Name = "btExporte";
+            this.btExporte.Size = new System.Drawing.Size(160, 42);
+            this.btExporte.TabIndex = 5;
+            this.btExporte.Text = "Exportar para PDF";
+            this.btExporte.UseVisualStyleBackColor = false;
+            this.btExporte.Click += new System.EventHandler(this.btExporte_Click);
             // 
             // dataGridView2
             // 
@@ -185,6 +186,41 @@
             this.dataGridView1.Size = new System.Drawing.Size(780, 152);
             this.dataGridView1.TabIndex = 0;
             // 
+            // idVenda
+            // 
+            this.idVenda.DataPropertyName = "idVenda";
+            this.idVenda.HeaderText = "Cod Venda";
+            this.idVenda.Name = "idVenda";
+            this.idVenda.ReadOnly = true;
+            // 
+            // funcNomeDataGridViewTextBoxColumn
+            // 
+            this.funcNomeDataGridViewTextBoxColumn.DataPropertyName = "funcNome";
+            this.funcNomeDataGridViewTextBoxColumn.HeaderText = "Vendedor";
+            this.funcNomeDataGridViewTextBoxColumn.Name = "funcNomeDataGridViewTextBoxColumn";
+            this.funcNomeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // valorCompraDataGridViewTextBoxColumn
+            // 
+            this.valorCompraDataGridViewTextBoxColumn.DataPropertyName = "valorCompra";
+            this.valorCompraDataGridViewTextBoxColumn.HeaderText = "Valor da Venda";
+            this.valorCompraDataGridViewTextBoxColumn.Name = "valorCompraDataGridViewTextBoxColumn";
+            this.valorCompraDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // vendDataDataGridViewTextBoxColumn
+            // 
+            this.vendDataDataGridViewTextBoxColumn.DataPropertyName = "vendData";
+            this.vendDataDataGridViewTextBoxColumn.HeaderText = "Data e Hora";
+            this.vendDataDataGridViewTextBoxColumn.Name = "vendDataDataGridViewTextBoxColumn";
+            this.vendDataDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // pagamentoTipoDataGridViewTextBoxColumn
+            // 
+            this.pagamentoTipoDataGridViewTextBoxColumn.DataPropertyName = "pagamentoTipo";
+            this.pagamentoTipoDataGridViewTextBoxColumn.HeaderText = "Metodo de Pagamento";
+            this.pagamentoTipoDataGridViewTextBoxColumn.Name = "pagamentoTipoDataGridViewTextBoxColumn";
+            this.pagamentoTipoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // fechamentoBindingSource
             // 
             this.fechamentoBindingSource.DataMember = "Fechamento";
@@ -244,45 +280,6 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Relatório de Sangria";
             // 
-            // fechamentoSangriaTableAdapter
-            // 
-            this.fechamentoSangriaTableAdapter.ClearBeforeFill = true;
-            // 
-            // idVenda
-            // 
-            this.idVenda.DataPropertyName = "idVenda";
-            this.idVenda.HeaderText = "Cod Venda";
-            this.idVenda.Name = "idVenda";
-            this.idVenda.ReadOnly = true;
-            // 
-            // funcNomeDataGridViewTextBoxColumn
-            // 
-            this.funcNomeDataGridViewTextBoxColumn.DataPropertyName = "funcNome";
-            this.funcNomeDataGridViewTextBoxColumn.HeaderText = "Vendedor";
-            this.funcNomeDataGridViewTextBoxColumn.Name = "funcNomeDataGridViewTextBoxColumn";
-            this.funcNomeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // valorCompraDataGridViewTextBoxColumn
-            // 
-            this.valorCompraDataGridViewTextBoxColumn.DataPropertyName = "valorCompra";
-            this.valorCompraDataGridViewTextBoxColumn.HeaderText = "Valor da Venda";
-            this.valorCompraDataGridViewTextBoxColumn.Name = "valorCompraDataGridViewTextBoxColumn";
-            this.valorCompraDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // vendDataDataGridViewTextBoxColumn
-            // 
-            this.vendDataDataGridViewTextBoxColumn.DataPropertyName = "vendData";
-            this.vendDataDataGridViewTextBoxColumn.HeaderText = "Data e Hora";
-            this.vendDataDataGridViewTextBoxColumn.Name = "vendDataDataGridViewTextBoxColumn";
-            this.vendDataDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // pagamentoTipoDataGridViewTextBoxColumn
-            // 
-            this.pagamentoTipoDataGridViewTextBoxColumn.DataPropertyName = "pagamentoTipo";
-            this.pagamentoTipoDataGridViewTextBoxColumn.HeaderText = "Metodo de Pagamento";
-            this.pagamentoTipoDataGridViewTextBoxColumn.Name = "pagamentoTipoDataGridViewTextBoxColumn";
-            this.pagamentoTipoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // listView1
             // 
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -330,6 +327,10 @@
             this.Col6.Text = "Total Sangria";
             this.Col6.Width = 105;
             // 
+            // fechamentoSangriaTableAdapter
+            // 
+            this.fechamentoSangriaTableAdapter.ClearBeforeFill = true;
+            // 
             // FechamentoDeCaixaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -367,7 +368,7 @@
         private System.Windows.Forms.Label lbPeriodo;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btOk;
+        private System.Windows.Forms.Button btExporte;
         private System.Windows.Forms.BindingSource fechamentoSangriaBindingSource;
         private DataSetGnPdv dataSetGnPdv;
         private System.Windows.Forms.DataGridViewTextBoxColumn caixaValorDinheiroDataGridViewTextBoxColumn;

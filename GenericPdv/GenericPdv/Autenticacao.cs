@@ -24,7 +24,6 @@ namespace GenericPdv
         DataSetGnPdvTableAdapters.CaixaTableAdapter caixa = new DataSetGnPdvTableAdapters.CaixaTableAdapter();
         public bool RespConfirmacao { get; set; }
 
-
         // encriptar senha
         public static string GerarHashMd5(string input)
         {
@@ -191,6 +190,12 @@ namespace GenericPdv
                     alerta.ShowDialog();
                 }
             }
+        }
+
+        private void lbAjuda_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {  
+            Reprodutor ajuda = new Reprodutor(@"C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\Ajuda\login.mp4");
+            ajuda.Show();
         }
     }
 }

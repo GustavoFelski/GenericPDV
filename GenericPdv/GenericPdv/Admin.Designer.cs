@@ -46,12 +46,17 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.btLogout = new System.Windows.Forms.Button();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.panel12 = new System.Windows.Forms.Panel();
             this.relatorios1 = new GenericPdv.Relatorios();
             this.listFuncionario1 = new GenericPdv.ListFuncionario();
             this.catalogo1 = new GenericPdv.Catalogo();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.btLogout = new System.Windows.Forms.Button();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.panel14 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -84,6 +89,10 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.panel14);
+            this.panel2.Controls.Add(this.panel13);
+            this.panel2.Controls.Add(this.panel12);
+            this.panel2.Controls.Add(this.panel11);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
@@ -288,6 +297,48 @@
             this.panel7.Size = new System.Drawing.Size(943, 467);
             this.panel7.TabIndex = 0;
             // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.btLogout);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel9.Location = new System.Drawing.Point(222, 0);
+            this.panel9.Margin = new System.Windows.Forms.Padding(0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(943, 80);
+            this.panel9.TabIndex = 4;
+            // 
+            // btLogout
+            // 
+            this.btLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btLogout.FlatAppearance.BorderSize = 0;
+            this.btLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btLogout.ForeColor = System.Drawing.Color.Snow;
+            this.btLogout.Location = new System.Drawing.Point(829, 3);
+            this.btLogout.Name = "btLogout";
+            this.btLogout.Size = new System.Drawing.Size(111, 24);
+            this.btLogout.TabIndex = 4;
+            this.btLogout.TabStop = false;
+            this.btLogout.Text = "Logout";
+            this.btLogout.UseVisualStyleBackColor = false;
+            // 
+            // panel11
+            // 
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel11.Location = new System.Drawing.Point(0, 0);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(14, 80);
+            this.panel11.TabIndex = 0;
+            // 
+            // panel12
+            // 
+            this.panel12.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel12.Location = new System.Drawing.Point(14, 0);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(208, 12);
+            this.panel12.TabIndex = 1;
+            // 
             // relatorios1
             // 
             this.relatorios1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -312,30 +363,23 @@
             this.catalogo1.Size = new System.Drawing.Size(923, 447);
             this.catalogo1.TabIndex = 0;
             // 
-            // panel9
+            // panel13
             // 
-            this.panel9.Controls.Add(this.btLogout);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel9.Location = new System.Drawing.Point(222, 0);
-            this.panel9.Margin = new System.Windows.Forms.Padding(0);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(943, 80);
-            this.panel9.TabIndex = 4;
+            this.panel13.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel13.Location = new System.Drawing.Point(14, 70);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(208, 10);
+            this.panel13.TabIndex = 2;
             // 
-            // btLogout
+            // panel14
             // 
-            this.btLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btLogout.FlatAppearance.BorderSize = 0;
-            this.btLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btLogout.ForeColor = System.Drawing.Color.Snow;
-            this.btLogout.Location = new System.Drawing.Point(829, 3);
-            this.btLogout.Name = "btLogout";
-            this.btLogout.Size = new System.Drawing.Size(111, 24);
-            this.btLogout.TabIndex = 4;
-            this.btLogout.TabStop = false;
-            this.btLogout.Text = "Logout";
-            this.btLogout.UseVisualStyleBackColor = true;
+            this.panel14.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel14.BackgroundImage")));
+            this.panel14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel14.Location = new System.Drawing.Point(14, 12);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(208, 58);
+            this.panel14.TabIndex = 3;
             // 
             // Admin
             // 
@@ -351,6 +395,7 @@
             this.Text = "Sistema";
             this.Load += new System.EventHandler(this.Admin_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
@@ -387,5 +432,9 @@
         private Relatorios relatorios1;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Button btLogout;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.Panel panel13;
     }
 }

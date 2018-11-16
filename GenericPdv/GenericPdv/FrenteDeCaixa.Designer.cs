@@ -594,7 +594,6 @@
             this.col6});
             this.listView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView.Font = new System.Drawing.Font("Lucida Sans Unicode", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listView.GridLines = true;
             this.listView.Location = new System.Drawing.Point(0, 0);
             this.listView.Margin = new System.Windows.Forms.Padding(1);
             this.listView.Name = "listView";
@@ -729,6 +728,7 @@
             // btLogout
             // 
             this.btLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btLogout.FlatAppearance.BorderSize = 0;
             this.btLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -739,7 +739,7 @@
             this.btLogout.TabIndex = 3;
             this.btLogout.TabStop = false;
             this.btLogout.Text = "Logout";
-            this.btLogout.UseVisualStyleBackColor = true;
+            this.btLogout.UseVisualStyleBackColor = false;
             // 
             // btMinimized
             // 

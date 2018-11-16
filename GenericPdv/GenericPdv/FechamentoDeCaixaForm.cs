@@ -68,5 +68,13 @@ namespace GenericPdv
             }
             listView1.Items.Add(item);
         }
+
+        private void btExporte_Click(object sender, EventArgs e)
+        {
+
+            Relatorios relatorio = new Relatorios();
+
+            
+        }
     }
 }
