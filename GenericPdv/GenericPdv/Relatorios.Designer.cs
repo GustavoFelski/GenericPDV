@@ -114,6 +114,8 @@
             this.cbbVendedor.Name = "cbbVendedor";
             this.cbbVendedor.Size = new System.Drawing.Size(156, 24);
             this.cbbVendedor.TabIndex = 5;
+            this.cbbVendedor.SelectedIndexChanged += new System.EventHandler(this.cbbVendedor_SelectedIndexChanged);
+            this.cbbVendedor.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cbbVendedor_MouseClick);
             // 
             // label4
             // 

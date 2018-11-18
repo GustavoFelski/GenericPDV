@@ -116,7 +116,6 @@
     <Compile Include="Cpf.Designer.cs">
       <DependentUpon>Cpf.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cupom.cs" />
     <Compile Include="DataSetGnPdv.cs">
       <DependentUpon>DataSetGnPdv.xsd</DependentUpon>
     </Compile>
@@ -189,12 +188,6 @@
     <Compile Include="Sangria.Designer.cs">
       <DependentUpon>Sangria.cs</DependentUpon>
     </Compile>
-    <Compile Include="Teste.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Teste.Designer.cs">
-      <DependentUpon>Teste.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="AberturaDeCaixaForm.resx">
       <DependentUpon>AberturaDeCaixaForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -263,9 +256,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sangria.resx">
       <DependentUpon>Sangria.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Teste.resx">
-      <DependentUpon>Teste.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="DataSetGnPdv.xsc">
       <DependentUpon>DataSetGnPdv.xsd</DependentUpon>

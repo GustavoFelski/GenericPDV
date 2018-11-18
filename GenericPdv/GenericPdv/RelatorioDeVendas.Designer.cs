@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btOk = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.lbPeriodo = new System.Windows.Forms.Label();
@@ -42,24 +41,28 @@
             this.Col3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Col5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Col4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.fechamentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSetGnPdv = new GenericPdv.DataSetGnPdv();
-            this.fechamentoSangriaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.fechamentoSangriaTableAdapter = new GenericPdv.DataSetGnPdvTableAdapters.FechamentoSangriaTableAdapter();
-            this.fechamentoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.fechamentoTableAdapter = new GenericPdv.DataSetGnPdvTableAdapters.FechamentoTableAdapter();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.idVenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PagValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.funcNomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valorCompraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vendDataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pagamentoTipoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechamentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSetGnPdv = new GenericPdv.DataSetGnPdv();
+            this.fechamentoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.fechamentoSangriaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.fechamentoSangriaTableAdapter = new GenericPdv.DataSetGnPdvTableAdapters.FechamentoSangriaTableAdapter();
+            this.fechamentoTableAdapter = new GenericPdv.DataSetGnPdvTableAdapters.FechamentoTableAdapter();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fechamentoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGnPdv)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fechamentoSangriaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fechamentoBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fechamentoSangriaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -67,10 +70,10 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.btOk, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.listView1, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
@@ -82,6 +85,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 141F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 489);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -100,29 +104,6 @@
             this.btOk.TabIndex = 5;
             this.btOk.Text = "Exportar para PDF";
             this.btOk.UseVisualStyleBackColor = false;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idVenda,
-            this.funcNomeDataGridViewTextBoxColumn,
-            this.valorCompraDataGridViewTextBoxColumn,
-            this.vendDataDataGridViewTextBoxColumn,
-            this.pagamentoTipoDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.fechamentoBindingSource1;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.GridColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dataGridView1.Location = new System.Drawing.Point(10, 53);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(780, 152);
-            this.dataGridView1.TabIndex = 0;
             // 
             // panel1
             // 
@@ -208,33 +189,39 @@
             this.Col4.Text = "Faturamento Bruto";
             this.Col4.Width = 110;
             // 
-            // fechamentoBindingSource
+            // panel3
             // 
-            this.fechamentoBindingSource.DataMember = "Fechamento";
-            this.fechamentoBindingSource.DataSource = this.dataSetGnPdv;
+            this.panel3.Controls.Add(this.dataGridView1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 50);
+            this.panel3.Margin = new System.Windows.Forms.Padding(0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(800, 158);
+            this.panel3.TabIndex = 6;
             // 
-            // dataSetGnPdv
+            // dataGridView1
             // 
-            this.dataSetGnPdv.DataSetName = "DataSetGnPdv";
-            this.dataSetGnPdv.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // fechamentoSangriaBindingSource
-            // 
-            this.fechamentoSangriaBindingSource.DataMember = "FechamentoSangria";
-            this.fechamentoSangriaBindingSource.DataSource = this.dataSetGnPdv;
-            // 
-            // fechamentoSangriaTableAdapter
-            // 
-            this.fechamentoSangriaTableAdapter.ClearBeforeFill = true;
-            // 
-            // fechamentoBindingSource1
-            // 
-            this.fechamentoBindingSource1.DataMember = "Fechamento";
-            this.fechamentoBindingSource1.DataSource = this.dataSetGnPdv;
-            // 
-            // fechamentoTableAdapter
-            // 
-            this.fechamentoTableAdapter.ClearBeforeFill = true;
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idVenda,
+            this.funcNomeDataGridViewTextBoxColumn,
+            this.valorCompraDataGridViewTextBoxColumn,
+            this.vendDataDataGridViewTextBoxColumn,
+            this.PagValor,
+            this.pagamentoTipoDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.fechamentoBindingSource;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.GridColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(800, 158);
+            this.dataGridView1.TabIndex = 1;
             // 
             // idVenda
             // 
@@ -242,6 +229,13 @@
             this.idVenda.HeaderText = "Cod Venda";
             this.idVenda.Name = "idVenda";
             this.idVenda.ReadOnly = true;
+            // 
+            // PagValor
+            // 
+            this.PagValor.DataPropertyName = "PagValor";
+            this.PagValor.HeaderText = "Valor Pago";
+            this.PagValor.Name = "PagValor";
+            this.PagValor.ReadOnly = true;
             // 
             // funcNomeDataGridViewTextBoxColumn
             // 
@@ -271,6 +265,34 @@
             this.pagamentoTipoDataGridViewTextBoxColumn.Name = "pagamentoTipoDataGridViewTextBoxColumn";
             this.pagamentoTipoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // fechamentoBindingSource
+            // 
+            this.fechamentoBindingSource.DataMember = "Fechamento";
+            this.fechamentoBindingSource.DataSource = this.dataSetGnPdv;
+            // 
+            // dataSetGnPdv
+            // 
+            this.dataSetGnPdv.DataSetName = "DataSetGnPdv";
+            this.dataSetGnPdv.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // fechamentoBindingSource1
+            // 
+            this.fechamentoBindingSource1.DataMember = "Fechamento";
+            this.fechamentoBindingSource1.DataSource = this.dataSetGnPdv;
+            // 
+            // fechamentoSangriaBindingSource
+            // 
+            this.fechamentoSangriaBindingSource.DataMember = "FechamentoSangria";
+            this.fechamentoSangriaBindingSource.DataSource = this.dataSetGnPdv;
+            // 
+            // fechamentoSangriaTableAdapter
+            // 
+            this.fechamentoSangriaTableAdapter.ClearBeforeFill = true;
+            // 
+            // fechamentoTableAdapter
+            // 
+            this.fechamentoTableAdapter.ClearBeforeFill = true;
+            // 
             // RelatorioDeVendas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -282,14 +304,16 @@
             this.Name = "RelatorioDeVendas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fechamento de Caixa";
+            this.Load += new System.EventHandler(this.RelatorioDeVendas_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fechamentoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetGnPdv)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fechamentoSangriaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fechamentoBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fechamentoSangriaBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -297,7 +321,6 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbPeriodo;
@@ -314,12 +337,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn caixaValorDinheiroDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource fechamentoBindingSource;
         private DataSetGnPdvTableAdapters.FechamentoSangriaTableAdapter fechamentoSangriaTableAdapter;
+        private System.Windows.Forms.BindingSource fechamentoBindingSource1;
+        private DataSetGnPdvTableAdapters.FechamentoTableAdapter fechamentoTableAdapter;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn idVenda;
         private System.Windows.Forms.DataGridViewTextBoxColumn funcNomeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn valorCompraDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn vendDataDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PagValor;
         private System.Windows.Forms.DataGridViewTextBoxColumn pagamentoTipoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource fechamentoBindingSource1;
-        private DataSetGnPdvTableAdapters.FechamentoTableAdapter fechamentoTableAdapter;
     }
 }
