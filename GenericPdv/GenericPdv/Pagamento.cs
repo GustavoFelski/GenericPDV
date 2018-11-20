@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using IronPdf;
 
 namespace GenericPdv
 {
@@ -23,8 +25,9 @@ namespace GenericPdv
         int tipo;
         bool tipoDeDesconto;
         string[,] itensDePagamento;
-        string cpf;
+        string cpf, Html;
         string[,] itensLista;
+        
 
         public Pagamento(string[,] itens, double valorCompra, string cpfCli)
         {
@@ -38,6 +41,7 @@ namespace GenericPdv
 
         private void btFecharCompra_Click(object sender, EventArgs e)
         {
+            itensDePagamento = new string[this.listPagamento.Items.Count, 5];
             try
             {
                 //insere na tabela de Vendas
@@ -51,7 +55,7 @@ namespace GenericPdv
                 var LastId = Convert.ToInt32(venda.GetDataByLastId());
 
                 //inserir as opções de pagamento para o id de venda
-                itensDePagamento = new string[this.listPagamento.Items.Count, 5];
+                
                 
                 for (int i = 0; i < this.listPagamento.Items.Count; i++)
                 {
@@ -62,7 +66,6 @@ namespace GenericPdv
                             LastId,
                             Convert.ToInt32(listPagamento.Items[i].SubItems[4].Text));
 
-                        MessageBox.Show(listPagamento.Items[i].SubItems[4].Text +" "+ LastId.ToString() + " " + listPagamento.Items[i].SubItems[2].Text);
                         switch (Convert.ToInt32(listPagamento.Items[i].SubItems[4].Text))
                         {
                             case 1: { valorEmDinheiro += Convert.ToDouble(listPagamento.Items[i].SubItems[2].Text); } break;
@@ -100,22 +103,115 @@ namespace GenericPdv
             {
                 MessageBox.Show(ex.Message);
             }
+            //adicionar valor em caixa 
+            var aux = caixa.GetDataByLast();
+            caixa.UpdateValores((Convert.ToDouble(aux[0]["caixaValorCartaoCredito"]) + valorEmCredito), (Convert.ToDouble(aux[0]["caixaValorDinheiro"]) + valorEmDinheiro), (Convert.ToDouble(aux[0]["caixaValorCartaoDebito"]) + valorEmDebito), Convert.ToInt32(aux[0]["idCaixa"]));
             //Apresentar uma previsualização da compra e liberar para impressão
             try
             {
-                Impressao print = new Impressao();
-                print.imprimir(itensLista, cpf, valorTotal);
+                var LastId = Convert.ToInt32(venda.GetDataByLastId());
+                GeraCupom(venda.GetDataByLastId().ToString(), cpf, valorTotal, itensDePagamento, itensLista);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            //adicionar valor em caixa 
-            var aux = caixa.GetDataByLast();
-            caixa.UpdateValores((Convert.ToDouble(aux[0]["caixaValorCartaoCredito"]) + valorEmCredito), (Convert.ToDouble(aux[0]["caixaValorDinheiro"]) + valorEmDinheiro), (Convert.ToDouble(aux[0]["caixaValorCartaoDebito"]) + valorEmDebito), Convert.ToInt32(aux[0]["idCaixa"]));
-            //AberturaDeCaixa.adcionarValor(valorEmDinheiro);
-            MessageBox.Show("venda ok");
-            this.Close();
+        }
+
+        private void GeraCupom(string id, string cpf, double total, string[,] Pagamento, string[,] itens )
+        {
+            string Template = GetTemplate(@"C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\FechamentoCaixa.html");
+            CabecalhoCupom(id, cpf);
+
+            this.Html += "<table>";
+            this.Html += "<tr>" +
+                            //ITEM | COD | DESC | QTD | VL UN | SUBTOTAL
+                            "<th class='AlinhaEsquerda'> ITEM </th> " +
+                            "<th class='AlinhaEsquerda'> COD </th>" +
+                            "<th class='AlinhaEsquerda'> DESC </th>" +
+                            "<th class='AlinhaEsquerda'> QTD </th>" +
+                            "<th class='AlinhaEsquerda'> VL UN </th>" +
+                            "<th class='AlinhaEsquerda'> SUBTOTAL </th>" +
+                         "</tr>";
+            
+            int linha = itens.Length / 6;
+            for (int i = 0; i < linha ; i++) {
+                this.Html += "<tr>";
+                for (int j = 0; j < 6; j++) {
+                    this.Html += "<th class='AlinhaEsquerda'>" + itens[i, j] + "</th> ";
+                }
+                this.Html += "</tr>";
+            }
+            this.Html += "</table><br>";
+            //aki vem uma barra de traços
+            this.Html += "<div class='AlinhaDireita Negrito'>" +
+                "VALOR TOTAL  " + string.Format("{0,-10:C}", total)+
+                "<br> " +
+                "</div>";
+
+            var DocumentoFinal = Template.Replace("{CORPO}", Html);
+            string repositorio = @"C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\Cupons\Cupom_" + id.ToString() + ".pdf";
+            GeraPdf(DocumentoFinal, repositorio, 1);
+            // retornar para autenticação
+            this.Dispose();
+        }
+
+        private string GetTemplate(string Caminho)
+        {
+            return File.ReadAllText(Caminho);
+        }
+
+        private void CabecalhoCupom(string lastId, string cpf)
+        {
+            var Imagem = File.ReadAllBytes(@"C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\Logo.png");
+            var ImagemBase64 = ("data:image/png;base64," + Convert.ToBase64String(Imagem));
+            this.Html += "<div class='TextoCentralizado'> <img src='" + ImagemBase64 + "'> " +
+                            "<br> " +
+                            "Mercado exemplo - ltda - " +
+                            "<br> " + 
+                            "Avenida Exemplo, 009, Bairo Exemplo" +
+                            "<br> " +
+                            "Cidade Exemplo, 100000-000" +
+                            "<br> " +
+                            "CNPJ 14.606.036/0001-28 IE 821.691.222.430" +
+                            "<br> " +
+                            //aki vem uma barra de traços
+                            "<br> " +
+                            "<span class='Negrito'> Venda "+ lastId +
+                                "<br>" +
+                            "-- CUPOM NÃO FISCAL --</span>" +
+                            "<br> " +
+                            //aki vem uma barra de traços
+                            "<br> " +
+                            "CPF: " + cpf +
+                            "<br> " + 
+                            DateTime.Now
+                            //aki vem uma barra de traços 
+                 + " </div>";
+        }
+
+        public static void GeraPdf(string Html, string Caminho, int Tipo)
+        {
+            var Gerador = new IronPdf.HtmlToPdf();
+
+            if (Tipo == 1)
+            {
+                Gerador.PrintOptions.SetCustomPaperSizeinMilimeters(80, 200);
+            }
+            Gerador.PrintOptions.MarginLeft = 5;
+            Gerador.PrintOptions.MarginRight = 5;
+            Gerador.PrintOptions.MarginTop = 5;
+            Gerador.PrintOptions.MarginBottom = 5;
+            try
+            {
+                Gerador.RenderHtmlAsPdf(Html).SaveAs(Caminho);
+                System.Diagnostics.Process.Start(Caminho);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btDinheiro_Click(object sender, System.EventArgs e)
@@ -427,6 +523,7 @@ namespace GenericPdv
                 btDescontoTotal.Enabled = true;
             }
         }
+
     }
 }
 

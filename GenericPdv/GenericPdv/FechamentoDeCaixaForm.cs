@@ -102,6 +102,7 @@ namespace GenericPdv
         {
             return File.ReadAllText(Caminho);  
         }
+
         private void CabecalhoFechamento()
         {
             var Imagem = File.ReadAllBytes(@"C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\Logo.png");
@@ -109,10 +110,12 @@ namespace GenericPdv
             this.Html += "<div class='TextoCentralizado'> <img src='" + ImagemBase64 + "'> <br> " +
                 "Fechamento de Caixa - " + DateTime.Now + " </div>";
         }
+
         private void CriaLinhaFechamento(string Campo, string Valor)
         {
             this.Html += "<tr><th class='AlinhaEsquerda'>" + Campo + "</th> <th class='AlinhaEsquerda'>" + string.Format("{0:C}", Valor) + " </th></tr>";
         }
+
         public static void GeraPdf(string Html, string Caminho, int Tipo)
         {
             var Gerador = new IronPdf.HtmlToPdf();

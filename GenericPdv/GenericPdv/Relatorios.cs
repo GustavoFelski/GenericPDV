@@ -25,13 +25,13 @@ namespace GenericPdv
         }
 
         private void Relatorios_Load(object sender, EventArgs e)
-        { 
+        {
             //try
             //{
             //sqlCon = new SqlConnection(strCon);
             //adaptadorFuncionario = new SqlDataAdapter("SELECT * FROM Funcionario", sqlCon);
             //DataTable tFunc = new DataTable();
-            
+
             //    for (int i = 0; i <= tFunc.Rows.Count; i++)
             //    {
             //        cbbVendedor.Items.Add(tFunc.Rows[i]["funcAliase"].ToString());
@@ -44,7 +44,7 @@ namespace GenericPdv
 
         private void btPesquisarVendas_Click(object sender, EventArgs e)
         {
-            RelatorioDeVendas relatorio = new RelatorioDeVendas(dateTimeInicio.Value, dateTimeFim.Value, "guthy" , false);
+            RelatorioDeVendas relatorio = new RelatorioDeVendas(dateTimeInicio.Value, dateTimeFim.Value, "guthy", false);
             relatorio.Show();
         }
 
