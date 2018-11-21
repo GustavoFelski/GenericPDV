@@ -16,6 +16,7 @@ namespace GenericPdv
         {
             InitializeComponent();
         }
+        int id = 1;
 
         DataSetGnPdvTableAdapters.FuncionariosCargoTableAdapter func = new DataSetGnPdvTableAdapters.FuncionariosCargoTableAdapter();
         private void fillToolStripButton_Click(object sender, EventArgs e)
@@ -28,7 +29,6 @@ namespace GenericPdv
             {
                 System.Windows.Forms.MessageBox.Show(ex.Message);
             }
-
         }
 
         private void fillByToolStripButton_Click(object sender, EventArgs e)
@@ -41,7 +41,6 @@ namespace GenericPdv
             {
                 System.Windows.Forms.MessageBox.Show(ex.Message);
             }
-
         }
 
         private void ListFuncionario_Load(object sender, EventArgs e)
@@ -51,10 +50,20 @@ namespace GenericPdv
 
         private void btAlterar_Click(object sender, EventArgs e)
         {
-           
-
-            CadastroDeFuncionario cadastroDeFuncionario = new CadastroDeFuncionario(false, 1);
-
+            CadastroDeFuncionario cadastroDeFuncionario = new CadastroDeFuncionario(false, id, this);
+            cadastroDeFuncionario.ShowDialog();
+        }
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                id = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+            }
+            catch (Exception ex)
+            {
+                Alerta alerta = new Alerta("Nenhuma linha selecionada.");
+                alerta.ShowDialog();
+            }
         }
     }
 }

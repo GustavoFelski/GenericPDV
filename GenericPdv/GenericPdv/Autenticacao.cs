@@ -13,16 +13,17 @@ namespace GenericPdv
 {
     public partial class Autenticacao : Form
     {
-        public Autenticacao()
-        {
-            InitializeComponent();
-        }
 
+        public bool RespConfirmacao;
         private bool nome = false;
         private bool Senha = false;
         DataSetGnPdvTableAdapters.FuncionarioTableAdapter func = new DataSetGnPdvTableAdapters.FuncionarioTableAdapter();
         DataSetGnPdvTableAdapters.CaixaTableAdapter caixa = new DataSetGnPdvTableAdapters.CaixaTableAdapter();
-        public bool RespConfirmacao { get; set; }
+
+        public Autenticacao()
+        {
+            InitializeComponent();
+        }
 
         // encriptar senha
         public static string GerarHashMd5(string input)
@@ -97,6 +98,7 @@ namespace GenericPdv
 
         private void btAcessar_Click(object sender, EventArgs e)
         {
+
             bool liberar = true;
             if (string.IsNullOrEmpty(textNome.Text)) { liberar = false; textNome.Focus(); }
             if (string.IsNullOrEmpty(textNome.Text)) { liberar = false; textSenha.Focus();  }
@@ -110,6 +112,7 @@ namespace GenericPdv
                     AutenticacaoDeFuncionario.funcLogado = textNome.Text;
                     AutenticacaoDeFuncionario.Date = DateTime.Now;
                     AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idFuncionario"]);
+                    AutenticacaoDeFuncionario.idCargo = Convert.ToInt32(temp[0]["idCargo"]);
                     switch (temp[0]["idCargo"].ToString())
                     {
                         case "0":
@@ -197,5 +200,7 @@ namespace GenericPdv
             Reprodutor ajuda = new Reprodutor(@"C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\Ajuda\login.mp4");
             ajuda.Show();
         }
+
+
     }
 }

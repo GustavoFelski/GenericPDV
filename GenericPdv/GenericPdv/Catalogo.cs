@@ -12,6 +12,7 @@ namespace GenericPdv
 {
     public partial class Catalogo : UserControl
     {
+        int id = 1;
         public Catalogo()
         {
             InitializeComponent();
@@ -24,16 +25,37 @@ namespace GenericPdv
             {
                 this.produtoTableAdapter.FillById(this.dataSetGnPdv.Produto, ((int)(System.Convert.ChangeType(idToolStripTextBox.Text, typeof(int)))));
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
             }
 
         }
 
-        private void Catalogo_Load(object sender, EventArgs e)
+        public void Catalogo_Load(object sender, EventArgs e)
         {
             dataGridView1.DataSource = produto.GetData();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            CadastroDeProduto cadastro = new CadastroDeProduto(false, id, this);
+            cadastro.ShowDialog();
+
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                id = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+            }
+            catch (Exception ex)
+            {
+                Alerta alerta = new Alerta("Nenhuma linha selecionada.");
+                alerta.ShowDialog();
+            }
         }
     }
 }

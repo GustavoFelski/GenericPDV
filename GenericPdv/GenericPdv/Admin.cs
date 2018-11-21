@@ -57,7 +57,8 @@ namespace GenericPdv
             //Design Button
             panelSide.Height = btCadastroProdutos.Height;
             panelSide.Top = btCadastroProdutos.Top;
-            CadastroDeProduto cadastro = new CadastroDeProduto(true , 0);
+            Catalogo catalogo = new Catalogo();
+            CadastroDeProduto cadastro = new CadastroDeProduto(true , 0, catalogo );
             cadastro.ShowDialog();
             //Logic Button
 
@@ -70,7 +71,8 @@ namespace GenericPdv
             panelSide.Top = btCadastroFunc.Top;
 
             //Logic Button
-            CadastroDeFuncionario cadastro = new CadastroDeFuncionario(true, 0);
+            ListFuncionario listFuncionario = new ListFuncionario();
+            CadastroDeFuncionario cadastro = new CadastroDeFuncionario(true, 0, listFuncionario);
             cadastro.ShowDialog();
         }
 

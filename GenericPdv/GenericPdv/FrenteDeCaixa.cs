@@ -47,8 +47,14 @@ namespace GenericPdv
                         cpfJanela.ShowDialog();
                         cpf = cpfJanela.cpfCli;
                         cpfNota = false;
-                        btFinalizar.Enabled = true;
                         lbStatus.Text = "Caixa Ocupado.";
+
+                        btConsultar.Enabled = true;
+                        btSangria.Enabled = false;
+                        btFechamento.Enabled = false;
+                        btFinalizar.Enabled = true;
+                        btCancelarVenda.Enabled = true;
+                        btRemover.Enabled = true;
                     }
 
                     var aux = Convert.ToDouble(txtQtd.Text);
@@ -91,6 +97,7 @@ namespace GenericPdv
                         }
                         listView.Items.Add(item);
                         count++;
+                        txtQtd.Text = "1";
                     }
                     else
                     {
@@ -143,7 +150,7 @@ namespace GenericPdv
                     itensDaLista[i , j] = listView.Items[i].SubItems[j].Text;
                 }
             }
-            Pagamento pagamento = new Pagamento(itensDaLista, valorTotal, cpf);
+            Pagamento pagamento = new Pagamento(itensDaLista, valorTotal, cpf, this);
             pagamento.ShowDialog();
 
             // limpando array dos itens ja salvos
@@ -169,7 +176,6 @@ namespace GenericPdv
 
         private void btClouse_Click(object sender, EventArgs e)
         {
-            // verificar se status ainda esta atendimento e se foi feito o fechamento
             this.Dispose();
         }
 
@@ -187,8 +193,6 @@ namespace GenericPdv
 
         private void btSangria_Click(object sender, EventArgs e)
         {
-            // verificar se ha alguma operação em aberto
-            // fazer autenticação de admistrador?
             AutenticacaoValidacao autenticacao = new AutenticacaoValidacao(2);
             autenticacao.ShowDialog();
             lbStatus.Text = "Caixa em Sangria.";
@@ -201,34 +205,27 @@ namespace GenericPdv
             
             lbStatus.Text = "Caixa aberto - Livre";
             btFinalizar.Enabled = false;
+            btCancelarVenda.Enabled = false;
+            btRemover.Enabled = false;
+
+            txtQtd.Text = "1";
+
+
         }
 
         private void btFechamento_Click(object sender, EventArgs e)
         {
+            // perguntar se deseja proceguir
+            //fechar frente de caixa
             AutenticacaoValidacao autenticacao = new AutenticacaoValidacao(3);
             autenticacao.ShowDialog();
         }
 
         private void btCancelarVenda_Click(object sender, EventArgs e)
         {
-            //confirmação 
-            // se sim 
-            itens = new string[6];
-            listView.Items.Clear();
-            count = 0;
-            cpfNota = true;
-            cpf = null;
-            valorTotal = 0.0;
-            txtCodProd.Text = "";
-            txtPesquisa.Text = "";
-            txtQuantidade.Text = "";
-            txtSubTotal.Text = "";
-            txtValorUni.Text = "";
-            txtValorTotal.Text = "";
-            lbNomeProduto.Text = "";
+            limpar();
             Alerta alerta = new Alerta("Venda Cancelada.");
             alerta.ShowDialog();
-
         }
 
         private void HotKey_KeyDown(object sender, KeyPressEventArgs e)
@@ -268,8 +265,36 @@ namespace GenericPdv
             {
 
             }
+        }
 
+        private void btLogout_Click(object sender, EventArgs e)
+        {
+            AutenticacaoValidacao autenticacao = new AutenticacaoValidacao(0);
+        }
 
+        public void limpar()
+        {
+            itens = new string[6];
+            listView.Items.Clear();
+            count = 0;
+            cpfNota = true;
+            cpf = null;
+            valorTotal = 0.0;
+            txtCodProd.Text = "";
+            txtPesquisa.Text = "";
+            txtQuantidade.Text = "";
+            txtSubTotal.Text = "";
+            txtValorUni.Text = "";
+            txtValorTotal.Text = "";
+            lbNomeProduto.Text = "";
+
+            btConsultar.Enabled = true;
+            btSangria.Enabled = true;
+            btFechamento.Enabled = true;
+            lbStatus.Text = "Caixa aberto - Livre";
+            btFinalizar.Enabled = false;
+            btCancelarVenda.Enabled = false;
+            btRemover.Enabled = false;
 
         }
     }

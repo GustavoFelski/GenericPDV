@@ -121,11 +121,52 @@ namespace GenericPdv
                             {
                                 switch (contexto)
                                 {
-                                    //Trocar de usuário
+                                    
                                     case 1:
-                                        //AutenticacaoDeFuncionario.funcLogado = textNome.Text;
-                                        //AutenticacaoDeFuncionario.Date = DateTime.Now;
-                                        //AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idCargo"]);
+                                        #region Trocar de usuário - incompleto
+                                        //qual era o cargo do usuário anterior logado?
+                                        //qual o cargo de quem pretende logar?
+
+                                        //admim para admim
+                                        if (AutenticacaoDeFuncionario.idCargo == 0)
+                                        {
+                                            AutenticacaoDeFuncionario.funcLogado = textNome.Text;
+                                            AutenticacaoDeFuncionario.Date = DateTime.Now;
+                                            AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idFuncionario"]);
+                                        }
+                                        //admim para caixa
+                                        if(AutenticacaoDeFuncionario.idCargo == 1)
+                                        {
+                                            // fecha frente de caixa
+                                            AutenticacaoDeFuncionario.funcLogado = textNome.Text;
+                                            AutenticacaoDeFuncionario.Date = DateTime.Now;
+                                            AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idFuncionario"]);
+
+                                            //abre a frente de caixa
+                                            // verificar se o caixa foi aberto anteriormente, se sim
+                                            FrenteDeCaixa caixa = new FrenteDeCaixa();
+                                            caixa.Show();
+                                            // se não apresentar abertura 
+
+
+                                            //abre a tela de administrador
+                                            Admin admin = new Admin(true);
+                                            admin.Show();
+                                        }
+                                        //admim para estoquista
+                                        if (AutenticacaoDeFuncionario.idCargo == 2)
+                                        {
+                                            //fecha a tela de caixa
+                                            //fecha tela de admin
+                                            AutenticacaoDeFuncionario.funcLogado = textNome.Text;
+                                            AutenticacaoDeFuncionario.Date = DateTime.Now;
+                                            AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idFuncionario"]);
+
+                                            //Abre deta de admin tipo 2
+                                            Admin estoquista = new Admin(false);
+                                            estoquista.Show();
+                                        }
+                                        #endregion 
                                         break;
                                     //Sandria
                                     case 2:
@@ -150,8 +191,54 @@ namespace GenericPdv
                             {
                                 switch (contexto)
                                 {
-                                    //Trocar de usuário
-                                    case 1: break;
+                                    case 1:
+                                        #region Trocar de usuário incompleto
+                                        //qual era o cargo do usuário anterior logado?
+                                        //qual o cargo de quem pretende logar?
+
+                                        //caixa para admim
+                                        if (AutenticacaoDeFuncionario.idCargo == 0)
+                                        {
+                                            // fecha frente de caixa
+                                            // atualiza dados de acesso
+                                            AutenticacaoDeFuncionario.funcLogado = textNome.Text;
+                                            AutenticacaoDeFuncionario.Date = DateTime.Now;
+                                            AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idFuncionario"]);
+
+                                            // abre frente de caixa
+                                            FrenteDeCaixa caixa = new FrenteDeCaixa();
+                                            caixa.Show();
+                                            // abre tela de admin tipo 1 
+                                            Admin admin = new Admin(true);
+                                            admin.Show();
+                                        }
+
+                                        //caixa para caixa
+                                        if (AutenticacaoDeFuncionario.idCargo == 1)
+                                        {
+                                            // fechar caixa
+                                            AutenticacaoDeFuncionario.funcLogado = textNome.Text;
+                                            AutenticacaoDeFuncionario.Date = DateTime.Now;
+                                            AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idFuncionario"]);
+
+                                            FrenteDeCaixa caixa = new FrenteDeCaixa();
+                                            caixa.Show();
+                                        }
+                                        //caixa para estoquista
+                                        if (AutenticacaoDeFuncionario.idCargo == 2)
+                                        {
+                                            //fecha a tela de caixa
+                                            //fecha tela de admin
+                                            AutenticacaoDeFuncionario.funcLogado = textNome.Text;
+                                            AutenticacaoDeFuncionario.Date = DateTime.Now;
+                                            AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idFuncionario"]);
+
+                                            //Abre deta de admin tipo 2
+                                            Admin estoquista = new Admin(false);
+                                            estoquista.Show();
+                                        }
+                                        #endregion 
+                                        break;
                                     //Sandria
                                     case 2:
                                         Sangria sangria = new Sangria(Convert.ToInt32(temp[0]["idFuncionario"]));
@@ -180,7 +267,60 @@ namespace GenericPdv
                                 switch (contexto)
                                 {
                                     //Trocar de usuário
-                                    case 1: break;
+                                    case 1:
+                                        #region Trocar de usuário incompleto
+                                        //qual era o cargo do usuário anterior logado?
+                                        //qual o cargo de quem pretende logar?
+
+                                        //estoquista para admim
+                                        if (AutenticacaoDeFuncionario.idCargo == 0)
+                                        {
+                                            // fecha fecha admin tipo 2
+                                            // atualiza dados de acesso
+                                            AutenticacaoDeFuncionario.funcLogado = textNome.Text;
+                                            AutenticacaoDeFuncionario.Date = DateTime.Now;
+                                            AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idFuncionario"]);
+
+                                            // abre frente de caixa
+                                            FrenteDeCaixa caixa = new FrenteDeCaixa();
+                                            caixa.Show();
+                                            // abre tela de admin tipo 1 
+                                            Admin admin = new Admin(true);
+                                            admin.Show();
+                                        }
+
+                                        //estoquista para caixa
+                                        if (AutenticacaoDeFuncionario.idCargo == 1)
+                                        {
+                                            // fechar admin tipo 2
+                                            // atualiza dados de acesso
+                                            AutenticacaoDeFuncionario.funcLogado = textNome.Text;
+                                            AutenticacaoDeFuncionario.Date = DateTime.Now;
+                                            AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idFuncionario"]);
+                                            // abrir frente de caixa
+                                            // verificar se o caixa ja foi aberto anteriormente
+                                            // se sim
+                                            FrenteDeCaixa caixa = new FrenteDeCaixa();
+                                            caixa.Show();
+                                            // se não 
+                                            // apresentar abertura de caixa
+
+                                        }
+                                        //caixa para estoquista
+                                        if (AutenticacaoDeFuncionario.idCargo == 2)
+                                        {
+                                            //fecha a tela de caixa
+                                            // atualiza dados de acesso
+                                            AutenticacaoDeFuncionario.funcLogado = textNome.Text;
+                                            AutenticacaoDeFuncionario.Date = DateTime.Now;
+                                            AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idFuncionario"]);
+
+                                            //Abre deta de admin tipo 2
+                                            Admin estoquista = new Admin(false);
+                                            estoquista.Show();
+                                        }
+                                        #endregion 
+                                        break;
                                 }
                             }
                             break;

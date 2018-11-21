@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AutenticacaoValidacao));
             this.textNome = new System.Windows.Forms.TextBox();
             this.textSenha = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -49,6 +50,7 @@
             this.textNome.Name = "textNome";
             this.textNome.Size = new System.Drawing.Size(179, 26);
             this.textNome.TabIndex = 1;
+            this.textNome.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textNome.Leave += new System.EventHandler(this.textNome_Leave);
             // 
             // textSenha
@@ -59,6 +61,7 @@
             this.textSenha.Name = "textSenha";
             this.textSenha.Size = new System.Drawing.Size(179, 26);
             this.textSenha.TabIndex = 2;
+            this.textSenha.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textSenha.UseSystemPasswordChar = true;
             this.textSenha.Leave += new System.EventHandler(this.textSenha_Leave);
             // 
@@ -150,6 +153,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

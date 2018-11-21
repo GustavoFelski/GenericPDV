@@ -27,15 +27,16 @@ namespace GenericPdv
         string[,] itensDePagamento;
         string cpf, Html;
         string[,] itensLista;
-        
+        FrenteDeCaixa frente;
 
-        public Pagamento(string[,] itens, double valorCompra, string cpfCli)
+        public Pagamento(string[,] itens, double valorCompra, string cpfCli, FrenteDeCaixa caixa)
         {
             valorTotal = valorCompra;
             cpf = cpfCli;
             valorPagar = valorCompra;// variavel que vai ter o valor manipulado durante este processo
             itensLista = itens;
             InitializeComponent();
+            frente = caixa;
             
         }
 
@@ -116,6 +117,8 @@ namespace GenericPdv
             {
                 MessageBox.Show(ex.Message);
             }
+            frente.limpar();
+            this.Dispose();
         }
 
         private void GeraCupom(string id, string cpf, double total, string[,] Pagamento, string[,] itens )
@@ -152,8 +155,6 @@ namespace GenericPdv
             var DocumentoFinal = Template.Replace("{CORPO}", Html);
             string repositorio = @"C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\Cupons\Cupom_" + id.ToString() + ".pdf";
             GeraPdf(DocumentoFinal, repositorio, 1);
-            // retornar para autenticação
-            this.Dispose();
         }
 
         private string GetTemplate(string Caminho)

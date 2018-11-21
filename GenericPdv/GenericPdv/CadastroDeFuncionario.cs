@@ -17,12 +17,15 @@ namespace GenericPdv
         DataSetGnPdvTableAdapters.FuncionarioTableAdapter funcionario = new DataSetGnPdvTableAdapters.FuncionarioTableAdapter();
         bool tipoDeAbertura;
         int id;
+        ListFuncionario func;
 
-        public CadastroDeFuncionario(bool tipo, int idSelecionado)
+        public CadastroDeFuncionario(bool tipo, int idSelecionado, ListFuncionario ionario)
         {
             InitializeComponent();
             id = idSelecionado;
             tipoDeAbertura = tipo;
+            func = ionario;
+
         }
 
         private void CadastroDeFuncionario_Load(object sender, EventArgs e)
@@ -47,7 +50,7 @@ namespace GenericPdv
                 cbbStatus.Enabled = false;
                 ckbReset.Enabled = false;
 
-                textId.Text = (Convert.ToInt32(funcionario.GetDataByLast()[0]["idFuncionario"]) +1 ).ToString();
+                textId.Text = (Convert.ToInt32(funcionario.GetDataByLast()[0]["idFuncionario"]) + 1).ToString();
                 textNome.Text = "";
                 textEmail.Text = "";
                 mkbTelefone.Text = "";
@@ -66,15 +69,13 @@ namespace GenericPdv
 
                 var temp = funcionario.GetDataBy1(this.id);
                 textId.Text = temp[0]["idFuncionario"].ToString();
-                textNome.Text = temp[0]["idFuncionario"].ToString();
-                textEmail.Text = temp[0]["idFuncionario"].ToString();
-                mkbTelefone.Text = temp[0]["idFuncionario"].ToString();
+                textNome.Text = temp[0]["funcNome"].ToString();
+                textEmail.Text = temp[0]["funcEmail"].ToString();
+                mkbTelefone.Text = temp[0]["funcTelefone"].ToString();
                 cbbCargo.SelectedItem = Convert.ToInt32(temp[0]["idCargo"]);
-                textAcesso.Text = temp[0]["idFuncionario"].ToString();
+                textAcesso.Text = temp[0]["funcAliase"].ToString();
                 cbbStatus.SelectedItem = Convert.ToInt32(Convert.ToBoolean(temp[0]["idStatus"]));
             }
-
-
         }
 
         private void btNovo_Click(object sender, EventArgs e)
@@ -150,13 +151,31 @@ namespace GenericPdv
                 }
                 else
                 {
-                    
-                    //funcionario.UpdateFuncionario(Convert.ToInt32(textId.Text), Convert.ToInt32(cbbCargo.SelectedItem), textNome.Text, mkbTelefone.Text, null, true,  );
-
-
+                    funcionario.Insert(
+                        Convert.ToInt32(textId.Text),
+                        Convert.ToInt32(cbbCargo.SelectedItem),
+                        textNome.Text,
+                        mkbTelefone.Text,
+                        null,
+                        true,
+                        Convert.ToBoolean(cbbStatus.SelectedIndex),
+                        textEmail.Text
+                        );
                 }
             }
-
+            else
+            {
+                funcionario.UpdateFuncionario(
+                        Convert.ToInt32(textId.Text),
+                        Convert.ToInt32(cbbCargo.SelectedItem),
+                        textNome.Text,
+                        mkbTelefone.Text,
+                        null,
+                        true,
+                        Convert.ToBoolean(cbbStatus.SelectedIndex),
+                        textEmail.Text
+                    );
+            }
             btSalvar.Enabled = false;
             btDeletar.Enabled = false;
             btNovo.Enabled = true;
@@ -189,29 +208,10 @@ namespace GenericPdv
             if (MessageBox.Show("Deseja Realmente Deletar os dados deste Usuario?\nVocê pode apenas Desabilita-lo", "Cuidado", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 //Logica
-                
-                //Design
-                btSalvar.Enabled = false;
-                btDeletar.Enabled = false;
-                btNovo.Enabled = true;
-                BtCancelar.Enabled = false;
-
-                
-                textId.Enabled = false;
-                textNome.Enabled = false;
-                textEmail.Enabled = false;
-                mkbTelefone.Enabled = false;
-                cbbCargo.Enabled = false;
-                textAcesso.Enabled = false;
-                cbbStatus.Enabled = false;
-                ckbReset.Enabled = false;
-
-                textId.Text = "";
-                textNome.Text = "";
-                textEmail.Text = "";
-                mkbTelefone.Text = "";
-                cbbCargo.Text = "";
-                ckbReset.Checked = false;
+                funcionario.DeleteQuery(Convert.ToInt32(textId.Text));
+                Alerta alerta = new Alerta("Funcionario Deletado");
+                func.dataGridView1.DataSource = funcionario.GetData();
+                this.Dispose();
             }
             else
             {

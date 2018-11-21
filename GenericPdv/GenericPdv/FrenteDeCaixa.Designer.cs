@@ -84,7 +84,7 @@
             this.btFechamento = new System.Windows.Forms.Button();
             this.btConsultar = new System.Windows.Forms.Button();
             this.btCancelarVenda = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btRemover = new System.Windows.Forms.Button();
             this.btSangria = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
@@ -740,6 +740,7 @@
             this.btLogout.TabStop = false;
             this.btLogout.Text = "Logout";
             this.btLogout.UseVisualStyleBackColor = false;
+            this.btLogout.Click += new System.EventHandler(this.btLogout_Click);
             // 
             // btMinimized
             // 
@@ -778,7 +779,7 @@
             this.tableLayoutPanel6.Controls.Add(this.btFechamento, 0, 4);
             this.tableLayoutPanel6.Controls.Add(this.btConsultar, 0, 3);
             this.tableLayoutPanel6.Controls.Add(this.btCancelarVenda, 0, 2);
-            this.tableLayoutPanel6.Controls.Add(this.button2, 0, 1);
+            this.tableLayoutPanel6.Controls.Add(this.btRemover, 0, 1);
             this.tableLayoutPanel6.Controls.Add(this.btSangria, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.panel6, 0, 5);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -851,23 +852,23 @@
             this.btCancelarVenda.UseVisualStyleBackColor = false;
             this.btCancelarVenda.Click += new System.EventHandler(this.btCancelarVenda_Click);
             // 
-            // button2
+            // btRemover
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(10, 59);
-            this.button2.Margin = new System.Windows.Forms.Padding(10);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(206, 29);
-            this.button2.TabIndex = 2;
-            this.button2.TabStop = false;
-            this.button2.Text = "Remover Item";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.btRemover_Click);
+            this.btRemover.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btRemover.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btRemover.FlatAppearance.BorderSize = 0;
+            this.btRemover.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btRemover.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btRemover.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btRemover.Location = new System.Drawing.Point(10, 59);
+            this.btRemover.Margin = new System.Windows.Forms.Padding(10);
+            this.btRemover.Name = "btRemover";
+            this.btRemover.Size = new System.Drawing.Size(206, 29);
+            this.btRemover.TabIndex = 2;
+            this.btRemover.TabStop = false;
+            this.btRemover.Text = "Remover Item";
+            this.btRemover.UseVisualStyleBackColor = false;
+            this.btRemover.Click += new System.EventHandler(this.btRemover_Click);
             // 
             // btSangria
             // 
@@ -921,6 +922,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrenteDeCaixa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1011,7 +1013,7 @@
         private System.Windows.Forms.TextBox txtCodProd;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Button btCancelarVenda;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btRemover;
         private System.Windows.Forms.Button btSangria;
         private System.Windows.Forms.Button btConsultar;
         private System.Windows.Forms.Button btFinalizar;

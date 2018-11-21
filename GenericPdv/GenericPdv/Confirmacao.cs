@@ -12,10 +12,9 @@ namespace GenericPdv
 {
     public partial class Confirmacao : Form
     {
-        Form instanciaDoForm;
+        Autenticacao instanciaDoForm;
 
-
-        public Confirmacao(string mensagem, Form form)
+        public Confirmacao(string mensagem, Autenticacao form)
         {
             instanciaDoForm = form;
             InitializeComponent();
@@ -24,8 +23,7 @@ namespace GenericPdv
 
         private void btOk_Click(object sender, EventArgs e)
         {
-            
-            //instanciaDoForm.RespConfirmacao = true;
+            instanciaDoForm.RespConfirmacao = true;
         }
 
         private void btCancelar_Click(object sender, EventArgs e)
