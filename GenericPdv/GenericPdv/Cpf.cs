@@ -70,5 +70,13 @@ namespace GenericPdv
                 mkbCpf.Focus();
             }
         }
+
+        private void Cpf_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode.ToString() == "Escape")
+            {
+                this.Close();
+            }
+        }
     }
 }

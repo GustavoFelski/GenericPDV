@@ -75,5 +75,18 @@ namespace GenericPdv
         {
             txtPesquisaId.Enabled = false;
         }
+
+        private void consulta_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.ToString() == "Escape")
+            {
+                this.Close();
+            }
+            if(e.KeyCode.ToString() == "Enter")
+            {
+                btConsulta_Click(sender, e);
+            }
+
+        }
     }
 }

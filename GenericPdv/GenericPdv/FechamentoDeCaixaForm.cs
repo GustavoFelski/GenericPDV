@@ -92,7 +92,7 @@ namespace GenericPdv
             this.Html += "</table>";
 
             var DocumentoFinal = Template.Replace("{CORPO}", Html);
-            string repositorio = @"C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\Relatorios\Relatorio_" + DateTime.Now.ToString("dd-MM-yyyy")+".pdf";
+            string repositorio = @"C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\Relatorios\Fechamento_" + DateTime.Now.ToString("dd-MM-yyyy")+".pdf";
             GeraPdf(DocumentoFinal,repositorio, 1);
             // retornar para autenticação
             this.Dispose();

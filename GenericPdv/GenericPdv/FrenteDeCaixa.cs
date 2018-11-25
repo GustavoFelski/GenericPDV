@@ -26,7 +26,7 @@ namespace GenericPdv
         //Variaveis Globais
         public double valorTotal { get; set; }
         public string[,] itensDaLista { get; set; }
-
+        bool statusVenda;
         bool cpfNota = true;
         int count = 1;
         string[] itens = new string[6];
@@ -48,6 +48,7 @@ namespace GenericPdv
                         cpf = cpfJanela.cpfCli;
                         cpfNota = false;
                         lbStatus.Text = "Caixa Ocupado.";
+                        statusVenda = true;
 
                         btConsultar.Enabled = true;
                         btSangria.Enabled = false;
@@ -122,18 +123,17 @@ namespace GenericPdv
             //navegar pela setas cima e baixo
             // ao apertar enter 
             // remover o item selecionado atualizar preço
-
+            ListViewItem item = new ListViewItem(itens[0]);
+            double aux = 0;
+            string [] indice = new string [6];
             foreach (ListViewItem eachItem in listView.SelectedItems)
             {
-
+                aux = Convert.ToDouble(listView.Items[eachItem.Index].SubItems[5].Text);
+                txtValorTotal.Text = string.Format("{0,-10:C}", valorTotal - aux); 
+                
                 listView.Items.Remove(eachItem);
             }
-
-
-            //if (listView.Items.Count > 0)
-            //{
-            //    listView.Items.Remove(listView.SelectedItems[0]);
-            //}
+            txtPesquisa.Focus();
         }
         
         private void btFinalizar_Click(object sender, EventArgs e)
@@ -193,7 +193,8 @@ namespace GenericPdv
 
         private void btSangria_Click(object sender, EventArgs e)
         {
-            AutenticacaoValidacao autenticacao = new AutenticacaoValidacao(2);
+            Admin admin = new Admin(true);
+            AutenticacaoValidacao autenticacao = new AutenticacaoValidacao(2, this, admin );
             autenticacao.ShowDialog();
             lbStatus.Text = "Caixa em Sangria.";
 
@@ -207,7 +208,7 @@ namespace GenericPdv
             btFinalizar.Enabled = false;
             btCancelarVenda.Enabled = false;
             btRemover.Enabled = false;
-
+            bool statusVenda = false;
             txtQtd.Text = "1";
 
 
@@ -215,61 +216,30 @@ namespace GenericPdv
 
         private void btFechamento_Click(object sender, EventArgs e)
         {
-            // perguntar se deseja proceguir
-            //fechar frente de caixa
-            AutenticacaoValidacao autenticacao = new AutenticacaoValidacao(3);
-            autenticacao.ShowDialog();
+            if (MessageBox.Show("Deseja fazer o fechamento do Caixa?", "Confirmar", MessageBoxButtons.YesNo) == DialogResult.Yes) {
+
+                Admin admin = new Admin(true);
+                AutenticacaoValidacao autenticacao = new AutenticacaoValidacao(3, this, admin);
+                autenticacao.ShowDialog();
+                this.Dispose();
+            }
         }
 
         private void btCancelarVenda_Click(object sender, EventArgs e)
         {
-            limpar();
-            Alerta alerta = new Alerta("Venda Cancelada.");
-            alerta.ShowDialog();
-        }
-
-        private void HotKey_KeyDown(object sender, KeyPressEventArgs e)
-        {
-            //fechar venda
-            if(e.KeyChar == (char)112)
+            if (MessageBox.Show("Deseja realmente cancelar esta venda?", "Cancelar", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                btFechamento_Click(null, null);
-            }
-            //Consultar Item
-            if (e.KeyChar == (char)113)
-            {
-
-            }
-            //Remover item
-            if (e.KeyChar == (char)114)
-            {
-
-            }
-            //Cancelar Venda
-            if (e.KeyChar == (char)115)
-            {
-
-            }
-            //Sangria
-            if (e.KeyChar == (char)116)
-            {
-
-            }
-            //Fechamento
-            if (e.KeyChar == (char)117)
-            {
-
-            }
-            //Trocar usuario
-            if (e.KeyChar == (char)118)
-            {
-
+                limpar();
+                Alerta alerta = new Alerta("Venda Cancelada.");
+                alerta.ShowDialog();
             }
         }
 
         private void btLogout_Click(object sender, EventArgs e)
         {
-            AutenticacaoValidacao autenticacao = new AutenticacaoValidacao(0);
+            Admin admin = new Admin(true);
+            AutenticacaoValidacao autenticacao = new AutenticacaoValidacao(1, this, admin);
+            autenticacao.ShowDialog();
         }
 
         public void limpar()
@@ -278,6 +248,7 @@ namespace GenericPdv
             listView.Items.Clear();
             count = 0;
             cpfNota = true;
+            statusVenda = false;
             cpf = null;
             valorTotal = 0.0;
             txtCodProd.Text = "";
@@ -296,6 +267,49 @@ namespace GenericPdv
             btCancelarVenda.Enabled = false;
             btRemover.Enabled = false;
 
+        }
+
+        private void HotKey_KeyDown(object sender, KeyEventArgs e)
+        {
+            //fechar venda
+            if (e.KeyCode.ToString() == "F1" && cpfNota == false) {
+                btFinalizar_Click(sender, e);
+            }
+            //Consultar item
+            if (e.KeyCode.ToString() == "F2" )
+            {
+                btConsultar_Click(sender, e);
+            }
+            //remover item
+            if (e.KeyCode.ToString() == "F3" && statusVenda == true)
+            {
+                btRemover_Click(sender, e);
+            }
+            //Cancelar
+            if (e.KeyCode.ToString() == "F4" && statusVenda == true)
+            {
+                btCancelarVenda_Click(sender, e);
+            }
+            //Sangria
+            if (e.KeyCode.ToString() == "F5" && statusVenda == false)
+            {
+                btSangria_Click(sender, e);
+            }
+            //Fechamento
+            if (e.KeyCode.ToString() == "F6" && statusVenda == false)
+            {
+                btFechamento_Click(sender, e);
+            }
+            //trocar de usuário
+            if (e.KeyCode.ToString() == "F7" && statusVenda == false)
+            {
+                btLogout_Click(sender, e);
+            }
+            if (e.KeyCode.ToString() == "Escape")
+            {
+                txtPesquisa.Text = "";
+                txtPesquisa.Focus();
+            }
         }
     }
 }

@@ -29,7 +29,6 @@ namespace GenericPdv
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
 
         public void Catalogo_Load(object sender, EventArgs e)

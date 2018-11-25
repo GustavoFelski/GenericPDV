@@ -19,10 +19,6 @@ namespace GenericPdv
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Autenticacao());
-            
-            //Application.Run(new AberturaDeCaixaForm());
-            //Application.Run(new FrenteDeCaixa());
-
         }
     }
 }

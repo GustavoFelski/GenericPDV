@@ -32,14 +32,14 @@
             this.textNome = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btAcessar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.textSenha = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btRecuperar = new System.Windows.Forms.Button();
-            this.lbAjuda = new System.Windows.Forms.LinkLabel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btAcessar = new System.Windows.Forms.Button();
+            this.lbAjuda = new System.Windows.Forms.LinkLabel();
+            this.btRecuperar = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -93,6 +93,23 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(239, 173);
             this.tableLayoutPanel1.TabIndex = 7;
             // 
+            // btAcessar
+            // 
+            this.btAcessar.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.btAcessar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btAcessar.FlatAppearance.BorderSize = 0;
+            this.btAcessar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btAcessar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btAcessar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btAcessar.Location = new System.Drawing.Point(1, 136);
+            this.btAcessar.Margin = new System.Windows.Forms.Padding(1);
+            this.btAcessar.Name = "btAcessar";
+            this.btAcessar.Size = new System.Drawing.Size(237, 36);
+            this.btAcessar.TabIndex = 3;
+            this.btAcessar.Text = "Acessar";
+            this.btAcessar.UseVisualStyleBackColor = false;
+            this.btAcessar.Click += new System.EventHandler(this.btAcessar_Click);
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.label1);
@@ -138,6 +155,30 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "Senha de Acesso";
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.lbAjuda);
+            this.panel3.Controls.Add(this.btRecuperar);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 102);
+            this.panel3.Margin = new System.Windows.Forms.Padding(0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(239, 33);
+            this.panel3.TabIndex = 4;
+            // 
+            // lbAjuda
+            // 
+            this.lbAjuda.AutoSize = true;
+            this.lbAjuda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbAjuda.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.lbAjuda.Location = new System.Drawing.Point(187, 8);
+            this.lbAjuda.Name = "lbAjuda";
+            this.lbAjuda.Size = new System.Drawing.Size(22, 15);
+            this.lbAjuda.TabIndex = 0;
+            this.lbAjuda.TabStop = true;
+            this.lbAjuda.Text = "(?)";
+            this.lbAjuda.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbAjuda_LinkClicked);
+            // 
             // btRecuperar
             // 
             this.btRecuperar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -153,46 +194,7 @@
             this.btRecuperar.TabStop = false;
             this.btRecuperar.Text = "Recuperar senha.";
             this.btRecuperar.UseVisualStyleBackColor = false;
-            // 
-            // lbAjuda
-            // 
-            this.lbAjuda.AutoSize = true;
-            this.lbAjuda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbAjuda.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.lbAjuda.Location = new System.Drawing.Point(187, 8);
-            this.lbAjuda.Name = "lbAjuda";
-            this.lbAjuda.Size = new System.Drawing.Size(22, 15);
-            this.lbAjuda.TabIndex = 0;
-            this.lbAjuda.Text = "(?)";
-            this.lbAjuda.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbAjuda_LinkClicked);
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.lbAjuda);
-            this.panel3.Controls.Add(this.btRecuperar);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 102);
-            this.panel3.Margin = new System.Windows.Forms.Padding(0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(239, 33);
-            this.panel3.TabIndex = 4;
-            // 
-            // btAcessar
-            // 
-            this.btAcessar.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.btAcessar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btAcessar.FlatAppearance.BorderSize = 0;
-            this.btAcessar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btAcessar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btAcessar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btAcessar.Location = new System.Drawing.Point(1, 136);
-            this.btAcessar.Margin = new System.Windows.Forms.Padding(1);
-            this.btAcessar.Name = "btAcessar";
-            this.btAcessar.Size = new System.Drawing.Size(237, 36);
-            this.btAcessar.TabIndex = 3;
-            this.btAcessar.Text = "Acessar";
-            this.btAcessar.UseVisualStyleBackColor = false;
-            this.btAcessar.Click += new System.EventHandler(this.btAcessar_Click);
+            this.btRecuperar.Click += new System.EventHandler(this.btRecuperar_Click);
             // 
             // panel4
             // 
@@ -245,6 +247,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

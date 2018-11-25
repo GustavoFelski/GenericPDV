@@ -148,7 +148,7 @@ SELECT idFuncionario, idCargo, funcNome, funcTelefone, funcSenha, funcReset, fun
               <Mapping SourceColumn="funcEmail" DataSetColumn="funcEmail" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="GNPDVBDConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteQuery" Modifier="Public" Name="DeleteQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="DeleteQuery">
+              <DbSource ConnectionRef="GNPDVBDConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteQuery" Modifier="Public" Name="DeleteQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteQuery">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM [Funcionario] WHERE ([idFuncionario] = @Original_idFuncionario)</CommandText>
@@ -205,7 +205,15 @@ WHERE        (funcSenha = @funcSenha)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="GNPDVBDConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateFuncionario" Modifier="Public" Name="UpdateFuncionario" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="UpdateFuncionario">
+              <DbSource ConnectionRef="GNPDVBDConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ScalarQuery" Modifier="Public" Name="ScalarQuery" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="ScalarQuery">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT COUNT(*) FROM Funcionario where idCargo = 1 or idCargo = 0</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="GNPDVBDConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateFuncionario" Modifier="Public" Name="UpdateFuncionario" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="UpdateFuncionario">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE [Funcionario] SET [idFuncionario] = @idFuncionario, [idCargo] = @idCargo, [funcNome] = @funcNome, [funcTelefone] = @funcTelefone, [funcSenha] = @funcSenha, [funcReset] = @funcReset, [funcStatus] = @funcStatus, [funcEmail] = @funcEmail  WHERE (idFuncionario = @idFuncionario)</CommandText>
@@ -222,7 +230,7 @@ WHERE        (funcSenha = @funcSenha)</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="GNPDVBDConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQuerySenha" Modifier="Public" Name="UpdateQuerySenha" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="UpdateQuerySenha">
+              <DbSource ConnectionRef="GNPDVBDConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQuerySenha" Modifier="Public" Name="UpdateQuerySenha" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="UpdateQuerySenha">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE [Funcionario] SET funcSenha=@Senha, funcReset=@Reset WHERE ([funcAliase] = @Aliase)</CommandText>
@@ -326,12 +334,13 @@ SELECT idSangria, idFuncionario, sangDataTime, sangriaValor FROM Sangria WHERE (
               <DbSource ConnectionRef="GNPDVBDConnectionString (Settings)" DbObjectName="GNPDVBD.dbo.ItensDaVenda" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM [ItensDaVenda] WHERE (([idItens] = @Original_idItens) AND ((@IsNull_idProduto = 1 AND [idProduto] IS NULL) OR ([idProduto] = @Original_idProduto)) AND ([idVenda] = @Original_idVenda) AND ((@IsNull_itensQtd = 1 AND [itensQtd] IS NULL) OR ([itensQtd] = @Original_itensQtd)) AND ((@IsNull_itensSubTotal = 1 AND [itensSubTotal] IS NULL) OR ([itensSubTotal] = @Original_itensSubTotal)) AND ((@IsNull_itensValorUni = 1 AND [itensValorUni] IS NULL) OR ([itensValorUni] = @Original_itensValorUni)))</CommandText>
+                    <CommandText>DELETE FROM [ItensDaVenda] WHERE (([idItens] = @Original_idItens) AND ((@IsNull_idProduto = 1 AND [idProduto] IS NULL) OR ([idProduto] = @Original_idProduto)) AND ((@IsNull_idVenda = 1 AND [idVenda] IS NULL) OR ([idVenda] = @Original_idVenda)) AND ((@IsNull_itensQtd = 1 AND [itensQtd] IS NULL) OR ([itensQtd] = @Original_itensQtd)) AND ((@IsNull_itensSubTotal = 1 AND [itensSubTotal] IS NULL) OR ([itensSubTotal] = @Original_itensSubTotal)) AND ((@IsNull_itensValorUni = 1 AND [itensValorUni] IS NULL) OR ([itensValorUni] = @Original_itensValorUni)))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_idItens" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idItens" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_idProduto" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idProduto" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_idProduto" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idProduto" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_idVenda" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idVenda" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_idVenda" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idVenda" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_idVenda" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idVenda" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_itensQtd" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="itensQtd" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_itensQtd" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="itensQtd" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_itensSubTotal" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="itensSubTotal" SourceColumnNullMapping="true" SourceVersion="Original" />
@@ -347,7 +356,7 @@ SELECT idSangria, idFuncionario, sangDataTime, sangriaValor FROM Sangria WHERE (
 SELECT idItens, idProduto, idVenda, itensQtd, itensSubTotal, itensValorUni FROM ItensDaVenda WHERE (idItens = SCOPE_IDENTITY())</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@idProduto" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idProduto" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@idVenda" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idVenda" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@idVenda" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idVenda" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@itensQtd" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="itensQtd" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@itensSubTotal" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="itensSubTotal" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@itensValorUni" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="itensValorUni" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -357,24 +366,28 @@ SELECT idItens, idProduto, idVenda, itensQtd, itensSubTotal, itensValorUni FROM 
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        ItensDaVenda.*
-FROM            ItensDaVenda</CommandText>
-                    <Parameters />
+FROM            ItensDaVenda
+where idVenda = @id</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="id" ColumnName="idVenda" DataSourceName="GNPDVBD.dbo.ItensDaVenda" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@id" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="idVenda" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
                   </DbCommand>
                 </SelectCommand>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE [ItensDaVenda] SET [idProduto] = @idProduto, [idVenda] = @idVenda, [itensQtd] = @itensQtd, [itensSubTotal] = @itensSubTotal, [itensValorUni] = @itensValorUni WHERE (([idItens] = @Original_idItens) AND ((@IsNull_idProduto = 1 AND [idProduto] IS NULL) OR ([idProduto] = @Original_idProduto)) AND ([idVenda] = @Original_idVenda) AND ((@IsNull_itensQtd = 1 AND [itensQtd] IS NULL) OR ([itensQtd] = @Original_itensQtd)) AND ((@IsNull_itensSubTotal = 1 AND [itensSubTotal] IS NULL) OR ([itensSubTotal] = @Original_itensSubTotal)) AND ((@IsNull_itensValorUni = 1 AND [itensValorUni] IS NULL) OR ([itensValorUni] = @Original_itensValorUni)));
+                    <CommandText>UPDATE [ItensDaVenda] SET [idProduto] = @idProduto, [idVenda] = @idVenda, [itensQtd] = @itensQtd, [itensSubTotal] = @itensSubTotal, [itensValorUni] = @itensValorUni WHERE (([idItens] = @Original_idItens) AND ((@IsNull_idProduto = 1 AND [idProduto] IS NULL) OR ([idProduto] = @Original_idProduto)) AND ((@IsNull_idVenda = 1 AND [idVenda] IS NULL) OR ([idVenda] = @Original_idVenda)) AND ((@IsNull_itensQtd = 1 AND [itensQtd] IS NULL) OR ([itensQtd] = @Original_itensQtd)) AND ((@IsNull_itensSubTotal = 1 AND [itensSubTotal] IS NULL) OR ([itensSubTotal] = @Original_itensSubTotal)) AND ((@IsNull_itensValorUni = 1 AND [itensValorUni] IS NULL) OR ([itensValorUni] = @Original_itensValorUni)));
 SELECT idItens, idProduto, idVenda, itensQtd, itensSubTotal, itensValorUni FROM ItensDaVenda WHERE (idItens = @idItens)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@idProduto" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idProduto" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@idVenda" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idVenda" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@idVenda" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idVenda" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@itensQtd" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="itensQtd" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@itensSubTotal" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="itensSubTotal" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@itensValorUni" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="itensValorUni" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_idItens" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idItens" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_idProduto" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idProduto" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_idProduto" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idProduto" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_idVenda" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idVenda" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_idVenda" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idVenda" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_idVenda" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idVenda" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_itensQtd" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="itensQtd" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_itensQtd" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="itensQtd" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_itensSubTotal" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="itensSubTotal" SourceColumnNullMapping="true" SourceVersion="Original" />
@@ -396,6 +409,16 @@ SELECT idItens, idProduto, idVenda, itensQtd, itensSubTotal, itensValorUni FROM 
               <Mapping SourceColumn="itensValorUni" DataSetColumn="itensValorUni" />
             </Mappings>
             <Sources>
+              <DbSource ConnectionRef="GNPDVBDConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByQtdItens" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByQtdItens" GeneratorSourceName="FillByQtdItens" GetMethodModifier="Public" GetMethodName="GetDataByQtdItens" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByQtdItens" UserSourceName="FillByQtdItens">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>select COUNT ("idItens") from ItensDaVenda where idVenda = @idVendas</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="idVendas" ColumnName="idVenda" DataSourceName="GNPDVBD.dbo.ItensDaVenda" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@idVendas" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="idVenda" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
               <DbSource ConnectionRef="GNPDVBDConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertQuery" Modifier="Public" Name="InsertQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="InsertQuery">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
@@ -405,7 +428,7 @@ SELECT idItens, idProduto, idVenda, itensQtd, itensSubTotal, itensValorUni FROM 
                       <Parameter AllowDbNull="true" AutogeneratedName="itensSubTotal" ColumnName="itensSubTotal" DataSourceName="GNPDVBD.dbo.ItensDaVenda" DataTypeServer="float" DbType="Double" Direction="Input" ParameterName="@itensSubTotal" Precision="0" ProviderType="Float" Scale="0" Size="8" SourceColumn="itensSubTotal" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="itensValorUni" ColumnName="itensValorUni" DataSourceName="GNPDVBD.dbo.ItensDaVenda" DataTypeServer="float" DbType="Double" Direction="Input" ParameterName="@itensValorUni" Precision="0" ProviderType="Float" Scale="0" Size="8" SourceColumn="itensValorUni" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="idProduto" ColumnName="idProduto" DataSourceName="GNPDVBD.dbo.ItensDaVenda" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@idProduto" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="idProduto" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="idVenda" ColumnName="idVenda" DataSourceName="GNPDVBD.dbo.ItensDaVenda" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@idVenda" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="idVenda" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="idVenda" ColumnName="idVenda" DataSourceName="GNPDVBD.dbo.ItensDaVenda" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@idVenda" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="idVenda" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
@@ -1035,7 +1058,7 @@ SELECT idProduto, prodNome, prodVenda, prodCusto, prodDataInicio, prodQuantidade
               <Mapping SourceColumn="prodStatus" DataSetColumn="prodStatus" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="GNPDVBDConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteProd" Modifier="Public" Name="DeleteProd" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="DeleteProd">
+              <DbSource ConnectionRef="GNPDVBDConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteProd" Modifier="Public" Name="DeleteProd" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteProd">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM [Produto] WHERE ([idProduto] = @Original_idProduto)</CommandText>
@@ -1073,7 +1096,7 @@ SELECT idProduto, prodNome, prodVenda, prodCusto, prodDataInicio, prodQuantidade
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="GNPDVBDConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertQueryProd" Modifier="Public" Name="InsertQueryProd" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="InsertQueryProd">
+              <DbSource ConnectionRef="GNPDVBDConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertQueryProd" Modifier="Public" Name="InsertQueryProd" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="InsertQueryProd">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>INSERT INTO [Produto] ([idProduto], [prodNome], [prodVenda], [prodCusto], [prodDataInicio], [prodQuantidade], [prodDesconto], [prodDataFim], [prodCodBarras], [prodMarca], [prodCodFonecedor], [prodStatus]) VALUES (@idProduto, @prodNome, @prodVenda, @prodCusto, @prodDataInicio, @prodQuantidade, @prodDesconto, @prodDataFim,  @prodCodBarras, @prodMarca, @prodCodFonecedor, @prodStatus);
@@ -1095,7 +1118,7 @@ SELECT idProduto, prodNome, prodVenda, prodCusto, prodDataInicio, prodQuantidade
                   </DbCommand>
                 </InsertCommand>
               </DbSource>
-              <DbSource ConnectionRef="GNPDVBDConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateProd" Modifier="Public" Name="UpdateProd" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="UpdateProd">
+              <DbSource ConnectionRef="GNPDVBDConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateProd" Modifier="Public" Name="UpdateProd" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="UpdateProd">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE [Produto] SET [idProduto] = @idProduto, [prodNome] = @prodNome, [prodVenda] = @prodVenda, [prodCusto] = @prodCusto, [prodDataInicio] = @prodDataInicio, [prodQuantidade] = @prodQuantidade, [prodDesconto] = @prodDesconto, [prodDataFim] = @prodDataFim, [prodCodBarras] = @prodCodBarras, [prodMarca] = @prodMarca, [prodCodFonecedor] = @prodCodFonecedor, [prodStatus] = @prodStatus 
@@ -1119,6 +1142,31 @@ WHERE (idProduto = @idProduto)</CommandText>
                 </UpdateCommand>
               </DbSource>
             </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="relatorioProdutosTableAdapter" GeneratorDataComponentClassName="relatorioProdutosTableAdapter" Name="relatorioProdutos" UserDataComponentName="relatorioProdutosTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="GNPDVBDConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        ItensDaVenda.itensQtd, ItensDaVenda.itensSubTotal, ItensDaVenda.itensValorUni, Produto.prodNome, ItensDaVenda.idProduto
+FROM            ItensDaVenda INNER JOIN
+                         Produto ON ItensDaVenda.idProduto = Produto.idProduto
+WHERE        (ItensDaVenda.idVenda = @idVenda)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="idVenda" ColumnName="idVenda" DataSourceName="GNPDVBD.dbo.ItensDaVenda" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@idVenda" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="idVenda" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="itensQtd" DataSetColumn="itensQtd" />
+              <Mapping SourceColumn="itensSubTotal" DataSetColumn="itensSubTotal" />
+              <Mapping SourceColumn="itensValorUni" DataSetColumn="itensValorUni" />
+              <Mapping SourceColumn="prodNome" DataSetColumn="prodNome" />
+              <Mapping SourceColumn="idProduto" DataSetColumn="idProduto" />
+            </Mappings>
+            <Sources />
           </TableAdapter>
         </Tables>
         <Sources />
@@ -1186,7 +1234,7 @@ WHERE (idProduto = @idProduto)</CommandText>
             <xs:sequence>
               <xs:element name="idItens" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnidItens" msprop:Generator_ColumnPropNameInRow="idItens" msprop:Generator_ColumnPropNameInTable="idItensColumn" msprop:Generator_UserColumnName="idItens" type="xs:int" />
               <xs:element name="idProduto" msprop:Generator_ColumnVarNameInTable="columnidProduto" msprop:Generator_ColumnPropNameInRow="idProduto" msprop:Generator_ColumnPropNameInTable="idProdutoColumn" msprop:Generator_UserColumnName="idProduto" type="xs:int" minOccurs="0" />
-              <xs:element name="idVenda" msprop:Generator_ColumnVarNameInTable="columnidVenda" msprop:Generator_ColumnPropNameInRow="idVenda" msprop:Generator_ColumnPropNameInTable="idVendaColumn" msprop:Generator_UserColumnName="idVenda" type="xs:int" />
+              <xs:element name="idVenda" msprop:Generator_ColumnVarNameInTable="columnidVenda" msprop:Generator_ColumnPropNameInRow="idVenda" msprop:Generator_ColumnPropNameInTable="idVendaColumn" msprop:Generator_UserColumnName="idVenda" type="xs:int" minOccurs="0" />
               <xs:element name="itensQtd" msprop:Generator_ColumnVarNameInTable="columnitensQtd" msprop:Generator_ColumnPropNameInRow="itensQtd" msprop:Generator_ColumnPropNameInTable="itensQtdColumn" msprop:Generator_UserColumnName="itensQtd" type="xs:int" minOccurs="0" />
               <xs:element name="itensSubTotal" msprop:Generator_ColumnVarNameInTable="columnitensSubTotal" msprop:Generator_ColumnPropNameInRow="itensSubTotal" msprop:Generator_ColumnPropNameInTable="itensSubTotalColumn" msprop:Generator_UserColumnName="itensSubTotal" type="xs:double" minOccurs="0" />
               <xs:element name="itensValorUni" msprop:Generator_ColumnVarNameInTable="columnitensValorUni" msprop:Generator_ColumnPropNameInRow="itensValorUni" msprop:Generator_ColumnPropNameInTable="itensValorUniColumn" msprop:Generator_UserColumnName="itensValorUni" type="xs:double" minOccurs="0" />
@@ -1386,6 +1434,23 @@ WHERE (idProduto = @idProduto)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="relatorioProdutos" msprop:Generator_TableClassName="relatorioProdutosDataTable" msprop:Generator_TableVarName="tablerelatorioProdutos" msprop:Generator_RowChangedName="relatorioProdutosRowChanged" msprop:Generator_TablePropName="relatorioProdutos" msprop:Generator_RowDeletingName="relatorioProdutosRowDeleting" msprop:Generator_RowChangingName="relatorioProdutosRowChanging" msprop:Generator_RowEvHandlerName="relatorioProdutosRowChangeEventHandler" msprop:Generator_RowDeletedName="relatorioProdutosRowDeleted" msprop:Generator_RowClassName="relatorioProdutosRow" msprop:Generator_UserTableName="relatorioProdutos" msprop:Generator_RowEvArgName="relatorioProdutosRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="itensQtd" msprop:Generator_ColumnVarNameInTable="columnitensQtd" msprop:Generator_ColumnPropNameInRow="itensQtd" msprop:Generator_ColumnPropNameInTable="itensQtdColumn" msprop:Generator_UserColumnName="itensQtd" type="xs:int" minOccurs="0" />
+              <xs:element name="itensSubTotal" msprop:Generator_ColumnVarNameInTable="columnitensSubTotal" msprop:Generator_ColumnPropNameInRow="itensSubTotal" msprop:Generator_ColumnPropNameInTable="itensSubTotalColumn" msprop:Generator_UserColumnName="itensSubTotal" type="xs:double" minOccurs="0" />
+              <xs:element name="itensValorUni" msprop:Generator_ColumnVarNameInTable="columnitensValorUni" msprop:Generator_ColumnPropNameInRow="itensValorUni" msprop:Generator_ColumnPropNameInTable="itensValorUniColumn" msprop:Generator_UserColumnName="itensValorUni" type="xs:double" minOccurs="0" />
+              <xs:element name="prodNome" msprop:Generator_ColumnVarNameInTable="columnprodNome" msprop:Generator_ColumnPropNameInRow="prodNome" msprop:Generator_ColumnPropNameInTable="prodNomeColumn" msprop:Generator_UserColumnName="prodNome" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="idProduto" msprop:Generator_ColumnVarNameInTable="columnidProduto" msprop:Generator_ColumnPropNameInRow="idProduto" msprop:Generator_ColumnPropNameInTable="idProdutoColumn" msprop:Generator_UserColumnName="idProduto" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -1440,6 +1505,7 @@ WHERE (idProduto = @idProduto)</CommandText>
       <msdata:Relationship name="FK__Pagamento__idVen__41B8C09B" msdata:parent="Venda" msdata:child="Pagamento" msdata:parentkey="idVenda" msdata:childkey="idVenda" msprop:Generator_UserChildTable="Pagamento" msprop:Generator_ChildPropName="GetPagamentoRows" msprop:Generator_UserRelationName="FK__Pagamento__idVen__41B8C09B" msprop:Generator_RelationVarName="relationFK__Pagamento__idVen__41B8C09B" msprop:Generator_UserParentTable="Venda" msprop:Generator_ParentPropName="VendaRow" />
       <msdata:Relationship name="FK__Pagamento__idMPa__44952D46" msdata:parent="MetodoDePagamento" msdata:child="Pagamento" msdata:parentkey="idMPagamento" msdata:childkey="idMPagamento" msprop:Generator_UserChildTable="Pagamento" msprop:Generator_ChildPropName="GetPagamentoRows" msprop:Generator_UserRelationName="FK__Pagamento__idMPa__44952D46" msprop:Generator_ParentPropName="MetodoDePagamentoRow" msprop:Generator_RelationVarName="relationFK__Pagamento__idMPa__44952D46" msprop:Generator_UserParentTable="MetodoDePagamento" />
       <msdata:Relationship name="FK__ItensDaVe__idPro__73852659" msdata:parent="Produto" msdata:child="ItensDaVenda" msdata:parentkey="idProduto" msdata:childkey="idProduto" msprop:Generator_UserChildTable="ItensDaVenda" msprop:Generator_ChildPropName="GetItensDaVendaRows" msprop:Generator_UserRelationName="FK__ItensDaVe__idPro__73852659" msprop:Generator_RelationVarName="relationFK__ItensDaVe__idPro__73852659" msprop:Generator_UserParentTable="Produto" msprop:Generator_ParentPropName="ProdutoRow" />
+      <msdata:Relationship name="FK__ItensDaVe__idPro__738526591" msdata:parent="Produto" msdata:child="relatorioProdutos" msdata:parentkey="idProduto" msdata:childkey="idProduto" msprop:Generator_UserChildTable="relatorioProdutos" msprop:Generator_ChildPropName="GetrelatorioProdutosRows" msprop:Generator_UserRelationName="FK__ItensDaVe__idPro__738526591" msprop:Generator_RelationVarName="relationFK__ItensDaVe__idPro__738526591" msprop:Generator_UserParentTable="Produto" msprop:Generator_ParentPropName="ProdutoRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

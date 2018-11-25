@@ -13,17 +13,22 @@ namespace GenericPdv
 {
     public partial class AutenticacaoValidacao : Form
     {
+        FrenteDeCaixa frente;
+        Admin admin;
         int contexto;
-        public AutenticacaoValidacao(int contexto)
+        public AutenticacaoValidacao(int contexto, FrenteDeCaixa caixa, Admin ad)
         {
             this.contexto = contexto;
             InitializeComponent();
+            this.frente = caixa;
+            this.admin = ad;
         }
         private bool nome = false;
         private bool Senha = false;
         DataSetGnPdvTableAdapters.FuncionarioTableAdapter func = new DataSetGnPdvTableAdapters.FuncionarioTableAdapter();
+        DataSetGnPdvTableAdapters.CaixaTableAdapter caixaTable = new DataSetGnPdvTableAdapters.CaixaTableAdapter();
         AberturaDeCaixaForm aberturaDeCaixa = new AberturaDeCaixaForm();
-
+ 
         public static string GerarHashMd5(string input)
         {
             MD5 md5Hash = MD5.Create();
@@ -106,6 +111,7 @@ namespace GenericPdv
 
         private void btAcessar_Click(object sender, EventArgs e)
         {
+
             bool liberar = true;
             if (string.IsNullOrEmpty(textNome.Text)) { liberar = false; textNome.Focus(); }
             if (string.IsNullOrEmpty(textNome.Text)) { liberar = false; textSenha.Focus(); }
@@ -113,10 +119,13 @@ namespace GenericPdv
             {
                 var temp = func.GetDataByAliase(textNome.Text);
 
+                //MessageBox.Show("estou logando com: " + temp[0]["idCargo"].ToString() + " sou do cargo: "+ AutenticacaoDeFuncionario.idCargo.ToString());
                 if (Senha == true && nome == true)
                 {
+                    
                     switch (temp[0]["idCargo"].ToString())
                     {
+                        // indo para admin
                         case "0":
                             {
                                 switch (contexto)
@@ -127,37 +136,45 @@ namespace GenericPdv
                                         //qual era o cargo do usuário anterior logado?
                                         //qual o cargo de quem pretende logar?
 
-                                        //admim para admim
+                                        //Sou admim e estou indo para admim
                                         if (AutenticacaoDeFuncionario.idCargo == 0)
                                         {
+                                            //fecha a tela de caixa
+                                            frente.Dispose();
+                                            admin.Close();
+
                                             AutenticacaoDeFuncionario.funcLogado = textNome.Text;
                                             AutenticacaoDeFuncionario.Date = DateTime.Now;
                                             AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idFuncionario"]);
+
+                                            FrenteDeCaixa caixa = new FrenteDeCaixa();
+                                            caixa.Show();
                                         }
-                                        //admim para caixa
+                                        //sou caixa e estou indo para admin
                                         if(AutenticacaoDeFuncionario.idCargo == 1)
                                         {
                                             // fecha frente de caixa
+                                            frente.Dispose();
+                                            frente.Close();
                                             AutenticacaoDeFuncionario.funcLogado = textNome.Text;
                                             AutenticacaoDeFuncionario.Date = DateTime.Now;
                                             AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idFuncionario"]);
 
-                                            //abre a frente de caixa
-                                            // verificar se o caixa foi aberto anteriormente, se sim
                                             FrenteDeCaixa caixa = new FrenteDeCaixa();
                                             caixa.Show();
-                                            // se não apresentar abertura 
-
-
                                             //abre a tela de administrador
                                             Admin admin = new Admin(true);
                                             admin.Show();
                                         }
-                                        //admim para estoquista
+                                        //sou estoquista estou indo para admin
                                         if (AutenticacaoDeFuncionario.idCargo == 2)
                                         {
                                             //fecha a tela de caixa
+                                            frente.Dispose();
+                                            admin.Close();
                                             //fecha tela de admin
+                                            admin.Dispose();
+                                            admin.Close();
                                             AutenticacaoDeFuncionario.funcLogado = textNome.Text;
                                             AutenticacaoDeFuncionario.Date = DateTime.Now;
                                             AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idFuncionario"]);
@@ -187,6 +204,7 @@ namespace GenericPdv
                                 }
                             }
                             break;
+                        // indo para caixa
                         case "1":
                             {
                                 switch (contexto)
@@ -196,27 +214,44 @@ namespace GenericPdv
                                         //qual era o cargo do usuário anterior logado?
                                         //qual o cargo de quem pretende logar?
 
-                                        //caixa para admim
+                                        //eu sou admin indo para o caixa
                                         if (AutenticacaoDeFuncionario.idCargo == 0)
                                         {
                                             // fecha frente de caixa
+                                            frente.Dispose();
+                                            frente.Close();
+                                            // fechar o admin
+                                            admin.Dispose();
+                                            admin.Close();
+
                                             // atualiza dados de acesso
                                             AutenticacaoDeFuncionario.funcLogado = textNome.Text;
                                             AutenticacaoDeFuncionario.Date = DateTime.Now;
                                             AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idFuncionario"]);
-
-                                            // abre frente de caixa
-                                            FrenteDeCaixa caixa = new FrenteDeCaixa();
-                                            caixa.Show();
-                                            // abre tela de admin tipo 1 
-                                            Admin admin = new Admin(true);
-                                            admin.Show();
+                                            if (string.IsNullOrEmpty(caixaTable.GetDataByLast()[0]["caixaFechamento"].ToString()))
+                                            {
+                                                Alerta alerta = new Alerta("Existe um fechamento ainda aberto.");
+                                                alerta.ShowDialog();
+                                                Sangria sangria2 = new Sangria(Convert.ToInt32(temp[0]["idFuncionario"]));
+                                                sangria2.ShowDialog();
+                                                FechamentoDeCaixaForm fechamentoTela = new FechamentoDeCaixaForm();
+                                                fechamentoTela.ShowDialog();
+                                                AberturaDeCaixaForm abertura = new AberturaDeCaixaForm();
+                                                abertura.Show();
+                                            }
+                                            else
+                                            {
+                                                FrenteDeCaixa caixa = new FrenteDeCaixa();
+                                                caixa.Show();
+                                            }
                                         }
-
-                                        //caixa para caixa
+                                        //eu sou o caixa e estou indo para caixa
                                         if (AutenticacaoDeFuncionario.idCargo == 1)
                                         {
                                             // fechar caixa
+                                            frente.Dispose();
+                                            frente.Close();
+
                                             AutenticacaoDeFuncionario.funcLogado = textNome.Text;
                                             AutenticacaoDeFuncionario.Date = DateTime.Now;
                                             AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idFuncionario"]);
@@ -224,18 +259,34 @@ namespace GenericPdv
                                             FrenteDeCaixa caixa = new FrenteDeCaixa();
                                             caixa.Show();
                                         }
-                                        //caixa para estoquista
+                                        // eu sou o estoquista e estou idndo para caixa
                                         if (AutenticacaoDeFuncionario.idCargo == 2)
                                         {
-                                            //fecha a tela de caixa
-                                            //fecha tela de admin
+                                            // fechar admin tipo 2
+                                            admin.Dispose();
+                                            admin.Close();
+                                            // atualiza dados de acesso
                                             AutenticacaoDeFuncionario.funcLogado = textNome.Text;
                                             AutenticacaoDeFuncionario.Date = DateTime.Now;
                                             AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idFuncionario"]);
-
-                                            //Abre deta de admin tipo 2
-                                            Admin estoquista = new Admin(false);
-                                            estoquista.Show();
+                                            // abrir frente de caixa
+                                            // verificar se o caixa ja foi aberto anteriormente
+                                            if (string.IsNullOrEmpty(caixaTable.GetDataByLast()[0]["caixaFechamento"].ToString()))
+                                            {
+                                                Alerta alerta = new Alerta("Existe um fechamento ainda aberto.");
+                                                alerta.ShowDialog();
+                                                Sangria sangria2 = new Sangria(Convert.ToInt32(temp[0]["idFuncionario"]));
+                                                sangria2.ShowDialog();
+                                                FechamentoDeCaixaForm fechamentoTela = new FechamentoDeCaixaForm();
+                                                fechamentoTela.ShowDialog();
+                                                AberturaDeCaixaForm abertura = new AberturaDeCaixaForm();
+                                                abertura.Show();
+                                            }
+                                            else
+                                            {
+                                                FrenteDeCaixa caixa = new FrenteDeCaixa();
+                                                caixa.Show();
+                                            }
                                         }
                                         #endregion 
                                         break;
@@ -261,7 +312,7 @@ namespace GenericPdv
                                 }
                             }
                             break;
-
+                        // indo para estoquista
                         case "2":
                             {
                                 switch (contexto)
@@ -272,52 +323,46 @@ namespace GenericPdv
                                         //qual era o cargo do usuário anterior logado?
                                         //qual o cargo de quem pretende logar?
 
-                                        //estoquista para admim
+                                        //eu sou admin indo para estoquista
                                         if (AutenticacaoDeFuncionario.idCargo == 0)
                                         {
-                                            // fecha fecha admin tipo 2
+                                            // fecha admin
+                                            this.admin.Dispose();
+                                            this.admin.Close();
                                             // atualiza dados de acesso
                                             AutenticacaoDeFuncionario.funcLogado = textNome.Text;
                                             AutenticacaoDeFuncionario.Date = DateTime.Now;
                                             AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idFuncionario"]);
 
-                                            // abre frente de caixa
-                                            FrenteDeCaixa caixa = new FrenteDeCaixa();
-                                            caixa.Show();
                                             // abre tela de admin tipo 1 
-                                            Admin admin = new Admin(true);
+                                            Admin admin = new Admin(false);
                                             admin.Show();
                                         }
 
-                                        //estoquista para caixa
+                                        //Sou caixa indo para estoquista
                                         if (AutenticacaoDeFuncionario.idCargo == 1)
                                         {
-                                            // fechar admin tipo 2
+                                            //fechar o caixa
+                                            frente.Dispose();
+                                            frente.Close();
                                             // atualiza dados de acesso
                                             AutenticacaoDeFuncionario.funcLogado = textNome.Text;
                                             AutenticacaoDeFuncionario.Date = DateTime.Now;
                                             AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idFuncionario"]);
-                                            // abrir frente de caixa
-                                            // verificar se o caixa ja foi aberto anteriormente
-                                            // se sim
-                                            FrenteDeCaixa caixa = new FrenteDeCaixa();
-                                            caixa.Show();
-                                            // se não 
-                                            // apresentar abertura de caixa
 
+                                            //abrir tela do estoquista
+                                            Admin admin = new Admin(false);
+                                            admin.Show();
                                         }
-                                        //caixa para estoquista
+                                        
+                                        //Sou estoquista indo para estoquista
                                         if (AutenticacaoDeFuncionario.idCargo == 2)
                                         {
-                                            //fecha a tela de caixa
                                             // atualiza dados de acesso
                                             AutenticacaoDeFuncionario.funcLogado = textNome.Text;
                                             AutenticacaoDeFuncionario.Date = DateTime.Now;
                                             AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idFuncionario"]);
 
-                                            //Abre deta de admin tipo 2
-                                            Admin estoquista = new Admin(false);
-                                            estoquista.Show();
                                         }
                                         #endregion 
                                         break;

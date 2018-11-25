@@ -91,12 +91,14 @@
             this.Controls.Add(this.mkbCpf);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Cpf";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CPF";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Cpf_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

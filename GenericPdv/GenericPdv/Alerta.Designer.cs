@@ -83,12 +83,14 @@
             this.Controls.Add(this.btOk);
             this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Alerta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alerta";
             this.Load += new System.EventHandler(this.Alerta_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Alerta_KeyDown);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

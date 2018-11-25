@@ -124,7 +124,9 @@ namespace GenericPdv
                                     Alerta alerta = new Alerta("Existe um fechamento ainda aberto.");
                                     alerta.ShowDialog();
                                     Sangria sangria = new Sangria(Convert.ToInt32(temp[0]["idFuncionario"]));
-                                    //abrir fechamento
+                                    sangria.ShowDialog();
+                                    FechamentoDeCaixaForm fechamento = new FechamentoDeCaixaForm();
+                                    fechamento.ShowDialog();
                                 }
                                 AberturaDeCaixaForm aberturaDeCaixa = new AberturaDeCaixaForm();
                                 aberturaDeCaixa.Show();
@@ -136,10 +138,14 @@ namespace GenericPdv
                             {
                                 //Verificar se o caixa ja foi fechado anteriormente
                                 //MessageBox.Show(caixa.GetDataByLast()[0]["caixaFechamento"].ToString());
-                                if (caixa.GetDataByLast()[0]["caixaFechamento"].ToString() == "")
+                                if (string.IsNullOrEmpty(caixa.GetDataByLast()[0]["caixaFechamento"].ToString()))
                                 {
-                                    //abrir sangria
-                                    //abrir fechamento
+                                    Alerta alerta = new Alerta("Existe um fechamento ainda aberto.");
+                                    alerta.ShowDialog();
+                                    Sangria sangria = new Sangria(Convert.ToInt32(temp[0]["idFuncionario"]));
+                                    sangria.ShowDialog();
+                                    FechamentoDeCaixaForm fechamento = new FechamentoDeCaixaForm();
+                                    fechamento.ShowDialog();
                                 }
                                 AberturaDeCaixaForm aberturaDeCaixa = new AberturaDeCaixaForm();
                                 aberturaDeCaixa.Show();
@@ -179,18 +185,34 @@ namespace GenericPdv
                 var temp = func.GetDataByAliase(textNome.Text);
                 if (Convert.ToInt32(temp[0]["idCargo"]) == 1 || Convert.ToInt32(temp[0]["idCargo"]) == 2)
                 {
-                    // terminar tela de confirmação
-                    Confirmacao confirmacao = new Confirmacao("Para resgatar sua senha, primeiro ela deve ser resetada e posteriormente o administrador deve configurar para você poder entrar uma nova senha.", this);
-                    confirmacao.ShowDialog();
-                    // fazer confirmação
-                    // se sim resetar a senha
-                    // só limpar os campos
+
+                    if (MessageBox.Show("Sua senha atual será apagada e necessita da autorização do administrador para Cadastrar uma nova senha, deseja continuar?", "Confirmação", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        func.UpdateQuerySenha(null, false, textNome.Text);
+                        Alerta alerta = new Alerta("Operação realizada com sucesso.");
+                        alerta.ShowDialog();
+
+                    }
+                    else
+                    {
+                        textNome.Text = "";
+                        textNome.Focus();
+                    }
                 }
                 else {
 
                     // fazer depois uma logica para recuperar a senha do admin
-                    Alerta alerta = new Alerta("Criar depois.");
-                    alerta.ShowDialog();
+                    if (MessageBox.Show("Sua senha atual voltará a senha padrão do sistema deseja continuar?", "Confirmação", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        func.UpdateQuerySenha(GerarHashMd5("ADM123"), false, textNome.Text);
+                        Alerta alerta = new Alerta("Operação realizada com sucesso.");
+                        alerta.ShowDialog();
+                    }
+                    else
+                    {
+                        textNome.Text = "";
+                        textNome.Focus();
+                    }
                 }
             }
         }

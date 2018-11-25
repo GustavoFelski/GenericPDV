@@ -312,7 +312,7 @@
             this.btFinalizar.Size = new System.Drawing.Size(210, 52);
             this.btFinalizar.TabIndex = 6;
             this.btFinalizar.TabStop = false;
-            this.btFinalizar.Text = "Finalizar";
+            this.btFinalizar.Text = "Finalizar (F1)";
             this.btFinalizar.UseVisualStyleBackColor = false;
             this.btFinalizar.Click += new System.EventHandler(this.btFinalizar_Click);
             // 
@@ -738,7 +738,7 @@
             this.btLogout.Size = new System.Drawing.Size(111, 24);
             this.btLogout.TabIndex = 3;
             this.btLogout.TabStop = false;
-            this.btLogout.Text = "Logout";
+            this.btLogout.Text = "Logout (F7)";
             this.btLogout.UseVisualStyleBackColor = false;
             this.btLogout.Click += new System.EventHandler(this.btLogout_Click);
             // 
@@ -812,7 +812,7 @@
             this.btFechamento.Size = new System.Drawing.Size(206, 29);
             this.btFechamento.TabIndex = 7;
             this.btFechamento.TabStop = false;
-            this.btFechamento.Text = "Fechamento";
+            this.btFechamento.Text = "Fechamento (F6)";
             this.btFechamento.UseVisualStyleBackColor = false;
             this.btFechamento.Click += new System.EventHandler(this.btFechamento_Click);
             // 
@@ -830,7 +830,7 @@
             this.btConsultar.Size = new System.Drawing.Size(206, 29);
             this.btConsultar.TabIndex = 4;
             this.btConsultar.TabStop = false;
-            this.btConsultar.Text = "Consultar Item";
+            this.btConsultar.Text = "Consultar Item (F2)";
             this.btConsultar.UseVisualStyleBackColor = false;
             this.btConsultar.Click += new System.EventHandler(this.btConsultar_Click);
             // 
@@ -848,7 +848,7 @@
             this.btCancelarVenda.Size = new System.Drawing.Size(206, 29);
             this.btCancelarVenda.TabIndex = 3;
             this.btCancelarVenda.TabStop = false;
-            this.btCancelarVenda.Text = "Cancelar Venda";
+            this.btCancelarVenda.Text = "Cancelar Venda (F4)";
             this.btCancelarVenda.UseVisualStyleBackColor = false;
             this.btCancelarVenda.Click += new System.EventHandler(this.btCancelarVenda_Click);
             // 
@@ -866,7 +866,7 @@
             this.btRemover.Size = new System.Drawing.Size(206, 29);
             this.btRemover.TabIndex = 2;
             this.btRemover.TabStop = false;
-            this.btRemover.Text = "Remover Item";
+            this.btRemover.Text = "Remover Item (F3)";
             this.btRemover.UseVisualStyleBackColor = false;
             this.btRemover.Click += new System.EventHandler(this.btRemover_Click);
             // 
@@ -884,7 +884,7 @@
             this.btSangria.Size = new System.Drawing.Size(206, 29);
             this.btSangria.TabIndex = 1;
             this.btSangria.TabStop = false;
-            this.btSangria.Text = "Sangria";
+            this.btSangria.Text = "Sangria (F5)";
             this.btSangria.UseVisualStyleBackColor = false;
             this.btSangria.Click += new System.EventHandler(this.btSangria_Click);
             // 
@@ -923,13 +923,14 @@
             this.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrenteDeCaixa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frenteDeCaixa_Load);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.HotKey_KeyDown);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HotKey_KeyDown);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);

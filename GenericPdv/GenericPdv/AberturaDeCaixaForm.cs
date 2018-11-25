@@ -57,7 +57,7 @@ namespace GenericPdv
                     }
                     else
                     {
-                        Alerta alerta = new Alerta("Adione um valor de abertura.");
+                        Alerta alerta = new Alerta("Adcione um valor de abertura.");
                         alerta.ShowDialog();
                         txtValorDeApertura.Focus();
                     }

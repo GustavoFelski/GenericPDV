@@ -32,9 +32,14 @@ namespace GenericPdv
             }
             else
             {
+
+                catalogo1.Visible = true;
+                relatorios1.Visible = false;
                 btListarFunc.Visible = false;
+                listFuncionario1.Visible = false;
                 btRelatorio.Visible = false;
                 btCadastroFunc.Visible = false;
+                btRelatorio.Visible = false;
             }
         }
 
@@ -104,5 +109,11 @@ namespace GenericPdv
 
         }
 
+        private void btLogout_Click(object sender, EventArgs e)
+        {
+            FrenteDeCaixa frente = new FrenteDeCaixa();
+            AutenticacaoValidacao autenticacao = new AutenticacaoValidacao(1, frente, this);
+            autenticacao.ShowDialog();
+        }
     }
 }

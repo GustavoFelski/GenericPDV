@@ -23,7 +23,7 @@ namespace GenericPdv
         private double valorTotal;
         double valorPagar, valorEmDinheiro, valorEmCredito, valorEmDebito;
         int tipo;
-        bool tipoDeDesconto;
+        bool tipoDeDesconto, status;
         string[,] itensDePagamento;
         string cpf, Html;
         string[,] itensLista;
@@ -86,17 +86,15 @@ namespace GenericPdv
 
                 for (int i = 0; i < linha; i++)
                 {
-                    for (int j = 0; j <= 5; j++)
+                    try
                     {
-                        try
-                        {
-                            itensVenda.InsertQuery(Convert.ToInt32(itensLista[i, 3]), Convert.ToInt32(itensLista[i, 5]), Convert.ToInt32(itensLista[i, 4]), Convert.ToInt32(itensLista[i, 1]), Convert.ToInt32(LastId));
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message);
-                        }
+                        itensVenda.InsertQuery(Convert.ToInt32(itensLista[i, 3]), Convert.ToInt32(itensLista[i, 5]), Convert.ToInt32(itensLista[i, 4]), Convert.ToInt32(itensLista[i, 1]), Convert.ToInt32(LastId));
                     }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    
                 }
                 // fazer updade na tabela de caixa dos valores   
             }
@@ -223,6 +221,7 @@ namespace GenericPdv
             btDebito.Enabled = false;
             txtValorPagar.Enabled = true;
             txtValorPagar.Focus();
+            status = false;
             tipo = 1;
             //bloqueia desconto total e intens
         }   
@@ -235,6 +234,7 @@ namespace GenericPdv
             btDebito.Enabled = false;
             txtValorPagar.Enabled = true;
             txtValorPagar.Focus();
+            status = false;
             tipo = 2;
             //bloqueia desconto total e intens
         }
@@ -247,6 +247,7 @@ namespace GenericPdv
             btDebito.Enabled = false;
             txtValorPagar.Enabled = true;
             txtValorPagar.Focus();
+            status = false;
             tipo = 3;
             //bloqueia desconto total e intens
         }
@@ -260,6 +261,7 @@ namespace GenericPdv
             tipoDeDesconto = false;
             btDescontoTotal.Enabled = true;
             btLimpar.Enabled = false;
+            status = true;
         }
 
         private void txtValorPagar_KeyPress(object sender, KeyPressEventArgs e)
@@ -296,6 +298,7 @@ namespace GenericPdv
                         btDinheiro.Enabled = false;
                         btCredito.Enabled = false;
                         btDebito.Enabled = false;
+                        status = false;
                     }
                     // se o valor for inferior apenas decrementar o valor restante 
                     else
@@ -309,6 +312,7 @@ namespace GenericPdv
                         btDinheiro.Enabled = true;
                         btCredito.Enabled = true;
                         btDebito.Enabled = true;
+                        status = true;
                     }
                     #region adcionar a lista de pagamento
                     //adicionar a lista de pagamento
@@ -345,6 +349,7 @@ namespace GenericPdv
                             btCredito.Enabled = false;
                             btDinheiro.Enabled = false;
                             btDebito.Enabled = false;
+                            status = false;
 
                         }else
                         {
@@ -355,6 +360,7 @@ namespace GenericPdv
                             btDinheiro.Enabled = true;
                             txtValorPagar.Enabled = false;
                             txtValorPagar.Text = "";
+                            status = true;
                         }
 
                         // adicionar a lista de pagamento
@@ -390,6 +396,7 @@ namespace GenericPdv
                                 btCredito.Enabled = false;
                                 btDinheiro.Enabled = false;
                                 btDebito.Enabled = false;
+                                status=false;
                             }
                             else
                             {
@@ -400,6 +407,7 @@ namespace GenericPdv
                                 btDinheiro.Enabled = true;
                                 txtValorPagar.Enabled = false;
                                 txtValorPagar.Text = "";
+                                status = true;
                             }
 
 
@@ -432,12 +440,23 @@ namespace GenericPdv
             }
         }
 
+        private void btDescontoTotal_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode.ToString() == "Enter")
+            {
+                btDescontoTotal_Click(sender, e);
+            }
+        }
+
         private void btCancelarCompra_Click(object sender, EventArgs e)
         {
-            // tela de Confirmação
-            // se sim 
-            Alerta alerta = new Alerta("Venda Cancelada.");
-            this.Close();
+            if (MessageBox.Show("Deseja realmente cancelar esta venda?", "Cancelar", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                Alerta alerta = new Alerta("Venda Cancelada.");
+                alerta.ShowDialog();
+                this.Dispose();                
+            }
+                
         }
 
         private void Voltar_Click(object sender, EventArgs e)
@@ -453,6 +472,7 @@ namespace GenericPdv
             btDescontoTotal.Enabled = true;
             txtDesconto.Enabled = true;
             ckbTipoDesconto.Enabled = true;
+            status = true;
         }
 
         private void btDescontoTotal_Click(object sender, EventArgs e)
@@ -516,15 +536,49 @@ namespace GenericPdv
                 ckbTipoDesconto.Text = "%";
                 tipoDeDesconto = true;
                 btDescontoTotal.Enabled = true;
+                txtDesconto.Focus();
             }
             else
             {
                 ckbTipoDesconto.Text = "R$";
                 tipoDeDesconto = false;
                 btDescontoTotal.Enabled = true;
+                txtDesconto.Focus();
             }
         }
 
+        private void Pagamento_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+            if (e.KeyCode.ToString() == "F1" && status == true) {
+                btDinheiro_Click(sender, e);
+            }
+
+            if (e.KeyCode.ToString() == "F2" && status == true) {
+                btDebito_Click(sender, e);
+            }
+
+            if (e.KeyCode.ToString() == "F3" && status == true) {
+                btCredito_Click(sender, e);
+            }
+
+            if (e.KeyCode.ToString() == "F4") {
+                btCancelarCompra_Click(sender, e);
+            }
+
+            if (e.KeyCode.ToString() == "F5" && status== false) {
+                btFecharCompra_Click(sender, e);
+            }
+
+            if (e.KeyCode.ToString() == "F6") {
+                txtDesconto.Focus();
+            }
+            if (e.KeyCode.ToString() == "Escape")
+            {
+                Voltar_Click(sender, e);
+            }
+
+        }
     }
 }
 

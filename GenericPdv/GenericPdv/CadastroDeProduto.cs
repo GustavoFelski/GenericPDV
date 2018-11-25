@@ -132,7 +132,7 @@ namespace GenericPdv
                 textCodForne.Text = Convert.ToString(temp[0]["prodCodFonecedor"]);
                 textMarca.Text = Convert.ToString(temp[0]["prodMarca"]);
                 textQuantidade.Text = Convert.ToString(temp[0]["prodQuantidade"]);
-                ckbStatus.Enabled = Convert.ToBoolean(temp[0]["prodStatus"]);
+                ckbStatus.Checked = Convert.ToBoolean(temp[0]["prodStatus"]);
                 mkbCusto.Text = Convert.ToString(temp[0]["prodCusto"]);
                 mkbVenda.Text = Convert.ToString(temp[0]["prodVenda"]);
                 mkbPromocao.Text = Convert.ToString(temp[0]["prodDesconto"]);
@@ -308,7 +308,7 @@ namespace GenericPdv
                     status
                     );
 
-                Alerta alerta = new Alerta("Alteração comcluida.");
+                Alerta alerta = new Alerta("Alteração concluida.");
                 alerta.ShowDialog();
                 catalogoA.dataGridView1.DataSource = produto.GetData();
                 this.Dispose();

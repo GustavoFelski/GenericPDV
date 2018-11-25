@@ -75,6 +75,7 @@ namespace GenericPdv
                 cbbCargo.SelectedItem = Convert.ToInt32(temp[0]["idCargo"]);
                 textAcesso.Text = temp[0]["funcAliase"].ToString();
                 cbbStatus.SelectedItem = Convert.ToInt32(Convert.ToBoolean(temp[0]["idStatus"]));
+                ckbReset.Checked = Convert.ToBoolean(temp[0]["funcReset"]);
             }
         }
 
@@ -165,16 +166,29 @@ namespace GenericPdv
             }
             else
             {
+                bool status;
+                if (cbbStatus.SelectedIndex == 1 )
+                {
+                    status = true;
+                }
+                else
+                {
+                    status = false;
+                }
+
+
                 funcionario.UpdateFuncionario(
                         Convert.ToInt32(textId.Text),
-                        Convert.ToInt32(cbbCargo.SelectedItem),
+                        Convert.ToInt32(cbbCargo.SelectedIndex),
                         textNome.Text,
                         mkbTelefone.Text,
                         null,
                         true,
-                        Convert.ToBoolean(cbbStatus.SelectedIndex),
+                        status,
                         textEmail.Text
                     );
+                func.dataGridView1.DataSource = funcionario.GetData();
+                this.Dispose();
             }
             btSalvar.Enabled = false;
             btDeletar.Enabled = false;
@@ -190,8 +204,6 @@ namespace GenericPdv
             cbbStatus.Enabled = false;
             ckbReset.Enabled = false;
 
-
-
             //Design
 
             textId.Text = "";
@@ -201,6 +213,7 @@ namespace GenericPdv
             cbbCargo.Text = "";
             ckbReset.Checked = false;
             textAcesso.Text = "";
+            func.dataGridView1.DataSource = funcionario.GetData();
         }
 
         private void btDeletar_Click(object sender, EventArgs e)

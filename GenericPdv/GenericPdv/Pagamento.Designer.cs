@@ -157,6 +157,7 @@
             this.txtValorPagar.Name = "txtValorPagar";
             this.txtValorPagar.Size = new System.Drawing.Size(328, 47);
             this.txtValorPagar.TabIndex = 2;
+            this.txtValorPagar.TabStop = false;
             this.txtValorPagar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtValorPagar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValorPagar_KeyPress);
             // 
@@ -180,11 +181,12 @@
             this.txtValorCompra.ReadOnly = true;
             this.txtValorCompra.Size = new System.Drawing.Size(328, 47);
             this.txtValorCompra.TabIndex = 0;
+            this.txtValorCompra.TabStop = false;
             this.txtValorCompra.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btCancelarCompra
             // 
-            this.btCancelarCompra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btCancelarCompra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
             this.btCancelarCompra.FlatAppearance.BorderSize = 0;
             this.btCancelarCompra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btCancelarCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -193,7 +195,8 @@
             this.btCancelarCompra.Name = "btCancelarCompra";
             this.btCancelarCompra.Size = new System.Drawing.Size(103, 42);
             this.btCancelarCompra.TabIndex = 2;
-            this.btCancelarCompra.Text = "Cancelar Compra";
+            this.btCancelarCompra.TabStop = false;
+            this.btCancelarCompra.Text = "Cancelar Compra (F4)";
             this.btCancelarCompra.UseVisualStyleBackColor = false;
             this.btCancelarCompra.Click += new System.EventHandler(this.btCancelarCompra_Click);
             // 
@@ -208,7 +211,8 @@
             this.btLimpar.Name = "btLimpar";
             this.btLimpar.Size = new System.Drawing.Size(103, 42);
             this.btLimpar.TabIndex = 1;
-            this.btLimpar.Text = "Limpar";
+            this.btLimpar.TabStop = false;
+            this.btLimpar.Text = "Limpar (Esc)";
             this.btLimpar.UseVisualStyleBackColor = false;
             this.btLimpar.Click += new System.EventHandler(this.Voltar_Click);
             // 
@@ -223,7 +227,8 @@
             this.btFecharCompra.Name = "btFecharCompra";
             this.btFecharCompra.Size = new System.Drawing.Size(103, 42);
             this.btFecharCompra.TabIndex = 0;
-            this.btFecharCompra.Text = "Fechar Venda";
+            this.btFecharCompra.TabStop = false;
+            this.btFecharCompra.Text = "Fechar Venda (F5)";
             this.btFecharCompra.UseVisualStyleBackColor = false;
             this.btFecharCompra.Click += new System.EventHandler(this.btFecharCompra_Click);
             // 
@@ -324,10 +329,11 @@
             this.btDescontoTotal.Location = new System.Drawing.Point(3, 3);
             this.btDescontoTotal.Name = "btDescontoTotal";
             this.btDescontoTotal.Size = new System.Drawing.Size(101, 44);
-            this.btDescontoTotal.TabIndex = 8;
-            this.btDescontoTotal.Text = "Desconto Total";
+            this.btDescontoTotal.TabIndex = 3;
+            this.btDescontoTotal.Text = "Desconto Total (F6)";
             this.btDescontoTotal.UseVisualStyleBackColor = false;
             this.btDescontoTotal.Click += new System.EventHandler(this.btDescontoTotal_Click);
+            this.btDescontoTotal.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btDescontoTotal_KeyDown);
             // 
             // ckbTipoDesconto
             // 
@@ -342,7 +348,7 @@
             this.ckbTipoDesconto.MinimumSize = new System.Drawing.Size(20, 20);
             this.ckbTipoDesconto.Name = "ckbTipoDesconto";
             this.ckbTipoDesconto.Size = new System.Drawing.Size(59, 41);
-            this.ckbTipoDesconto.TabIndex = 11;
+            this.ckbTipoDesconto.TabIndex = 2;
             this.ckbTipoDesconto.Text = "R$";
             this.ckbTipoDesconto.UseVisualStyleBackColor = false;
             this.ckbTipoDesconto.CheckedChanged += new System.EventHandler(this.ckbTipoDesconto_CheckedChanged);
@@ -353,7 +359,7 @@
             this.txtDesconto.Location = new System.Drawing.Point(108, 2);
             this.txtDesconto.Name = "txtDesconto";
             this.txtDesconto.Size = new System.Drawing.Size(100, 47);
-            this.txtDesconto.TabIndex = 10;
+            this.txtDesconto.TabIndex = 1;
             // 
             // panel5
             // 
@@ -372,13 +378,14 @@
             this.btDinheiro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btDinheiro.FlatAppearance.BorderSize = 0;
             this.btDinheiro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btDinheiro.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btDinheiro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btDinheiro.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btDinheiro.Location = new System.Drawing.Point(3, 34);
             this.btDinheiro.Name = "btDinheiro";
             this.btDinheiro.Size = new System.Drawing.Size(86, 44);
             this.btDinheiro.TabIndex = 0;
-            this.btDinheiro.Text = "Dinheiro";
+            this.btDinheiro.TabStop = false;
+            this.btDinheiro.Text = "Dinheiro (F1)";
             this.btDinheiro.UseVisualStyleBackColor = false;
             this.btDinheiro.Click += new System.EventHandler(this.btDinheiro_Click);
             // 
@@ -387,13 +394,14 @@
             this.btDebito.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btDebito.FlatAppearance.BorderSize = 0;
             this.btDebito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btDebito.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btDebito.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btDebito.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btDebito.Location = new System.Drawing.Point(187, 34);
             this.btDebito.Name = "btDebito";
             this.btDebito.Size = new System.Drawing.Size(86, 44);
             this.btDebito.TabIndex = 2;
-            this.btDebito.Text = "Cartão de\r\nDébito";
+            this.btDebito.TabStop = false;
+            this.btDebito.Text = "Cartão de\r\nDébito (F3)";
             this.btDebito.UseVisualStyleBackColor = false;
             this.btDebito.Click += new System.EventHandler(this.btDebito_Click);
             // 
@@ -402,13 +410,14 @@
             this.btCredito.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btCredito.FlatAppearance.BorderSize = 0;
             this.btCredito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btCredito.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btCredito.Location = new System.Drawing.Point(95, 34);
             this.btCredito.Name = "btCredito";
             this.btCredito.Size = new System.Drawing.Size(86, 44);
             this.btCredito.TabIndex = 1;
-            this.btCredito.Text = "Cartão de\r\nCrédito";
+            this.btCredito.TabStop = false;
+            this.btCredito.Text = "Cartão de\r\nCrédito (F2)";
             this.btCredito.UseVisualStyleBackColor = false;
             this.btCredito.Click += new System.EventHandler(this.btCredito_Click);
             // 
@@ -421,10 +430,12 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Name = "Pagamento";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pagamento";
             this.Load += new System.EventHandler(this.Pagamento_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Pagamento_KeyDown);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);

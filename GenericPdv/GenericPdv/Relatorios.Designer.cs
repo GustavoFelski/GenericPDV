@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btPesquisarVendas = new System.Windows.Forms.Button();
@@ -40,8 +41,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.funcionarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSetGnPdv = new GenericPdv.DataSetGnPdv();
+            this.funcionarioTableAdapter = new GenericPdv.DataSetGnPdvTableAdapters.FuncionarioTableAdapter();
+            this.funcionarioBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.funcionarioBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetGnPdv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.funcionarioBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -59,12 +67,13 @@
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.62348F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 81.37652F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 219F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 126F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(943, 467);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel1
             // 
+            this.panel1.AutoScroll = true;
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel1.Controls.Add(this.btPesquisarVendas);
             this.panel1.Controls.Add(this.label5);
@@ -75,10 +84,10 @@
             this.panel1.Controls.Add(this.dateTimeFim);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 46);
+            this.panel1.Location = new System.Drawing.Point(0, 63);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(943, 201);
+            this.panel1.Size = new System.Drawing.Size(943, 277);
             this.panel1.TabIndex = 0;
             // 
             // btPesquisarVendas
@@ -88,7 +97,7 @@
             this.btPesquisarVendas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btPesquisarVendas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btPesquisarVendas.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btPesquisarVendas.Location = new System.Drawing.Point(777, 145);
+            this.btPesquisarVendas.Location = new System.Drawing.Point(712, 112);
             this.btPesquisarVendas.Name = "btPesquisarVendas";
             this.btPesquisarVendas.Size = new System.Drawing.Size(154, 44);
             this.btPesquisarVendas.TabIndex = 8;
@@ -108,6 +117,7 @@
             // 
             // cbbVendedor
             // 
+            this.cbbVendedor.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.funcionarioBindingSource, "funcAliase", true));
             this.cbbVendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbVendedor.FormattingEnabled = true;
             this.cbbVendedor.Location = new System.Drawing.Point(10, 132);
@@ -115,7 +125,7 @@
             this.cbbVendedor.Size = new System.Drawing.Size(156, 24);
             this.cbbVendedor.TabIndex = 5;
             this.cbbVendedor.SelectedIndexChanged += new System.EventHandler(this.cbbVendedor_SelectedIndexChanged);
-            this.cbbVendedor.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cbbVendedor_MouseClick);
+            this.cbbVendedor.SelectedValueChanged += new System.EventHandler(this.cbbVendedor_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -177,11 +187,30 @@
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 247);
+            this.panel2.Location = new System.Drawing.Point(0, 340);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(943, 220);
+            this.panel2.Size = new System.Drawing.Size(943, 127);
             this.panel2.TabIndex = 2;
+            // 
+            // funcionarioBindingSource
+            // 
+            this.funcionarioBindingSource.DataMember = "Funcionario";
+            this.funcionarioBindingSource.DataSource = this.dataSetGnPdv;
+            // 
+            // dataSetGnPdv
+            // 
+            this.dataSetGnPdv.DataSetName = "DataSetGnPdv";
+            this.dataSetGnPdv.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // funcionarioTableAdapter
+            // 
+            this.funcionarioTableAdapter.ClearBeforeFill = true;
+            // 
+            // funcionarioBindingSource1
+            // 
+            this.funcionarioBindingSource1.DataMember = "Funcionario";
+            this.funcionarioBindingSource1.DataSource = this.dataSetGnPdv;
             // 
             // Relatorios
             // 
@@ -195,6 +224,9 @@
             this.tableLayoutPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.funcionarioBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetGnPdv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.funcionarioBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -213,5 +245,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btPesquisarVendas;
+        private System.Windows.Forms.BindingSource funcionarioBindingSource;
+        private DataSetGnPdv dataSetGnPdv;
+        private DataSetGnPdvTableAdapters.FuncionarioTableAdapter funcionarioTableAdapter;
+        private System.Windows.Forms.BindingSource funcionarioBindingSource1;
     }
 }

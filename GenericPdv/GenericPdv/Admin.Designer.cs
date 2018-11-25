@@ -31,6 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel10 = new System.Windows.Forms.Panel();
             this.btRelatorio = new System.Windows.Forms.Button();
@@ -48,13 +52,9 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.btLogout = new System.Windows.Forms.Button();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.panel12 = new System.Windows.Forms.Panel();
             this.relatorios1 = new GenericPdv.Relatorios();
             this.listFuncionario1 = new GenericPdv.ListFuncionario();
             this.catalogo1 = new GenericPdv.Catalogo();
-            this.panel13 = new System.Windows.Forms.Panel();
-            this.panel14 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -99,6 +99,40 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(222, 80);
             this.panel2.TabIndex = 1;
+            // 
+            // panel14
+            // 
+            this.panel14.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel14.BackgroundImage")));
+            this.panel14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel14.Location = new System.Drawing.Point(14, 12);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(208, 58);
+            this.panel14.TabIndex = 3;
+            // 
+            // panel13
+            // 
+            this.panel13.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel13.Location = new System.Drawing.Point(14, 70);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(208, 10);
+            this.panel13.TabIndex = 2;
+            // 
+            // panel12
+            // 
+            this.panel12.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel12.Location = new System.Drawing.Point(14, 0);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(208, 12);
+            this.panel12.TabIndex = 1;
+            // 
+            // panel11
+            // 
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel11.Location = new System.Drawing.Point(0, 0);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(14, 80);
+            this.panel11.TabIndex = 0;
             // 
             // tableLayoutPanel2
             // 
@@ -322,22 +356,7 @@
             this.btLogout.TabStop = false;
             this.btLogout.Text = "Logout";
             this.btLogout.UseVisualStyleBackColor = false;
-            // 
-            // panel11
-            // 
-            this.panel11.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel11.Location = new System.Drawing.Point(0, 0);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(14, 80);
-            this.panel11.TabIndex = 0;
-            // 
-            // panel12
-            // 
-            this.panel12.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel12.Location = new System.Drawing.Point(14, 0);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(208, 12);
-            this.panel12.TabIndex = 1;
+            this.btLogout.Click += new System.EventHandler(this.btLogout_Click);
             // 
             // relatorios1
             // 
@@ -362,24 +381,6 @@
             this.catalogo1.Name = "catalogo1";
             this.catalogo1.Size = new System.Drawing.Size(923, 447);
             this.catalogo1.TabIndex = 0;
-            // 
-            // panel13
-            // 
-            this.panel13.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel13.Location = new System.Drawing.Point(14, 70);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(208, 10);
-            this.panel13.TabIndex = 2;
-            // 
-            // panel14
-            // 
-            this.panel14.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel14.BackgroundImage")));
-            this.panel14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel14.Location = new System.Drawing.Point(14, 12);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(208, 58);
-            this.panel14.TabIndex = 3;
             // 
             // Admin
             // 

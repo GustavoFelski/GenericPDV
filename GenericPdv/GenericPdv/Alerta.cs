@@ -29,5 +29,13 @@ namespace GenericPdv
         {
             this.Dispose();
         }
+
+        private void Alerta_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode.ToString() == "Escape" || e.KeyCode.ToString() == "Enter")
+            {
+                this.Close();
+            }
+        }
     }
 }

@@ -26,25 +26,15 @@ namespace GenericPdv
 
         private void Relatorios_Load(object sender, EventArgs e)
         {
-            //try
-            //{
-            //sqlCon = new SqlConnection(strCon);
-            //adaptadorFuncionario = new SqlDataAdapter("SELECT * FROM Funcionario", sqlCon);
-            //DataTable tFunc = new DataTable();
-
-            //    for (int i = 0; i <= tFunc.Rows.Count; i++)
-            //    {
-            //        cbbVendedor.Items.Add(tFunc.Rows[i]["funcAliase"].ToString());
-            //    }
-            //}
-            //catch (Exception ex) {
-            //    MessageBox.Show(ex.Message);
-            //}
+            for (int i = 0; i < Convert.ToInt32(funcionario.ScalarQuery()); i++)
+            {
+                cbbVendedor.Items.Add(funcionario.GetData()[i]["funcAliase"].ToString());
+            }
         }
 
         private void btPesquisarVendas_Click(object sender, EventArgs e)
         {
-            RelatorioDeVendas relatorio = new RelatorioDeVendas(dateTimeInicio.Value, dateTimeFim.Value, "guthy", false);
+            RelatorioDeVendas relatorio = new RelatorioDeVendas(dateTimeInicio.Value, dateTimeFim.Value, cbbVendedor.Text , tipo);
             relatorio.Show();
         }
 
@@ -52,27 +42,45 @@ namespace GenericPdv
         {
             if (string.IsNullOrEmpty(cbbVendedor.Text))
             {
-                tipo = true;
+                tipo = false;
             }
+            else
+                tipo = true;
         }
 
         private void cbbVendedor_MouseClick(object sender, MouseEventArgs e)
         {
+            
+
+            //try
+            //{
+            //    sqlCon = new SqlConnection(strCon);
+            //    adaptadorFuncionario = new SqlDataAdapter("SELECT * FROM Funcionario", sqlCon);
+            //    DataTable tFunc = new DataTable();
+            //    MessageBox.Show(tFunc.);
+
+            //    for (int i = 0; i < tFunc.Rows.Count; i++)
+            //    {
+            //        cbbVendedor.Items.Add(tFunc.Rows[i]["funcAlise"].ToString());
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
+        }
+
+        private void fillToolStripButton_Click(object sender, EventArgs e)
+        {
             try
             {
-                sqlCon = new SqlConnection(strCon);
-                adaptadorFuncionario = new SqlDataAdapter("SELECT * FROM Funcionario", sqlCon);
-                DataTable tFunc = new DataTable();
-
-                for (int i = 0; i < tFunc.Rows.Count; i++)
-                {
-                    cbbVendedor.Items.Add(tFunc.Rows[i]["funcAlise"].ToString());
-                }
+                this.funcionarioTableAdapter.Fill(this.dataSetGnPdv.Funcionario);
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                System.Windows.Forms.MessageBox.Show(ex.Message);
             }
+
         }
     }
 }
