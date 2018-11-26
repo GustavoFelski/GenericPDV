@@ -219,10 +219,8 @@ namespace GenericPdv
 
         private void lbAjuda_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {  
-            Reprodutor ajuda = new Reprodutor(@"C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\Ajuda\login.mp4");
+            Reprodutor ajuda = new Reprodutor(@"C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\Ajuda\alterarProduto.mp4");
             ajuda.Show();
         }
-
-
     }
 }

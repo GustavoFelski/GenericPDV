@@ -18,30 +18,7 @@ namespace GenericPdv
         }
         int id = 1;
 
-        DataSetGnPdvTableAdapters.FuncionariosCargoTableAdapter func = new DataSetGnPdvTableAdapters.FuncionariosCargoTableAdapter();
-        private void fillToolStripButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.funcionariosCargoTableAdapter.Fill(this.dataSetGnPdv.FuncionariosCargo);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void fillByToolStripButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.funcionariosCargoTableAdapter.FillBy(this.dataSetGnPdv.FuncionariosCargo, funcNomeToolStripTextBox.Text);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-        }
+        DataSetGnPdvTableAdapters.funcionarioCargoTableAdapter func = new DataSetGnPdvTableAdapters.funcionarioCargoTableAdapter();
 
         private void ListFuncionario_Load(object sender, EventArgs e)
         {

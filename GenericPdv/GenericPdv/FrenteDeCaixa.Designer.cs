@@ -89,6 +89,8 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
             this.metodoDePagamentoTableAdapter1 = new GenericPdv.DataSetGnPdvTableAdapters.MetodoDePagamentoTableAdapter();
+            this.label8 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -114,6 +116,7 @@
             this.panel8.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -891,11 +894,13 @@
             // panel6
             // 
             this.panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel6.Controls.Add(this.flowLayoutPanel1);
             this.panel6.Controls.Add(this.panel14);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(0, 245);
             this.panel6.Margin = new System.Windows.Forms.Padding(0);
             this.panel6.Name = "panel6";
+            this.panel6.Padding = new System.Windows.Forms.Padding(10);
             this.panel6.Size = new System.Drawing.Size(226, 209);
             this.panel6.TabIndex = 8;
             // 
@@ -904,7 +909,7 @@
             this.panel14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.panel14.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel14.BackgroundImage")));
             this.panel14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel14.Location = new System.Drawing.Point(34, 138);
+            this.panel14.Location = new System.Drawing.Point(24, 128);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(189, 67);
             this.panel14.TabIndex = 0;
@@ -912,6 +917,26 @@
             // metodoDePagamentoTableAdapter1
             // 
             this.metodoDePagamentoTableAdapter1.ClearBeforeFill = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label8.Location = new System.Drawing.Point(3, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(195, 48);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "Para consultar ajuda sobre quais funções, Aperte as teclas Ctrl+\"Tecla de função\"" +
+    ".\r\n";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.label8);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(10, 10);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(206, 88);
+            this.flowLayoutPanel1.TabIndex = 2;
             // 
             // FrenteDeCaixa
             // 
@@ -964,6 +989,8 @@
             this.panel8.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1030,6 +1057,8 @@
         private System.Windows.Forms.Label lbStatus;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Label label8;
     }
 }
 

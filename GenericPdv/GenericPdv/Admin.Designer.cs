@@ -50,11 +50,16 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.btLogout = new System.Windows.Forms.Button();
             this.relatorios1 = new GenericPdv.Relatorios();
             this.listFuncionario1 = new GenericPdv.ListFuncionario();
             this.catalogo1 = new GenericPdv.Catalogo();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.btLogout = new System.Windows.Forms.Button();
+            this.lbAjuda = new System.Windows.Forms.LinkLabel();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel4 = new System.Windows.Forms.LinkLabel();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -160,6 +165,7 @@
             // 
             // panel10
             // 
+            this.panel10.Controls.Add(this.linkLabel3);
             this.panel10.Controls.Add(this.btRelatorio);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel10.Location = new System.Drawing.Point(0, 204);
@@ -186,6 +192,7 @@
             // 
             // panel8
             // 
+            this.panel8.Controls.Add(this.linkLabel4);
             this.panel8.Controls.Add(this.btCadastroFunc);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(0, 153);
@@ -212,6 +219,7 @@
             // 
             // panel6
             // 
+            this.panel6.Controls.Add(this.linkLabel1);
             this.panel6.Controls.Add(this.btListarFunc);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(0, 102);
@@ -238,6 +246,7 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.lbAjuda);
             this.panel4.Controls.Add(this.btCadastroProdutos);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 51);
@@ -264,6 +273,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.linkLabel2);
             this.panel1.Controls.Add(this.panelSide);
             this.panel1.Controls.Add(this.btCatalogo);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -331,6 +341,30 @@
             this.panel7.Size = new System.Drawing.Size(943, 467);
             this.panel7.TabIndex = 0;
             // 
+            // relatorios1
+            // 
+            this.relatorios1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.relatorios1.Location = new System.Drawing.Point(10, 10);
+            this.relatorios1.Name = "relatorios1";
+            this.relatorios1.Size = new System.Drawing.Size(923, 447);
+            this.relatorios1.TabIndex = 2;
+            // 
+            // listFuncionario1
+            // 
+            this.listFuncionario1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listFuncionario1.Location = new System.Drawing.Point(10, 10);
+            this.listFuncionario1.Name = "listFuncionario1";
+            this.listFuncionario1.Size = new System.Drawing.Size(923, 447);
+            this.listFuncionario1.TabIndex = 1;
+            // 
+            // catalogo1
+            // 
+            this.catalogo1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.catalogo1.Location = new System.Drawing.Point(10, 10);
+            this.catalogo1.Name = "catalogo1";
+            this.catalogo1.Size = new System.Drawing.Size(923, 447);
+            this.catalogo1.TabIndex = 0;
+            // 
             // panel9
             // 
             this.panel9.Controls.Add(this.btLogout);
@@ -358,29 +392,70 @@
             this.btLogout.UseVisualStyleBackColor = false;
             this.btLogout.Click += new System.EventHandler(this.btLogout_Click);
             // 
-            // relatorios1
+            // lbAjuda
             // 
-            this.relatorios1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.relatorios1.Location = new System.Drawing.Point(10, 10);
-            this.relatorios1.Name = "relatorios1";
-            this.relatorios1.Size = new System.Drawing.Size(923, 447);
-            this.relatorios1.TabIndex = 2;
+            this.lbAjuda.AutoSize = true;
+            this.lbAjuda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbAjuda.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.lbAjuda.Location = new System.Drawing.Point(196, 33);
+            this.lbAjuda.Name = "lbAjuda";
+            this.lbAjuda.Size = new System.Drawing.Size(22, 15);
+            this.lbAjuda.TabIndex = 1;
+            this.lbAjuda.TabStop = true;
+            this.lbAjuda.Text = "(?)";
+            this.lbAjuda.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbAjuda_LinkClicked);
             // 
-            // listFuncionario1
+            // linkLabel1
             // 
-            this.listFuncionario1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listFuncionario1.Location = new System.Drawing.Point(10, 10);
-            this.listFuncionario1.Name = "listFuncionario1";
-            this.listFuncionario1.Size = new System.Drawing.Size(923, 447);
-            this.listFuncionario1.TabIndex = 1;
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.linkLabel1.Location = new System.Drawing.Point(196, 36);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(22, 15);
+            this.linkLabel1.TabIndex = 2;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "(?)";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
-            // catalogo1
+            // linkLabel2
             // 
-            this.catalogo1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.catalogo1.Location = new System.Drawing.Point(10, 10);
-            this.catalogo1.Name = "catalogo1";
-            this.catalogo1.Size = new System.Drawing.Size(923, 447);
-            this.catalogo1.TabIndex = 0;
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel2.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.linkLabel2.Location = new System.Drawing.Point(196, 36);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(22, 15);
+            this.linkLabel2.TabIndex = 3;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "(?)";
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
+            // 
+            // linkLabel3
+            // 
+            this.linkLabel3.AutoSize = true;
+            this.linkLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel3.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.linkLabel3.Location = new System.Drawing.Point(196, 36);
+            this.linkLabel3.Name = "linkLabel3";
+            this.linkLabel3.Size = new System.Drawing.Size(22, 15);
+            this.linkLabel3.TabIndex = 4;
+            this.linkLabel3.TabStop = true;
+            this.linkLabel3.Text = "(?)";
+            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
+            // 
+            // linkLabel4
+            // 
+            this.linkLabel4.AutoSize = true;
+            this.linkLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel4.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.linkLabel4.Location = new System.Drawing.Point(196, 36);
+            this.linkLabel4.Name = "linkLabel4";
+            this.linkLabel4.Size = new System.Drawing.Size(22, 15);
+            this.linkLabel4.TabIndex = 5;
+            this.linkLabel4.TabStop = true;
+            this.linkLabel4.Text = "(?)";
+            this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
             // 
             // Admin
             // 
@@ -399,10 +474,15 @@
             this.panel2.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
             this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
@@ -437,5 +517,10 @@
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.LinkLabel linkLabel3;
+        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel lbAjuda;
+        private System.Windows.Forms.LinkLabel linkLabel2;
+        private System.Windows.Forms.LinkLabel linkLabel4;
     }
 }

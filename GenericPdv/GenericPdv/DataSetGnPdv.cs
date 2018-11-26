@@ -17,3 +17,10 @@ namespace GenericPdv {
     }
 }
 
+
+namespace GenericPdv.DataSetGnPdvTableAdapters {
+    
+    
+    public partial class FuncionariosCargoTableAdapter {
+    }
+}

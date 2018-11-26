@@ -120,58 +120,70 @@ namespace GenericPdv
         {
             // trocar focus para a listview
             listView.Focus();
+            listView.Items[0].Focused = true;
             //navegar pela setas cima e baixo
             // ao apertar enter 
             // remover o item selecionado atualizar preço
             ListViewItem item = new ListViewItem(itens[0]);
+            
             double aux = 0;
             string [] indice = new string [6];
             foreach (ListViewItem eachItem in listView.SelectedItems)
             {
                 aux = Convert.ToDouble(listView.Items[eachItem.Index].SubItems[5].Text);
-                txtValorTotal.Text = string.Format("{0,-10:C}", valorTotal - aux); 
+                valorTotal -= aux;
+                txtValorTotal.Text = string.Format("{0,-10:C}", valorTotal); 
                 
                 listView.Items.Remove(eachItem);
+
             }
-            txtPesquisa.Focus();
+            
         }
         
         private void btFinalizar_Click(object sender, EventArgs e)
         {
             // verificar erro de objeto e pq não esta aceitando o 
-            
-            itensDaLista = new string[this.listView.Items.Count , 6];
 
-            for (int i = 0; i < this.listView.Items.Count; i++)
+            if (valorTotal > 0)
             {
-                for (int j = 0; j <= 5; j++)
+                itensDaLista = new string[this.listView.Items.Count, 6];
+
+                for (int i = 0; i < this.listView.Items.Count; i++)
                 {
-                    //passando os itens e colunas para uma variavel publica que vai receber os itens e salvar no  banco na tela pagamento
-                    itensDaLista[i , j] = listView.Items[i].SubItems[j].Text;
+                    for (int j = 0; j <= 5; j++)
+                    {
+                        //passando os itens e colunas para uma variavel publica que vai receber os itens e salvar no  banco na tela pagamento
+                        itensDaLista[i, j] = listView.Items[i].SubItems[j].Text;
+                    }
                 }
-            }
-            Pagamento pagamento = new Pagamento(itensDaLista, valorTotal, cpf, this);
-            pagamento.ShowDialog();
+                Pagamento pagamento = new Pagamento(itensDaLista, valorTotal, cpf, this);
+                pagamento.ShowDialog();
 
-            // limpando array dos itens ja salvos
-            for (int i = 0; i < itens.Length; i++)
-            {
-                itens[i] = "";
+                // limpando array dos itens ja salvos
+                for (int i = 0; i < itens.Length; i++)
+                {
+                    itens[i] = "";
+                }
+
+                itens = new string[6];
+                listView.Items.Clear();
+                count = 0;
+                cpfNota = true;
+                cpf = null;
+                valorTotal = 0.0;
+                txtCodProd.Text = "";
+                txtPesquisa.Text = "";
+                txtQuantidade.Text = "";
+                txtSubTotal.Text = "";
+                txtValorUni.Text = "";
+                txtValorTotal.Text = "";
+                lbNomeProduto.Text = "";
             }
-            
-            itens = new string[6];
-            listView.Items.Clear();
-            count = 0;
-            cpfNota = true;
-            cpf = null;
-            valorTotal = 0.0;
-            txtCodProd.Text = "";
-            txtPesquisa.Text = "";
-            txtQuantidade.Text = "";
-            txtSubTotal.Text = "";
-            txtValorUni.Text = "";
-            txtValorTotal.Text = "";
-            lbNomeProduto.Text = "";
+            else
+            {
+                limpar();
+            }
+
         }
 
         private void btClouse_Click(object sender, EventArgs e)
@@ -309,6 +321,49 @@ namespace GenericPdv
             {
                 txtPesquisa.Text = "";
                 txtPesquisa.Focus();
+            }
+
+            // ajuda fechar venda
+            if (e.Control && e.KeyCode.ToString() == "F1" )
+            {
+                Reprodutor ajuda = new Reprodutor(@"C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\Ajuda\realizarVenda.mp4");
+                ajuda.Show();
+            }
+            //Consultar item
+            if (e.Control && e.KeyCode.ToString() == "F2")
+            {
+                Reprodutor ajuda = new Reprodutor(@"C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\Ajuda\Consulta.mp4");
+                ajuda.Show();
+            }
+            //remover item
+            if (e.Control && e.KeyCode.ToString() == "F3" && statusVenda == true)
+            {
+                Reprodutor ajuda = new Reprodutor(@"C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\Ajuda\removerProdutos.mp4");
+                ajuda.Show();
+            }
+            //Cancelar
+            if (e.Control && e.KeyCode.ToString() == "F4" && statusVenda == true)
+            {
+                Reprodutor ajuda = new Reprodutor(@"C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\Ajuda\cancelarVenda.mp4");
+                ajuda.Show();
+            }
+            //Sangria
+            if (e.Control && e.KeyCode.ToString() == "F5" && statusVenda == false)
+            {
+                Reprodutor ajuda = new Reprodutor(@"C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\Ajuda\Sangria.mp4");
+                ajuda.Show();
+            }
+            //Fechamento
+            if (e.Control && e.KeyCode.ToString() == "F6" && statusVenda == false)
+            {
+                Reprodutor ajuda = new Reprodutor(@"C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\Ajuda\fecharCaixa.mp4");
+                ajuda.Show();
+            }
+            //trocar de usuário
+            if (e.Control && e.KeyCode.ToString() == "F7" && statusVenda == false)
+            {
+                Reprodutor ajuda = new Reprodutor(@"C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\Ajuda\trocarDeUsuario.mp4");
+                ajuda.Show();
             }
         }
     }

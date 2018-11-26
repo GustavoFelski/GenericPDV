@@ -54,6 +54,7 @@ namespace GenericPdv
             listFuncionario1.Visible = false;
             //adcionar as listas de produtos
 
+
             //Logic Button
         }
 
@@ -114,6 +115,35 @@ namespace GenericPdv
             FrenteDeCaixa frente = new FrenteDeCaixa();
             AutenticacaoValidacao autenticacao = new AutenticacaoValidacao(1, frente, this);
             autenticacao.ShowDialog();
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Reprodutor ajuda = new Reprodutor(@"C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\Ajuda\recuperarSenha.mp4");
+            ajuda.Show();
+        }
+        //cadastrar Produtos
+        private void lbAjuda_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Reprodutor ajuda = new Reprodutor(@"C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\Ajuda\recuperarSenha.mp4");
+            ajuda.Show();
+        }
+
+        //alterar funcionario
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
+        // Relatório de Vendas
+        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Reprodutor ajuda = new Reprodutor(@"C:\Users\Dokahviin\source\repos\GenericPdv\GenericPdv\Ajuda\relatorioDeVendas.mp4");
+            ajuda.Show();
+        }
+        //alterar funcionario
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
         }
     }
 }

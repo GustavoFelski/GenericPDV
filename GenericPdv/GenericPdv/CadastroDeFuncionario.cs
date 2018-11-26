@@ -15,6 +15,7 @@ namespace GenericPdv
     public partial class CadastroDeFuncionario : Form
     {
         DataSetGnPdvTableAdapters.FuncionarioTableAdapter funcionario = new DataSetGnPdvTableAdapters.FuncionarioTableAdapter();
+        
         bool tipoDeAbertura;
         int id;
         ListFuncionario func;
@@ -50,7 +51,8 @@ namespace GenericPdv
                 cbbStatus.Enabled = false;
                 ckbReset.Enabled = false;
 
-                textId.Text = (Convert.ToInt32(funcionario.GetDataByLast()[0]["idFuncionario"]) + 1).ToString();
+                //MessageBox.Show(Convert.ToString(Convert.ToInt32(funcionario.GetDataByLast()[0]["idFuncionario"]) + 1));
+                textId.Text = (Convert.ToString(Convert.ToInt32(funcionario.GetDataByLast()[0]["idFuncionario"]) + 1));
                 textNome.Text = "";
                 textEmail.Text = "";
                 mkbTelefone.Text = "";
@@ -72,10 +74,11 @@ namespace GenericPdv
                 textNome.Text = temp[0]["funcNome"].ToString();
                 textEmail.Text = temp[0]["funcEmail"].ToString();
                 mkbTelefone.Text = temp[0]["funcTelefone"].ToString();
-                cbbCargo.SelectedItem = Convert.ToInt32(temp[0]["idCargo"]);
+                cbbCargo.SelectedIndex = Convert.ToInt32(temp[0]["idCargo"]);
                 textAcesso.Text = temp[0]["funcAliase"].ToString();
-                cbbStatus.SelectedItem = Convert.ToInt32(Convert.ToBoolean(temp[0]["idStatus"]));
+                cbbStatus.SelectedIndex = Convert.ToInt32(Convert.ToBoolean(temp[0]["funcStatus"]));
                 ckbReset.Checked = Convert.ToBoolean(temp[0]["funcReset"]);
+
             }
         }
 
@@ -86,7 +89,7 @@ namespace GenericPdv
             btNovo.Enabled = false;
             BtCancelar.Enabled = true;
 
-            textId.Enabled = true;
+            textId.Enabled = false;
             textNome.Enabled = true;
             textEmail.Enabled = true;
             mkbTelefone.Enabled = true;
@@ -96,7 +99,7 @@ namespace GenericPdv
             ckbReset.Enabled = false;
             ckbReset.Checked = true;
 
-            textId.Text = (Convert.ToInt32(funcionario.GetDataByLast()[0]["idFuncionario"]) + 1).ToString();
+            textId.Text = (Convert.ToString(Convert.ToInt32(funcionario.GetDataByLast()[0]["idFuncionario"]) + 1));
             textNome.Text = "";
             textEmail.Text = "";
             mkbTelefone.Text = "";
@@ -152,68 +155,88 @@ namespace GenericPdv
                 }
                 else
                 {
-                    funcionario.Insert(
-                        Convert.ToInt32(textId.Text),
-                        Convert.ToInt32(cbbCargo.SelectedItem),
-                        textNome.Text,
-                        mkbTelefone.Text,
-                        null,
-                        true,
-                        Convert.ToBoolean(cbbStatus.SelectedIndex),
-                        textEmail.Text
-                        );
+                    MessageBox.Show(cbbCargo.SelectedIndex.ToString());
+                    string str;
+                    if(cbbCargo.SelectedIndex == 0)
+                    {
+                        str = GerarHashMd5("ADM123");
+                    }
+                    else
+                    {
+                        str = "";
+                    }
+
+
+                    try
+                    {
+
+
+                        funcionario.InsertQuery(
+                            
+                            Convert.ToInt32(cbbCargo.SelectedIndex),
+                            textNome.Text,
+                            mkbTelefone.Text,
+                            str,
+                            true,
+                            Convert.ToBoolean(cbbStatus.SelectedIndex),
+                            textEmail.Text,
+                            textAcesso.Text
+                            );
+                        btSalvar.Enabled = false;
+                        btDeletar.Enabled = false;
+                        btNovo.Enabled = true;
+                        BtCancelar.Enabled = false;
+
+                        textId.Enabled = false;
+                        textNome.Enabled = false;
+                        textEmail.Enabled = false;
+                        mkbTelefone.Enabled = false;
+                        cbbCargo.Enabled = false;
+                        textAcesso.Enabled = false;
+                        cbbStatus.Enabled = false;
+                        ckbReset.Enabled = false;
+
+                        //Design
+
+                        textId.Text = "";
+                        textNome.Text = "";
+                        textEmail.Text = "";
+                        mkbTelefone.Text = "";
+                        cbbCargo.Text = "";
+                        ckbReset.Checked = false;
+                        textAcesso.Text = "";
+                    }
+                    catch (Exception ex)
+                    {
+                        Alerta alerta = new Alerta("Por Favor Preencha todos os campos para realizar o cadastro");
+                        alerta.ShowDialog();
+                    }
                 }
             }
             else
             {
-                bool status;
-                if (cbbStatus.SelectedIndex == 1 )
-                {
-                    status = true;
-                }
-                else
-                {
-                    status = false;
-                }
 
-
-                funcionario.UpdateFuncionario(
-                        Convert.ToInt32(textId.Text),
-                        Convert.ToInt32(cbbCargo.SelectedIndex),
-                        textNome.Text,
-                        mkbTelefone.Text,
-                        null,
-                        true,
-                        status,
-                        textEmail.Text
-                    );
-                func.dataGridView1.DataSource = funcionario.GetData();
+                try
+                {
+                    funcionario.UpdateFuncionario(
+                    Convert.ToInt32(cbbCargo.SelectedIndex),
+                    textNome.Text,
+                    mkbTelefone.Text,
+                    null,
+                    true,
+                    Convert.ToBoolean(cbbStatus.SelectedIndex),
+                    textEmail.Text,
+                    textAcesso.Text,
+                    Convert.ToInt32(textId.Text)
+                );
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
                 this.Dispose();
             }
-            btSalvar.Enabled = false;
-            btDeletar.Enabled = false;
-            btNovo.Enabled = true;
-            BtCancelar.Enabled = false;
-
-            textId.Enabled = false;
-            textNome.Enabled = false;
-            textEmail.Enabled = false;
-            mkbTelefone.Enabled = false;
-            cbbCargo.Enabled = false;
-            textAcesso.Enabled = false;
-            cbbStatus.Enabled = false;
-            ckbReset.Enabled = false;
-
-            //Design
-
-            textId.Text = "";
-            textNome.Text = "";
-            textEmail.Text = "";
-            mkbTelefone.Text = "";
-            cbbCargo.Text = "";
-            ckbReset.Checked = false;
-            textAcesso.Text = "";
-            func.dataGridView1.DataSource = funcionario.GetData();
+            // func.dataGridView1.DataSource = funcionario.GetData();
         }
 
         private void btDeletar_Click(object sender, EventArgs e)

@@ -261,7 +261,7 @@ namespace GenericPdv
                         textMarca.Text,
                         textCodForne.Text,
                         ckbStatus.Checked);
-
+                    catalogoA.dataGridView1.DataSource = produto.GetData();
                     //Design
                     textId.Text = "";
                     textNome.Text = "";
@@ -276,11 +276,13 @@ namespace GenericPdv
                     mkbPromocao.Text = "";
                     dtpInicio.Text = "";
                     dtpFim.Text = "";
+
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
+                
             }
             else
             {
@@ -312,9 +314,7 @@ namespace GenericPdv
                 alerta.ShowDialog();
                 catalogoA.dataGridView1.DataSource = produto.GetData();
                 this.Dispose();
-
             }
-            catalogoA.dataGridView1.DataSource = produto.GetData();
         }
 
         private void btDeletar_Click(object sender, EventArgs e)
@@ -322,16 +322,23 @@ namespace GenericPdv
 
             if (MessageBox.Show("Deseja excluir este produto?\nVocê pode Apenas desabilitalo.", "Cuidado!", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
             {
-                Alerta alerta = new Alerta("Operação cancelada.");
-            }
-            else
-            {
                 Alerta alerta = new Alerta("Operação Concluida");
                 produto.DeleteProd(Convert.ToInt32(textId.Text));
                 catalogoA.dataGridView1.DataSource = produto.GetData();
+                alerta.ShowDialog();
                 this.Dispose();
             }
+            else
+            {
+                Alerta alerta = new Alerta("Operação cancelada.");
+                alerta.ShowDialog();
+            }
         }
-        
+
+        private void CadastroDeProduto_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            catalogoA.dataGridView1.DataSource = produto.GetData();
+            this.Dispose();
+        }
     }
 }

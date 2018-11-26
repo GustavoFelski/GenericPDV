@@ -141,11 +141,12 @@ namespace GenericPdv
                                         {
                                             //fecha a tela de caixa
                                             frente.Dispose();
-                                            admin.Close();
+                                            frente.Close();
 
                                             AutenticacaoDeFuncionario.funcLogado = textNome.Text;
                                             AutenticacaoDeFuncionario.Date = DateTime.Now;
                                             AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idFuncionario"]);
+                                            AutenticacaoDeFuncionario.idCargo = Convert.ToInt32(temp[0]["idCargo"]);
 
                                             FrenteDeCaixa caixa = new FrenteDeCaixa();
                                             caixa.Show();
@@ -159,6 +160,7 @@ namespace GenericPdv
                                             AutenticacaoDeFuncionario.funcLogado = textNome.Text;
                                             AutenticacaoDeFuncionario.Date = DateTime.Now;
                                             AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idFuncionario"]);
+                                            AutenticacaoDeFuncionario.idCargo = Convert.ToInt32(temp[0]["idCargo"]);
 
                                             FrenteDeCaixa caixa = new FrenteDeCaixa();
                                             caixa.Show();
@@ -169,19 +171,33 @@ namespace GenericPdv
                                         //sou estoquista estou indo para admin
                                         if (AutenticacaoDeFuncionario.idCargo == 2)
                                         {
-                                            //fecha a tela de caixa
-                                            frente.Dispose();
-                                            admin.Close();
                                             //fecha tela de admin
                                             admin.Dispose();
                                             admin.Close();
                                             AutenticacaoDeFuncionario.funcLogado = textNome.Text;
                                             AutenticacaoDeFuncionario.Date = DateTime.Now;
                                             AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idFuncionario"]);
-
-                                            //Abre deta de admin tipo 2
-                                            Admin estoquista = new Admin(false);
+                                            AutenticacaoDeFuncionario.idCargo = Convert.ToInt32(temp[0]["idCargo"]);
+                                            //Abre deta de admin 
+                                            Admin estoquista = new Admin(true);
                                             estoquista.Show();
+                                            if (string.IsNullOrEmpty(caixaTable.GetDataByLast()[0]["caixaFechamento"].ToString()))
+                                            {
+                                                Alerta alerta = new Alerta("Existe um fechamento ainda aberto.");
+                                                alerta.ShowDialog();
+                                                Sangria sangria2 = new Sangria(Convert.ToInt32(temp[0]["idFuncionario"]));
+                                                sangria2.ShowDialog();
+                                                FechamentoDeCaixaForm fechamentoTela = new FechamentoDeCaixaForm();
+                                                fechamentoTela.ShowDialog();
+                                                AberturaDeCaixaForm abertura = new AberturaDeCaixaForm();
+                                                abertura.Show();
+                                            }
+                                            else
+                                            {
+                                                FrenteDeCaixa caixa = new FrenteDeCaixa();
+                                                caixa.Show();
+                                            }
+
                                         }
                                         #endregion 
                                         break;
@@ -228,6 +244,7 @@ namespace GenericPdv
                                             AutenticacaoDeFuncionario.funcLogado = textNome.Text;
                                             AutenticacaoDeFuncionario.Date = DateTime.Now;
                                             AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idFuncionario"]);
+                                            AutenticacaoDeFuncionario.idCargo = Convert.ToInt32(temp[0]["idCargo"]);
                                             if (string.IsNullOrEmpty(caixaTable.GetDataByLast()[0]["caixaFechamento"].ToString()))
                                             {
                                                 Alerta alerta = new Alerta("Existe um fechamento ainda aberto.");
@@ -255,7 +272,7 @@ namespace GenericPdv
                                             AutenticacaoDeFuncionario.funcLogado = textNome.Text;
                                             AutenticacaoDeFuncionario.Date = DateTime.Now;
                                             AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idFuncionario"]);
-
+                                            AutenticacaoDeFuncionario.idCargo = Convert.ToInt32(temp[0]["idCargo"]);
                                             FrenteDeCaixa caixa = new FrenteDeCaixa();
                                             caixa.Show();
                                         }
@@ -269,6 +286,7 @@ namespace GenericPdv
                                             AutenticacaoDeFuncionario.funcLogado = textNome.Text;
                                             AutenticacaoDeFuncionario.Date = DateTime.Now;
                                             AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idFuncionario"]);
+                                            AutenticacaoDeFuncionario.idCargo = Convert.ToInt32(temp[0]["idCargo"]);
                                             // abrir frente de caixa
                                             // verificar se o caixa ja foi aberto anteriormente
                                             if (string.IsNullOrEmpty(caixaTable.GetDataByLast()[0]["caixaFechamento"].ToString()))
@@ -327,16 +345,20 @@ namespace GenericPdv
                                         if (AutenticacaoDeFuncionario.idCargo == 0)
                                         {
                                             // fecha admin
-                                            this.admin.Dispose();
-                                            this.admin.Close();
+                                            admin.Dispose();
+                                            admin.Close();
+
+                                            frente.Dispose();
+                                            frente.Close();
+
                                             // atualiza dados de acesso
                                             AutenticacaoDeFuncionario.funcLogado = textNome.Text;
                                             AutenticacaoDeFuncionario.Date = DateTime.Now;
                                             AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idFuncionario"]);
-
+                                            AutenticacaoDeFuncionario.idCargo = Convert.ToInt32(temp[0]["idCargo"]);
                                             // abre tela de admin tipo 1 
-                                            Admin admin = new Admin(false);
-                                            admin.Show();
+                                            Admin admin2 = new Admin(false);
+                                            admin2.Show();
                                         }
 
                                         //Sou caixa indo para estoquista
@@ -349,7 +371,7 @@ namespace GenericPdv
                                             AutenticacaoDeFuncionario.funcLogado = textNome.Text;
                                             AutenticacaoDeFuncionario.Date = DateTime.Now;
                                             AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idFuncionario"]);
-
+                                            AutenticacaoDeFuncionario.idCargo = Convert.ToInt32(temp[0]["idCargo"]);
                                             //abrir tela do estoquista
                                             Admin admin = new Admin(false);
                                             admin.Show();
@@ -362,7 +384,7 @@ namespace GenericPdv
                                             AutenticacaoDeFuncionario.funcLogado = textNome.Text;
                                             AutenticacaoDeFuncionario.Date = DateTime.Now;
                                             AutenticacaoDeFuncionario.idFuncionario = Convert.ToInt32(temp[0]["idFuncionario"]);
-
+                                            AutenticacaoDeFuncionario.idCargo = Convert.ToInt32(temp[0]["idCargo"]);
                                         }
                                         #endregion 
                                         break;
@@ -379,6 +401,7 @@ namespace GenericPdv
                 textNome.Focus();
             }
         }
+
     }
 
 }
